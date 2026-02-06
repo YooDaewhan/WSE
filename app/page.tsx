@@ -1,8 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Header from "./components/Header";
 import ScrollSection from "./components/ScrollSection";
+import SliderNav from "./components/SliderNav";
 
 const sections = [
   {
@@ -32,6 +34,8 @@ const sections = [
 ];
 
 export default function Home() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
   return (
     <main className="min-h-screen bg-gray-50">
       <Header />
@@ -112,18 +116,33 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* Scroll Sections */}
-      {sections.map((section, i) => (
-        <div key={i} className={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
-          <ScrollSection
-            title={section.title}
-            description={section.description}
-            color={section.color}
-            reverse={section.reverse}
-            index={i}
-          />
-        </div>
-      ))}
+      {/* Slider Navigation */}
+      <section className="px-6 py-12 bg-white">
+        <SliderNav items={sections} current={currentSlide} onChange={setCurrentSlide} />
+      </section>
+
+      {/* Region Characters Content */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={currentSlide}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          {[1, 2, 3, 4].map((char, i) => (
+            <div key={char} className={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
+              <ScrollSection
+                title={`Character ${char}`}
+                description={sections[currentSlide].description}
+                color={sections[currentSlide].color}
+                reverse={i % 2 !== 0}
+                index={i}
+              />
+            </div>
+          ))}
+        </motion.div>
+      </AnimatePresence>
 
       {/* CTA Banner */}
       <section className="py-32 px-6 bg-gradient-to-br from-violet-600 via-purple-600 to-pink-500">
