@@ -21,58 +21,34 @@ const generations = [
         emoji: "⚔️",
         role: "Pioneer",
         slug: "honggildong",
-        desc: "길을 만드는 사람. 없던 길도 걸으면 길이 된다.",
-        partner: {
-          name: "홍구",
-          animal: "여우",
-          emoji: "🦊",
-          desc: "홍길동 옆을 지키며 신호를 나르는 의적단의 꾀돌이.",
-        },
+        desc: "에요 브로 와썹 bro.",
       },
       {
-        name: "내시",
+        name: "내시(미정)",
         emoji: "📜",
         role: "Strategist",
         slug: "naesi",
-        desc: "무대 뒤에서 판을 짜는 전략의 귀재.",
-        partner: {
-          name: "내서",
-          animal: "올빼미",
-          emoji: "🦉",
-          desc: "밤새 편지를 나르는 내시의 눈과 귀.",
-        },
+        desc: "황송하옵니다~~.",
       },
       {
-        name: "도깨비",
+        name: "도깨비(미정)",
         emoji: "👹",
         role: "Wildcard",
         slug: "dokkaebi",
-        desc: "예측불가. 그래서 더 강하다.",
-        partner: {
-          name: "깨비",
-          animal: "너구리",
-          emoji: "🦝",
-          desc: "도깨비의 장난에 가장 먼저 합류하는 말썽 공범.",
-        },
+        desc: "날이 좋아서..",
       },
       {
-        name: "파계승",
+        name: "후테이 센지",
         emoji: "🔥",
         role: "Breaker",
         slug: "pagyeseung",
-        desc: "규칙을 깨고 새로운 질서를 세우는 파괴자.",
-        partner: {
-          name: "파계",
-          animal: "호랑이",
-          emoji: "🐯",
-          desc: "산중의 금기를 같이 부수는 한 쌍의 맹수.",
-        },
+        desc: "아침은 밝았나요.",
       },
     ],
   },
   {
     id: 2,
-    label: "2기",
+    label: "1기",
     teamName: "스타터팩",
     tagline: "시작하는 우리들을 위해",
     description:
@@ -85,25 +61,13 @@ const generations = [
         role: "Igniter",
         slug: "igniter",
         desc: "충분하진 않지만 부족하진 않아.",
-        partner: {
-          name: "이기",
-          animal: "불도롱뇽",
-          emoji: "🦎",
-          desc: "이그나이터의 첫 불씨가 꺼지지 않게 지켜주는 작은 파트너.",
-        },
       },
       {
         name: "네비게이터",
         emoji: "🧭",
         role: "Navigator",
         slug: "navigator",
-        desc: "방향을 잡고 길을 제시하는 항해사.",
-        partner: {
-          name: "알버트",
-          animal: "비둘기",
-          emoji: "🕊️",
-          desc: "네비게이터보다 먼저 길을 정찰하고 돌아오는 전서구.",
-        },
+        desc: "준비됐어? 알버트? ",
       },
       {
         name: "셀러브레이터",
@@ -111,81 +75,50 @@ const generations = [
         role: "Celebrator",
         slug: "celebrator",
         desc: "어, 잠깐만, 그거 대단한 거 아니야?! 축하해!!!",
-        partner: {
-          name: "봉봉이",
-          animal: "호박벌",
-          emoji: "🐝",
-          desc: "셀러브레이터 주변을 돌며 축하를 퍼뜨리는 달콤한 꿀벌.",
-        },
       },
     ],
   },
   {
     id: 3,
-    label: "3기",
+    label: "2기",
     teamName: "히어로즈",
-    tagline: "평범한 일상 속 비범한 영웅들",
-    description:
-      "거창한 슈퍼파워 없이도 영웅이 될 수 있다. 각자의 자리에서 묵묵히 빛나는 3기 히어로즈.",
+    tagline: "언더독: 히어로즈",
+    description: "너도 우리가 이기는 이야기를 보고 싶은거잖아.",
     gradient: "from-emerald-500 via-teal-600 to-cyan-700",
     members: [
       {
-        name: "알바",
+        name: "알바(미정)",
         emoji: "💼",
         role: "Hustler",
         slug: "alba",
         desc: "어디서든 살아남는 생존왕. 현장의 달인.",
-        partner: {
-          name: "알밤이",
-          animal: "다람쥐",
-          emoji: "🐿️",
-          desc: "알바와 함께 이리저리 뛰어다니는 부지런한 동행.",
-        },
       },
       {
-        name: "편돌이",
+        name: "편돌이(미정)",
         emoji: "🏪",
         role: "Keeper",
         slug: "pyeondori",
-        desc: "365일 24시간. 멈추지 않는 편의점의 수호자.",
-        partner: {
-          name: "편순이",
-          animal: "펭귄",
-          emoji: "🐧",
-          desc: "24시간 편의점 냉장고 옆을 지키는 단정한 카운터 지킴이.",
-        },
+        desc: "어서오세요. 오늘도.",
       },
       {
-        name: "딸배",
+        name: "딸배(미정)",
         emoji: "🚬",
         role: "Rebel",
         slug: "ddalbae",
-        desc: "자유로운 영혼. 틀에 얽매이지 않는 반항아.",
-        partner: {
-          name: "딸콩이",
-          animal: "제비",
-          emoji: "🐦",
-          desc: "딸배 뒤에 붙어 도로 위를 함께 가르는 자유로운 동행.",
-        },
+        desc: "내가 쉬면 사람들 밥은 어떻게 먹는데?",
       },
       {
-        name: "폐급이병",
+        name: "폐급이병(미정)",
         emoji: "🎖️",
         role: "Survivor",
         slug: "pyegeubibyeong",
-        desc: "바닥을 찍어본 자만이 아는 성장의 비밀.",
-        partner: {
-          name: "폐리",
-          animal: "달팽이",
-          emoji: "🐌",
-          desc: "폐급이병과 함께 바닥부터 천천히 기어오르는 끈기의 동반자.",
-        },
+        desc: "네..? 잘 못들었습니다..?",
       },
     ],
   },
   {
     id: 4,
-    label: "4기",
+    label: "3기",
     teamName: "레스큐팩",
     tagline: "위기의 순간, 구원의 손길",
     description:
@@ -198,144 +131,96 @@ const generations = [
         role: "Vanguard",
         slug: "helldiver",
         desc: "네가 어디에 있던지 너에게로 갈게",
-        partner: {
-          name: "헬비",
-          animal: "매",
-          emoji: "🦅",
-          desc: "헬다이버가 강하하는 곳에 먼저 도착해 있는 공중 정찰.",
-        },
       },
       {
         name: "앵커",
         emoji: "⚓",
         role: "Anchor",
         slug: "anchor",
-        desc: "흔들리지 않는 중심. 팀의 단단한 닻.",
-        partner: {
-          name: "앵꼬",
-          animal: "거북이",
-          emoji: "🐢",
-          desc: "앵커가 흔들릴 때 가장 먼저 자리 잡아주는 느린 단단함.",
-        },
+        desc: "바닥에 닿아있는건 내가 아니야.",
       },
       {
         name: "페인킬러",
         emoji: "💊",
         role: "Healer",
         slug: "painkiller",
-        desc: "아픔을 치유하고 다시 일어서게 만드는 존재.",
-        partner: {
-          name: "페니",
-          animal: "토끼",
-          emoji: "🐰",
-          desc: "페인킬러의 손끝에서 먼저 위로받는 작은 치유자.",
-        },
+        desc: "당신이 원한다면 얼마든지..",
       },
     ],
   },
   {
     id: 5,
-    label: "5기",
+    label: "4기",
     teamName: "이퀴녹스",
-    tagline: "빛이 강할수록, 그림자도 깊다",
+    tagline: "당신을 위해서라면",
     description:
       "빛과 어둠의 경계에 선 자들. 5기 빛과 그림자는 대비 속에서 진짜 자신을 찾아가는 팀이다.",
     gradient: "from-slate-600 via-gray-700 to-zinc-900",
     members: [
       {
-        name: "천천",
+        name: "미카엘라(미정)",
         emoji: "☀️",
         role: "Light",
         slug: "cheoncheon",
-        desc: "천천히, 하지만 확실하게. 빛은 서두르지 않는다.",
-        partner: {
-          name: "천둥이",
-          animal: "사슴",
-          emoji: "🦌",
-          desc: "천천의 곁에 조용히 서 있는 빛의 그림자.",
-        },
+        desc: "눈감지마. 무너지지마. 내가 너와 함께할게.",
       },
       {
-        name: "청악",
-        emoji: "🌓",
+        name: "아자젤라(미정)",
+        emoji: "🌗",
         role: "Dusk",
         slug: "cheongak",
-        desc: "맑음과 악함의 경계. 어느 쪽이든 될 수 있는 존재.",
-        partner: {
-          name: "청이",
-          animal: "고양이",
-          emoji: "🐱",
-          desc: "청악과 함께 경계 위를 오가는 양면의 동반자.",
-        },
+        desc: "넘어져도 다시 일어 설 수 있도록.",
       },
       {
-        name: "악천",
-        emoji: "⛈️",
+        name: "루시아(미정)",
+        emoji: "🌓",
         role: "Storm",
         slug: "akcheon",
-        desc: "악천후 속에서도 길을 찾는 자. 폭풍의 핵심.",
-        partner: {
-          name: "악까",
-          animal: "까마귀",
-          emoji: "🐦‍⬛",
-          desc: "악천이 몰고 오는 폭풍 한가운데 떠 있는 검은 전령.",
-        },
+        desc: "더 이상 널 무리해서 태우지마.",
       },
       {
-        name: "악악",
+        name: "데아(미정)",
         emoji: "🌑",
         role: "Shadow",
         slug: "akak",
-        desc: "가장 깊은 어둠. 그러나 어둠이 있어야 빛도 빛난다.",
-        partner: {
-          name: "악이",
-          animal: "박쥐",
-          emoji: "🦇",
-          desc: "악악이 가장 어두운 곳으로 내려갈 때 함께 있는 작은 빛.",
-        },
+        desc: "아플거란거 알고있잖아. 가지마.",
       },
     ],
   },
   {
     id: 6,
-    label: "6기",
-    teamName: "슈거",
+    label: "5기",
+    teamName: "스팀팩",
     tagline: "달콤함 속에 숨겨진 독",
-    description:
-      "달콤하지만 만만하지 않다. 6기 슈거는 부드러운 카리스마로 세상을 사로잡는 팀이다.",
+    description: "견디기 힘들다면..?",
     gradient: "from-pink-400 via-rose-500 to-red-400",
     members: [
       {
+        name: "슈거",
+        emoji: "🧂",
+        role: "sugar",
+        slug: "sugar",
+        desc: "행복해지는 약.. 먹어볼래?",
+      },
+      {
         name: "홀더",
-        emoji: "🃏",
+        emoji: "🔗",
         role: "Holder",
         slug: "holder",
-        desc: "모든 카드를 쥐고 있는 자. 마지막에 웃는 사람.",
-        partner: {
-          name: "홀이",
-          animal: "문어",
-          emoji: "🐙",
-          desc: "홀더가 쥔 카드 몇 장을 몰래 같이 쥐고 있는 조력자.",
-        },
+        desc: "내가 안전하게 지켜줄게",
       },
       {
         name: "클로버",
         emoji: "🍀",
         role: "Lucky",
         slug: "clover",
-        desc: "행운은 준비된 자에게 온다. 네 잎 클로버의 주인공.",
-        partner: {
-          name: "클로리",
-          animal: "무당벌레",
-          emoji: "🐞",
-          desc: "클로버 잎 위에 앉아 행운을 두 배로 만드는 작은 동행.",
-        },
+        desc: "세잎클로버는 행복, 네잎은 행운이래. 어떤걸로 빌어줄까?",
       },
     ],
   },
   {
     id: 7,
-    label: "7기",
+    label: "6기",
     teamName: "시큐리티엑스",
     tagline: "조직의 질서, 철벽의 방어",
     description:
@@ -348,12 +233,6 @@ const generations = [
         role: "Rookie",
         slug: "intern",
         desc: "시작은 미약하나 그 끝은 창대하리라.",
-        partner: {
-          name: "인턴이",
-          animal: "햄스터",
-          emoji: "🐹",
-          desc: "인턴과 함께 서류 더미를 굴리는 부지런한 신입 동기.",
-        },
       },
       {
         name: "사원",
@@ -361,12 +240,6 @@ const generations = [
         role: "Worker",
         slug: "sawon",
         desc: "묵묵히 실무를 돌리는 조직의 심장.",
-        partner: {
-          name: "사원이",
-          animal: "비버",
-          emoji: "🦫",
-          desc: "사원 곁에서 꾸준히 조직이라는 댐을 쌓는 성실파.",
-        },
       },
       {
         name: "대리",
@@ -374,12 +247,6 @@ const generations = [
         role: "Manager",
         slug: "daeri",
         desc: "위와 아래를 잇는 다리. 실질적 중간 허리.",
-        partner: {
-          name: "대리미",
-          animal: "수달",
-          emoji: "🦦",
-          desc: "대리의 중재를 매끄럽게 풀어주는 유연한 중간자.",
-        },
       },
       {
         name: "부장",
@@ -387,12 +254,6 @@ const generations = [
         role: "Director",
         slug: "bujang",
         desc: "결정의 무게를 아는 자. 최종 방어선.",
-        partner: {
-          name: "부장님",
-          animal: "곰",
-          emoji: "🐻",
-          desc: "부장 옆에서 결정을 지키는 조용하고 든든한 최종 방어선.",
-        },
       },
     ],
   },
@@ -460,23 +321,6 @@ function MemberSection({
               </div>
             </div>
           </div>
-          {/* 파트너 뱃지 (박스 내부 우측 상단) */}
-          <motion.div
-            initial={{ scale: 0, opacity: 0 }}
-            animate={isInView ? { scale: 1, opacity: 1 } : {}}
-            transition={{ duration: 0.5, delay: 0.5, ease: "backOut" }}
-            className="absolute top-6 right-6 flex items-center gap-2 px-3 py-2 bg-white/90 backdrop-blur-md rounded-full shadow-lg"
-          >
-            <span className="text-xl leading-none">{member.partner.emoji}</span>
-            <div className="text-left pr-1">
-              <p className="text-[9px] font-bold tracking-[0.15em] uppercase text-gray-400 leading-none mb-0.5">
-                Fan
-              </p>
-              <p className="text-gray-900 text-xs font-bold leading-none">
-                {member.partner.name}
-              </p>
-            </div>
-          </motion.div>
           <div className="absolute top-8 left-8 w-16 h-16 border-t-2 border-l-2 border-white/20 rounded-tl-lg" />
           <div className="absolute bottom-8 right-8 w-16 h-16 border-b-2 border-r-2 border-white/20 rounded-br-lg" />
         </div>
@@ -504,35 +348,9 @@ function MemberSection({
         <h2 className="text-5xl md:text-6xl font-extrabold text-gray-900 mb-4 leading-tight">
           {member.name}
         </h2>
-        <p className="text-gray-500 text-xl leading-relaxed mb-6 max-w-lg mx-auto md:mx-0">
+        <p className="text-gray-500 text-xl leading-relaxed mb-8 max-w-lg mx-auto md:mx-0">
           {member.desc}
         </p>
-
-        {/* 파트너 카드 */}
-        <div className="mb-7 max-w-md mx-auto md:mx-0">
-          <div className="flex items-start gap-3.5 p-4 bg-white border border-gray-200 rounded-2xl shadow-sm">
-            <div
-              className={`w-12 h-12 rounded-xl bg-gradient-to-br ${gradient} flex items-center justify-center text-2xl shadow-md shrink-0`}
-            >
-              {member.partner.emoji}
-            </div>
-            <div className="text-left flex-1 min-w-0">
-              <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-gray-400 mb-1">
-                Partner · 팬네임
-              </p>
-              <p className="text-gray-900 font-bold text-base leading-tight mb-1.5">
-                {member.partner.name}
-                <span className="text-gray-400 text-sm font-medium ml-2">
-                  · {member.partner.animal}
-                </span>
-              </p>
-              <p className="text-gray-500 text-sm leading-relaxed">
-                {member.partner.desc}
-              </p>
-            </div>
-          </div>
-        </div>
-
         <div className="flex flex-col sm:flex-row items-center md:items-start gap-3">
           <div
             className={`inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-gradient-to-r ${gradient} text-white text-base font-bold shadow-lg`}
@@ -658,11 +476,6 @@ export default function Services() {
                   >
                     <span>{m.emoji}</span>
                     {m.name}
-                    <span className="text-gray-300">·</span>
-                    <span className="text-gray-500 flex items-center gap-1">
-                      {m.partner.emoji}
-                      {m.partner.name}
-                    </span>
                   </span>
                 ))}
               </div>

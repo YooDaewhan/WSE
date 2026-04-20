@@ -257,7 +257,7 @@ export default function Home() {
                 개성과 재능을 극대화하고, 협업을 통해 더 큰 가치를 만들어냅니다.
               </p>
               <p className="text-gray-500 text-lg leading-relaxed">
-                1기부터 7기까지, 매 시즌 새로운 크리에이터들이 합류하며 WSE만의
+                1기부터 6기까지, 매 시즌 새로운 크리에이터들이 합류하며 WSE만의
                 독보적인 문화를 만들어가고 있습니다.
               </p>
             </FadeInSection>
@@ -304,43 +304,43 @@ export default function Home() {
               <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 gap-3">
                 {[
                   {
-                    gen: "1기",
+                    gen: "0기",
                     team: "새벽조",
                     gradient: "from-indigo-600 to-purple-700",
                     emoji: "🌅",
                   },
                   {
-                    gen: "2기",
+                    gen: "1기",
                     team: "스타터팩",
                     gradient: "from-rose-500 to-fuchsia-700",
                     emoji: "🔥",
                   },
                   {
-                    gen: "3기",
+                    gen: "2기",
                     team: "히어로즈",
                     gradient: "from-emerald-500 to-cyan-700",
                     emoji: "🦸",
                   },
                   {
-                    gen: "4기",
+                    gen: "3기",
                     team: "레스큐팩",
                     gradient: "from-amber-500 to-red-600",
                     emoji: "🪂",
                   },
                   {
-                    gen: "5기",
+                    gen: "4기",
                     team: "이퀴녹스",
                     gradient: "from-slate-600 to-zinc-900",
                     emoji: "🌓",
                   },
                   {
-                    gen: "6기",
+                    gen: "5기",
                     team: "스팀팩",
                     gradient: "from-pink-400 to-red-400",
                     emoji: "🍬",
                   },
                   {
-                    gen: "7기",
+                    gen: "6기",
                     team: "시큐리티엑스",
                     gradient: "from-blue-600 to-cyan-500",
                     emoji: "🛡️",

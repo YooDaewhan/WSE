@@ -41,8 +41,18 @@ const orgChart = [
     emoji: "👑",
     members: [
       { name: "대표", role: "CEO", emoji: "🎯", note: "무대를 세운 사람" },
-      { name: "홍길동", role: "Pioneer · 이사", emoji: "⚔️", note: "1기 · 원년멤버" },
-      { name: "내시", role: "Strategist · 실장", emoji: "📜", note: "1기 · 전략 총괄" },
+      {
+        name: "홍길동",
+        role: "Pioneer · 이사",
+        emoji: "⚔️",
+        note: "1기 · 원년멤버",
+      },
+      {
+        name: "내시",
+        role: "Strategist · 실장",
+        emoji: "📜",
+        note: "1기 · 전략 총괄",
+      },
     ],
   },
   {
@@ -54,7 +64,7 @@ const orgChart = [
     emoji: "🔥",
     members: [
       { name: "도깨비", role: "Wildcard", emoji: "👹", note: "1기" },
-      { name: "파계승", role: "Breaker", emoji: "🔥", note: "1기" },
+      { name: "매국노", role: "Breaker", emoji: "🔥", note: "1기" },
       { name: "이그나이터", role: "Igniter", emoji: "🔥", note: "2기" },
       { name: "네비게이터", role: "Navigator", emoji: "🧭", note: "2기" },
       { name: "셀러브레이터", role: "Celebrator", emoji: "🎉", note: "2기" },
@@ -81,7 +91,12 @@ const orgChart = [
     gradient: "from-emerald-500 via-teal-600 to-cyan-700",
     emoji: "🛠️",
     members: [
-      { name: "폐급이병", role: "Survivor · 현장반장", emoji: "🎖️", note: "3기" },
+      {
+        name: "폐급이병",
+        role: "Survivor · 현장반장",
+        emoji: "🎖️",
+        note: "3기",
+      },
       { name: "인턴", role: "Rookie · 실무", emoji: "📋", note: "7기" },
       { name: "사원", role: "Worker · 실무", emoji: "💻", note: "7기" },
       { name: "대리", role: "Manager · 실무", emoji: "📊", note: "7기" },
@@ -155,7 +170,7 @@ const protocolRanks = [
     benefits: [
       "야근 시 택시비 실비 지원",
       "회식 메뉴 2순위 투표권",
-      "재택근무 신청권",
+      "굿즈 우선 구매",
       "분기 성과급 지급 대상",
     ],
   },
@@ -201,8 +216,8 @@ export default function About() {
             className="text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed"
           >
             WSE는 연기자들이 모여 하루를 지어내는 곳입니다.
-            <br className="hidden md:block" />
-            그 시작과, 방향과, 그 안의 질서에 대하여.
+            <br className="hidden md:block" />그 시작과, 방향과, 그 안의 질서에
+            대하여.
           </motion.p>
         </div>
       </section>
@@ -232,9 +247,10 @@ export default function About() {
               <div className="space-y-5 text-gray-200 text-lg leading-relaxed">
                 <p>
                   처음 WSE를 만들겠다고 마음먹었을 때, 떠올린 건 거창한 회사가
-                  아니라 <span className="text-white font-semibold">한 무대</span>였습니다.
-                  내가 좋아하는 사람들이 마음껏 뛸 수 있는 무대 하나만 있으면
-                  된다 — 그 생각이 WSE의 전부였습니다.
+                  아니라{" "}
+                  <span className="text-white font-semibold">한 무대</span>
+                  였습니다. 내가 좋아하는 사람들이 마음껏 뛸 수 있는 무대 하나만
+                  있으면 된다 — 그 생각이 WSE의 전부였습니다.
                 </p>
                 <p>
                   연기자들이 자기 이야기를 연기로 풀어내고, 그 이야기를 함께

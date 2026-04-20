@@ -18,6 +18,7 @@ const allCreators: Record<
     gradient: string;
     quote: string;
     shortBio: string;
+    partner: { name: string; animal: string; emoji: string; desc: string };
     birthplace: string;
     birthplaceDesc: string;
     fullBio: string;
@@ -35,6 +36,12 @@ const allCreators: Record<
     quote: "Ayo, 왓썹 bro.",
     shortBio:
       "오브콜스 만삣삐, 네가 말한것 처럼 세상은 불합리할지도 모르지. 하지만 그 사실을 당당하게 마주하고 삶은 이어가는건 오직 용감한 인간만이 할 수 있는 일이지. 난 네 심장보다도 가까운곳에서 널 지켜볼테니까. 기적같은 하루가 널 기다리고 있어.",
+    partner: {
+      name: "홍구(미정)",
+      animal: "여우",
+      emoji: "🦊",
+      desc: "홍길동 옆을 지키며 신호를 나르는 의적단의 꾀돌이.",
+    },
     birthplace: "활빈당",
     birthplaceDesc:
       "대한민국의 수도 서울에서 태어나 거친 도시의 에너지를 흡수하며 성장했다. 빠르게 변화하는 환경 속에서 적응력과 개척 정신을 키웠다.",
@@ -50,9 +57,15 @@ const allCreators: Record<
     generation: "1기",
     teamName: "새벽조",
     gradient: "from-indigo-600 via-violet-600 to-purple-700",
-    quote: "무대 뒤에서 판을 짜는 전략의 귀재.",
-    shortBio: "보이지 않는 곳에서 모든 것을 설계하는 두뇌.",
-    birthplace: "경기도 수원시",
+    quote: "황송하옵니다~~~ 에예",
+    shortBio: "조선을 팔도로 나눈다면 자네는 18검정도 되겠구먼",
+    partner: {
+      name: "내서",
+      animal: "올빼미",
+      emoji: "🦉",
+      desc: "밤새 편지를 나르는 내시의 눈과 귀.",
+    },
+    birthplace: "미정",
     birthplaceDesc:
       "화성의 성곽이 둘러싼 역사의 도시에서 자랐다. 고요한 성벽 안에서 치밀한 전략적 사고를 자연스럽게 체득했다.",
     fullBio:
@@ -67,8 +80,14 @@ const allCreators: Record<
     generation: "1기",
     teamName: "새벽조",
     gradient: "from-indigo-600 via-violet-600 to-purple-700",
-    quote: "예측불가. 그래서 더 강하다.",
-    shortBio: "아무도 예상하지 못한 순간, 판을 뒤집는 존재.",
+    quote: "날이 좋아서..",
+    shortBio: "오래전 도깨비 ",
+    partner: {
+      name: "깨비",
+      animal: "너구리",
+      emoji: "🦝",
+      desc: "도깨비의 장난에 가장 먼저 합류하는 말썽 공범.",
+    },
     birthplace: "강원도 춘천시",
     birthplaceDesc:
       "호수와 산이 어우러진 자연 속에서 자유분방한 영혼이 자라났다.",
@@ -78,19 +97,23 @@ const allCreators: Record<
       "도깨비가 가장 예측하지 못하는 것은 바로 자기 자신이다. 그는 잠들기 전 매일 일기를 쓰는데, 다음 날 아침 읽어보면 자신이 쓴 것 같지 않다고 느낀다. 어떤 날은 무섭도록 냉정하고, 어떤 날은 아이처럼 무너진다. 그 어떤 예측도 틀리지 않는 와일드카드가 유일하게 틀리는 예측이 있다면 — 내일의 자신이 어떤 모습일지다. 어쩌면 예측 불가는 강함이 아니라, 스스로도 모르는 두려움의 다른 이름일지 모른다.",
   },
   pagyeseung: {
-    name: "파계승",
+    name: "후테이 센지",
     emoji: "🔥",
     role: "Breaker",
     generation: "1기",
     teamName: "새벽조",
     gradient: "from-indigo-600 via-violet-600 to-purple-700",
-    quote: "규칙을 깨고 새로운 질서를 세우는 파괴자.",
-    shortBio: "낡은 것을 부수고 새로운 세계를 여는 혁명가.",
-    birthplace: "부산광역시",
-    birthplaceDesc:
-      "거친 파도가 치는 항구 도시에서 태어났다. 바다처럼 거침없고 파도처럼 멈추지 않는 기질을 타고났다.",
-    fullBio:
-      "파계승은 기존의 규칙에 순응하지 않는다. 이미 만들어진 틀이 더 이상 유효하지 않다고 판단하면 거침없이 부수고, 그 자리에 새로운 질서를 세운다. 1기의 혁명 정신을 상징하는 인물.",
+    quote: "매국노 민족반역자",
+    shortBio: "어이 조무래기들 모여서 뭣들하는거야. 조용히 아침이나 기다리라고",
+    partner: {
+      name: "조무래기",
+      animal: "인간",
+      emoji: "🐯",
+      desc: "힘없는 민초",
+    },
+    birthplace: "총독부(주장)",
+    birthplaceDesc: "기밀",
+    fullBio: "기밀",
     hiddenStory:
       "파계승이 부순 것들 중 가장 오래된 것은 자기 자신에게 세웠던 약속이다. '절대 타협하지 않겠다'는 그 맹세는, 어느 날 밤 말없이 깨어졌다. 무엇을 위해서였는지, 그는 아직도 스스로에게 말하지 못한다. 혁명가의 가장 큰 적은 낡은 세계가 아니라, 자신이 혁명하지 못한 내면이라는 것을 그는 알고 있다. 파계(破戒) — 그가 부순 계율 중 하나는 남들 것이 아니었다.",
   },
@@ -104,6 +127,12 @@ const allCreators: Record<
     gradient: "from-rose-500 via-pink-600 to-fuchsia-700",
     quote: "불꽃을 점화하는 자. 모든 시작은 여기서.",
     shortBio: "뜨거운 열정으로 팀의 엔진에 불을 붙이는 점화자.",
+    partner: {
+      name: "이기",
+      animal: "불도롱뇽",
+      emoji: "🦎",
+      desc: "이그나이터의 첫 불씨가 꺼지지 않게 지켜주는 작은 파트너.",
+    },
     birthplace: "대전광역시",
     birthplaceDesc:
       "대한민국의 과학 수도에서 태어나 끊임없는 실험 정신과 불꽃 같은 열정을 키웠다.",
@@ -121,6 +150,12 @@ const allCreators: Record<
     gradient: "from-rose-500 via-pink-600 to-fuchsia-700",
     quote: "방향을 잡고 길을 제시하는 항해사.",
     shortBio: "혼란 속에서도 정확한 방향을 찾아내는 나침반.",
+    partner: {
+      name: "알버트",
+      animal: "비둘기",
+      emoji: "🕊️",
+      desc: "네비게이터보다 먼저 길을 정찰하고 돌아오는 전서구.",
+    },
     birthplace: "인천광역시",
     birthplaceDesc:
       "바다로 나가는 관문 도시에서 자라며 항해와 방향 감각에 대한 본능을 키웠다.",
@@ -138,6 +173,12 @@ const allCreators: Record<
     gradient: "from-rose-500 via-pink-600 to-fuchsia-700",
     quote: "성공을 축하하고 에너지를 끌어올리는 분위기 메이커.",
     shortBio: "모든 순간을 축제로 만드는 에너지 폭탄.",
+    partner: {
+      name: "봉봉이",
+      animal: "호박벌",
+      emoji: "🐝",
+      desc: "셀러브레이터 주변을 돌며 축하를 퍼뜨리는 달콤한 꿀벌.",
+    },
     birthplace: "광주광역시",
     birthplaceDesc:
       "예향의 도시에서 자라며 사람들과 어울리고 분위기를 끌어올리는 타고난 재능을 발휘했다.",
@@ -156,6 +197,12 @@ const allCreators: Record<
     gradient: "from-emerald-500 via-teal-600 to-cyan-700",
     quote: "어디서든 살아남는 생존왕. 현장의 달인.",
     shortBio: "어떤 상황에서든 적응하고 살아남는 궁극의 서바이버.",
+    partner: {
+      name: "알밤이",
+      animal: "다람쥐",
+      emoji: "🐿️",
+      desc: "알바와 함께 이리저리 뛰어다니는 부지런한 동행.",
+    },
     birthplace: "경상남도 창원시",
     birthplaceDesc:
       "산업의 중심지에서 태어나 다양한 현장 경험을 쌓으며 생존 능력을 키웠다.",
@@ -173,6 +220,12 @@ const allCreators: Record<
     gradient: "from-emerald-500 via-teal-600 to-cyan-700",
     quote: "365일 24시간. 멈추지 않는 편의점의 수호자.",
     shortBio: "쉬지 않고 묵묵히 자리를 지키는 든든한 존재.",
+    partner: {
+      name: "편순이",
+      animal: "펭귄",
+      emoji: "🐧",
+      desc: "24시간 편의점 냉장고 옆을 지키는 단정한 카운터 지킴이.",
+    },
     birthplace: "대구광역시",
     birthplaceDesc: "뜨거운 분지의 도시에서 인내심과 끈기를 배웠다.",
     fullBio:
@@ -189,6 +242,12 @@ const allCreators: Record<
     gradient: "from-emerald-500 via-teal-600 to-cyan-700",
     quote: "자유로운 영혼. 틀에 얽매이지 않는 반항아.",
     shortBio: "세상의 규칙에 얽매이지 않는 자유로운 영혼.",
+    partner: {
+      name: "딸콩이",
+      animal: "제비",
+      emoji: "🐦",
+      desc: "딸배 뒤에 붙어 도로 위를 함께 가르는 자유로운 동행.",
+    },
     birthplace: "제주특별자치도",
     birthplaceDesc:
       "바람과 바다의 섬에서 태어나 누구의 간섭도 받지 않는 자유로운 기질을 가지게 되었다.",
@@ -206,6 +265,12 @@ const allCreators: Record<
     gradient: "from-emerald-500 via-teal-600 to-cyan-700",
     quote: "바닥을 찍어본 자만이 아는 성장의 비밀.",
     shortBio: "최저점에서 시작해 누구보다 높이 올라간 성장형 인물.",
+    partner: {
+      name: "폐리",
+      animal: "달팽이",
+      emoji: "🐌",
+      desc: "폐급이병과 함께 바닥부터 천천히 기어오르는 끈기의 동반자.",
+    },
     birthplace: "충청북도 청주시",
     birthplaceDesc:
       "내륙 깊숙한 곳, 조용한 도시에서 묵묵히 자신만의 시간을 쌓아왔다.",
@@ -222,13 +287,19 @@ const allCreators: Record<
     generation: "4기",
     teamName: "레스큐팩",
     gradient: "from-amber-500 via-orange-600 to-red-600",
-    quote: "가장 위험한 곳에 가장 먼저 뛰어드는 선봉장.",
-    shortBio: "위험을 두려워하지 않는 최전선의 전사.",
+    quote: "내 이름을 불러줘",
+    shortBio: "네가 있는곳이 지옥이라면서 어째서 주저 앉는거야",
+    partner: {
+      name: "헬비",
+      animal: "매",
+      emoji: "🦅",
+      desc: "헬다이버가 강하하는 곳에 먼저 도착해 있는 공중 정찰.",
+    },
     birthplace: "울산광역시",
     birthplaceDesc:
       "거대한 산업 시설과 바다 사이에서 자란 그는 위험과 함께하는 삶에 익숙하다.",
     fullBio:
-      "헬다이버는 4기 레스큐팩의 선봉장이다. 팀이 위기에 처했을 때 누구보다 먼저 전장에 뛰어든다. 가장 뜨거운 전장에서 가장 차가운 판단을 내리는 역설적인 존재.",
+      "헬다이버의 이름을 세번 부르면 언제 어디서 든 당신을 구하러, 아마도? 당신위로 떨어집니다. 하하 헬다이버의 이름이 뭐냐구요? 그것은 직접 물어보세요.",
     hiddenStory:
       "헬다이버가 뛰어드는 이유는 두려움 때문이다. 두려우면 먼저 뛰어들면 사라진다는 것을 어린 시절 배웠다. 그것이 용기가 아니라 공황에 가까운 반응이라는 걸 — 그는 알고 있다. 가장 위험한 곳에 가장 먼저 들어가는 사람의 얼굴에 공포가 없어 보이는 이유는, 이미 너무 빨리 움직이기 때문에 공포를 느낄 틈이 없어서다. 멈추면 무너질 것 같아서, 그는 오늘도 뛰어든다.",
   },
@@ -239,8 +310,14 @@ const allCreators: Record<
     generation: "4기",
     teamName: "레스큐팩",
     gradient: "from-amber-500 via-orange-600 to-red-600",
-    quote: "흔들리지 않는 중심. 팀의 단단한 닻.",
-    shortBio: "폭풍 속에서도 절대 흔들리지 않는 팀의 중심축.",
+    quote: "거꾸로 있는건 내가아니야. 네가 뒤집혀있는거야.",
+    shortBio: "추후 수정.",
+    partner: {
+      name: "앵꼬",
+      animal: "거북이",
+      emoji: "🐢",
+      desc: "앵커가 흔들릴 때 가장 먼저 자리 잡아주는 느린 단단함.",
+    },
     birthplace: "전라남도 목포시",
     birthplaceDesc:
       "서남쪽 바다의 도시에서 태어나 파도에도 흔들리지 않는 닻의 정신을 체득했다.",
@@ -257,7 +334,13 @@ const allCreators: Record<
     teamName: "레스큐팩",
     gradient: "from-amber-500 via-orange-600 to-red-600",
     quote: "아픔을 치유하고 다시 일어서게 만드는 존재.",
-    shortBio: "상처받은 팀원들을 치유하고 다시 전장으로 보내는 힐러.",
+    shortBio: "아픔을 잊게해줍니다.",
+    partner: {
+      name: "페니",
+      animal: "토끼",
+      emoji: "🐰",
+      desc: "페인킬러의 손끝에서 먼저 위로받는 작은 치유자.",
+    },
     birthplace: "전라북도 전주시",
     birthplaceDesc:
       "맛과 정이 넘치는 도시에서 자라며 사람의 마음을 어루만지는 따뜻함을 배웠다.",
@@ -268,15 +351,22 @@ const allCreators: Record<
   },
   /* ── 5기 빛과 그림자 ── */
   cheoncheon: {
-    name: "천천",
+    name: "미카엘라",
     emoji: "☀️",
     role: "Light",
     generation: "5기",
     teamName: "빛과 그림자",
     gradient: "from-slate-600 via-gray-700 to-zinc-900",
-    quote: "천천히, 하지만 확실하게. 빛은 서두르지 않는다.",
-    shortBio: "느리지만 확실한 빛. 어둠 속에서 가장 먼저 보이는 존재.",
-    birthplace: "세종특별자치시",
+    quote: "소중한 것들을 지켜야만 해.",
+    shortBio:
+      "필사적으로 앞으로 나아가지만 뭘 위해서, 어딜 보며 나아가는지 잊어버렸어.",
+    partner: {
+      name: "이만",
+      animal: "'이만 하면' 의 이만",
+      emoji: "🦌",
+      desc: "이만과 합의하지 말라. 스스로 한계와 합의하지말라, 스스로 실패와 협의하지말라.",
+    },
+    birthplace: "천계",
     birthplaceDesc:
       "새로 태어난 도시에서 자랐다. 천천히 만들어지는 것의 가치를 누구보다 잘 아는 사람.",
     fullBio:
@@ -285,15 +375,21 @@ const allCreators: Record<
       "천천의 느림은 선택이 아니다. 한때 너무 빨리 달렸다가 크게 다쳤다. 그 이후로 속도를 잃었고, 잃은 속도를 '철학'으로 바꾸었다. 빛은 서두르지 않는다고 말하지만, 사실 서두를 수가 없는 것이다. 그리고 그것이 오히려 맞는 방향이었다는 걸 — 지금은 안다. 상처가 가르쳐준 리듬. 천천은 자신의 빛이 원래부터 있던 게 아니라, 부서진 자리에서 새어나온 것임을 조용히 알고 있다.",
   },
   cheongak: {
-    name: "청악",
+    name: "아자젤라(미정)",
     emoji: "🌓",
     role: "Dusk",
     generation: "5기",
     teamName: "빛과 그림자",
     gradient: "from-slate-600 via-gray-700 to-zinc-900",
-    quote: "맑음과 악함의 경계. 어느 쪽이든 될 수 있는 존재.",
-    shortBio: "선과 악의 경계에서 줄타기를 하는 이중적 존재.",
-    birthplace: "경상북도 경주시",
+    quote: "주저 앉아 기도하는건 그만. 일어서서 걸어가야해.",
+    shortBio: "회계천사. 아자젤. 더 이상 기다리지 않아.",
+    partner: {
+      name: "청이",
+      animal: "고양이",
+      emoji: "🐱",
+      desc: "청악과 함께 경계 위를 오가는 양면의 동반자.",
+    },
+    birthplace: "마계",
     birthplaceDesc:
       "천년 고도의 빛과 그림자가 교차하는 도시. 오래된 것과 새로운 것 사이에서 균형을 배웠다.",
     fullBio:
@@ -302,15 +398,21 @@ const allCreators: Record<
       "청악이 경계에 서 있는 건 양쪽을 모두 원하기 때문이 아니다. 어느 쪽도 선택할 수 없기 때문이다. 선이 되면 잃는 것이 있고, 악이 되면 잃는 것이 있다. 그 사이에서 그는 그냥 서 있다. 황혼은 가장 아름다운 시간이지만, 동시에 가장 짧은 시간이다. 청악은 그 황혼 위에 평생 발을 딛고 있다. 안정적인 것처럼 보이지만, 발바닥이 조금씩 타들어가고 있다는 사실을 아무도 모른다.",
   },
   akcheon: {
-    name: "악천",
-    emoji: "⛈️",
+    name: "루시아(미정)",
+    emoji: "🌓",
     role: "Storm",
     generation: "5기",
     teamName: "빛과 그림자",
     gradient: "from-slate-600 via-gray-700 to-zinc-900",
-    quote: "악천후 속에서도 길을 찾는 자. 폭풍의 핵심.",
-    shortBio: "최악의 조건에서 최선의 결과를 만드는 폭풍의 눈.",
-    birthplace: "충청남도 서산시",
+    quote: "더 이상 무리해서 스스로를 태우지마.",
+    shortBio: "타락천사. 루시퍼",
+    partner: {
+      name: "악까",
+      animal: "까마귀",
+      emoji: "🐦‍⬛",
+      desc: "추후추가",
+    },
+    birthplace: "천계",
     birthplaceDesc:
       "서해안의 거친 바람과 안개 속에서 악천후와 싸우며 자랐다. 나쁜 날씨는 그에게 일상이다.",
     fullBio:
@@ -319,15 +421,21 @@ const allCreators: Record<
       "악천은 폭풍을 두려워한다. 정확히는, 폭풍이 자신 안에서 온다는 걸 알기 때문에 두렵다. 외부의 폭풍은 다룰 수 있다. 하지만 내면에서 갑자기 몰아치는 검은 감정은 — 예보도 없고, 대피소도 없다. 악천후를 헤쳐나가는 사람이 정작 자신의 내부 기상 예보에는 속수무책이라는 아이러니. 폭풍의 눈은 고요하다. 그 고요 안에 갇혀있는 것이 진짜 폭풍보다 무섭다.",
   },
   akak: {
-    name: "악악",
+    name: "데아",
     emoji: "🌑",
     role: "Shadow",
     generation: "5기",
     teamName: "빛과 그림자",
     gradient: "from-slate-600 via-gray-700 to-zinc-900",
-    quote: "가장 깊은 어둠. 그러나 어둠이 있어야 빛도 빛난다.",
-    shortBio: "팀에서 가장 어두운 곳을 담당하는 그림자. 없으면 빛도 의미 없다.",
-    birthplace: "강원도 태백시",
+    quote: "조금도 상처 받지 않게하겠어.",
+    shortBio: "당신이 상처받지 않게합니다. 아스모데우스",
+    partner: {
+      name: "악이",
+      animal: "박쥐",
+      emoji: "🦇",
+      desc: "악악이 가장 어두운 곳으로 내려갈 때 함께 있는 작은 빛.",
+    },
+    birthplace: "마계",
     birthplaceDesc:
       "깊은 산속, 탄광의 도시에서 태어났다. 가장 어두운 곳에서 가장 단단한 것이 나온다는 걸 안다.",
     fullBio:
@@ -335,17 +443,48 @@ const allCreators: Record<
     hiddenStory:
       "악악은 빛을 본 적이 있다. 딱 한 번, 아주 잠깐. 그래서 어둠을 선택한 것이다. 빛 속에 있으면 모든 게 보인다 — 자신의 결함도, 두려움도, 빈 곳도. 어둠 안에서는 아무것도 보이지 않는다. 그게 편했다. 그림자로 사는 것은 도망이 아니라 보호였다. 악악이 가끔 빛나는 화면 앞에 멍하니 앉아있을 때 — 아마도 그 한 번의 빛을 기억하는 것일 테다.",
   },
+  /* ── 5기 스팀팩 ── */
+  sugar: {
+    name: "슈거",
+    emoji: "🧂",
+    role: "Sugar",
+    generation: "5기",
+    teamName: "스팀팩",
+    gradient: "from-pink-400 via-rose-500 to-red-400",
+    quote: "행복해지는 약.. 먹어볼래?",
+    shortBio:
+      "달콤함으로 모든 것을 녹이는 존재. 한 번 맛보면 헤어나올 수 없다.",
+    partner: {
+      name: "슈크림",
+      animal: "토끼",
+      emoji: "🐇",
+      desc: "슈거가 건네는 달콤함을 가장 먼저 받아먹는 새하얀 동반자.",
+    },
+    birthplace: "미정",
+    birthplaceDesc:
+      "가장 달콤한 것들이 모이는 곳에서 태어났다. 그 달콤함이 독이 될 수 있다는 것도, 그곳에서 배웠다.",
+    fullBio:
+      "슈거는 스팀팩의 중심에 있는 존재다. 달콤함은 단순한 이미지가 아니라 전략이다. 사람들을 끌어당기고, 기분을 바꾸고, 세상을 조금 더 견딜 만하게 만드는 힘. 슈거는 그 힘을 가장 잘 다루는 사람이다. 행복해지는 약처럼 — 한 번 빠지면 쉽게 나오지 못한다.",
+    hiddenStory:
+      "슈거는 사실 단 것을 즐기지 않는다. 달콤한 것의 끝이 어떤지 너무 잘 알기 때문이다. 설탕이 녹고 나면 남는 건 텅 빈 단맛의 흔적뿐이라는 것. 그래서 슈거는 자신의 달콤함이 누군가를 망가뜨리지 않도록 항상 조심한다. 스스로를 약이라 부르지만, 그 약이 독이 되는 용량이 얼마인지 — 누구보다 정확하게 알고 있다. 달콤함을 나눠주는 사람의 가장 쓴 비밀이다.",
+  },
   /* ── 6기 슈거 ── */
   holder: {
     name: "홀더",
-    emoji: "🃏",
+    emoji: "🔗",
     role: "Holder",
     generation: "6기",
     teamName: "슈거",
     gradient: "from-pink-400 via-rose-500 to-red-400",
-    quote: "모든 카드를 쥐고 있는 자. 마지막에 웃는 사람.",
-    shortBio: "절대 먼저 패를 보여주지 않는 최후의 승부사.",
-    birthplace: "서울특별시 강남구",
+    quote: "내가 꽉 잡고 있으니까 걱정마. 뭐든 해보자고.",
+    shortBio: "안전벨트처럼 위험에 방어",
+    partner: {
+      name: "홀이",
+      animal: "문어",
+      emoji: "🐙",
+      desc: "홀더가 쥔 카드 몇 장을 몰래 같이 쥐고 있는 조력자.",
+    },
+    birthplace: "미정",
     birthplaceDesc:
       "가장 화려한 거리에서 자랐지만, 겉과 속이 다른 세상의 이면을 일찍 깨달았다.",
     fullBio:
@@ -360,10 +499,15 @@ const allCreators: Record<
     generation: "6기",
     teamName: "슈거",
     gradient: "from-pink-400 via-rose-500 to-red-400",
-    quote: "행운은 준비된 자에게 온다. 네 잎 클로버의 주인공.",
-    shortBio:
-      "행운을 타고난 것 같지만, 사실은 누구보다 치밀한 준비가 만든 결과.",
-    birthplace: "전라남도 담양군",
+    quote: "세잎클로버는 행복, 네잎은 행운이래. 어떤걸로 빌어줄까?",
+    shortBio: "행운의 상징이 많이 있으니까 걱정없겟지?",
+    partner: {
+      name: "클로리",
+      animal: "무당벌레",
+      emoji: "🐞",
+      desc: "클로버 잎 위에 앉아 행운을 두 배로 만드는 작은 동행.",
+    },
+    birthplace: "미정",
     birthplaceDesc:
       "대나무 숲 사이에서 자라며, 바람에 흔들려도 부러지지 않는 유연함을 배웠다.",
     fullBio:
@@ -381,6 +525,12 @@ const allCreators: Record<
     gradient: "from-blue-600 via-sky-600 to-cyan-500",
     quote: "시작은 미약하나 그 끝은 창대하리라.",
     shortBio: "아직 배우는 중이지만, 성장 속도만큼은 누구에게도 지지 않는다.",
+    partner: {
+      name: "인턴이",
+      animal: "햄스터",
+      emoji: "🐹",
+      desc: "인턴과 함께 서류 더미를 굴리는 부지런한 신입 동기.",
+    },
     birthplace: "경기도 성남시",
     birthplaceDesc:
       "IT 산업의 중심지에서 자라며, 디지털 세상의 빠른 변화를 몸으로 익혔다.",
@@ -398,6 +548,12 @@ const allCreators: Record<
     gradient: "from-blue-600 via-sky-600 to-cyan-500",
     quote: "묵묵히 실무를 돌리는 조직의 심장.",
     shortBio: "보이지 않는 곳에서 시스템을 유지하는 실무의 달인.",
+    partner: {
+      name: "사원이",
+      animal: "비버",
+      emoji: "🦫",
+      desc: "사원 곁에서 꾸준히 조직이라는 댐을 쌓는 성실파.",
+    },
     birthplace: "경기도 안양시",
     birthplaceDesc:
       "평범한 도시에서 평범하지 않은 성실함을 키웠다. 매일 같은 시간에 출근하는 것의 힘을 안다.",
@@ -415,6 +571,12 @@ const allCreators: Record<
     gradient: "from-blue-600 via-sky-600 to-cyan-500",
     quote: "위와 아래를 잇는 다리. 실질적 중간 허리.",
     shortBio: "현장과 경영 사이에서 양쪽의 언어를 모두 구사하는 통역가.",
+    partner: {
+      name: "대리미",
+      animal: "수달",
+      emoji: "🦦",
+      desc: "대리의 중재를 매끄럽게 풀어주는 유연한 중간자.",
+    },
     birthplace: "서울특별시 영등포구",
     birthplaceDesc:
       "비즈니스의 중심부에서 자라며 조직의 위계와 소통의 기술을 자연스럽게 배웠다.",
@@ -432,6 +594,12 @@ const allCreators: Record<
     gradient: "from-blue-600 via-sky-600 to-cyan-500",
     quote: "결정의 무게를 아는 자. 최종 방어선.",
     shortBio: "모든 책임이 모이는 곳. 최종 결정권자이자 최후의 방패.",
+    partner: {
+      name: "부장님",
+      animal: "곰",
+      emoji: "🐻",
+      desc: "부장 옆에서 결정을 지키는 조용하고 든든한 최종 방어선.",
+    },
     birthplace: "서울특별시 종로구",
     birthplaceDesc:
       "권력과 역사의 도시 한복판에서 자라며, 결정의 무게와 책임의 의미를 체득했다.",
@@ -446,7 +614,7 @@ const allCreators: Record<
 function PageIndicator({ current }: { current: number }) {
   return (
     <div className="fixed right-6 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-3">
-      {[0, 1, 2, 3].map((i) => (
+      {[0, 1, 2, 3, 4].map((i) => (
         <button
           key={i}
           onClick={() => {
@@ -456,10 +624,10 @@ function PageIndicator({ current }: { current: number }) {
           }}
           className={`w-2.5 rounded-full transition-all duration-500 ${
             i === current
-              ? i === 3
+              ? i === 4
                 ? "h-8 bg-gray-800 shadow-lg ring-2 ring-gray-400"
                 : "h-8 bg-gray-800 shadow-lg"
-              : i === 3
+              : i === 4
                 ? "h-2.5 bg-gray-500 hover:bg-gray-600"
                 : "h-2.5 bg-gray-300 hover:bg-gray-400"
           }`}
@@ -548,7 +716,6 @@ export default function CreatorProfile() {
             className={`absolute inset-0 bg-gradient-to-br ${creator.gradient} opacity-[0.05]`}
           />
           <div className="absolute top-20 right-20 w-[500px] h-[500px] bg-gradient-to-br from-white to-transparent rounded-full opacity-20 blur-[100px]" />
-
           <div className="max-w-7xl mx-auto px-6 w-full flex flex-col md:flex-row items-center">
             <div className="w-full md:w-[40%] shrink-0">
               <motion.div
@@ -586,7 +753,6 @@ export default function CreatorProfile() {
                 </div>
               </motion.div>
             </div>
-
             <div className="w-full md:w-[60%] md:pl-16 mt-10 md:mt-0">
               <motion.div
                 initial={{ opacity: 0, x: 80 }}
@@ -645,9 +811,23 @@ export default function CreatorProfile() {
           </div>
         </section>
 
-        {/* ══ 섹션 2: 출생지 ══ */}
+        {/* ══ 섹션 2: 파트너 ══ */}
         <section
           id="section-1"
+          className="h-screen flex items-center relative overflow-hidden bg-white"
+          style={{ scrollSnapAlign: "start" }}
+        >
+          <div className="absolute inset-0 pointer-events-none">
+            <div
+              className={`absolute -top-40 -right-40 w-[600px] h-[600px] bg-gradient-to-bl ${creator.gradient} rounded-full opacity-[0.05] blur-[120px]`}
+            />
+          </div>
+          <PartnerContent creator={creator} />
+        </section>
+
+        {/* ══ 섹션 3: 출생지 ══ */}
+        <section
+          id="section-2"
           className="h-screen flex items-center relative overflow-hidden bg-gray-50"
           style={{ scrollSnapAlign: "start" }}
         >
@@ -659,9 +839,9 @@ export default function CreatorProfile() {
           <BirthplaceContent creator={creator} />
         </section>
 
-        {/* ══ 섹션 3: 자세한 설명 ══ */}
+        {/* ══ 섹션 4: 자세한 설명 ══ */}
         <section
-          id="section-2"
+          id="section-3"
           className="h-screen flex items-center relative overflow-hidden bg-white"
           style={{ scrollSnapAlign: "start" }}
         >
@@ -673,13 +853,12 @@ export default function CreatorProfile() {
           <FullBioContent creator={creator} slug={slug} />
         </section>
 
-        {/* ══ 섹션 4: 숨겨진 이야기 ══ */}
+        {/* ══ 섹션 5: 숨겨진 이야기 ══ */}
         <section
-          id="section-3"
+          id="section-4"
           className="h-screen flex items-center relative overflow-hidden bg-gray-950"
           style={{ scrollSnapAlign: "start" }}
         >
-          {/* 배경 효과 */}
           <div className="absolute inset-0 pointer-events-none">
             <div
               className="absolute top-0 left-0 w-full h-full opacity-[0.03]"
@@ -696,11 +875,87 @@ export default function CreatorProfile() {
               className={`absolute -bottom-60 -left-60 w-[600px] h-[600px] bg-gradient-to-tr ${creator.gradient} rounded-full opacity-[0.06] blur-[120px]`}
             />
           </div>
-
           <HiddenStoryContent creator={creator} slug={slug} />
         </section>
       </div>
     </>
+  );
+}
+
+/* ── 파트너 콘텐츠 ── */
+function PartnerContent({
+  creator,
+}: {
+  creator: (typeof allCreators)[string];
+}) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  return (
+    <div ref={ref} className="max-w-6xl mx-auto px-6 w-full">
+      <motion.div
+        initial={{ opacity: 0, y: 60 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.8 }}
+      >
+        <p className="text-sm font-bold tracking-[0.2em] uppercase text-gray-400 mb-3">
+          Partner
+        </p>
+        <div
+          className={`w-16 h-1.5 rounded-full bg-gradient-to-r ${creator.gradient} mb-10`}
+        />
+        <div className="flex flex-col md:flex-row items-center gap-14">
+          <div className="w-full md:w-1/2">
+            <div
+              className={`relative w-full rounded-3xl overflow-hidden bg-gradient-to-br ${creator.gradient} shadow-xl`}
+              style={{ aspectRatio: "4/3" }}
+            >
+              <div className="absolute inset-0 bg-black/10" />
+              <div
+                className="absolute inset-0 opacity-[0.07]"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)",
+                  backgroundSize: "40px 40px",
+                }}
+              />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center">
+                  <div className="text-8xl mb-4 drop-shadow-lg">
+                    {creator.partner.emoji}
+                  </div>
+                  <div className="inline-block px-4 py-1.5 bg-white/20 backdrop-blur-sm rounded-full">
+                    <p className="text-white text-sm font-bold tracking-widest uppercase">
+                      {creator.partner.animal}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="absolute top-6 left-6 w-12 h-12 border-t-2 border-l-2 border-white/20 rounded-tl-lg" />
+              <div className="absolute bottom-6 right-6 w-12 h-12 border-b-2 border-r-2 border-white/20 rounded-br-lg" />
+            </div>
+          </div>
+          <div className="w-full md:w-1/2">
+            <p className="text-sm font-semibold text-gray-400 mb-2">
+              {creator.name}의 팬네임
+            </p>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-3 leading-tight">
+              {creator.partner.name}
+            </h2>
+            <div className="flex items-center gap-2 mb-6">
+              <span className="text-2xl">{creator.partner.emoji}</span>
+              <span
+                className={`text-base font-bold bg-gradient-to-r ${creator.gradient} bg-clip-text text-transparent`}
+              >
+                {creator.partner.animal}
+              </span>
+            </div>
+            <p className="text-gray-500 text-lg leading-relaxed">
+              {creator.partner.desc}
+            </p>
+          </div>
+        </div>
+      </motion.div>
+    </div>
   );
 }
 
@@ -812,6 +1067,14 @@ function FullBioContent({
                 </div>
                 <div className="w-full h-px bg-gray-200" />
                 <div className="flex justify-between">
+                  <span className="text-gray-400">팬네임</span>
+                  <span className="text-gray-700 font-semibold flex items-center gap-1">
+                    <span>{creator.partner.emoji}</span>
+                    {creator.partner.name}
+                  </span>
+                </div>
+                <div className="w-full h-px bg-gray-200" />
+                <div className="flex justify-between">
                   <span className="text-gray-400">출생지</span>
                   <span className="text-gray-700 font-semibold">
                     {creator.birthplace}
@@ -869,7 +1132,7 @@ function FullBioContent({
               <button
                 onClick={() =>
                   document
-                    .getElementById("section-3")
+                    .getElementById("section-4")
                     ?.scrollIntoView({ behavior: "smooth" })
                 }
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gray-900 text-gray-300 font-bold border border-gray-700 hover:bg-gray-800 hover:scale-105 transition-all"
@@ -895,8 +1158,6 @@ function HiddenStoryContent({
 }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-
-  // 미리보기용 첫 30자 블러
   const previewText = creator.hiddenStory.slice(0, 45) + "...";
 
   return (
@@ -906,7 +1167,6 @@ function HiddenStoryContent({
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.9 }}
       >
-        {/* 헤더 */}
         <div className="flex items-center gap-3 mb-4">
           <div className="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center">
             <svg
@@ -928,11 +1188,8 @@ function HiddenStoryContent({
             Hidden Story
           </p>
         </div>
-
         <div className="w-16 h-px bg-gray-700 mb-10" />
-
         <div className="flex flex-col md:flex-row items-start gap-12">
-          {/* 왼쪽: 캐릭터 */}
           <div className="w-full md:w-1/3 shrink-0">
             <div
               className="relative rounded-2xl overflow-hidden border border-gray-800 bg-gray-900"
@@ -951,7 +1208,6 @@ function HiddenStoryContent({
                   </p>
                 </div>
               </div>
-              {/* 스캔라인 효과 */}
               <div
                 className="absolute inset-0 opacity-[0.04]"
                 style={{
@@ -961,8 +1217,6 @@ function HiddenStoryContent({
               />
             </div>
           </div>
-
-          {/* 오른쪽: 내용 */}
           <div className="w-full md:w-2/3">
             <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-2 leading-tight">
               {creator.name}의{" "}
@@ -971,8 +1225,6 @@ function HiddenStoryContent({
             <p className="text-gray-600 text-sm font-medium mb-8">
               공개된 프로필 너머, 아무도 몰랐던 진실.
             </p>
-
-            {/* 블러 미리보기 */}
             <div className="relative rounded-2xl border border-gray-800 bg-gray-900/60 p-6 mb-8 overflow-hidden">
               <p
                 className="text-gray-400 text-base leading-relaxed select-none"
@@ -980,7 +1232,6 @@ function HiddenStoryContent({
               >
                 {creator.hiddenStory}
               </p>
-              {/* 잠금 오버레이 */}
               <div className="absolute inset-0 flex items-center justify-center bg-gray-950/40 backdrop-blur-[1px]">
                 <div className="text-center">
                   <div className="text-4xl mb-3">🔒</div>
@@ -990,13 +1241,9 @@ function HiddenStoryContent({
                 </div>
               </div>
             </div>
-
-            {/* 미리보기 텍스트 (첫 줄은 읽힘) */}
             <p className="text-gray-600 text-sm italic mb-8 pl-4 border-l border-gray-700">
               &ldquo;{previewText}&rdquo;
             </p>
-
-            {/* CTA 버튼 */}
             <Link
               href={`/services/${slug}/secret`}
               className="group inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-white text-gray-900 font-extrabold text-lg shadow-2xl shadow-white/10 hover:scale-105 hover:shadow-white/20 transition-all"
