@@ -191,7 +191,7 @@ const generations = [
     id: 6,
     label: "5기",
     teamName: "스팀팩",
-    tagline: "달콤함 속에 숨겨진 독",
+    tagline: "힘을 낼 수 있도록 도와줘요",
     description: "견디기 힘들다면..?",
     gradient: "from-pink-400 via-rose-500 to-red-400",
     members: [
@@ -478,6 +478,30 @@ export default function Services() {
                     {m.name}
                   </span>
                 ))}
+              </div>
+
+              {/* ── 기수 상세 보기 버튼 ── */}
+              <div className="mt-8 flex items-center justify-center">
+                <Link
+                  href={`/services/generation/${current.id}`}
+                  className={`group inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-gradient-to-r ${current.gradient} text-white font-bold text-base shadow-xl hover:scale-105 hover:shadow-2xl transition-all`}
+                >
+                  <span>✨</span>
+                  {current.label} {current.teamName} 자세히 보기
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="group-hover:translate-x-1 transition-transform"
+                  >
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </Link>
               </div>
             </motion.div>
           </AnimatePresence>
