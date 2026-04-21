@@ -288,7 +288,7 @@ const allCreators: Record<
     teamName: "레스큐팩",
     gradient: "from-amber-500 via-orange-600 to-red-600",
     quote: "내 이름을 불러줘",
-    shortBio: "네가 있는곳이 지옥이라면서 어째서 주저 앉는거야",
+    shortBio: "네가 있는곳이 지옥이라면서 어째서 주저 앉아 있는거야",
     partner: {
       name: "헬비",
       animal: "매",

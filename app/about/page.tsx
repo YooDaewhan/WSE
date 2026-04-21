@@ -36,7 +36,8 @@ const orgChart = [
     key: "leadership",
     title: "수뇌부",
     subtitle: "Leadership",
-    tagline: "방향을 정하고, 책임을 지는 자들",
+    tagline:
+      "심장만으로는 살아 갈 수 없죠, 우리의 미래를 이끄는 중요한 역할입니다.",
     gradient: "from-indigo-600 via-violet-600 to-purple-700",
     emoji: "👑",
     members: [
@@ -59,7 +60,7 @@ const orgChart = [
     key: "core",
     title: "심장부",
     subtitle: "Heart",
-    tagline: "무대 위에서 직접 뛰는 얼굴들",
+    tagline: "열정있는 심장입니다. 무대의 중심에서 빛나는 존재들이죠.",
     gradient: "from-rose-500 via-pink-600 to-fuchsia-700",
     emoji: "🔥",
     members: [
@@ -87,7 +88,8 @@ const orgChart = [
     key: "operations",
     title: "실무부",
     subtitle: "Operations",
-    tagline: "무대 뒤의 모든 것을 지탱하는 손",
+    tagline:
+      "머리와 심장만으론 아무것도 할 수 없습니다. 보이지 않는 곳에서 (추가)",
     gradient: "from-emerald-500 via-teal-600 to-cyan-700",
     emoji: "🛠️",
     members: [
@@ -110,7 +112,7 @@ const orgChart = [
 const protocolRanks = [
   {
     rank: "1",
-    who: "대표",
+    who: "",
     tagline: "The One",
     emoji: "👑",
     gradient: "from-amber-500 via-yellow-500 to-orange-500",
@@ -120,12 +122,13 @@ const protocolRanks = [
       "회식 메뉴 최종 결정권",
       "모든 콘텐츠 기획안에 대한 거부권 1회 보유",
       "사옥 옥상 전용 접근 권한",
+      "전애인 또는 복수대상 결혼식 등 행사 참여시 스포츠카렌트, 수행비서 지원",
     ],
   },
   {
     rank: "2",
-    who: "수뇌부 (Leadership)",
-    tagline: "Heads",
+    who: "",
+    tagline: "전속 연기자 급",
     emoji: "🥇",
     gradient: "from-violet-500 via-purple-600 to-fuchsia-600",
     benefits: [
@@ -137,8 +140,8 @@ const protocolRanks = [
   },
   {
     rank: "3",
-    who: "심장부 에이스 (Main Faces)",
-    tagline: "Aces",
+    who: "",
+    tagline: "파트너 연기자 급",
     emoji: "🥈",
     gradient: "from-rose-500 via-pink-500 to-red-500",
     benefits: [
@@ -150,28 +153,27 @@ const protocolRanks = [
   },
   {
     rank: "4",
-    who: "심장부 일반 (Core)",
-    tagline: "Cast",
+    who: "Backbone",
+    tagline: "일반직원 급",
     emoji: "🥉",
     gradient: "from-sky-500 via-blue-500 to-indigo-500",
     benefits: [
-      "공용 대기실 이용",
-      "월 1회 장비 지원",
-      "합방 요청권",
+      "개인 간식 제공",
+      "굿즈 우선 구매",
+      "분기 성과급 지급 대상",
       "분기 단합회 고정 초대",
     ],
   },
   {
     rank: "5",
-    who: "실무부 · 매니지먼트 (Operations)",
-    tagline: "Backbone",
+    who: "블랙리스트",
+    tagline: "BlackList",
     emoji: "🏅",
     gradient: "from-emerald-500 via-teal-500 to-green-500",
     benefits: [
-      "야근 시 택시비 실비 지원",
-      "회식 메뉴 2순위 투표권",
-      "굿즈 우선 구매",
-      "분기 성과급 지급 대상",
+      "공식 행사 참여불가",
+      "가쉽(gossip) 정보 제공",
+      "재고 굿즈 무상 증정",
     ],
   },
 ];
@@ -234,7 +236,7 @@ export default function About() {
             </p>
             <div className="w-16 h-1.5 rounded-full bg-gradient-to-r from-violet-400 to-pink-400 mb-8 mx-auto" />
             <h2 className="text-4xl md:text-5xl font-extrabold text-white leading-tight">
-              대표의{" "}
+              우리의{" "}
               <span className="bg-gradient-to-r from-violet-300 to-pink-300 bg-clip-text text-transparent">
                 출사표
               </span>
@@ -246,43 +248,47 @@ export default function About() {
               <div className="text-6xl mb-6">✒️</div>
               <div className="space-y-5 text-gray-200 text-lg leading-relaxed">
                 <p>
-                  처음 WSE를 만들겠다고 마음먹었을 때, 떠올린 건 거창한 회사가
-                  아니라{" "}
-                  <span className="text-white font-semibold">한 무대</span>
-                  였습니다. 내가 좋아하는 사람들이 마음껏 뛸 수 있는 무대 하나만
-                  있으면 된다 — 그 생각이 WSE의 전부였습니다.
-                </p>
-                <p>
-                  연기자들이 자기 이야기를 연기로 풀어내고, 그 이야기를 함께
-                  지키고 다듬어 줄 사람들이 모이는 곳. 누구 한 명이 다 짊어지는
-                  구조가 아니라,{" "}
+                  안녕하세요, 여러분.
+                  <br />
+                  여러분은 지금, 어떤 꿈을 향해 달리고 계신가요.
+                  <br />
+                  저의 꿈은{" "}
                   <span className="text-white font-semibold">
-                    수뇌부 · 심장부 · 실무부
-                  </span>
-                  가 서로의 자리를 인정하고 기대는 구조를 원했습니다.
-                </p>
-                <p>
-                  저는 대단한 대표가 아닙니다. 다만, 이 사람들과 같이 오래 가고
-                  싶은 한 명일 뿐입니다. 그러니 WSE는 효율만 쫓는 회사가 되지
-                  않을 겁니다.{" "}
-                  <span className="text-white font-semibold">
-                    사람을 먼저 챙기고, 작품은 그 다음에 챙기는
+                    모두가 별처럼 밝게 빛나게 되는 것
                   </span>{" "}
-                  곳으로 운영하겠습니다.
+                  입니다.
                 </p>
                 <p>
-                  화려한 약속은 하지 않겠습니다. 대신 이 한 가지만은 약속합니다
-                  —{" "}
+                  지쳐버린 당신에게는 뜨거운 응원을, 잠시 숨을 고르고 있는
+                  당신에게는 찬란한 희망을, 불안에 흔들리는 당신에게는 단단한
+                  용기를. 꿈을 잊은 당신에게는 그 꿈을 되찾아줄 여정을, 상처
+                  입은 당신에게는 다시 일어설 온기를 건네고 싶습니다.
+                </p>
+                <p>
+                  저와 WSE의 연기자들 역시 저마다의 사연을가지고 어두운 밤을
+                  지나 이자리에서게 되었습니다.
+                  <br />
+                  우리는{" "}
                   <span className="text-white font-semibold">
-                    여기 있는 동안, 외롭지 않게 하겠습니다.
+                    희망을, 낭만을, 그리고 반드시 찾아올 내일
+                  </span>
+                  을 이야기하며 여러분들을 밝히려고 합니다.
+                </p>
+                <p>
+                  어두운 밤에 길을 잃은날이 있다면, 부디 우리를 나침반 삼아 밝게
+                  빛나주세요.
+                  <br />
+                  그리고 언젠가 당신의 차례가 온다면—
+                  <span className="text-white font-semibold">
+                    당신도 환하게 빛나 누군가의 별이 되어 주세요.
                   </span>
                 </p>
               </div>
 
               <div className="mt-10 pt-8 border-t border-white/10 flex items-center justify-end gap-3">
                 <div className="text-right">
-                  <p className="text-gray-400 text-sm">WSE 대표</p>
-                  <p className="text-white text-lg font-bold">— 대표</p>
+                  <p className="text-gray-400 text-sm">WSE</p>
+                  <p className="text-white text-lg font-bold">—</p>
                 </div>
                 <div className="w-12 h-12 rounded-full bg-gradient-to-br from-violet-500 to-pink-500 flex items-center justify-center text-white text-xl shadow-lg">
                   👑
@@ -309,8 +315,7 @@ export default function About() {
               있습니다
             </h2>
             <p className="text-gray-500 text-lg max-w-2xl mx-auto">
-              연기자는 기본적으로 심장부 소속이지만, 중소기업 특성상 몇몇은
-              수뇌부와 실무부에도 몸을 담고 있습니다.
+              각자 재능에 맞는 영역에서 다양한 역할을 맡고 있습니다
             </p>
           </FadeInSection>
 
