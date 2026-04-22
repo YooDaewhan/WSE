@@ -142,7 +142,7 @@ const generations = [
     gradient: "from-amber-500 via-orange-600 to-red-600",
     emoji: "🪂",
     philosophy:
-      "무너지기 직전의 순간, 가장 먼저 도착하는 사람들. 레스큐팩은 타인의 벼랑 끝에서 자신을 쓰는 법을 배운 팀입니다. 구조는 직업이 아니라 본능에 가깝습니다.",
+      "이야기의 발단 전개 위기 절정 결말 에서 위기, 시작이 있었다면 위기가 있죠",
     motto: "네가 어디에 있든, 너에게로 갈게.",
     theme: "구원 · Rescue",
     members: [
@@ -710,7 +710,8 @@ export default function GenerationDetail() {
                   <span className="text-gray-500">기수 비밀 파일</span>
                 </h2>
                 <p className="text-gray-600 text-sm font-medium mb-8">
-                  디렉터 노트, 내부 기획 자료, 팀 운영 가이드라인 — 공개되지 않은 내부 메모.
+                  디렉터 노트, 내부 기획 자료, 팀 운영 가이드라인 — 공개되지
+                  않은 내부 메모.
                 </p>
                 <div className="relative rounded-2xl border border-gray-800 bg-gray-900/60 p-6 mb-8 overflow-hidden">
                   <p
