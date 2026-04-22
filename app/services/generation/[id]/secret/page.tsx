@@ -49,10 +49,9 @@ const generationSecrets: Record<
     directorName: "김선우",
     directorNote: {
       date: "2024년 3월 1일",
-      opening:
-        "0기는 모든 것의 시작입니다. 정답이 없는 자리, 비교 대상이 없는 자리. 그래서 가장 무겁고, 가장 영광스러운 기수입니다.",
+      opening: "안녕하세요 반갑습니다.",
       origin:
-        "처음 새벽조 컨셉을 제안받았을 때 가장 망설였습니다. 첫 기수는 곧 MCM의 이미지가 될 텐데, '개척자'라는 무거운 컨셉을 캐릭터로 풀어낼 수 있을지 확신이 없었습니다. 결국 '아직 빛이 없는 길'이라는 시각적 모티브에서 출발해, 각기 다른 방식의 첫 걸음을 보여주는 4명을 모았습니다. 홍길동의 신분 돌파, 내시의 숨겨진 힘, 도깨비의 예측 불가, 파계승의 규율 파괴 — 모두 '기존을 넘어선다'는 한 가지 주제의 변주입니다.",
+        "새벽조는 사실 저항자입니다. 신분과 세상에 맞서는 홍길동, 운명과 죽음에 맞서는 도깨비, 신분과 능력에 맞서는 내시, 국가와 세상에 맞서는 매국노 의 컨셉입니다. 사실 웃기게 말하자면 흑인,귀신,게이,매국노 조합입니다.",
       direction:
         "새벽조는 화려함보다 무게감입니다. 빛나는 장면을 만들려 하지 마세요. 어둠 속에서 견디는 모습, 그 자체가 이 팀의 미학입니다. 멤버들끼리는 서로를 지나치게 챙기지 말고, 같은 길을 걷는 동행자처럼 거리를 유지하세요. 너무 친밀해지면 '개척'의 무게가 가벼워집니다.",
       closing:
@@ -586,7 +585,10 @@ function DirectorNoteSection({
   const isInView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
-    <div ref={ref} className="min-h-screen flex items-center py-24 px-6 relative">
+    <div
+      ref={ref}
+      className="min-h-screen flex items-center py-24 px-6 relative"
+    >
       <div className="absolute inset-0 bg-[#faf8f3] pointer-events-none" />
       <div
         className="absolute inset-0 opacity-[0.03] pointer-events-none"
@@ -740,7 +742,9 @@ function ClassifiedSection({
               <p className="text-red-400 text-xs font-bold uppercase tracking-widest mb-1">
                 기밀 해제 일자
               </p>
-              <p className="text-white font-bold">{gen.classified.unlockDate}</p>
+              <p className="text-white font-bold">
+                {gen.classified.unlockDate}
+              </p>
               <p className="text-gray-500 text-xs mt-1">
                 해당 일자 이전 무단 공개 시 계약 위반에 해당합니다.
               </p>
