@@ -273,6 +273,8 @@ function MemberSection({
 }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const [imgFailed, setImgFailed] = useState(false);
+  const imgSrc = `/images/members/${member.slug}.png`;
 
   return (
     <div
@@ -304,25 +306,47 @@ function MemberSection({
               backgroundSize: "48px 48px",
             }}
           />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="text-center">
-              <motion.div
-                initial={{ scale: 0.5, opacity: 0 }}
-                animate={isInView ? { scale: 1, opacity: 1 } : {}}
-                transition={{ duration: 0.6, delay: 0.3, ease: "backOut" }}
-                className="text-9xl mb-6 drop-shadow-lg"
-              >
-                {member.emoji}
-              </motion.div>
-              <div className="inline-block px-5 py-2 bg-white/15 backdrop-blur-sm rounded-full">
-                <p className="text-white/90 text-base font-bold tracking-widest uppercase">
+          {!imgFailed ? (
+            <motion.img
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={isInView ? { scale: 1, opacity: 1 } : {}}
+              transition={{ duration: 0.8, delay: 0.3, ease: "backOut" }}
+              src={imgSrc}
+              alt={member.name}
+              onError={() => setImgFailed(true)}
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+          ) : (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="text-center">
+                <motion.div
+                  initial={{ scale: 0.5, opacity: 0 }}
+                  animate={isInView ? { scale: 1, opacity: 1 } : {}}
+                  transition={{ duration: 0.6, delay: 0.3, ease: "backOut" }}
+                  className="text-9xl mb-6 drop-shadow-lg"
+                >
+                  {member.emoji}
+                </motion.div>
+                <div className="inline-block px-5 py-2 bg-white/15 backdrop-blur-sm rounded-full">
+                  <p className="text-white/90 text-base font-bold tracking-widest uppercase">
+                    {member.role}
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
+          {!imgFailed && (
+            <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end">
+              <div className="px-3 py-1.5 bg-black/40 backdrop-blur-md rounded-full">
+                <p className="text-white/90 text-xs font-bold tracking-widest uppercase">
                   {member.role}
                 </p>
               </div>
+              <div className="text-3xl drop-shadow-lg">{member.emoji}</div>
             </div>
-          </div>
-          <div className="absolute top-8 left-8 w-16 h-16 border-t-2 border-l-2 border-white/20 rounded-tl-lg" />
-          <div className="absolute bottom-8 right-8 w-16 h-16 border-b-2 border-r-2 border-white/20 rounded-br-lg" />
+          )}
+          <div className="absolute top-8 left-8 w-16 h-16 border-t-2 border-l-2 border-white/20 rounded-tl-lg pointer-events-none" />
+          <div className="absolute bottom-8 right-8 w-16 h-16 border-b-2 border-r-2 border-white/20 rounded-br-lg pointer-events-none" />
         </div>
       </motion.div>
 

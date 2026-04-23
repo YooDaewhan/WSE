@@ -723,34 +723,7 @@ export default function CreatorProfile() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94] }}
               >
-                <div
-                  className={`relative w-full rounded-3xl overflow-hidden bg-gradient-to-br ${creator.gradient} shadow-2xl`}
-                  style={{ aspectRatio: "3/4" }}
-                >
-                  <div className="absolute inset-0 bg-white/5" />
-                  <div
-                    className="absolute inset-0 opacity-[0.06]"
-                    style={{
-                      backgroundImage:
-                        "linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)",
-                      backgroundSize: "40px 40px",
-                    }}
-                  />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-[120px] md:text-[160px] drop-shadow-lg">
-                      {creator.emoji}
-                    </div>
-                  </div>
-                  <div className="absolute top-6 left-6 w-14 h-14 border-t-2 border-l-2 border-white/20 rounded-tl-lg" />
-                  <div className="absolute bottom-6 right-6 w-14 h-14 border-b-2 border-r-2 border-white/20 rounded-br-lg" />
-                  <div className="absolute bottom-6 left-6 right-6 flex justify-center">
-                    <div className="px-4 py-2 bg-black/20 backdrop-blur-md rounded-full">
-                      <p className="text-white text-sm font-bold tracking-widest uppercase">
-                        {creator.role}
-                      </p>
-                    </div>
-                  </div>
-                </div>
+                <HeroCard creator={creator} slug={slug} />
               </motion.div>
             </div>
             <div className="w-full md:w-[60%] md:pl-16 mt-10 md:mt-0">
@@ -879,6 +852,58 @@ export default function CreatorProfile() {
         </section>
       </div>
     </>
+  );
+}
+
+/* ── 히어로 카드 (이미지 + 이모티콘 fallback) ── */
+function HeroCard({
+  creator,
+  slug,
+}: {
+  creator: (typeof allCreators)[string];
+  slug: string;
+}) {
+  const [imgFailed, setImgFailed] = useState(false);
+  const imgSrc = `/images/members/${slug}.png`;
+
+  return (
+    <div
+      className={`relative w-full rounded-3xl overflow-hidden bg-gradient-to-br ${creator.gradient} shadow-2xl`}
+      style={{ aspectRatio: "3/4" }}
+    >
+      <div className="absolute inset-0 bg-white/5" />
+      <div
+        className="absolute inset-0 opacity-[0.06]"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)",
+          backgroundSize: "40px 40px",
+        }}
+      />
+      {!imgFailed ? (
+        <img
+          src={imgSrc}
+          alt={creator.name}
+          onError={() => setImgFailed(true)}
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+      ) : (
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="text-[120px] md:text-[160px] drop-shadow-lg">
+            {creator.emoji}
+          </div>
+        </div>
+      )}
+      <div className="absolute top-6 left-6 w-14 h-14 border-t-2 border-l-2 border-white/20 rounded-tl-lg pointer-events-none" />
+      <div className="absolute bottom-6 right-6 w-14 h-14 border-b-2 border-r-2 border-white/20 rounded-br-lg pointer-events-none" />
+      <div className="absolute bottom-6 left-6 right-6 flex justify-center pointer-events-none">
+        <div className="px-4 py-2 bg-black/40 backdrop-blur-md rounded-full">
+          <p className="text-white text-sm font-bold tracking-widest uppercase">
+            {creator.role}
+          </p>
+        </div>
+      </div>
+    </div>
   );
 }
 
