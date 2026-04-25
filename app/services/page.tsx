@@ -11,7 +11,7 @@ const generations = [
     id: 1,
     label: "0기",
     teamName: "새벽조",
-    tagline: "긴 밤을 끝내 마침내",
+    tagline: "긴 밤을 마침내",
     description:
       "아직 빛 한 줄기 없는 이 길을, 우리 새벽조는 가장 먼저 걷습니다.이 여정은 결코 쉽지 않겠지만,뒤에 올 모두를 위해 오늘의 어둠을 먼저 건너갑니다.",
     gradient: "from-indigo-600 via-violet-600 to-purple-700",
