@@ -153,8 +153,7 @@ const generations = [
     label: "4기",
     teamName: "이퀴녹스",
     tagline: "당신을 위해서라면",
-    description:
-      "빛과 어둠의 경계에 선 자들. 5기 빛과 그림자는 대비 속에서 진짜 자신을 찾아가는 팀이다.",
+    description: "인간을 유혹하기 위한 천사와 악마들의 대격돌!",
     gradient: "from-slate-600 via-gray-700 to-zinc-900",
     members: [
       {
@@ -162,14 +161,14 @@ const generations = [
         emoji: "☀️",
         role: "Light",
         slug: "cheoncheon",
-        desc: "눈감지마. 무너지지마. 내가 너와 함께할게.",
+        desc: "똑바로 보고 나아가는거야. 내가 너와 함께할게.",
       },
       {
         name: "아자젤라(미정)",
         emoji: "🌗",
         role: "Dusk",
         slug: "cheongak",
-        desc: "넘어져도 다시 일어 설 수 있도록.",
+        desc: "넘어져도 다시 일어 설 수 있도록. 내가 너와 함께할게.",
       },
       {
         name: "루시아(미정)",
