@@ -30,8 +30,27 @@ function FadeInSection({
   );
 }
 
+/* ── 조직도 타입 ── */
+type Member = { name: string; role: string; emoji: string; note: string };
+type Subgroup = {
+  name: string;
+  subtitle: string;
+  emoji: string;
+  members: Member[];
+};
+type OrgGroup = {
+  key: string;
+  title: string;
+  subtitle: string;
+  tagline: string;
+  gradient: string;
+  emoji: string;
+  subgroups?: Subgroup[];
+  members?: Member[];
+};
+
 /* ── 조직도 데이터 ── */
-const orgChart = [
+const orgChart: OrgGroup[] = [
   {
     key: "leadership",
     title: "수뇌부",
@@ -40,19 +59,40 @@ const orgChart = [
       "심장만으로는 살아 갈 수 없죠, 우리의 미래를 이끄는 중요한 역할입니다.",
     gradient: "from-indigo-600 via-violet-600 to-purple-700",
     emoji: "👑",
-    members: [
-      { name: "대표", role: "CEO", emoji: "🎯", note: "무대를 세운 사람" },
+    subgroups: [
       {
-        name: "홍길동",
-        role: "Pioneer · 이사",
-        emoji: "⚔️",
-        note: "1기 · 원년멤버",
+        name: "기획팀",
+        subtitle: "Planning",
+        emoji: "📐",
+        members: [
+          { name: "대표", role: "CEO", emoji: "🎯", note: "무대를 세운 사람" },
+          {
+            name: "내시",
+            role: "Strategist · 실장",
+            emoji: "📜",
+            note: "1기 · 전략 총괄",
+          },
+          { name: "부장", role: "Director", emoji: "🏛️", note: "7기" },
+          { name: "네비게이터", role: "Navigator", emoji: "🧭", note: "2기" },
+          { name: "매니저 A", role: "Staff", emoji: "📎", note: "매니지먼트" },
+        ],
       },
       {
-        name: "내시",
-        role: "Strategist · 실장",
-        emoji: "📜",
-        note: "1기 · 전략 총괄",
+        name: "컨텐츠제작팀",
+        subtitle: "Content Production",
+        emoji: "🎬",
+        members: [
+          {
+            name: "홍길동",
+            role: "Pioneer · 이사",
+            emoji: "⚔️",
+            note: "1기 · 원년멤버",
+          },
+          { name: "셀러브레이터", role: "Celebrator", emoji: "🎉", note: "2기" },
+          { name: "이그나이터", role: "Igniter", emoji: "🔥", note: "2기" },
+          { name: "도깨비", role: "Wildcard", emoji: "👹", note: "1기" },
+          { name: "매니저 B", role: "Staff", emoji: "📎", note: "매니지먼트" },
+        ],
       },
     ],
   },
@@ -63,25 +103,53 @@ const orgChart = [
     tagline: "열정있는 심장입니다. 무대의 중심에서 빛나는 존재들이죠.",
     gradient: "from-rose-500 via-pink-600 to-fuchsia-700",
     emoji: "🔥",
-    members: [
-      { name: "도깨비", role: "Wildcard", emoji: "👹", note: "1기" },
-      { name: "매국노", role: "Breaker", emoji: "🔥", note: "1기" },
-      { name: "이그나이터", role: "Igniter", emoji: "🔥", note: "2기" },
-      { name: "네비게이터", role: "Navigator", emoji: "🧭", note: "2기" },
-      { name: "셀러브레이터", role: "Celebrator", emoji: "🎉", note: "2기" },
-      { name: "알바", role: "Hustler", emoji: "💼", note: "3기" },
-      { name: "편돌이", role: "Keeper", emoji: "🏪", note: "3기" },
-      { name: "딸배", role: "Rebel", emoji: "🚬", note: "3기" },
-      { name: "헬다이버", role: "Vanguard", emoji: "🪂", note: "4기" },
-      { name: "앵커", role: "Anchor", emoji: "⚓", note: "4기" },
-      { name: "페인킬러", role: "Healer", emoji: "💊", note: "4기" },
-      { name: "천천", role: "Light", emoji: "☀️", note: "5기" },
-      { name: "청악", role: "Dusk", emoji: "🌓", note: "5기" },
-      { name: "악천", role: "Storm", emoji: "⛈️", note: "5기" },
-      { name: "악악", role: "Shadow", emoji: "🌑", note: "5기" },
-      { name: "홀더", role: "Holder", emoji: "🃏", note: "6기" },
-      { name: "클로버", role: "Lucky", emoji: "🍀", note: "6기" },
-      { name: "부장", role: "Director", emoji: "🏛️", note: "7기" },
+    subgroups: [
+      {
+        name: "보드게임부",
+        subtitle: "Board Games",
+        emoji: "🎲",
+        members: [
+          { name: "도깨비", role: "Wildcard", emoji: "👹", note: "1기" },
+          { name: "알바", role: "Hustler", emoji: "💼", note: "3기" },
+          { name: "헬다이버", role: "Vanguard", emoji: "🪂", note: "4기" },
+          { name: "청악", role: "Dusk", emoji: "🌓", note: "5기" },
+          { name: "부장", role: "Director", emoji: "🏛️", note: "7기" },
+        ],
+      },
+      {
+        name: "공포게임동아리",
+        subtitle: "Horror Games",
+        emoji: "👻",
+        members: [
+          { name: "매국노", role: "Breaker", emoji: "🔥", note: "1기" },
+          { name: "편돌이", role: "Keeper", emoji: "🏪", note: "3기" },
+          { name: "페인킬러", role: "Healer", emoji: "💊", note: "4기" },
+          { name: "악악", role: "Shadow", emoji: "🌑", note: "5기" },
+          { name: "클로버", role: "Lucky", emoji: "🍀", note: "6기" },
+        ],
+      },
+      {
+        name: "빌런연합",
+        subtitle: "Villain Alliance",
+        emoji: "😈",
+        members: [
+          { name: "이그나이터", role: "Igniter", emoji: "🔥", note: "2기" },
+          { name: "딸배", role: "Rebel", emoji: "🚬", note: "3기" },
+          { name: "앵커", role: "Anchor", emoji: "⚓", note: "4기" },
+          { name: "천천", role: "Light", emoji: "☀️", note: "5기" },
+        ],
+      },
+      {
+        name: "자유부",
+        subtitle: "Casual",
+        emoji: "🎮",
+        members: [
+          { name: "네비게이터", role: "Navigator", emoji: "🧭", note: "2기" },
+          { name: "셀러브레이터", role: "Celebrator", emoji: "🎉", note: "2기" },
+          { name: "악천", role: "Storm", emoji: "⛈️", note: "5기" },
+          { name: "홀더", role: "Holder", emoji: "🃏", note: "6기" },
+        ],
+      },
     ],
   },
   {
@@ -107,6 +175,24 @@ const orgChart = [
     ],
   },
 ];
+
+/* ── 멤버 카드 ── */
+function MemberCard({ m, gradient }: { m: Member; gradient: string }) {
+  return (
+    <div className="group relative bg-gray-50 hover:bg-white hover:shadow-md border border-gray-100 rounded-2xl p-4 transition-all duration-300 hover:-translate-y-1">
+      <div
+        className={`w-11 h-11 rounded-xl bg-gradient-to-br ${gradient} flex items-center justify-center text-xl mb-3 shadow-sm`}
+      >
+        {m.emoji}
+      </div>
+      <p className="text-gray-900 font-bold text-sm leading-tight mb-1">
+        {m.name}
+      </p>
+      <p className="text-gray-500 text-xs mb-1 leading-tight">{m.role}</p>
+      <p className="text-gray-400 text-[11px]">{m.note}</p>
+    </div>
+  );
+}
 
 /* ── 의전서열 데이터 ── */
 const protocolRanks = [
@@ -351,29 +437,53 @@ export default function About() {
                     </div>
                   </div>
 
-                  {/* 멤버 그리드 */}
+                  {/* 본문 */}
                   <div className="p-5 md:p-8">
-                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
-                      {group.members.map((m) => (
-                        <div
-                          key={m.name}
-                          className="group relative bg-gray-50 hover:bg-white hover:shadow-md border border-gray-100 rounded-2xl p-4 transition-all duration-300 hover:-translate-y-1"
-                        >
+                    {/* ── 서브그룹 (테두리만 입혀서 옆으로 나란히) ── */}
+                    {group.subgroups && group.subgroups.length > 0 && (
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        {group.subgroups.map((sg) => (
                           <div
-                            className={`w-11 h-11 rounded-xl bg-gradient-to-br ${group.gradient} flex items-center justify-center text-xl mb-3 shadow-sm`}
+                            key={sg.name}
+                            className="border border-gray-200 rounded-2xl p-3"
                           >
-                            {m.emoji}
+                            <div className="flex items-baseline gap-2 mb-2 px-1">
+                              <span className="text-base leading-none">
+                                {sg.emoji}
+                              </span>
+                              <h4 className="text-sm font-bold text-gray-800">
+                                {sg.name}
+                              </h4>
+                              <span className="text-[10px] text-gray-400 font-medium uppercase tracking-wider">
+                                {sg.subtitle}
+                              </span>
+                            </div>
+                            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                              {sg.members.map((m) => (
+                                <MemberCard
+                                  key={m.name}
+                                  m={m}
+                                  gradient={group.gradient}
+                                />
+                              ))}
+                            </div>
                           </div>
-                          <p className="text-gray-900 font-bold text-sm leading-tight mb-1">
-                            {m.name}
-                          </p>
-                          <p className="text-gray-500 text-xs mb-1 leading-tight">
-                            {m.role}
-                          </p>
-                          <p className="text-gray-400 text-[11px]">{m.note}</p>
-                        </div>
-                      ))}
-                    </div>
+                        ))}
+                      </div>
+                    )}
+
+                    {/* ── 플랫 멤버 그리드 (서브그룹 없을 때) ── */}
+                    {!group.subgroups && group.members && (
+                      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+                        {group.members.map((m) => (
+                          <MemberCard
+                            key={m.name}
+                            m={m}
+                            gradient={group.gradient}
+                          />
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </div>
               </FadeInSection>
