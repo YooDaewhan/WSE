@@ -522,8 +522,8 @@ const allCreators: Record<
     generation: "7기",
     teamName: "시큐리티엑스",
     gradient: "from-blue-600 via-sky-600 to-cyan-500",
-    quote: "시작은 미약하나 그 끝은 창대하리라.",
-    shortBio: "아직 배우는 중이지만, 성장 속도만큼은 누구에게도 지지 않는다.",
+    quote: "첫 출근 잘 부탁드리겠습니다.",
+    shortBio: "아직 배우는 중이지만, (추가)",
     partner: {
       name: "인턴이",
       animal: "햄스터",
@@ -591,7 +591,7 @@ const allCreators: Record<
     generation: "7기",
     teamName: "시큐리티엑스",
     gradient: "from-blue-600 via-sky-600 to-cyan-500",
-    quote: "결정의 무게를 아는 자. 최종 방어선.",
+    quote: "부장님",
     shortBio: "모든 책임이 모이는 곳. 최종 결정권자이자 최후의 방패.",
     partner: {
       name: "부장님",
