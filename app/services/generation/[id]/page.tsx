@@ -71,14 +71,14 @@ const generations = [
         emoji: "🔥",
         role: "Igniter",
         slug: "igniter",
-        desc: "충분하진 않지만 부족하진 않아.",
+        desc: "충분하진 않지만, 부족하진 않아.",
       },
       {
         name: "네비게이터",
         emoji: "🧭",
         role: "Navigator",
         slug: "navigator",
-        desc: "준비됐어? 알버트? ",
+        desc: "어디든 상관없다면, 어디로든 가도 되겠네.",
       },
       {
         name: "셀러브레이터",
