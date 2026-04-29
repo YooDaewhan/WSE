@@ -21,7 +21,7 @@ const generations = [
         emoji: "⚔️",
         role: "Pioneer",
         slug: "honggildong",
-        desc: "에요 브로 와썹 bro.",
+        desc: "A Yo 브로 와썹 bro.",
       },
       {
         name: "내시(미정)",
@@ -38,11 +38,11 @@ const generations = [
         desc: "날이 좋아서..",
       },
       {
-        name: "후테이 센지",
+        name: "호테이 센지",
         emoji: "🔥",
         role: "Breaker",
         slug: "pagyeseung",
-        desc: "아침은 밝았나요.",
+        desc: "당신의 오늘은 아침이 밝았습니까.",
       },
     ],
   },
