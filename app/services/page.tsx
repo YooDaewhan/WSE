@@ -5,44 +5,80 @@ import { motion, AnimatePresence, useInView } from "framer-motion";
 import Link from "next/link";
 import Header from "../components/Header";
 
-/* ── 기수 데이터 ── */
-const generations = [
+/* ──────────────────────────────────────────
+   크리에이터 목록
+
+   이 페이지는 완전히 독립적입니다.
+   여기 있는 데이터·레이아웃·연출을 마음대로 고쳐도
+   다른 페이지에는 아무 영향이 없습니다.
+────────────────────────────────────────── */
+
+type CastMember = {
+  slug: string;
+  name: string;
+  emoji: string;
+  role: string;
+  blurb: string;
+  href: string;
+};
+
+type Generation = {
+  id: number;
+  label: string;
+  teamName: string;
+  emoji: string;
+  gradient: string;
+  theme: string;
+  tagline: string;
+  description: string;
+  href: string;
+  members: CastMember[];
+};
+
+const generations: Generation[] = [
   {
     id: 1,
     label: "0기",
     teamName: "새벽조",
+    emoji: "🌅",
+    gradient: "from-indigo-600 via-violet-600 to-purple-700",
+    theme: "개척 · Pioneering",
     tagline: "긴 밤을 마침내",
     description:
-      "아직 빛 한 줄기 없는 이 길을, 우리 새벽조는 가장 먼저 걷습니다.이 여정은 결코 쉽지 않겠지만,뒤에 올 모두를 위해 오늘의 어둠을 먼저 건너갑니다.",
-    gradient: "from-indigo-600 via-violet-600 to-purple-700",
+      "아직 빛 한 줄기 없는 이 길을, 우리 새벽조는 가장 먼저 걷습니다. 이 여정은 결코 쉽지 않겠지만, 뒤에 올 모두를 위해 오늘의 어둠을 먼저 건너갑니다.",
+    href: "/services/generation1",
     members: [
       {
+        slug: "honggildong",
         name: "홍길동",
         emoji: "⚔️",
         role: "Pioneer",
-        slug: "honggildong",
-        desc: "A Yo 브로 와썹 bro.",
+        blurb: "A Yo 브로 와썹 bro.",
+        href: "/services/generation1/honggildong",
       },
       {
+        slug: "naesi",
         name: "내시(미정)",
         emoji: "📜",
         role: "Strategist",
-        slug: "naesi",
-        desc: "황송하옵니다~~.",
+        blurb: "황송하옵니다~~.",
+        href: "/services/generation1/naesi",
       },
       {
+        slug: "dokkaebi",
         name: "도깨비(미정)",
         emoji: "👹",
         role: "Wildcard",
-        slug: "dokkaebi",
-        desc: "날이 좋아서..",
+        blurb: "날이 좋아서..",
+        href: "/services/generation1/dokkaebi",
       },
       {
+        slug: "pagyeseung",
         name: "호테이 센지",
         emoji: "🔥",
         role: "Breaker",
-        slug: "pagyeseung",
-        desc: "당신의 오늘은 아침이 밝았습니까.",
+        blurb: "당신의 오늘은 아침이 밝았습니까.",
+        href: "/services/generation1/pagyeseung",
       },
     ],
   },
@@ -50,31 +86,37 @@ const generations = [
     id: 2,
     label: "1기",
     teamName: "스타터팩",
+    emoji: "🔥",
+    gradient: "from-rose-500 via-pink-600 to-fuchsia-700",
+    theme: "출발 · Departure",
     tagline: "시작하는 우리들을 위해",
     description:
       "바깥은 혼자 돌아다니기엔 위험하단다. 이 아이들 중 하나를 데려가렴.",
-    gradient: "from-rose-500 via-pink-600 to-fuchsia-700",
+    href: "/services/generation2",
     members: [
       {
+        slug: "igniter",
         name: "이그나이터",
         emoji: "🔥",
         role: "Igniter",
-        slug: "igniter",
-        desc: "충분하진 않지만, 부족하진 않아.",
+        blurb: "충분하진 않지만, 부족하진 않아.",
+        href: "/services/generation2/igniter",
       },
       {
+        slug: "navigator",
         name: "네비게이터",
         emoji: "🧭",
         role: "Navigator",
-        slug: "navigator",
-        desc: "어디든 상관없다면, 어디로든 가도 되겠네.",
+        blurb: "어디든 상관없다면, 어디로든 가도 되겠네.",
+        href: "/services/generation2/navigator",
       },
       {
+        slug: "celebrator",
         name: "셀러브레이터",
         emoji: "🎉",
         role: "Celebrator",
-        slug: "celebrator",
-        desc: "어, 잠깐만, 그거 대단한 거 아니야?! 축하해!!!",
+        blurb: "당신의 앞날이 무한히 찬란하도록 빌어줄게요",
+        href: "/services/generation2/celebrator",
       },
     ],
   },
@@ -82,37 +124,44 @@ const generations = [
     id: 3,
     label: "2기",
     teamName: "히어로즈",
+    emoji: "🦸",
+    gradient: "from-emerald-500 via-teal-600 to-cyan-700",
+    theme: "역전 · Underdog",
     tagline: "언더독: 히어로즈",
     description: "너도 우리가 이기는 이야기를 보고 싶은거잖아.",
-    gradient: "from-emerald-500 via-teal-600 to-cyan-700",
+    href: "/services/generation3",
     members: [
       {
+        slug: "alba",
         name: "알바(미정)",
         emoji: "💼",
         role: "Hustler",
-        slug: "alba",
-        desc: "어디서든 살아남는 생존왕. 현장의 달인.",
+        blurb: "어디서든 살아남는 생존왕. 현장의 달인.",
+        href: "/services/generation3/alba",
       },
       {
+        slug: "pyeondori",
         name: "편돌이(미정)",
         emoji: "🏪",
         role: "Keeper",
-        slug: "pyeondori",
-        desc: "어서오세요. 오늘도.",
+        blurb: "어서오세요. 오늘도.",
+        href: "/services/generation3/pyeondori",
       },
       {
+        slug: "ddalbae",
         name: "딸배(미정)",
         emoji: "🚬",
         role: "Rebel",
-        slug: "ddalbae",
-        desc: "내가 쉬면 사람들 밥은 어떻게 먹는데?",
+        blurb: "내가 쉬면 사람들 밥은 어떻게 먹는데?",
+        href: "/services/generation3/ddalbae",
       },
       {
+        slug: "pyegeubibyeong",
         name: "폐급이병(미정)",
         emoji: "🎖️",
         role: "Survivor",
-        slug: "pyegeubibyeong",
-        desc: "네..? 잘 못들었습니다..?",
+        blurb: "네..? 잘 못들었습니다..?",
+        href: "/services/generation3/pyegeubibyeong",
       },
     ],
   },
@@ -120,31 +169,37 @@ const generations = [
     id: 4,
     label: "3기",
     teamName: "레스큐팩",
+    emoji: "🪂",
+    gradient: "from-amber-500 via-orange-600 to-red-600",
+    theme: "구원 · Rescue",
     tagline: "위기의 순간, 구원의 손길",
     description:
-      "가장 어두운 순간에 나타나는 구원자들. 4기 레스큐팩은 위기를 기회로 바꾸는 최후의 팀.",
-    gradient: "from-amber-500 via-orange-600 to-red-600",
+      "가장 어두운 순간에 나타나는 구원자들. 레스큐팩은 위기를 기회로 바꾸는 최후의 팀.",
+    href: "/services/generation4",
     members: [
       {
+        slug: "helldiver",
         name: "헬다이버",
         emoji: "🪂",
         role: "Vanguard",
-        slug: "helldiver",
-        desc: "네가 어디에 있던지 너에게로 갈게",
+        blurb: "네가 어디에 있던지 너에게로 갈게",
+        href: "/services/generation4/helldiver",
       },
       {
+        slug: "anchor",
         name: "앵커",
         emoji: "⚓",
         role: "Anchor",
-        slug: "anchor",
-        desc: "바닥에 닿아있는건 내가 아니야.",
+        blurb: "바닥에 닿아있는건 내가 아니야.",
+        href: "/services/generation4/anchor",
       },
       {
+        slug: "painkiller",
         name: "페인킬러",
         emoji: "💊",
         role: "Healer",
-        slug: "painkiller",
-        desc: "당신이 원한다면 얼마든지..",
+        blurb: "당신이 원한다면 얼마든지..",
+        href: "/services/generation4/painkiller",
       },
     ],
   },
@@ -152,37 +207,44 @@ const generations = [
     id: 5,
     label: "4기",
     teamName: "이퀴녹스",
+    emoji: "🌓",
+    gradient: "from-slate-600 via-gray-700 to-zinc-900",
+    theme: "균형 · Equinox",
     tagline: "당신을 위해서라면",
     description: "인간을 유혹하기 위한 천사와 악마들의 대격돌!",
-    gradient: "from-slate-600 via-gray-700 to-zinc-900",
+    href: "/services/generation5",
     members: [
       {
+        slug: "cheoncheon",
         name: "미카엘라(미정)",
         emoji: "☀️",
         role: "Light",
-        slug: "cheoncheon",
-        desc: "똑바로 보고 나아가는거야. 내가 너와 함께할게.",
+        blurb: "똑바로 보고 나아가는거야. 내가 너와 함께할게.",
+        href: "/services/generation5/cheoncheon",
       },
       {
+        slug: "cheongak",
         name: "아자젤라(미정)",
         emoji: "🌗",
         role: "Dusk",
-        slug: "cheongak",
-        desc: "넘어져도 다시 일어 설 수 있도록. 내가 너와 함께할게.",
+        blurb: "넘어져도 다시 일어 설 수 있도록. 내가 너와 함께할게.",
+        href: "/services/generation5/cheongak",
       },
       {
+        slug: "akcheon",
         name: "루시아(미정)",
         emoji: "🌓",
         role: "Storm",
-        slug: "akcheon",
-        desc: "더 이상 널 무리해서 태우지마.",
+        blurb: "더 이상 널 무리해서 태우지마.",
+        href: "/services/generation5/akcheon",
       },
       {
+        slug: "akak",
         name: "데아(미정)",
         emoji: "🌑",
         role: "Shadow",
-        slug: "akak",
-        desc: "아플거란거 알고있잖아. 가지마.",
+        blurb: "아플거란거 알고있잖아. 가지마.",
+        href: "/services/generation5/akak",
       },
     ],
   },
@@ -190,30 +252,36 @@ const generations = [
     id: 6,
     label: "5기",
     teamName: "스팀팩",
+    emoji: "🍬",
+    gradient: "from-pink-400 via-rose-500 to-red-400",
+    theme: "자극 · Stimulus",
     tagline: "힘을 낼 수 있도록 도와줘요",
     description: "견디기 힘들다면..?",
-    gradient: "from-pink-400 via-rose-500 to-red-400",
+    href: "/services/generation6",
     members: [
       {
+        slug: "sugar",
         name: "슈거",
         emoji: "🧂",
-        role: "sugar",
-        slug: "sugar",
-        desc: "행복해지는 약.. 먹어볼래?",
+        role: "Sugar",
+        blurb: "행복해지는 약.. 먹어볼래?",
+        href: "/services/generation6/sugar",
       },
       {
+        slug: "holder",
         name: "홀더",
         emoji: "🔗",
         role: "Holder",
-        slug: "holder",
-        desc: "내가 안전하게 지켜줄게",
+        blurb: "내가 안전하게 지켜줄게",
+        href: "/services/generation6/holder",
       },
       {
+        slug: "clover",
         name: "클로버",
         emoji: "🍀",
         role: "Lucky",
-        slug: "clover",
-        desc: "세잎클로버는 행복, 네잎은 행운이래. 어떤걸로 빌어줄까?",
+        blurb: "세잎클로버는 행복, 네잎은 행운이래. 어떤걸로 빌어줄까?",
+        href: "/services/generation6/clover",
       },
     ],
   },
@@ -221,38 +289,45 @@ const generations = [
     id: 7,
     label: "6기",
     teamName: "시큐리티엑스",
+    emoji: "🛡️",
+    gradient: "from-blue-600 via-sky-600 to-cyan-500",
+    theme: "질서 · Order",
     tagline: "당신의 하트를 지켜 줄게요",
     description:
       "순수한 분홍색 하트는 물들기 쉬워서, 우리가 당신을 지켜줄게요.",
-    gradient: "from-blue-600 via-sky-600 to-cyan-500",
+    href: "/services/generation7",
     members: [
       {
+        slug: "intern",
         name: "인턴",
         emoji: "📋",
         role: "Rookie",
-        slug: "intern",
-        desc: "첫 출근 잘 부탁드리겠습니다.",
+        blurb: "첫 출근 잘 부탁드리겠습니다.",
+        href: "/services/generation7/intern",
       },
       {
+        slug: "sawon",
         name: "사원",
         emoji: "💻",
         role: "Worker",
-        slug: "sawon",
-        desc: "커피 한잔 하실래요?",
+        blurb: "커피 한잔 하실래요?",
+        href: "/services/generation7/sawon",
       },
       {
+        slug: "daeri",
         name: "대리",
         emoji: "📊",
         role: "Manager",
-        slug: "daeri",
-        desc: "지금은 좀 바빠서..",
+        blurb: "지금은 좀 바빠서..",
+        href: "/services/generation7/daeri",
       },
       {
+        slug: "bujang",
         name: "부장",
         emoji: "🏛️",
         role: "Director",
-        slug: "bujang",
-        desc: "어엇. 잠시 여기 앉아봐",
+        blurb: "어엇. 잠시 여기 앉아봐",
+        href: "/services/generation7/bujang",
       },
     ],
   },
@@ -265,7 +340,7 @@ function MemberSection({
   reverse,
   index,
 }: {
-  member: (typeof generations)[0]["members"][0];
+  member: CastMember;
   gradient: string;
   reverse: boolean;
   index: number;
@@ -372,7 +447,7 @@ function MemberSection({
           {member.name}
         </h2>
         <p className="text-gray-500 text-xl leading-relaxed mb-8 max-w-lg mx-auto md:mx-0">
-          {member.desc}
+          {member.blurb}
         </p>
         <div className="flex flex-col sm:flex-row items-center md:items-start gap-3">
           <div
@@ -382,7 +457,7 @@ function MemberSection({
             {member.role}
           </div>
           <Link
-            href={`/services/${member.slug}`}
+            href={member.href}
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white border border-gray-200 text-gray-700 text-base font-semibold shadow-sm hover:shadow-md hover:scale-105 transition-all"
           >
             프로필 보기
@@ -406,7 +481,7 @@ function MemberSection({
 }
 
 /* ── 메인 ── */
-export default function Services() {
+export default function Page() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -506,7 +581,7 @@ export default function Services() {
               {/* ── 기수 상세 보기 버튼 ── */}
               <div className="mt-8 flex items-center justify-center">
                 <Link
-                  href={`/services/generation/${current.id}`}
+                  href={current.href}
                   className={`group inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-gradient-to-r ${current.gradient} text-white font-bold text-base shadow-xl hover:scale-105 hover:shadow-2xl transition-all`}
                 >
                   <span>✨</span>
@@ -623,9 +698,7 @@ export default function Services() {
                       : "text-gray-400 hover:text-gray-600 hover:bg-gray-100"
                   }`}
                 >
-                  <span className="text-base leading-none">
-                    {["🌅", "🔥", "🦸", "🪂", "🌓", "🍬", "🛡️"][i]}
-                  </span>
+                  <span className="text-base leading-none">{gen.emoji}</span>
                   <span>{gen.label}</span>
                   <span
                     className={`text-xs font-medium ${
