@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // 서버(/srv/wse)에는 .next/standalone만 올려서 node server.js로 실행
+  output: "standalone",
   turbopack: {
     root: __dirname,
   },

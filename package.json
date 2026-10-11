@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "deploy": "next build && node -e \"const f=require('fs');f.cpSync('public','.next/standalone/public',{recursive:true});f.cpSync('.next/static','.next/standalone/.next/static',{recursive:true})\" && tar -C .next/standalone -czf - . | ssh root@49.247.136.17 \"tar -C /srv/wse -xzf - && systemctl restart wse\"",
     "lint": "eslint ."
   },
   "dependencies": {
