@@ -91,12 +91,20 @@ export const content: SecretContent = {
   ],
   requests: [
     {
-      text: "미정",
+      text: "없음",
       level: "필수",
     },
     {
-      text: "미정",
+      text: "없음",
       level: "요청",
+    },
+    {
+      text: "없음",
+      level: "권고",
+    },
+    {
+      text: "없음",
+      level: "인식",
     },
   ],
   /* 파트너 비밀 설정 — 카드 클릭 시 팝업. image 에 경로를 넣으면 그림이 들어갑니다 */

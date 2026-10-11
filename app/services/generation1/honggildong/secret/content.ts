@@ -91,7 +91,7 @@ export const content: SecretContent = {
   ],
   requests: [
     {
-      text: "항상 인종차별 이슈에 각별히 주의해야합니다.",
+      text: "없음",
       level: "필수",
     },
     {
@@ -99,15 +99,11 @@ export const content: SecretContent = {
       level: "요청",
     },
     {
-      text: "노래를 해야한다면 신나는 흑인 음악쪽이 어떨지",
+      text: "없음",
       level: "권고",
     },
     {
-      text: "어눌한 발음에 중간중안 영어를 섞거나 쌈@뽕, 쌍너메거 같은 밈을 잘 사용해주세요.",
-      level: "권고",
-    },
-    {
-      text: "미정",
+      text: "없음",
       level: "인식",
     },
   ],

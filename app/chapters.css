@@ -1,0 +1,1096 @@
+.chapter-site {
+  --chapter-accent: #d6b18c;
+  --chapter-shade: #312324;
+  background: #111310;
+  color: #f0eee6;
+}
+.chapter-reader {
+  min-height: 900px;
+  height: 100svh;
+  max-height: 1250px;
+  position: relative;
+  isolation: isolate;
+  background: #101311;
+  transition: color 0.5s;
+  color: #eeeae2;
+  padding-top: 88px;
+}
+.reader-heading {
+  position: absolute;
+  top: 123px;
+  left: 5%;
+  right: 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  z-index: 5;
+}
+.reader-heading > span {
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: #a6aaa0;
+}
+.reader-heading p {
+  font-size: 12px;
+  line-height: 1.8;
+  color: #bdc0b5;
+  text-align: right;
+}
+.chapter-scene {
+  position: absolute;
+  inset: 88px 0 145px;
+  overflow: hidden;
+  isolation: isolate;
+}
+.chapter-atmosphere {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  background: radial-gradient(
+    ellipse at 73% 42%,
+    var(--chapter-shade),
+    #111310 73%
+  );
+}
+.chapter-sigil {
+  position: absolute;
+  left: 35%;
+  top: 18%;
+  font-family: Georgia, serif;
+  font-size: 28vw;
+  line-height: 1;
+  color: var(--chapter-accent);
+  opacity: 0.04;
+  user-select: none;
+}
+.chapter-horizon {
+  position: absolute;
+  inset: 67% -20% auto;
+  height: 1px;
+  background: var(--chapter-accent);
+  opacity: 0.25;
+  box-shadow: 0 0 90px 24px var(--chapter-accent);
+  transform: rotate(-8deg);
+}
+.chapter-orbit {
+  position: absolute;
+  width: 43vw;
+  height: 43vw;
+  right: 5%;
+  top: 6%;
+  border: 1px solid var(--chapter-accent);
+  border-radius: 50%;
+  opacity: 0.12;
+  animation: chapter-orbit 60s linear infinite;
+}
+.chapter-orbit:before {
+  content: "";
+  position: absolute;
+  inset: 30px;
+  border: 1px dashed var(--chapter-accent);
+  border-radius: inherit;
+}
+.chapter-atmosphere i {
+  position: absolute;
+  left: calc(12% + var(--particle) * 10%);
+  top: calc(20% + var(--particle) * 7%);
+  width: 2px;
+  height: 2px;
+  background: var(--chapter-accent);
+  opacity: 0.4;
+  animation: chapter-drift 9s ease-in-out infinite;
+  animation-delay: calc(var(--particle) * -0.9s);
+}
+.chapter-cover-copy {
+  position: absolute;
+  left: 7%;
+  top: 24%;
+  width: 40%;
+  z-index: 4;
+}
+.chapter-overline {
+  font-size: 9px;
+  letter-spacing: 2.2px;
+  line-height: 1.8;
+  color: var(--chapter-accent);
+}
+.chapter-cover-copy h1,
+.team-cover-copy h1 {
+  font-family: Georgia, "Batang", serif;
+  font-size: clamp(56px, 6vw, 98px);
+  font-weight: 500;
+  letter-spacing: -5px;
+  line-height: 1.16;
+  margin: 30px 0 22px;
+  word-break: keep-all;
+}
+.chapter-cover-copy h2 {
+  font-size: 24px;
+  line-height: 1.5;
+  letter-spacing: -0.8px;
+  margin-bottom: 22px;
+  font-weight: 400;
+}
+.chapter-cover-copy > p {
+  max-width: 350px;
+  font-size: 13px;
+  line-height: 2.1;
+  color: #b4b9ae;
+  word-break: keep-all;
+}
+.chapter-enter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 15px 0;
+  margin-top: 32px;
+  min-width: 225px;
+  border-bottom: 1px solid
+    color-mix(in srgb, var(--chapter-accent) 50%, transparent);
+  font-size: 12px;
+  color: var(--chapter-accent);
+  transition: gap 0.3s;
+}
+.chapter-enter:hover {
+  gap: 65px;
+}
+.chapter-enter > span {
+  font-size: 22px;
+}
+.chapter-ensemble {
+  position: absolute;
+  right: 3%;
+  top: 17%;
+  width: 47%;
+  height: 72%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1200px;
+}
+.ensemble-portrait {
+  position: relative;
+  flex: 0 0 39%;
+  height: 82%;
+  margin-left: -13%;
+  overflow: hidden;
+  background: var(--chapter-shade);
+  transform: translateY(calc(var(--portrait) * 22px - 30px))
+    rotate(calc(var(--portrait) * 4deg - 6deg));
+  border: 1px solid #e3d4bc38;
+  box-shadow: -18px 10px 40px #0007;
+  transition:
+    transform 0.7s,
+    filter 0.7s;
+  filter: brightness(0.8) saturate(0.65);
+}
+.ensemble-portrait:first-child {
+  margin-left: 0;
+}
+.ensemble-portrait:nth-child(2) {
+  z-index: 2;
+}
+.ensemble-portrait:nth-child(3) {
+  z-index: 3;
+}
+.ensemble-portrait:nth-child(4) {
+  z-index: 4;
+}
+.ensemble-portrait img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+.ensemble-portrait:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(transparent 60%, #111310e6);
+  pointer-events: none;
+}
+.ensemble-portrait > span {
+  position: absolute;
+  bottom: 20px;
+  left: 18px;
+  right: 10px;
+  font-size: 12px;
+  z-index: 2;
+  writing-mode: vertical-rl;
+  letter-spacing: 3px;
+  color: white;
+}
+.ensemble-portrait:hover {
+  transform: translateY(-15px) rotate(0);
+  filter: brightness(1) saturate(1);
+  z-index: 6;
+}
+.ensemble-2 .ensemble-portrait {
+  flex-basis: 47%;
+  margin-left: -9%;
+}
+.ensemble-2 .ensemble-portrait:first-child {
+  margin-left: 0;
+}
+.chapter-side-note {
+  position: absolute;
+  bottom: 4%;
+  left: 7%;
+  right: 6%;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  pointer-events: none;
+  color: #a4aa9d;
+}
+.chapter-side-note > span {
+  font-family: Georgia, serif;
+  font-size: 70px;
+  line-height: 1;
+  color: var(--chapter-accent);
+  opacity: 0.35;
+}
+.chapter-side-note small {
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+.reader-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 5%;
+  right: 5%;
+  height: 140px;
+  display: flex;
+  gap: 45px;
+  border-top: 1px solid #d3d5c526;
+  align-items: center;
+}
+.reader-pagination {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 84px;
+}
+.reader-pagination > span {
+  font-family: Georgia, serif;
+  font-size: 27px;
+  color: var(--chapter-accent);
+}
+.reader-pagination small {
+  font-family: inherit;
+  font-size: 14px;
+  color: #71776b;
+}
+.reader-pagination button {
+  font-size: 19px;
+  padding: 4px 12px 4px 0;
+  color: #bbc1b4;
+}
+.reader-pagination button:hover {
+  color: var(--chapter-accent);
+}
+.chapter-spine {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  width: 100%;
+  gap: 18px;
+}
+.chapter-spine button {
+  text-align: left;
+  position: relative;
+  padding: 17px 0;
+  color: #7e8676;
+  transition: color 0.3s;
+}
+.chapter-spine small {
+  font-size: 9px;
+  display: block;
+  margin-bottom: 12px;
+}
+.chapter-spine span {
+  font-size: 13px;
+  white-space: nowrap;
+}
+.chapter-spine i {
+  display: block;
+  height: 2px;
+  background: #394033;
+  margin-top: 18px;
+  position: relative;
+}
+.chapter-spine i:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--chapter-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s;
+}
+.chapter-spine button[aria-pressed="true"] {
+  color: var(--chapter-accent);
+}
+.chapter-spine button[aria-pressed="true"] i:after {
+  transform: scaleX(1);
+}
+.chapter-spine button:hover {
+  color: #e4e6dc;
+}
+.atmosphere-journey .chapter-horizon {
+  transform: rotate(-30deg);
+  opacity: 0.12;
+}
+.atmosphere-journey .chapter-orbit {
+  border-style: dashed;
+  border-radius: 45%;
+}
+.atmosphere-underdog {
+  background:
+    repeating-linear-gradient(-45deg, #c5ce7810 0 1px, transparent 1px 50px),
+    radial-gradient(ellipse at 75% 60%, var(--chapter-shade), #111310 75%);
+}
+.atmosphere-underdog .chapter-orbit {
+  border-radius: 0;
+  rotate: -12deg;
+}
+.chapter-underdog .chapter-cover-copy h1,
+.chapter-underdog .team-cover-copy h1 {
+  font-family: inherit;
+  font-weight: 900;
+  transform: skew(-7deg);
+}
+.atmosphere-rescue .chapter-orbit {
+  border-style: dotted;
+  border-width: 2px;
+}
+.atmosphere-rescue i {
+  height: 80px;
+  animation: chapter-fall 5s linear infinite;
+  animation-delay: calc(var(--particle) * -0.5s);
+}
+.atmosphere-equinox {
+  background: linear-gradient(105deg, #0f1014 30%, #292030 62%, #625657 100%);
+}
+.atmosphere-equinox .chapter-orbit {
+  background: #121018;
+  box-shadow: 35px 0 65px #e6cfcb5c;
+  opacity: 0.4;
+  border: 0;
+}
+.atmosphere-equinox .chapter-horizon {
+  display: none;
+}
+.atmosphere-sweet .chapter-orbit {
+  box-shadow: 0 0 100px #d6719a22;
+  animation: chapter-breathe 7s ease-in-out infinite;
+}
+.atmosphere-sweet i {
+  width: 35px;
+  height: 35px;
+  background: transparent;
+  border: 1px solid var(--chapter-accent);
+  border-radius: 50%;
+  opacity: 0.13;
+}
+.atmosphere-security {
+  background:
+    linear-gradient(#beddec07 1px, transparent 1px),
+    linear-gradient(90deg, #beddec07 1px, transparent 1px),
+    radial-gradient(ellipse at 70% 45%, var(--chapter-shade), #111310 72%);
+  background-size:
+    65px 65px,
+    65px 65px,
+    100% 100%;
+}
+.atmosphere-security .chapter-orbit {
+  border-radius: 0;
+  clip-path: polygon(0 0, 100% 0, 100% 65%, 50% 100%, 0 65%);
+  border: 4px double;
+}
+.atmosphere-security .chapter-horizon {
+  transform: none;
+  animation: chapter-scan 8s ease-in-out infinite;
+  box-shadow: 0 0 20px 2px var(--chapter-accent);
+}
+.chapter-security .ensemble-portrait {
+  transform: translateY(calc(var(--portrait) * 18px - 30px));
+  border-top: 3px solid var(--chapter-accent);
+}
+.team-cover {
+  height: 90svh;
+  min-height: 760px;
+  max-height: 1100px;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-top: 88px;
+}
+.chapter-breadcrumb {
+  position: absolute;
+  top: 123px;
+  left: 6%;
+  right: 6%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  letter-spacing: 1px;
+  z-index: 6;
+  color: #c0c4b7;
+}
+.team-cover-copy {
+  position: absolute;
+  left: 7%;
+  top: 32%;
+  width: 42%;
+  z-index: 5;
+}
+.team-cover-copy > p {
+  font-size: 24px;
+  line-height: 1.6;
+  font-family: Georgia, "Batang", serif;
+}
+.team-cover .chapter-ensemble {
+  top: 23%;
+  height: 68%;
+}
+.cover-caption {
+  position: absolute;
+  bottom: 40px;
+  left: 7%;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #9da595;
+}
+.team-prologue {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 10%;
+  padding: 130px 10%;
+  background: #eeece4;
+  color: #293126;
+  scroll-margin-top: 88px;
+}
+.prologue-margin {
+  border-top: 1px solid #bfc6b4;
+  padding-top: 17px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.prologue-margin > span {
+  font-size: 11px;
+  letter-spacing: 3px;
+}
+.prologue-margin small {
+  font-size: 10px;
+  color: #7a846e;
+}
+.prologue-text .chapter-overline {
+  color: #7a806e;
+}
+.prologue-text h2 {
+  font-family: Georgia, "Batang", serif;
+  font-size: 37px;
+  letter-spacing: -1.5px;
+  line-height: 1.5;
+  margin: 24px 0 30px;
+  word-break: keep-all;
+}
+.prologue-text p {
+  font-size: 15px;
+  line-height: 2.3;
+  word-break: keep-all;
+  color: #69735d;
+}
+.prologue-text p.prologue-intro {
+  font-size: 21px;
+  line-height: 1.9;
+  color: #343e2c;
+  margin-bottom: 25px;
+}
+.chapter-keywords {
+  display: flex;
+  gap: 35px;
+  border-top: 1px solid #c9cebf;
+  margin-top: 45px;
+  padding-top: 25px;
+  font-size: 15px;
+}
+.chapter-keywords small {
+  display: block;
+  font-size: 8px;
+  color: #818b74;
+  margin-bottom: 7px;
+  letter-spacing: 1px;
+}
+.team-manifesto {
+  padding: 130px 10%;
+  text-align: center;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: radial-gradient(
+    ellipse at 50% 120%,
+    var(--chapter-shade),
+    #111310 80%
+  );
+}
+.team-manifesto > span {
+  font-family: Georgia, serif;
+  position: absolute;
+  inset: -50% 0 0;
+  font-size: 450px;
+  color: var(--chapter-accent);
+  opacity: 0.035;
+  z-index: -1;
+}
+.team-manifesto blockquote {
+  font-family: Georgia, "Batang", serif;
+  font-size: clamp(26px, 3.7vw, 56px);
+  line-height: 1.7;
+  letter-spacing: -1.5px;
+  word-break: keep-all;
+  color: var(--chapter-accent);
+}
+.team-manifesto > small {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 3px;
+  margin-top: 35px;
+  color: #8e9785;
+}
+.team-encounters {
+  background: #171b16;
+  padding: 95px 8% 100px;
+}
+.encounters-heading {
+  padding-bottom: 70px;
+  border-bottom: 1px solid #b9c1ab26;
+}
+.encounters-heading h2 {
+  font-size: 35px;
+  letter-spacing: -1.5px;
+  line-height: 1.5;
+  margin: 25px 0 12px;
+}
+.encounters-heading p {
+  font-size: 12px;
+  color: #96a18b;
+}
+.team-member {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12%;
+  align-items: center;
+  margin: 100px 0 160px;
+}
+.team-member:last-child {
+  margin-bottom: 20px;
+}
+.team-member-art {
+  height: 600px;
+  display: block;
+  position: relative;
+  overflow: hidden;
+  background: var(--chapter-shade);
+}
+.team-member-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  transition: transform 1s;
+}
+.team-member-art:hover img {
+  transform: scale(1.04);
+}
+.member-image-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 30px 20px 20px;
+  background: linear-gradient(transparent, #10180fe6);
+  font-size: 9px;
+  letter-spacing: 3px;
+}
+.team-member-copy h3 {
+  font-family: Georgia, "Batang", serif;
+  font-size: 49px;
+  letter-spacing: -2px;
+  margin: 25px 0;
+}
+.team-member-copy blockquote {
+  font-size: 21px;
+  line-height: 1.8;
+  word-break: keep-all;
+  color: #e2e4d9;
+  max-width: 430px;
+}
+.team-member-copy > p {
+  color: #8c9980;
+  font-size: 13px;
+  line-height: 2;
+  margin: 25px 0 0;
+}
+.team-member.member-right .team-member-art {
+  order: 2;
+}
+.team-member.member-right .team-member-copy {
+  order: 1;
+}
+.chapter-art-pending {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: var(--chapter-accent);
+}
+.chapter-art-pending > span {
+  font-size: 150px;
+}
+.chapter-art-pending > p {
+  font-size: 11px;
+  letter-spacing: 3px;
+}
+.chapter-next {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 60px 8%;
+  background: #e4e6dc;
+  color: #2d3825;
+  gap: 30px;
+}
+.chapter-next > a:first-child {
+  font-size: 12px;
+}
+.chapter-next > a:last-child {
+  text-align: right;
+}
+.chapter-next small {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+  color: #7d8772;
+}
+.chapter-next strong {
+  font-family: Georgia, "Batang", serif;
+  font-size: 36px;
+  font-weight: 400;
+  letter-spacing: -1px;
+}
+@keyframes chapter-orbit {
+  to {
+    rotate: 360deg;
+  }
+}
+@keyframes chapter-drift {
+  50% {
+    translate: 12px -35px;
+    opacity: 0.1;
+  }
+}
+@keyframes chapter-fall {
+  from {
+    translate: 0 -150px;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.4;
+  }
+  to {
+    translate: 0 200px;
+    opacity: 0;
+  }
+}
+@keyframes chapter-breathe {
+  50% {
+    scale: 1.12;
+    opacity: 0.2;
+  }
+}
+@keyframes chapter-scan {
+  50% {
+    translate: 0 -200px;
+  }
+}
+@media (min-width: 1700px) {
+  .chapter-cover-copy {
+    top: 29%;
+  }
+  .chapter-ensemble {
+    width: 43%;
+    right: 5%;
+  }
+  .reader-bottom {
+    height: 160px;
+  }
+  .chapter-scene {
+    bottom: 165px;
+  }
+}
+@media (max-width: 1100px) {
+  .chapter-spine {
+    gap: 10px;
+  }
+  .chapter-spine span {
+    font-size: 11px;
+  }
+  .reader-bottom {
+    gap: 22px;
+  }
+  .chapter-cover-copy h1,
+  .team-cover-copy h1 {
+    font-size: 64px;
+  }
+  .chapter-cover-copy h2 {
+    font-size: 21px;
+  }
+  .chapter-ensemble {
+    right: 1%;
+    width: 50%;
+  }
+  .team-prologue {
+    padding: 90px 7%;
+    gap: 7%;
+  }
+  .team-member {
+    gap: 7%;
+  }
+  .team-member-art {
+    height: 510px;
+  }
+  .team-member-copy h3 {
+    font-size: 40px;
+  }
+}
+@media (max-width: 700px) {
+  .chapter-reader {
+    height: auto;
+    min-height: 1070px;
+    max-height: none;
+    padding-top: 70px;
+  }
+  .reader-heading {
+    top: 99px;
+    left: 6%;
+    right: 6%;
+  }
+  .reader-heading > span {
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+  .reader-heading p {
+    font-size: 9px;
+  }
+  .chapter-scene {
+    inset: 70px 0 215px;
+  }
+  .chapter-cover-copy {
+    left: 7%;
+    top: 90px;
+    width: 86%;
+  }
+  .chapter-overline {
+    font-size: 8px;
+    letter-spacing: 1.5px;
+  }
+  .chapter-cover-copy h1 {
+    font-size: 56px;
+    letter-spacing: -3px;
+    margin: 22px 0 16px;
+  }
+  .chapter-cover-copy h2 {
+    font-size: 20px;
+    margin-bottom: 13px;
+  }
+  .chapter-cover-copy > p {
+    font-size: 12px;
+    line-height: 1.9;
+    max-width: 310px;
+  }
+  .chapter-enter {
+    margin-top: 18px;
+    padding: 12px 0;
+    font-size: 11px;
+    min-width: 210px;
+  }
+  .chapter-ensemble {
+    top: 390px;
+    right: 4%;
+    width: 88%;
+    height: 330px;
+  }
+  .ensemble-portrait {
+    height: 92%;
+    transform: translateY(calc(var(--portrait) * 12px - 15px))
+      rotate(calc(var(--portrait) * 4deg - 6deg));
+  }
+  .ensemble-portrait > span {
+    font-size: 10px;
+    left: 9px;
+    bottom: 12px;
+    letter-spacing: 2px;
+  }
+  .chapter-side-note {
+    bottom: 0;
+    left: 7%;
+    gap: 14px;
+  }
+  .chapter-side-note > span {
+    font-size: 42px;
+  }
+  .chapter-side-note small {
+    font-size: 8px;
+    letter-spacing: 0.5px;
+  }
+  .chapter-sigil {
+    font-size: 70vw;
+    top: 48%;
+    left: 10%;
+  }
+  .chapter-orbit {
+    width: 90vw;
+    height: 90vw;
+    top: 45%;
+    right: 4%;
+  }
+  .reader-bottom {
+    height: 205px;
+    left: 6%;
+    right: 6%;
+    display: block;
+    padding-top: 17px;
+  }
+  .reader-pagination {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .reader-pagination > span {
+    font-size: 21px;
+  }
+  .reader-pagination button {
+    padding: 5px 10px;
+    font-size: 23px;
+  }
+  .chapter-spine {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0 14px;
+    margin-top: 5px;
+  }
+  .chapter-spine button {
+    padding: 10px 0 0;
+  }
+  .chapter-spine small {
+    font-size: 8px;
+    margin-bottom: 5px;
+  }
+  .chapter-spine span {
+    font-size: 10px;
+  }
+  .chapter-spine i {
+    margin-top: 9px;
+    height: 1px;
+  }
+  .team-cover {
+    height: auto;
+    min-height: 880px;
+    padding-top: 70px;
+  }
+  .chapter-breadcrumb {
+    top: 105px;
+    left: 7%;
+    right: 7%;
+    font-size: 8px;
+    gap: 15px;
+  }
+  .team-cover-copy {
+    top: 180px;
+    width: 86%;
+    left: 7%;
+  }
+  .team-cover-copy h1 {
+    font-size: 56px;
+    letter-spacing: -3px;
+    margin: 25px 0 18px;
+  }
+  .team-cover-copy > p {
+    font-size: 20px;
+  }
+  .team-cover .chapter-ensemble {
+    top: 445px;
+    height: 330px;
+  }
+  .cover-caption {
+    left: 7%;
+    bottom: 35px;
+    font-size: 9px;
+    letter-spacing: 0.5px;
+  }
+  .team-prologue {
+    display: block;
+    padding: 65px 7%;
+  }
+  .prologue-margin {
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 45px;
+  }
+  .prologue-margin > span {
+    font-size: 9px;
+  }
+  .prologue-margin small {
+    font-size: 9px;
+  }
+  .prologue-text h2 {
+    font-size: 29px;
+  }
+  .prologue-text p.prologue-intro {
+    font-size: 18px;
+  }
+  .prologue-text p {
+    font-size: 13px;
+  }
+  .chapter-keywords {
+    gap: 32px;
+    font-size: 14px;
+    margin-top: 30px;
+  }
+  .team-manifesto {
+    padding: 90px 8%;
+  }
+  .team-manifesto blockquote {
+    font-size: 27px;
+    letter-spacing: -1px;
+  }
+  .team-manifesto > small {
+    font-size: 8px;
+  }
+  .team-encounters {
+    padding: 65px 7%;
+  }
+  .encounters-heading {
+    padding-bottom: 40px;
+  }
+  .encounters-heading h2 {
+    font-size: 27px;
+    word-break: keep-all;
+    max-width: 270px;
+  }
+  .encounters-heading p {
+    font-size: 11px;
+  }
+  .team-member {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    margin: 50px 0 80px;
+  }
+  .team-member-art {
+    height: 500px;
+  }
+  .team-member.member-right .team-member-art,
+  .team-member.member-right .team-member-copy {
+    order: initial;
+  }
+  .team-member-copy h3 {
+    font-size: 38px;
+    margin: 18px 0;
+  }
+  .team-member-copy blockquote {
+    font-size: 18px;
+  }
+  .team-member-copy > p {
+    font-size: 12px;
+  }
+  .chapter-next {
+    padding: 40px 7%;
+  }
+  .chapter-next strong {
+    font-size: 25px;
+  }
+  .chapter-next > a:first-child {
+    font-size: 10px;
+  }
+  .chapter-next small {
+    font-size: 8px;
+  }
+}
+@media (max-width: 380px) {
+  .chapter-cover-copy h1,
+  .team-cover-copy h1 {
+    font-size: 48px;
+  }
+  .chapter-cover-copy h2 {
+    font-size: 18px;
+  }
+  .chapter-ensemble {
+    top: 415px;
+    height: 300px;
+  }
+  .chapter-spine {
+    gap: 0 8px;
+  }
+  .chapter-spine span {
+    font-size: 9px;
+  }
+  .team-member-art {
+    height: 440px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .chapter-atmosphere * {
+    animation: none !important;
+  }
+  .ensemble-portrait,
+  .chapter-enter,
+  .team-member-art img {
+    transition: none;
+  }
+}
+/* Keep the mobile chapter in document flow so longer stories never overlap the art. */
+@media (max-width: 700px) {
+  .chapter-reader {
+    min-height: 0;
+    height: auto;
+  }
+  .chapter-reader .chapter-scene {
+    position: relative;
+    inset: auto;
+    padding: 105px 7% 25px;
+    min-height: 0;
+  }
+  .chapter-reader .chapter-cover-copy {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: 100%;
+  }
+  .chapter-reader .chapter-ensemble {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: 100%;
+    height: 330px;
+    margin: 40px 0 30px;
+  }
+  .chapter-reader .chapter-side-note {
+    position: relative;
+    inset: auto;
+  }
+  .chapter-reader .reader-bottom {
+    position: relative;
+    inset: auto;
+    height: auto;
+    margin: 0 6%;
+    padding: 20px 0 25px;
+  }
+}
+.ensemble-4 .ensemble-portrait {
+  flex-basis: 34%;
+}
