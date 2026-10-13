@@ -1,2 +1,2 @@
-import CastDirectory from '../../components/CastDirectory';
-export default function Page() { return <CastDirectory group={5} />; }
+import EquinoxChapter from '../../components/EquinoxChapter';
+export default function Page() { return <EquinoxChapter />; }

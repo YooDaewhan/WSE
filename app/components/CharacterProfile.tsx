@@ -14,6 +14,8 @@ import Header from "./Header";
 import Footer from "./Footer";
 import CharacterSignature from "./CharacterSignature";
 import { useExperience } from "./Experience";
+import "../equinox.css";
+import { EquinoxName, EquinoxTypeField } from "./EquinoxName";
 export default function CharacterProfile({ slug }: { slug: string }) {
   const c = cast.find((c) => c.slug === slug)!;
   const d = directions[slug];
@@ -28,7 +30,7 @@ export default function CharacterProfile({ slug }: { slug: string }) {
   const clean = (s: string) => !/추후|내용을 채워|\(추가\)/.test(s);
   return (
     <div
-      className={`wse-site profile theme-${d.effect} character-${slug}`}
+      className={`wse-site profile theme-${d.effect} character-${slug}${c.group === 5 ? " equinox-profile" : ""}`}
       style={{ "--accent": d.color, "--tone": d.secondary } as CSSProperties}
     >
       <Header />
@@ -52,6 +54,7 @@ export default function CharacterProfile({ slug }: { slug: string }) {
               {c.generation} / {c.role.toUpperCase()}
             </span>
           </div>
+          {c.group === 5 && <EquinoxTypeField slug={slug} korean={c.name} />}
           <div className="world-effects" aria-hidden="true">
             <div className="world-ring" />
             <div className="world-ring ring-two" />
@@ -61,7 +64,9 @@ export default function CharacterProfile({ slug }: { slug: string }) {
             <span className="world-motif">{d.motif}</span>
           </div>
           <div className="profile-copy">
+            {c.group === 5 && <Link className="eq-profile-identity" href="/services/generation5" aria-label="이퀴녹스 이야기로"><span className="eq-profile-seal"><Image src={`/images/equinox/${slug}-mark.png`} alt={`${c.name}의 문장`} width={76} height={76} /></span><span>EQUINOX<br />BETWEEN DAY & NIGHT</span></Link>}
             <span className="eyebrow">{d.chapter}</span>
+            {c.group === 5 && <EquinoxName slug={slug} />}
             <h1>
               {c.name.replace("(미정)", "")}
               <small>
@@ -104,6 +109,7 @@ export default function CharacterProfile({ slug }: { slug: string }) {
             style={{ x: paused ? 0 : rx, y: paused ? 0 : ry }}
           >
             <div className="portrait-frame" />
+            {c.group === 5 && <div className="eq-personal-crest" aria-hidden="true"><Image src={`/images/equinox/${slug}-mark.png`} width={180} height={180} alt="" /><span>{c.birthplace} / {c.role.toUpperCase()}</span></div>}
             <AnimatePresence mode="wait">
               <motion.div
                 className="portrait-wrap"
@@ -151,8 +157,10 @@ export default function CharacterProfile({ slug }: { slug: string }) {
             SCROLL TO DISCOVER <span>↓</span>
           </a>
         </section>
+        {c.group === 5 && <nav className="eq-personal-nav" aria-label="이퀴녹스 캐릭터"><span>FOUR SOULS<br /><strong>다른 마음을 만나보세요.</strong></span>{cast.filter(member => member.group === 5).map(member => <Link href={member.href} key={member.slug} aria-current={member.slug === slug ? "page" : undefined}><span className="eq-seal"><Image src={`/images/equinox/${member.slug}-mark.png`} width={64} height={64} alt="" /></span><span>{member.name}<small>{member.role.toUpperCase()}</small></span><span aria-hidden="true">↗</span></Link>)}</nav>}
         <section id="story" className="profile-story section-shell">
           <div>
+            {c.group === 5 && <div className="eq-story-crest"><Image src={`/images/equinox/${slug}-mark.png`} width={160} height={160} alt={`${c.name}의 문장`} /><span>PERSONAL ARCHIVE<br />EQUINOX / {c.role.toUpperCase()}</span></div>}
             <span className="eyebrow">01 / BEHIND THE NAME</span>
             <h2>
               {d.title}
