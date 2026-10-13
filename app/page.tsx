@@ -8,7 +8,7 @@ import Footer from "./components/Footer";
 import { useExperience } from "./components/Experience";
 import { cast, generations } from "./data/cast";
 import { directions } from "./data/art-direction";
-import NewsBoard from "./components/NewsBoard";
+import { news } from "./data/news";
 import ShopPreview from "./components/ShopPreview";
 import "./magazine.css";
 const MotionImage = motion.create(Image);
@@ -25,6 +25,16 @@ const FIRST_ISSUE = Date.UTC(2026, 0, 5);
 const WEEK = 7 * 24 * 60 * 60 * 1000;
 const MONTHS = ["JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"];
 const ease = [0.22, 1, 0.36, 1] as const;
+const teamBlurbs = [
+  "아무도 걷지 않은 길에 첫 발자국을 남기는 이들.",
+  "시작을 망설이는 순간부터, 첫걸음 너머까지 함께하는 정령들.",
+  "평범한 일상에서 자신만의 역전을 꿈꾸는 이들.",
+  "혼자 견디기 어려운 순간, 곁으로 다가오는 구원의 손길.",
+  "당신의 마음을 두고 펼쳐지는 천사와 악마의 이야기.",
+  "지친 하루에 다시 움직일 작은 자극을 건네는 이들.",
+  "쉽게 물드는 마음을 지키기 위해 모인 이들.",
+];
+const lead = news[0];
 const plain = (name: string) => name.replace("(미정)", "");
 export default function Home() {
   const [index, setIndex] = useState(0);
@@ -32,6 +42,7 @@ export default function Home() {
   const c = cast.find((c) => c.slug === featured[index])!;
   const d = directions[c.slug];
   const others = featured.filter((s) => s !== c.slug).map((s) => cast.find((m) => m.slug === s)!);
+  const next = cast.find((m) => m.slug === featured[(index + 1) % featured.length])!;
   const { paused } = useExperience();
   const still = useReducedMotion() || paused;
   const video = useRef<HTMLVideoElement>(null);
@@ -182,11 +193,7 @@ export default function Home() {
           className="mag-story"
           style={{ "--accent": d.color, "--tone": d.secondary } as CSSProperties}
         >
-          <header className="mag-folio">
-            <span>p.04</span>
-            <span>COVER STORY</span>
-            <span>월간 WSE · VOL.{issue.vol || "—"}</span>
-          </header>
+          <Folio page="04" kind="COVER STORY" vol={issue.vol} />
           <div className="mag-story-spread" key={c.slug}>
             <motion.figure
               className="mag-story-photo"
@@ -262,16 +269,13 @@ export default function Home() {
             <Link className="text-link" href="/services">ALL CAST ↗</Link>
           </div>
         </section>
-        <section id="special" className="worlds-section section-shell">
-          <div className="section-top">
-            <span className="eyebrow">p.12 — SPECIAL</span>
-            <span>어떤 이야기부터 만나볼까요?</span>
-          </div>
-          <div className="section-heading">
+        <section id="special" className="mag-special">
+          <Folio page="12" kind="SPECIAL" vol={issue.vol} />
+          <div className="mag-special-head">
             <h2>
-              지금 당신에게
+              일곱 개의 팀,
               <br />
-              <em>필요한 이야기.</em>
+              <em>일곱 개의 저녁.</em>
             </h2>
             <p>
               시작을 앞둔 날에도, 잠시 쉬고 싶은 날에도.
@@ -279,17 +283,36 @@ export default function Home() {
               마음이 가는 팀을 골라 이야기를 만나보세요.
             </p>
           </div>
-          <div className="story-grid">
-            {generations.map((g) => (
-              <Link key={g.id} href={g.href} className="story-card">
-                <span className="eyebrow">{g.label} / {g.theme}</span>
-                <span className="story-mark" aria-hidden="true">{["↗", "✳", "⚡", "+", "◐", "✦", "◇"][g.id - 1]}</span>
-                <strong>{g.teamName}</strong>
-                <p>{["아무도 걷지 않은 길에 첫 발자국을 남기는 이들.", "시작을 망설이는 순간부터, 첫걸음 너머까지 함께하는 정령들.", "평범한 일상에서 자신만의 역전을 꿈꾸는 이들.", "혼자 견디기 어려운 순간, 곁으로 다가오는 구원의 손길.", "당신의 마음을 두고 펼쳐지는 천사와 악마의 이야기.", "지친 하루에 다시 움직일 작은 자극을 건네는 이들.", "쉽게 물드는 마음을 지키기 위해 모인 이들."][g.id - 1]}</p>
-                <span className="story-action">팀 만나보기 ↗</span>
-              </Link>
-            ))}
-          </div>
+          <ol className="mag-teams">
+            {generations.map((g, i) => {
+              const members = cast.filter((m) => m.group === g.id && m.image);
+              const color = directions[members[0]?.slug]?.color ?? "var(--acid)";
+              return (
+                <motion.li
+                  key={g.id}
+                  initial={still ? false : { opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.4 }}
+                  transition={{ duration: 0.6, ease, delay: (i % 2) * 0.06 }}
+                >
+                  <Link href={g.href} style={{ "--accent": color } as CSSProperties}>
+                    <span className="mag-team-no">{String(g.id).padStart(2, "0")}</span>
+                    <span className="mag-team-name">
+                      <small>{g.label} · {g.theme}</small>
+                      {g.teamName}
+                    </span>
+                    <span className="mag-team-blurb">{teamBlurbs[g.id - 1]}</span>
+                    <span className="mag-team-faces" aria-hidden="true">
+                      {members.slice(0, 4).map((m) => (
+                        <Image key={m.slug} src={m.image!} alt="" width={96} height={144} sizes="56px" />
+                      ))}
+                    </span>
+                    <span className="mag-team-arrow" aria-hidden="true">↗</span>
+                  </Link>
+                </motion.li>
+              );
+            })}
+          </ol>
         </section>
         <section id="film" className="evening-film">
           <video
@@ -303,7 +326,7 @@ export default function Home() {
             aria-label="햇살이 머무는 WSE의 방"
           />
           <div>
-            <span className="eyebrow">WE START EVENING</span>
+            <span className="eyebrow">p.18 — FILM · 햇살이 머무는 방</span>
             <h2>
               당신의 하루에
               <br />
@@ -314,26 +337,114 @@ export default function Home() {
             </Link>
           </div>
         </section>
-        <section className="home-news section-shell" id="news">
-          <div className="section-top"><span className="eyebrow">p.20 — NEWS</span><span>WSE의 새로운 소식</span></div>
-          <div className="section-heading"><h2>우리의 <em>다음 소식.</em></h2><p>공지와 새로운 이야기, 굿즈 소식을 한곳에서.</p><Link className="text-link" href="/news">전체 소식 ↗</Link></div>
-          <NewsBoard compact />
+        <section id="news" className="mag-news">
+          <Folio page="20" kind="NEWS IN BRIEF" vol={issue.vol} />
+          <div className="mag-news-paper">
+            <div className="mag-news-nameplate">
+              <span>{issue.date}</span>
+              <strong>The Evening Post</strong>
+              <span>VOL.{issue.vol || "—"} · 석간</span>
+            </div>
+            <article className="mag-news-lead">
+              <span className="mag-kicker">{lead.category} · 헤드라인</span>
+              <h2>
+                <Link href={`/news/${lead.slug}`}>{lead.title}</Link>
+              </h2>
+              <div className="mag-news-columns">
+                {lead.body.map((p, i) => (
+                  <p key={i}>{p}</p>
+                ))}
+              </div>
+            </article>
+            <aside className="mag-news-side">
+              <div>
+                <span className="mag-kicker">다음 호 예고</span>
+                <Link href={next.href} className="mag-news-next">
+                  <Image src={next.image!} alt="" width={240} height={360} sizes="120px" />
+                  <span>
+                    <small>VOL.{issue.vol ? issue.vol + 1 : "—"} 커버</small>
+                    <strong>{plain(next.name)}</strong>
+                    {directions[next.slug].title}
+                  </span>
+                </Link>
+              </div>
+              <div>
+                <span className="mag-kicker">{news.length > 1 ? "단신" : "아카이브"}</span>
+                <ul>
+                  {news.slice(1, 4).map((n) => (
+                    <li key={n.slug}>
+                      <Link href={`/news/${n.slug}`}>{n.title}</Link>
+                    </li>
+                  ))}
+                  <li>
+                    <Link href="/news">지난 소식 전체 보기 ↗</Link>
+                  </li>
+                </ul>
+              </div>
+            </aside>
+          </div>
         </section>
         <section className="home-shop section-shell" id="shop">
-          <div className="section-top"><span className="eyebrow">p.24 — SHOP</span><span>COMING SOON</span></div>
+          <Folio page="24" kind="SHOP · COMING SOON" vol={issue.vol} />
           <ShopPreview />
         </section>
-        <section className="home-contact section-shell" id="connect">
-          <span className="eyebrow">p.28 — LETTERS · 독자 엽서</span>
-          <Link href="/contact">
-            다음 이야기를,
-            <br />
-            <em>함께 만들어요.</em>
-            <span>↗</span>
-          </Link>
+        <section id="connect" className="mag-letters">
+          <Folio page="28" kind="LETTERS · 독자 엽서" vol={issue.vol} />
+          <div className="mag-letters-spread">
+            <div className="mag-editor">
+              <span className="mag-kicker">편집후기</span>
+              <p>
+                이번 호도 끝까지 읽어주셔서 고마워요. 하루의 끝에 잠깐 들러
+                누군가의 이야기를 만나는 일, 그게 WSE가 매주 저녁을 여는 이유예요.
+              </p>
+              <p>다음 호에서도 새로운 얼굴로 찾아갈게요.</p>
+              <span className="mag-sign">— WSE 편집부</span>
+            </div>
+            <motion.div
+              className="mag-postcard"
+              initial={still ? false : { rotate: -6, y: 40, opacity: 0 }}
+              whileInView={{ rotate: -2, y: 0, opacity: 1 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.9, ease }}
+            >
+              <Link href="/contact">
+                <span className="mag-postcard-msg">
+                  <small>POST CARD · 독자 엽서</small>
+                  다음 이야기를,
+                  <br />
+                  <em>함께 만들어요.</em>
+                  <span className="mag-postcard-cta">엽서 보내기 ↗</span>
+                </span>
+                <span className="mag-postcard-addr">
+                  <span className="mag-stamp" style={{ "--accent": d.color } as CSSProperties}>
+                    <Image src={c.image!} alt="" width={120} height={180} sizes="80px" />
+                  </span>
+                  <span className="mag-postmark" aria-hidden="true">
+                    WSE
+                    <br />
+                    VOL.{issue.vol || "—"}
+                  </span>
+                  <span className="mag-addr-lines">
+                    <span>받는 사람 — WSE 편집부</span>
+                    <span>협업 · 제안 · 팬레터 모두 환영</span>
+                    <span>wsestudio.net/contact</span>
+                  </span>
+                </span>
+              </Link>
+            </motion.div>
+          </div>
         </section>
       </main>
       <Footer />
     </div>
+  );
+}
+function Folio({ page, kind, vol }: { page: string; kind: string; vol: number }) {
+  return (
+    <header className="mag-folio">
+      <span>p.{page}</span>
+      <span>{kind}</span>
+      <span>월간 WSE · VOL.{vol || "—"}</span>
+    </header>
   );
 }
