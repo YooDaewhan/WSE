@@ -1,0 +1,417 @@
+/* SAME SKY — 스크롤하면 노을에서 밤하늘로. 캐릭터는 별자리로. */
+.sky-site {
+  background: transparent;
+}
+.sky-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+}
+.sky-stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  border-radius: 50%;
+  animation: sky-twinkle 6s ease-in-out infinite alternate;
+}
+@keyframes sky-twinkle {
+  to { filter: brightness(0.55); }
+}
+.sky-site main {
+  position: relative;
+  color: #fff;
+}
+.sky-chip {
+  display: inline-block;
+  padding: 6px 12px;
+  border: 1px solid #ffffff55;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+}
+.sky-head {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 18px 40px;
+  margin-bottom: 40px;
+}
+.sky-head .sky-chip {
+  grid-column: 1 / -1;
+  justify-self: start;
+}
+.sky-head h2 {
+  font-size: clamp(44px, 5.6vw, 100px);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.06em;
+}
+.sky-head em {
+  font-family: Georgia, serif;
+  font-weight: 400;
+}
+.sky-head p {
+  max-width: 22em;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #ffffffb3;
+}
+
+/* 노을 히어로 */
+.sky-hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100svh;
+  padding: 120px 6% 80px;
+  overflow: hidden;
+  color: #3a1f2a;
+}
+.sky-sun {
+  position: absolute;
+  right: 12%;
+  top: 22%;
+  width: clamp(180px, 24vw, 380px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 45%, #fff6d8, #ffc777 45%, #ff8f6b);
+  box-shadow: 0 0 120px 40px #ffb27a88;
+}
+.sky-horizon {
+  position: absolute;
+  inset: auto 0 0;
+  height: 26%;
+  background: linear-gradient(#e9877f00, #6c3b5c);
+  backdrop-filter: blur(2px);
+}
+.sky-horizon::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 1px;
+  background: #ffffff66;
+}
+.sky-kicker {
+  position: relative;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 4px;
+}
+.sky-hero h1 {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0 clamp(36px, 4vw, 64px);
+  font-size: clamp(64px, 10vw, 180px);
+  font-weight: 900;
+  line-height: 0.86;
+  letter-spacing: -0.065em;
+}
+.sky-hero h1 span:nth-child(2) {
+  font-family: Georgia, serif;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: -0.05em;
+}
+.sky-hero p {
+  position: relative;
+  font-size: clamp(16px, 1.4vw, 20px);
+  line-height: 1.7;
+}
+.sky-cue {
+  position: absolute;
+  left: 6%;
+  bottom: 34px;
+  z-index: 1;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-decoration: none;
+}
+.sky-cue span {
+  display: inline-block;
+  margin-left: 6px;
+  animation: sky-bob 1.6s ease-in-out infinite;
+}
+@keyframes sky-bob {
+  50% { transform: translateY(5px); }
+}
+
+/* 별자리 지도 */
+.sky-map {
+  padding: 140px 4.5% 120px;
+}
+.sky-map-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2.1fr) minmax(280px, 1fr);
+  align-items: center;
+  gap: clamp(24px, 4vw, 64px);
+}
+.sky-chart {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.sky-line {
+  fill: none;
+  stroke: #ffffff55;
+  stroke-width: 1.2;
+}
+.sky-label {
+  fill: #fff;
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  text-anchor: middle;
+}
+.sky-sublabel {
+  fill: #ffffff88;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-anchor: middle;
+}
+a:hover .sky-label {
+  fill: #ffe9a8;
+}
+.sky-star {
+  cursor: pointer;
+  outline: none;
+}
+.sky-star-halo {
+  fill: var(--accent);
+  opacity: 0;
+  transition: opacity 0.3s, r 0.3s;
+}
+.sky-star-core {
+  fill: #fff;
+  filter: drop-shadow(0 0 6px var(--accent)) drop-shadow(0 0 2px #fff);
+  transition: r 0.3s;
+}
+.sky-star:hover .sky-star-halo,
+.sky-star:focus-visible .sky-star-halo {
+  opacity: 0.25;
+}
+.sky-star.is-on .sky-star-halo {
+  opacity: 0.4;
+  animation: sky-pulse 2s ease-in-out infinite;
+}
+.sky-star.is-on .sky-star-core {
+  r: 8px;
+  fill: var(--accent);
+}
+@keyframes sky-pulse {
+  50% { opacity: 0.12; }
+}
+.sky-card {
+  overflow: hidden;
+  border: 1px solid #ffffff2a;
+  border-radius: 20px;
+  background: #0b0f26aa;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 0 60px -20px var(--accent);
+}
+.sky-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3.4;
+  object-fit: cover;
+  object-position: center 22%;
+}
+.sky-card > div {
+  padding: 22px 24px 26px;
+}
+.sky-card small {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--accent);
+}
+.sky-card h3 {
+  margin: 8px 0 12px;
+  font-size: 34px;
+  font-weight: 900;
+  letter-spacing: -0.05em;
+}
+.sky-card p {
+  margin: 0 0 18px;
+  font: 400 19px/1.5 Georgia, serif;
+  color: #ffffffd9;
+}
+.sky-card a {
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* 영상, 소식, 샵 — 밤하늘 위에 */
+.sky-site .evening-film {
+  margin: 0 4.5%;
+  border-radius: 24px;
+  overflow: hidden;
+}
+.sky-news {
+  padding: 140px 4.5% 110px;
+}
+.sky-more {
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+}
+.sky-news ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid #ffffff33;
+}
+.sky-news li a {
+  display: grid;
+  grid-template-columns: 70px minmax(0, 1fr) 30px;
+  align-items: center;
+  gap: 20px;
+  padding: 26px 8px;
+  border-bottom: 1px solid #ffffff33;
+  color: inherit;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+.sky-news li a:hover {
+  background: #ffffff0f;
+}
+.sky-news li span {
+  font-size: 12px;
+  color: #ffffff99;
+}
+.sky-news li strong {
+  font-size: clamp(18px, 1.6vw, 24px);
+  font-weight: 700;
+  word-break: keep-all;
+}
+.sky-news li i {
+  font-style: normal;
+  color: #ffe9a8;
+  transition: transform 0.6s;
+}
+.sky-news li a:hover i {
+  transform: rotate(180deg) scale(1.3);
+}
+.sky-site .home-shop {
+  margin: 0 4.5%;
+  border-radius: 24px;
+  color: var(--ink);
+}
+
+/* 소원 */
+.sky-wish {
+  position: relative;
+  padding: 160px 4.5% 170px;
+  overflow: hidden;
+  text-align: center;
+}
+.sky-wish > a {
+  display: block;
+  margin-top: 26px;
+  color: #fff;
+  text-decoration: none;
+  font-size: clamp(40px, 6vw, 110px);
+  font-weight: 900;
+  line-height: 1.02;
+  letter-spacing: -0.06em;
+}
+.sky-wish em {
+  font-family: Georgia, serif;
+  font-weight: 400;
+}
+.sky-wish > a > span {
+  display: block;
+  margin-top: 30px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #ffe9a8;
+}
+.sky-meteor {
+  position: absolute;
+  top: 18%;
+  left: 70%;
+  width: 180px;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #fff, transparent);
+  transform: rotate(-28deg);
+  opacity: 0;
+  animation: sky-meteor 5s ease-in 1.5s infinite;
+}
+@keyframes sky-meteor {
+  0% { opacity: 0; transform: rotate(-28deg) translateX(0); }
+  4% { opacity: 1; }
+  14% { opacity: 0; transform: rotate(-28deg) translateX(-620px); }
+  100% { opacity: 0; transform: rotate(-28deg) translateX(-620px); }
+}
+.sky-wish > a:hover ~ .sky-meteor,
+.sky-wish:hover .sky-meteor {
+  animation-duration: 1.6s;
+  animation-delay: 0s;
+}
+
+@media (max-width: 900px) {
+  .sky-map-grid {
+    grid-template-columns: 1fr;
+  }
+  .sky-card {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+  }
+  .sky-card img {
+    height: 100%;
+    aspect-ratio: auto;
+  }
+}
+@media (max-width: 700px) {
+  .sky-hero {
+    padding: 110px 16px 80px;
+  }
+  .sky-sun {
+    right: -10%;
+    top: 14%;
+  }
+  .sky-map,
+  .sky-news {
+    padding: 90px 16px 80px;
+  }
+  .sky-head {
+    grid-template-columns: 1fr;
+  }
+  .sky-label {
+    font-size: 26px;
+  }
+  .sky-sublabel {
+    display: none;
+  }
+  .sky-site .evening-film,
+  .sky-site .home-shop {
+    margin: 0 16px;
+  }
+  .sky-news li a {
+    grid-template-columns: 1fr 24px;
+  }
+  .sky-news li span {
+    display: none;
+  }
+  .sky-wish {
+    padding: 110px 16px 120px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sky-stars,
+  .sky-cue span,
+  .sky-star.is-on .sky-star-halo,
+  .sky-meteor {
+    animation: none;
+  }
+}
