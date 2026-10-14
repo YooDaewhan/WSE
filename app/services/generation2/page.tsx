@@ -1,2 +1,2 @@
-import CastDirectory from '../../components/CastDirectory';
-export default function Page() { return <CastDirectory group={2} />; }
+import StarterChapter from '../../components/StarterChapter';
+export default function Page() { return <StarterChapter />; }
