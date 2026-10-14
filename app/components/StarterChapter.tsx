@@ -11,6 +11,8 @@ import Footer from "./Footer";
 import "../starter.css";
 
 const members = cast.filter((member) => member.group === 2);
+/* 타이틀 STAR 색 — 이그나이터 붉은 계열, 네비게이터 푸른 계열, 셀러브레이터 노란 계열 */
+const starColors: Record<string, string> = { igniter: "#e5482b", navigator: "#2b86c9", celebrator: "#e8ad12" };
 const types: Record<string, string> = { igniter: "불", navigator: "바람", celebrator: "빛" };
 const names: Record<string, { en: string; ja: string; el: string; elJa: string }> = {
   igniter: { en: "IGNITER", ja: "イグナイター", el: "FIRE", elJa: "炎" },
@@ -80,7 +82,7 @@ export default function StarterChapter() {
           <div className="sp-topline"><Link href="/services">← 모든 이야기</Link><span>WSE ORIGINAL / 1기</span></div>
           <div className="sp-intro">
             <span className="sp-kicker">WSE POCKET DEX · VOL.01</span>
-            <h1>STARTER<br /><em>PACK.</em></h1>
+            <h1><span className="sp-star" style={{ color: starColors[member.slug] }}>STAR</span>TER<br /><em>PACK.</em></h1>
             <p className="sp-tagline">스타터팩 — {content.tagline}</p>
             <div className="sp-textbox" aria-live="polite">
               <span className="sp-speaker">{speaker}</span>
