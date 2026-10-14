@@ -1,2 +1,2 @@
-import CastDirectory from '../../components/CastDirectory';
-export default function Page() { return <CastDirectory group={6} />; }
+import StimpackChapter from '../../components/StimpackChapter';
+export default function Page() { return <StimpackChapter />; }
