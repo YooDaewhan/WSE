@@ -1,2 +1,2 @@
-import CastDirectory from '../../components/CastDirectory';
-export default function Page() { return <CastDirectory group={7} />; }
+import SecurityChapter from '../../components/SecurityChapter';
+export default function Page() { return <SecurityChapter />; }
