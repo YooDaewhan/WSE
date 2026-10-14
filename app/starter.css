@@ -199,3 +199,4 @@ html[data-motion=paused] .sp-type-track { animation-play-state: paused; }
   .sp-console-wrap { order: 1; margin: 40px 0 8px; }
   .sp-textbox, .sp-meta { order: 2; }
 }
+.sp-star { transition: color .5s ease; }
