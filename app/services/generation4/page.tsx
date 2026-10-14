@@ -1,2 +1,2 @@
-import CastDirectory from '../../components/CastDirectory';
-export default function Page() { return <CastDirectory group={4} />; }
+import RescueChapter from '../../components/RescueChapter';
+export default function Page() { return <RescueChapter />; }
