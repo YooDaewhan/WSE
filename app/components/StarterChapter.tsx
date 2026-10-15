@@ -160,6 +160,7 @@ export default function StarterChapter() {
                 <article className="sp-card" key={m.slug} style={{ "--sp-accent": d.color, "--sp-deep": d.secondary } as React.CSSProperties}>
                   <div className="sp-card-art">
                     <span className="sp-card-no">{no(i)}</span>
+                    <span className="sp-card-mark"><Image src={`/images/starter/${m.slug}-mark.webp`} alt={`${m.name}의 문양`} width={120} height={120} /></span>
                     <Image src={m.image!} alt={m.name} width={600} height={900} sizes="(max-width: 900px) 90vw, 30vw" />
                   </div>
                   <div className="sp-card-body">
