@@ -1,0 +1,95 @@
+/* 0기 새벽조 — 먹과 수묵화 */
+.dawn-site { --dw-hanji: #efe8d8; --dw-ink: #1b1a17; --dw-wash: #6d6a62; --dw-seal: #b2301f; --dw-silk: #d8cdb3; background: var(--dw-hanji); color: var(--dw-ink); font-family: var(--dw-serif), serif; }
+.dawn-site a, .dawn-site button { color: inherit; }
+.dawn-site main { background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .3 0 0 0 0 .22 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E"), var(--dw-hanji); }
+.dw-kicker { font-size: 11px; letter-spacing: .3em; color: var(--dw-wash); }
+
+/* hero — 새벽 산수 */
+.dw-hero { position: relative; display: grid; grid-template-columns: auto 1fr; gap: 6vw; align-items: start; min-height: 100svh; padding: 140px 8vw 0; overflow: hidden; cursor: crosshair; }
+.dw-topline { position: absolute; top: 96px; left: 8vw; right: 8vw; z-index: 3; display: flex; justify-content: space-between; font-size: 11px; letter-spacing: .15em; color: var(--dw-wash); }
+.dw-scenery { position: absolute; inset: auto 0 0; height: 62%; pointer-events: none; }
+.dw-scenery svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.dw-sun { position: absolute; left: 62%; bottom: 46%; width: clamp(110px, 12vw, 190px); aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, #d2543f 0 52%, #d2543f99 62%, transparent 72%); filter: url(#dw-bleed) blur(1px); opacity: .85; animation: dw-rise 4.5s cubic-bezier(.2,.7,.2,1) both; }
+@keyframes dw-rise { from { transform: translateY(70%); opacity: 0; } }
+.dw-far, .dw-mid, .dw-near { animation: dw-wash 2.4s ease-out both; }
+.dw-mid { animation-delay: .4s; }
+.dw-near { animation-delay: .8s; }
+@keyframes dw-wash { from { opacity: 0; } }
+.dw-mist { position: absolute; left: -20%; right: -20%; bottom: 22%; height: 26%; background: radial-gradient(ellipse at 30% 50%, var(--dw-hanji) 0, transparent 60%), radial-gradient(ellipse at 75% 60%, var(--dw-hanji) 0, transparent 55%); opacity: .9; animation: dw-drift 26s ease-in-out infinite alternate; }
+.dw-mist.two { bottom: 4%; height: 20%; opacity: .7; animation-duration: 34s; animation-direction: alternate-reverse; }
+@keyframes dw-drift { to { transform: translateX(8%); } }
+
+.dw-title { position: relative; z-index: 2; display: flex; gap: 18px; align-items: flex-start; }
+.dw-title h1 { display: flex; flex-direction: column; font-family: var(--dw-brush), serif; font-weight: 400; font-size: clamp(110px, 13vw, 210px); line-height: .82; letter-spacing: 0; }
+.dw-title h1 span { display: block; animation: dw-stroke 1.4s cubic-bezier(.3,.6,.2,1) both; }
+.dw-title h1 span:nth-child(2) { animation-delay: .35s; }
+.dw-title h1 span:nth-child(3) { animation-delay: .7s; }
+@keyframes dw-stroke { from { opacity: 0; filter: blur(10px); transform: scale(1.08); } }
+.dw-seal { margin-top: 18px; padding: 8px 9px; background: var(--dw-seal); color: #f6e9dc; font: 700 20px/1.15 var(--dw-serif), serif; border-radius: 3px; transform: rotate(4deg); filter: url(#dw-rough); box-shadow: inset 0 0 0 2px #f6e9dc55; animation: dw-stamp .5s 1.6s cubic-bezier(.3,1.6,.5,1) both; }
+@keyframes dw-stamp { from { opacity: 0; transform: rotate(4deg) scale(1.6); } }
+
+.dw-intro { position: relative; z-index: 2; max-width: 460px; padding-top: 30px; animation: dw-wash 1.6s .9s both; }
+.dw-tagline { margin-top: 22px; font-family: var(--dw-brush), serif; font-size: clamp(44px, 4.4vw, 72px); line-height: 1.1; }
+.dw-desc { margin-top: 20px; font-size: 16px; line-height: 2; color: #3c3a34; word-break: keep-all; }
+.dw-hint { margin-top: 26px; font-size: 12px; letter-spacing: .08em; color: var(--dw-wash); }
+.dw-hint::before { content: "● "; color: var(--dw-ink); }
+
+.dw-drop { position: absolute; z-index: 1; width: calc(140px * var(--s)); aspect-ratio: 1; margin: calc(-70px * var(--s)) 0 0 calc(-70px * var(--s)); border-radius: 50%; background: radial-gradient(circle, #1b1a17 0 18%, #1b1a17cc 34%, #1b1a1744 56%, transparent 70%); filter: url(#dw-bleed); pointer-events: none; mix-blend-mode: multiply; animation: dw-spread 2.6s cubic-bezier(.1,.7,.3,1) forwards; }
+@keyframes dw-spread { from { transform: scale(.08); opacity: 1; } 60% { opacity: .75; } to { transform: scale(1); opacity: 0; } }
+
+/* 족자 */
+.dw-gallery { padding: 120px 8vw 110px; }
+.dw-head { text-align: center; margin-bottom: 70px; }
+.dw-head h2 { margin-top: 14px; font-family: var(--dw-brush), serif; font-weight: 400; font-size: clamp(52px, 5.6vw, 88px); line-height: 1; }
+.dw-head p { margin-top: 16px; color: var(--dw-wash); }
+.dw-scrolls { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3vw; align-items: start; }
+.dw-scroll { display: flex; flex-direction: column; align-items: center; animation: dw-unroll 1.2s var(--d) cubic-bezier(.3,.7,.2,1) both; }
+.dw-scroll:nth-child(even) { margin-top: 60px; }
+@keyframes dw-unroll { from { clip-path: inset(0 0 100% 0); } to { clip-path: inset(0 0 -10% 0); } }
+.dw-rod { position: relative; z-index: 1; width: 112%; height: 14px; border-radius: 7px; background: linear-gradient(#5a3b26, #2c1d13); box-shadow: 0 4px 6px #0003; }
+.dw-rod::before, .dw-rod::after { content: ""; position: absolute; top: -3px; width: 12px; height: 20px; border-radius: 4px; background: #1b1a17; }
+.dw-rod::before { left: -8px; }
+.dw-rod::after { right: -8px; }
+.dw-rod.bottom { height: 18px; border-radius: 9px; }
+.dw-silk { display: block; width: 100%; padding: 22px 16px 26px; background: linear-gradient(90deg, #00000010, transparent 8%, transparent 92%, #00000010), var(--dw-silk); box-shadow: 0 18px 30px -18px #1b1a1788; transition: transform .5s cubic-bezier(.2,.8,.2,1); transform-origin: top center; }
+.dw-scroll:hover .dw-silk { transform: rotate(-1deg); }
+.dw-paper { position: relative; display: block; aspect-ratio: 2 / 3.2; overflow: hidden; background: var(--dw-hanji); box-shadow: inset 0 0 0 1px #00000014; }
+.dw-paper img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 25%; filter: grayscale(1) brightness(1.5) contrast(.82); mix-blend-mode: multiply; mask-image: radial-gradient(ellipse 72% 70% at 50% 42%, #000 52%, transparent 80%); transition: filter 1.2s ease; }
+.dw-scroll:hover .dw-paper img, .dw-scroll:focus-visible .dw-paper img { filter: grayscale(0) contrast(1.05) brightness(1.02); }
+.dw-motif { position: absolute; top: 4%; left: 6%; z-index: 0; font: 400 clamp(70px, 7vw, 120px)/1 var(--dw-brush), serif; color: #1b1a1722; }
+.dw-name { position: absolute; z-index: 1; top: 8%; right: 9%; writing-mode: vertical-rl; font: 400 clamp(26px, 2.4vw, 38px)/1 var(--dw-brush), serif; letter-spacing: .08em; padding: 12px 6px; background: var(--dw-hanji); border: 1px solid #1b1a1733; box-shadow: 2px 2px 0 #1b1a1714; }
+.dw-mini-seal { position: absolute; z-index: 1; right: 9%; bottom: 7%; width: 30px; height: 30px; display: grid; place-items: center; background: var(--dw-seal); color: #f6e9dc; font: 700 16px/1 var(--dw-serif), serif; border-radius: 2px; filter: url(#dw-rough); }
+.dw-caption { margin-top: 22px; text-align: center; font-size: 14px; line-height: 1.8; color: #3c3a34; word-break: keep-all; }
+.dw-caption b { display: block; font: 600 10px/1 Inter, system-ui, sans-serif; letter-spacing: .24em; color: var(--dw-wash); margin-bottom: 8px; }
+.dw-scroll:focus-visible { outline: 2px solid var(--dw-seal); outline-offset: 8px; }
+
+/* 발문 — 먹 */
+.dw-ink { position: relative; padding: 140px 8vw; background: var(--dw-ink); color: #ece5d3; overflow: hidden; text-align: center; }
+.dw-ink::before { content: ""; position: absolute; inset: -20%; background: radial-gradient(ellipse at 20% 30%, #3a372f 0, transparent 45%), radial-gradient(ellipse at 80% 75%, #2f2c26 0, transparent 40%); filter: url(#dw-bleed); }
+.dw-ink-inner { position: relative; max-width: 720px; margin: 0 auto; }
+.dw-ink .dw-kicker { color: #a39d8c; }
+.dw-ink p { margin-top: 30px; font-size: 17px; line-height: 2.2; color: #cfc8b6; word-break: keep-all; }
+.dw-ink blockquote { margin-top: 50px; font-family: var(--dw-brush), serif; font-size: clamp(40px, 4.4vw, 66px); line-height: 1.2; color: #f4eddb; word-break: keep-all; text-wrap: balance; }
+.dw-ink blockquote::after { content: "曉"; display: inline-grid; place-items: center; width: 44px; height: 44px; margin-left: 16px; vertical-align: middle; background: var(--dw-seal); color: #f6e9dc; font: 700 22px/1 var(--dw-serif), serif; border-radius: 3px; filter: url(#dw-rough); transform: rotate(4deg); }
+
+.dw-bottom { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; padding: 40px 8vw 80px; border-top: 1px solid #1b1a1722; font-size: 15px; }
+.dw-bottom span { font-family: var(--dw-brush), serif; font-size: 26px; color: var(--dw-wash); }
+.dw-bottom a:hover { color: var(--dw-seal); }
+
+@media (max-width: 900px) {
+  .dw-hero { grid-template-columns: 1fr; gap: 0; padding: 130px 16px 0; min-height: 0; }
+  .dw-topline { left: 16px; right: 16px; }
+  .dw-title h1 { flex-direction: row; font-size: 96px; }
+  .dw-intro { padding: 10px 0 0; }
+  .dw-scenery { order: 3; position: relative; inset: auto; height: 300px; margin: 20px -16px 0; }
+  .dw-sun { left: 60%; bottom: 52%; width: 84px; }
+  .dw-gallery { padding: 90px 16px 80px; }
+  .dw-scrolls { grid-template-columns: repeat(2, 1fr); gap: 34px 22px; }
+  .dw-silk { padding: 14px 10px 16px; }
+  .dw-name { font-size: 21px; padding: 8px 4px; }
+  .dw-ink { padding: 100px 20px; }
+  .dw-bottom { padding: 32px 16px 60px; justify-content: center; text-align: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dawn-site *, .dawn-site *::before { animation: none !important; transition: none !important; }
+}
