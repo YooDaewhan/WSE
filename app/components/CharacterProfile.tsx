@@ -21,7 +21,7 @@ const starters = cast.filter((m) => m.group === 2);
 export default function CharacterProfile({ slug }: { slug: string }) {
   const c = cast.find((c) => c.slug === slug)!;
   /* 개인 문장 — 4기 이퀴녹스, 1기 스타터팩 */
-  const mark = c.group === 5 ? `/images/equinox/${slug}-mark.png` : c.group === 2 ? `/images/starter/${slug}-mark.webp` : null;
+  const mark = c.group === 5 ? `/images/equinox/${slug}-mark.png` : c.group === 2 ? `/images/starterpack/${slug}-mark.webp` : null;
   const d = directions[slug];
   const { paused } = useExperience();
   const [pose, setPose] = useState(0);
