@@ -12,15 +12,15 @@ import "../starter.css";
 
 const members = cast.filter((member) => member.group === 2);
 /* 타이틀 STAR 색 — 이그나이터 붉은 계열, 네비게이터 푸른 계열, 셀러브레이터 노란 계열 */
-const starColors: Record<string, string> = { igniter: "#e5482b", navigator: "#2b86c9", celebrator: "#e8ad12" };
-const types: Record<string, string> = { igniter: "불", navigator: "바람", celebrator: "빛" };
+export const starColors: Record<string, string> = { igniter: "#e5482b", navigator: "#2b86c9", celebrator: "#e8ad12" };
+export const types: Record<string, string> = { igniter: "불", navigator: "바람", celebrator: "빛" };
 const names: Record<string, { en: string; ja: string; el: string; elJa: string }> = {
   igniter: { en: "IGNITER", ja: "イグナイター", el: "FIRE", elJa: "炎" },
   navigator: { en: "NAVIGATOR", ja: "ナビゲーター", el: "WIND", elJa: "風" },
   celebrator: { en: "CELEBRATOR", ja: "セレブレーター", el: "LIGHT", elJa: "光" },
 };
 
-function TypeField({ slug, korean }: { slug: string; korean: string }) {
+export function TypeField({ slug, korean }: { slug: string; korean: string }) {
   const n = names[slug];
   const rows: [string, string[]][] = [
     ["xl", [n.en, n.el]],
@@ -41,7 +41,7 @@ function TypeField({ slug, korean }: { slug: string; korean: string }) {
     </div>
   );
 }
-const no = (i: number) => `No.${String(i + 1).padStart(3, "0")}`;
+export const no = (i: number) => `No.${String(i + 1).padStart(3, "0")}`;
 
 function useTypewriter(text: string) {
   const [shown, setShown] = useState(text);
