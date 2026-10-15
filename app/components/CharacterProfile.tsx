@@ -18,6 +18,8 @@ import "../equinox.css";
 import { EquinoxName, EquinoxTypeField } from "./EquinoxName";
 export default function CharacterProfile({ slug }: { slug: string }) {
   const c = cast.find((c) => c.slug === slug)!;
+  /* 개인 문장 — 4기 이퀴녹스, 1기 스타터팩 */
+  const mark = c.group === 5 ? `/images/equinox/${slug}-mark.png` : c.group === 2 ? `/images/starter/${slug}-mark.webp` : null;
   const d = directions[slug];
   const { paused } = useExperience();
   const [pose, setPose] = useState(0);
@@ -109,7 +111,7 @@ export default function CharacterProfile({ slug }: { slug: string }) {
             style={{ x: paused ? 0 : rx, y: paused ? 0 : ry }}
           >
             <div className="portrait-frame" />
-            {c.group === 5 && <div className="eq-personal-crest" aria-hidden="true"><Image src={`/images/equinox/${slug}-mark.png`} width={180} height={180} alt="" /><span>{c.birthplace} / {c.role.toUpperCase()}</span></div>}
+            {mark && <div className="eq-personal-crest" aria-hidden="true"><Image src={mark} width={180} height={180} alt="" /><span>{c.birthplace} / {c.role.toUpperCase()}</span></div>}
             <AnimatePresence mode="wait">
               <motion.div
                 className="portrait-wrap"
@@ -160,7 +162,7 @@ export default function CharacterProfile({ slug }: { slug: string }) {
         {c.group === 5 && <nav className="eq-personal-nav" aria-label="이퀴녹스 캐릭터"><span>FOUR SOULS<br /><strong>다른 마음을 만나보세요.</strong></span>{cast.filter(member => member.group === 5).map(member => <Link href={member.href} key={member.slug} aria-current={member.slug === slug ? "page" : undefined}><span className="eq-seal"><Image src={`/images/equinox/${member.slug}-mark.png`} width={64} height={64} alt="" /></span><span>{member.name}<small>{member.role.toUpperCase()}</small></span><span aria-hidden="true">↗</span></Link>)}</nav>}
         <section id="story" className="profile-story section-shell">
           <div>
-            {c.group === 5 && <div className="eq-story-crest"><Image src={`/images/equinox/${slug}-mark.png`} width={160} height={160} alt={`${c.name}의 문장`} /><span>PERSONAL ARCHIVE<br />EQUINOX / {c.role.toUpperCase()}</span></div>}
+            {mark && <div className="eq-story-crest"><Image src={mark} width={160} height={160} alt={`${c.name}의 문장`} /><span>PERSONAL ARCHIVE<br />{c.group === 5 ? "EQUINOX" : "STARTER PACK"} / {c.role.toUpperCase()}</span></div>}
             <span className="eyebrow">01 / BEHIND THE NAME</span>
             <h2>
               {d.title}
