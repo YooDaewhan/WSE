@@ -18,14 +18,19 @@ const myeongjo = Nanum_Myeongjo({ weight: ["400", "700", "800"], subsets: ["lati
 
 const bySlug = (slug: string) => cast.find((m) => m.slug === slug)!;
 
-/* 같은 줄의 둘은 서로의 거울.
-   flip: 그림 속 시선이 바깥을 향하면 뒤집어서 전장 가운데(인간계)를 바라보게 합니다. */
+/* 진영 — 개인화면(CharacterProfile)도 이 값으로 좌우를 정합니다. */
+export const equinoxSide: Record<string, "day" | "night"> = { mika: "day", coco: "day", titi: "night", lucy: "night" };
+/* 기본 그림 속 시선이 바깥을 향하는 캐릭터 — 뒤집어서 가운데(인간계)를 바라보게 합니다. */
+export const equinoxFlip = ["coco"];
+
+/* 같은 줄의 둘은 서로의 거울. */
 const rows = [
-  { day: { slug: "mika", flip: false }, night: { slug: "titi", flip: false } },
-  { day: { slug: "coco", flip: true }, night: { slug: "lucy", flip: false } },
+  { day: "mika", night: "titi" },
+  { day: "coco", night: "lucy" },
 ];
 
-function Soul({ slug, flip, side }: { slug: string; flip: boolean; side: "day" | "night" }) {
+function Soul({ slug, side }: { slug: string; side: "day" | "night" }) {
+  const flip = equinoxFlip.includes(slug);
   const m = bySlug(slug);
   const d = directions[slug];
   return (
@@ -122,9 +127,9 @@ export default function EquinoxChapter() {
           </div>
           <div className="ew-banners" aria-hidden="true"><span>天 · 천계</span><span>魔 · 마계</span></div>
           {rows.map((r) => (
-            <div className="ew-row" key={r.day.slug}>
-              <Soul {...r.day} side="day" />
-              <Soul {...r.night} side="night" />
+            <div className="ew-row" key={r.day}>
+              <Soul slug={r.day} side="day" />
+              <Soul slug={r.night} side="night" />
             </div>
           ))}
         </section>

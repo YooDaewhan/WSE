@@ -12,6 +12,7 @@ import Footer from "./Footer";
 import "../heroes.css";
 
 /* 2기 히어로즈 — 삼류 청춘만화 · 언더독 */
+export const heroesFonts = () => `${punch.variable} ${gothic.variable}`;
 const punch = Black_Han_Sans({ weight: "400", subsets: ["latin"], variable: "--hr-punch", preload: false });
 const gothic = Gothic_A1({ weight: ["400", "700", "900"], subsets: ["latin"], variable: "--hr-gothic", preload: false });
 
@@ -19,7 +20,7 @@ const members = cast.filter((member) => member.group === 3);
 const plain = (name: string) => name.replace("(미정)", "");
 
 /* 1화의 그들 — 별볼일없는 첫 등장 */
-const firstEpisode: Record<string, { job: string; line: string }> = {
+export const firstEpisode: Record<string, { job: string; line: string }> = {
   alba: { job: "고깃집 알바생", line: "불판 갈아드릴게요~" },
   pyeondori: { job: "편의점 야간 알바생", line: "봉투 필요하세요?" },
   ddalbae: { job: "배달 알바생", line: "문 앞에 두고 갈게요!" },

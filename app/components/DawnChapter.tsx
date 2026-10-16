@@ -12,6 +12,7 @@ import Footer from "./Footer";
 import "../dawn.css";
 
 /* 0기 새벽조 — 먹과 수묵화 */
+export const dawnFonts = () => `${brush.variable} ${myeongjo.variable}`;
 const brush = Nanum_Brush_Script({ weight: "400", subsets: ["latin"], variable: "--dw-brush", preload: false });
 const myeongjo = Nanum_Myeongjo({ weight: ["400", "700"], subsets: ["latin"], variable: "--dw-serif", preload: false });
 

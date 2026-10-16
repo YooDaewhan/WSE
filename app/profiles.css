@@ -1,0 +1,223 @@
+/* ──────────────────────────────────────────
+   기수별 개인화면 — 각 챕터 페이지 컨셉을 이어받습니다.
+   .tp-dawn 새벽조 · .tp-heroes 히어로즈 · .tp-rescue 레스큐팩 · .tp-stimpack 스팀팩 · .tp-security 시큐리티엑스
+   (스타터팩은 starter.css, 이퀴녹스는 equinox-war.css)
+────────────────────────────────────────── */
+
+/* 공통 — 팀 배지 · 도장 · 다른 멤버 */
+.tp-badge { display: block; width: fit-content; margin-bottom: 18px; padding: 6px 12px; font-size: 10px; font-weight: 700; letter-spacing: .2em; }
+.tp-stamp { position: absolute; z-index: 4; pointer-events: none; }
+.tp-nav { display: grid; grid-template-columns: 1.2fr repeat(4, 1fr); gap: 12px; padding: 22px 5vw; }
+.tp-nav > span { align-self: center; font-size: 10px; letter-spacing: .15em; }
+.tp-nav > span strong { display: block; margin-top: 6px; font-size: 14px; letter-spacing: 0; }
+.tp-nav a { display: flex; align-items: center; gap: 12px; padding: 10px; border: 1px solid transparent; transition: background .2s, border-color .2s; }
+.tp-nav-art { flex: 0 0 auto; display: grid; place-items: center; width: 52px; height: 52px; overflow: hidden; font-size: 24px; }
+.tp-nav-art img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.tp-nav b { display: block; font-size: 13px; }
+.tp-nav small { display: block; margin-top: 4px; font-size: 9px; letter-spacing: .15em; opacity: .65; }
+@media (max-width: 1100px) { .tp-nav { grid-template-columns: repeat(4, 1fr); } .tp-nav > span { grid-column: 1 / -1; } }
+@media (max-width: 700px) { .tp-nav { grid-template-columns: repeat(2, 1fr); padding: 18px 16px; } .tp-nav a { padding: 8px; gap: 8px; } }
+
+/* ── 0기 새벽조 — 먹과 수묵화 ── */
+.tp-dawn { --ink: #1b1a17; background: #efe8d8; color: #1b1a17; font-family: var(--dw-serif), serif; }
+.tp-dawn .profile-stage { background: radial-gradient(ellipse at 72% 45%, #d2543f22, transparent 40%), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .3 0 0 0 0 .22 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E"), #efe8d8; }
+.tp-dawn .profile-topline, .tp-dawn .profile-copy h1 small, .tp-dawn .interaction-count { color: #6d6a62; }
+.tp-dawn .tp-badge { padding: 0; color: #6d6a62; letter-spacing: .3em; }
+.tp-dawn .profile-copy > .eyebrow { color: #b2301f; }
+.tp-dawn .profile-copy h1 { font-family: var(--dw-brush), serif; font-weight: 400; font-size: clamp(72px, 8vw, 128px); letter-spacing: 0; line-height: .9; }
+.tp-dawn .profile-copy h2 { font-weight: 700; color: #3c3a34; }
+.tp-dawn .profile-dialogue p { color: #3c3a34; }
+.tp-dawn.profile .pill-button { background: #1b1a17; color: #efe8d8; }
+.tp-dawn .profile-scroll { border-top-color: #1b1a1722; }
+.tp-dawn .world-effects { color: #1b1a17; }
+.tp-dawn .world-motif { font-family: var(--dw-brush), serif; opacity: .06; }
+/* 족자 — 비단 테두리와 위아래 축 */
+.tp-dawn .portrait-frame { inset: 2% 12% 4%; transform: none; border: 0; border-radius: 0; background: #d8cdb3; box-shadow: inset 0 0 0 14px #c9bb98, 0 18px 40px -18px #1b1a1788; }
+.tp-dawn .portrait-frame::before, .tp-dawn .portrait-frame::after { content: ""; position: absolute; left: -5%; right: -5%; height: 14px; border-radius: 7px; background: linear-gradient(#5b3a26, #2e1d13); }
+.tp-dawn .portrait-frame::before { top: -7px; }
+.tp-dawn .portrait-frame::after { bottom: -7px; }
+.tp-dawn .portrait-wrap { inset: 4% 15% 6%; }
+.tp-dawn .profile-portrait { object-fit: cover; object-position: top; filter: sepia(.25) contrast(1.05); }
+.tp-dawn .portrait-index { color: #6d6a62; }
+.tp-dawn .tp-stamp { right: 8%; bottom: 10%; padding: 8px 10px; background: #b2301f; color: #f6e9dc; font: 700 28px/1 var(--dw-serif), serif; border-radius: 3px; transform: rotate(4deg); box-shadow: inset 0 0 0 2px #f6e9dc55; }
+.tp-dawn .tp-nav { background: #e4dac4; border-block: 1px solid #1b1a1722; }
+.tp-dawn .tp-nav > span { color: #6d6a62; }
+.tp-dawn .tp-nav-art { border-radius: 2px; box-shadow: inset 0 0 0 3px #c9bb98; filter: sepia(.25); }
+.tp-dawn .tp-nav a[aria-current=page], .tp-dawn .tp-nav a:hover { background: #1b1a170c; border-color: #1b1a1733; }
+.tp-dawn .profile-story { background: #efe8d8; color: #1b1a17; }
+.tp-dawn .profile-story p { color: #4a463e; }
+.tp-dawn .profile-story h2 { font-family: var(--dw-brush), serif; font-weight: 400; font-size: clamp(40px, 4.4vw, 64px); }
+.tp-dawn .profile-story .eyebrow, .tp-dawn .profile-story em { color: #b2301f; }
+.tp-dawn .world-notes { background: #1b1a17; color: #efe8d8; }
+.tp-dawn .notes-grid article { border: 1px solid #efe8d822; }
+.tp-dawn .next-character { background: #e4dac4; color: #1b1a17; }
+.tp-dawn .next-character strong { color: #1b1a17; font-family: var(--dw-brush), serif; font-weight: 400; font-size: 72px; }
+.tp-dawn .next-character > a:first-of-type { color: #6d6a62; }
+
+/* ── 2기 히어로즈 — 삼류 청춘만화 ── */
+.tp-heroes { --ink: #151612; background: #f4f1e6; color: #151612; font-family: var(--hr-gothic), sans-serif; }
+.tp-heroes .profile-stage { background: radial-gradient(circle, #15161218 1px, transparent 1.4px) 0 0 / 7px 7px, #f4f1e6; }
+.tp-heroes .profile-stage::after { content: ""; position: absolute; inset: 0; z-index: -1; background: repeating-conic-gradient(from 0deg at 74% 50%, #15161210 0 1.2deg, transparent 1.2deg 5deg); pointer-events: none; }
+.tp-heroes .profile-topline, .tp-heroes .profile-copy h1 small, .tp-heroes .interaction-count { color: #4a4b42; }
+.tp-heroes .tp-badge { background: #151612; color: #dbe59b; }
+.tp-heroes .profile-copy > .eyebrow { color: #151612; font-weight: 700; }
+.tp-heroes .profile-copy h1 { font-family: var(--hr-punch), sans-serif; font-weight: 400; font-size: clamp(56px, 6.4vw, 104px); letter-spacing: 0; color: #dbe59b; -webkit-text-stroke: 3px #151612; paint-order: stroke fill; text-shadow: 6px 6px 0 #151612; transform: skewX(-6deg); transform-origin: left; }
+.tp-heroes .profile-copy h1 .real-name, .tp-heroes .profile-copy h1 small { -webkit-text-stroke: 0; text-shadow: none; color: #4a4b42; }
+.tp-heroes .profile-copy h2 { font-family: var(--hr-punch), sans-serif; font-weight: 400; letter-spacing: 0; }
+/* 말풍선 */
+.tp-heroes .profile-dialogue { position: relative; padding: 14px 20px; border: 3px solid #151612; border-radius: 22px; background: #fff; }
+.tp-heroes .profile-dialogue::after { content: ""; position: absolute; left: 34px; bottom: -14px; border: 12px solid transparent; border-top-color: #151612; border-bottom: 0; }
+.tp-heroes .profile-dialogue p { color: #151612; font-weight: 700; }
+.tp-heroes.profile .pill-button { margin-top: 18px; border-radius: 0; background: #151612; color: #dbe59b; box-shadow: 4px 4px 0 #dbe59b, 4px 4px 0 2px #151612; }
+.tp-heroes .profile-scroll { border-top: 3px solid #151612; }
+/* 만화 컷 */
+.tp-heroes .portrait-frame { inset: 3% 6% 3%; border: 5px solid #151612; border-radius: 0; background: #e6e2d3; box-shadow: 10px 10px 0 #151612; transform: rotate(-1.5deg); }
+.tp-heroes .portrait-wrap { inset: 4% 8% 4%; overflow: hidden; transform: rotate(-1.5deg); }
+.tp-heroes .profile-portrait { object-fit: cover; object-position: top; filter: grayscale(1) contrast(1.15); transition: filter .4s; }
+.tp-heroes .profile-visual:hover .profile-portrait { filter: none; }
+.tp-heroes .profile-pending { color: #151612; }
+.tp-heroes .portrait-index { color: #151612; }
+.tp-heroes .tp-stamp { left: -4%; top: 6%; font: 400 clamp(48px, 5vw, 80px)/1 var(--hr-punch), sans-serif; color: #dbe59b; -webkit-text-stroke: 3px #151612; paint-order: stroke fill; text-shadow: 5px 5px 0 #151612; transform: rotate(-12deg); }
+.tp-heroes .world-effects { color: #151612; }
+.tp-heroes .world-ring { display: none; }
+.tp-heroes .tp-nav { background: #151612; color: #f4f1e6; }
+.tp-heroes .tp-nav > span { color: #dbe59b; }
+.tp-heroes .tp-nav-art { border: 3px solid #f4f1e6; background: #343826; filter: grayscale(1); }
+.tp-heroes .tp-nav a[aria-current=page] .tp-nav-art, .tp-heroes .tp-nav a:hover .tp-nav-art { filter: none; border-color: #dbe59b; }
+.tp-heroes .tp-nav a[aria-current=page], .tp-heroes .tp-nav a:hover { border-color: #dbe59b; }
+.tp-heroes .profile-story { background: #f4f1e6; color: #151612; }
+.tp-heroes .profile-story p { color: #4a4b42; }
+.tp-heroes .profile-story h2 { font-family: var(--hr-punch), sans-serif; font-weight: 400; }
+.tp-heroes .profile-story .eyebrow, .tp-heroes .profile-story em { color: #151612; }
+.tp-heroes .world-notes { background: #343826; color: #f4f1e6; }
+.tp-heroes .notes-grid article { border: 3px solid #151612; background: #f4f1e6; color: #151612; box-shadow: 6px 6px 0 #151612; }
+.tp-heroes .notes-grid article p { color: #4a4b42; }
+.tp-heroes .next-character { background: #dbe59b; color: #151612; }
+.tp-heroes .next-character strong { color: #151612; font-family: var(--hr-punch), sans-serif; font-weight: 400; }
+.tp-heroes .next-character > a:first-of-type { color: #343826; }
+.tp-heroes .next-character > a > span:last-child { color: #151612; }
+
+/* ── 3기 레스큐팩 — 비상 안전 안내 카드 ── */
+.tp-rescue { --ink: #14213a; background: #efebe1; color: #14213a; }
+.tp-rescue .profile-stage { background: linear-gradient(90deg, #14213a0d 1px, transparent 1px) 0 0 / 48px 48px, linear-gradient(#14213a0d 1px, transparent 1px) 0 0 / 48px 48px, #efebe1; }
+.tp-rescue .profile-stage::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 14px; background: repeating-linear-gradient(-45deg, #f2541b 0 18px, #14213a 18px 36px); }
+.tp-rescue .profile-topline, .tp-rescue .profile-copy h1 small, .tp-rescue .interaction-count { color: #5d6577; }
+.tp-rescue .tp-badge { border: 2px solid #f2541b; color: #f2541b; letter-spacing: .26em; }
+.tp-rescue .profile-copy > .eyebrow { color: #12855a; font-weight: 700; }
+.tp-rescue .profile-copy h1 { letter-spacing: -2px; }
+/* 안내문 박스 */
+.tp-rescue .profile-dialogue { padding: 16px 18px 16px 52px; border: 2px solid #14213a; border-radius: 6px; background: #faf8f2; position: relative; }
+.tp-rescue .profile-dialogue::before { content: "!"; position: absolute; left: 14px; top: 50%; translate: 0 -50%; display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: #f2541b; color: #fff; font-weight: 800; font-size: 14px; }
+.tp-rescue .profile-dialogue p { color: #14213a; }
+.tp-rescue.profile .pill-button { margin-top: 18px; border-radius: 6px; background: #f2541b; color: #fff; }
+.tp-rescue .profile-scroll { border-top-color: #14213a22; bottom: 40px; }
+/* 안전 카드 */
+.tp-rescue .portrait-frame { inset: 2% 8% 2%; transform: none; border: 2px solid #14213a; border-radius: 14px; background: #faf8f2; box-shadow: 0 24px 50px -24px #14213a88; }
+.tp-rescue .portrait-frame::before { content: "EMERGENCY · 구조 요청 시 응답"; position: absolute; left: 0; right: 0; top: 0; padding: 12px 18px; border-radius: 12px 12px 0 0; background: #f2541b; color: #fff; font-size: 10px; font-weight: 700; letter-spacing: .2em; }
+.tp-rescue .portrait-wrap { inset: 9% 10% 3%; }
+.tp-rescue .profile-portrait { object-fit: cover; object-position: top; border-radius: 0 0 10px 10px; filter: none; }
+.tp-rescue .portrait-index { color: #f2541b; }
+.tp-rescue .world-effects { color: #f2541b; }
+.tp-rescue .world-ring { border-style: dashed; }
+.tp-rescue .eq-personal-crest img { background: #faf8f2; border-color: #14213a; box-shadow: 0 0 0 6px #efebe1, 0 0 0 8px #f2541b; }
+.tp-rescue .eq-personal-crest span { color: #14213a; }
+.tp-rescue .tp-nav { background: #14213a; color: #faf8f2; }
+.tp-rescue .tp-nav > span { color: #f2541b; }
+.tp-rescue .tp-nav-art { border-radius: 8px; border: 2px solid #faf8f2; }
+.tp-rescue .tp-nav a[aria-current=page], .tp-rescue .tp-nav a:hover { border-color: #f2541b; background: #f2541b14; }
+.tp-rescue .profile-story { background: #faf8f2; color: #14213a; }
+.tp-rescue .profile-story p { color: #5d6577; }
+.tp-rescue .profile-story .eyebrow, .tp-rescue .profile-story em { color: #f2541b; }
+.tp-rescue .eq-story-crest span { color: #5d6577; }
+.tp-rescue .world-notes { background: #efebe1; color: #14213a; }
+.tp-rescue .notes-grid article { border: 2px solid #14213a; border-radius: 12px; background: #faf8f2; }
+.tp-rescue .notes-grid article > span { color: #12855a; }
+.tp-rescue .notes-grid p { color: #5d6577; }
+.tp-rescue .next-character { background: #14213a; color: #faf8f2; }
+.tp-rescue .next-character > a > span:last-child { color: #f2541b; }
+
+/* ── 5기 스팀팩 — 흑백 무성영화 ── */
+.tp-stimpack { --ink: #0a0a0a; background: #0a0a0a; color: #ecebe5; font-family: Georgia, "Times New Roman", serif; }
+.tp-stimpack .profile-stage { background: radial-gradient(ellipse at 70% 45%, #2a2a2a, #0a0a0a 65%); animation: tp-flicker 5s steps(1) infinite; }
+@keyframes tp-flicker { 0%, 100% { opacity: 1; } 31% { opacity: .94; } 32% { opacity: 1; } 88% { opacity: .92; } 89% { opacity: 1; } }
+.tp-stimpack .profile-stage::after { content: ""; position: absolute; inset: 0; z-index: 4; pointer-events: none; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E"); mix-blend-mode: screen; }
+.tp-stimpack .profile-topline, .tp-stimpack .profile-copy h1 small, .tp-stimpack .interaction-count { color: #8d8b85; }
+.tp-stimpack .tp-badge { border: 1px solid #ecebe5; color: #ecebe5; letter-spacing: .3em; }
+.tp-stimpack .profile-copy > .eyebrow { color: #e01e52; }
+.tp-stimpack .profile-copy h1 { font-weight: 400; letter-spacing: -1px; }
+/* 자막 카드 */
+.tp-stimpack .profile-dialogue { justify-content: center; padding: 18px 24px; border: 3px double #ecebe5; background: #111; text-align: center; }
+.tp-stimpack .profile-dialogue p { color: #ecebe5; font-style: italic; }
+.tp-stimpack.profile .pill-button { border-radius: 0; border: 1px solid #ecebe5; background: transparent; color: #ecebe5; }
+.tp-stimpack.profile .pill-button:hover { background: #ecebe5; color: #0a0a0a; }
+.tp-stimpack .profile-scroll { border-top-color: #ecebe522; }
+/* 필름 프레임 — 양옆 구멍 */
+.tp-stimpack .portrait-frame { inset: 0 6%; transform: none; border: 0; border-radius: 0; background: #000; box-shadow: none; }
+.tp-stimpack .portrait-frame::before, .tp-stimpack .portrait-frame::after { content: ""; position: absolute; top: 0; bottom: 0; width: 26px; background: radial-gradient(circle at 50% 50%, #0a0a0a 0 5px, transparent 5.5px) 0 0 / 26px 30px, #1c1c1c; }
+.tp-stimpack .portrait-frame::before { left: 0; }
+.tp-stimpack .portrait-frame::after { right: 0; }
+.tp-stimpack .portrait-wrap { inset: 3% calc(6% + 34px); }
+.tp-stimpack .profile-portrait { object-fit: cover; object-position: top; filter: grayscale(1) contrast(1.2) brightness(.95); transition: filter .5s; }
+.tp-stimpack .profile-visual:hover .profile-portrait { filter: grayscale(0) contrast(1.05); }
+.tp-stimpack .portrait-index { color: #8d8b85; }
+.tp-stimpack .world-effects { color: #ecebe5; }
+.tp-stimpack .world-ring { display: none; }
+.tp-stimpack .eq-personal-crest img { background: #ecebe5; border-color: #ecebe5; box-shadow: 0 0 0 6px #0a0a0a, 0 0 0 7px #ecebe570; filter: grayscale(1); }
+.tp-stimpack .eq-personal-crest span { color: #8d8b85; }
+.tp-stimpack .tp-nav { background: #111; border-block: 1px solid #ecebe522; }
+.tp-stimpack .tp-nav > span { color: #8d8b85; }
+.tp-stimpack .tp-nav-art { filter: grayscale(1); border: 1px solid #ecebe555; }
+.tp-stimpack .tp-nav a[aria-current=page] .tp-nav-art, .tp-stimpack .tp-nav a:hover .tp-nav-art { filter: none; }
+.tp-stimpack .tp-nav a[aria-current=page], .tp-stimpack .tp-nav a:hover { border-color: #ecebe555; }
+.tp-stimpack .profile-story { background: #ecebe5; color: #0a0a0a; }
+.tp-stimpack .profile-story p { color: #3f3e3a; }
+.tp-stimpack .profile-story .eyebrow, .tp-stimpack .profile-story em { color: #e01e52; }
+.tp-stimpack .eq-story-crest img { filter: grayscale(1); }
+.tp-stimpack .eq-story-crest span { color: #3f3e3a; }
+.tp-stimpack .world-notes { background: #0a0a0a; color: #ecebe5; }
+.tp-stimpack .notes-grid article { border: 3px double #ecebe555; }
+.tp-stimpack .notes-grid p { color: #a9a7a0; }
+.tp-stimpack .next-character { background: #111; }
+.tp-stimpack .next-character > a > span:last-child { color: #e01e52; }
+
+/* ── 6기 시큐리티엑스 — 발렌타인 초콜릿 · 경호원 ── */
+.tp-security { --ink: #3a1820; background: #fff7f9; color: #3a1820; }
+.tp-security .profile-stage { background: radial-gradient(ellipse at 72% 45%, #ffb3c9aa, transparent 55%), radial-gradient(circle, #f2477e14 1.5px, transparent 2px) 0 0 / 28px 28px, #fff7f9; }
+.tp-security .profile-topline, .tp-security .profile-copy h1 small, .tp-security .interaction-count { color: #a36a7d; }
+.tp-security .tp-badge { border-radius: 999px; background: #3a1820; color: #ffb3c9; letter-spacing: .22em; }
+.tp-security .profile-copy > .eyebrow { color: #f2477e; }
+.tp-security .profile-copy h1 { color: #3a1820; }
+.tp-security .profile-copy h2 { color: #b3164f; }
+/* 초콜릿 상자 메시지 카드 */
+.tp-security .profile-dialogue { padding: 16px 20px; border: 1px solid #d9b26f; border-radius: 4px; background: #fff; box-shadow: 0 0 0 4px #fff, 0 0 0 5px #d9b26f66, 0 18px 30px -18px #b3164f66; }
+.tp-security .profile-dialogue p { color: #3a1820; }
+.tp-security.profile .pill-button { background: #f2477e; color: #fff; }
+.tp-security.profile .pill-button:hover { background: #b3164f; }
+.tp-security .profile-scroll { border-top-color: #3a182022; }
+/* 하트 상자 */
+.tp-security .portrait-frame { inset: -2% -6% 0; transform: none; border: 0; border-radius: 0; background: radial-gradient(circle at 50% 42%, #ffe0e9, #ff8fb1 70%); -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 95'%3E%3Cpath d='M50 92 C20 72 2 52 2 30 C2 14 14 3 28 3 C38 3 46 9 50 17 C54 9 62 3 72 3 C86 3 98 14 98 30 C98 52 80 72 50 92 Z'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 95'%3E%3Cpath d='M50 92 C20 72 2 52 2 30 C2 14 14 3 28 3 C38 3 46 9 50 17 C54 9 62 3 72 3 C86 3 98 14 98 30 C98 52 80 72 50 92 Z'/%3E%3C/svg%3E") center / contain no-repeat; }
+.tp-security .portrait-wrap { inset: 7% 15% 5%; }
+.tp-security .profile-portrait { object-fit: cover; object-position: top; border-radius: 26px; box-shadow: 0 0 0 6px #fff, 0 0 0 8px #d9b26f, 0 26px 44px -22px #b3164f99; filter: none; }
+.tp-security .portrait-index { color: #f2477e; }
+.tp-security .tp-stamp { right: 4%; top: 8%; display: grid; place-items: center; width: 64px; height: 64px; border-radius: 50%; background: #d9b26f; color: #fff; font-size: 30px; box-shadow: inset 0 0 0 3px #fff7f9aa, 0 8px 20px -8px #3a182088; transform: rotate(10deg); }
+.tp-security .world-effects { color: #f2477e; }
+.tp-security .tp-nav { background: #3a1820; color: #fff7f9; }
+.tp-security .tp-nav > span { color: #ffb3c9; }
+.tp-security .tp-nav-art { border-radius: 50%; border: 2px solid #d9b26f; background: #ffe0e9; }
+.tp-security .tp-nav a[aria-current=page], .tp-security .tp-nav a:hover { border-color: #ff8fb1; background: #ff8fb114; border-radius: 6px; }
+.tp-security .profile-story { background: #ffe4ec; color: #3a1820; }
+.tp-security .profile-story p { color: #6b3a48; }
+.tp-security .profile-story .eyebrow, .tp-security .profile-story em { color: #b3164f; }
+.tp-security .world-notes { background: #fff7f9; color: #3a1820; }
+.tp-security .notes-grid article { border: 1px solid #d9b26f; border-radius: 6px; background: #fff; }
+.tp-security .notes-grid article > span { color: #f2477e; }
+.tp-security .notes-grid p { color: #6b3a48; }
+.tp-security .next-character { background: #3a1820; color: #fff7f9; }
+.tp-security .next-character > a > span:last-child { color: #ff8fb1; }
+
+@media (max-width: 700px) {
+  .tp-heroes .tp-stamp { left: 0; font-size: 44px; }
+  .tp-dawn .profile-copy h1 { font-size: 72px; }
+}
+@media (prefers-reduced-motion: reduce) { .tp-stimpack .profile-stage { animation: none; } }
+html[data-motion=paused] .tp-stimpack .profile-stage { animation: none; }
