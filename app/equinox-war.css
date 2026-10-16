@@ -1,0 +1,111 @@
+/* 4기 이퀴녹스 — 천사와 악마의 대격돌
+   .day 가 기준, .night 는 좌우반전된 거울입니다. 한쪽을 고치면 반대쪽도 같이 고치세요. */
+.equinox-war { --ew-day: #f5eedf; --ew-gold: #c49a45; --ew-day-ink: #2b2417; --ew-night: #150f1e; --ew-violet: #a78bfa; --ew-night-ink: #ece4ff; background: var(--ew-night); color: var(--ew-night-ink); font-family: var(--ew-serif), serif; }
+.equinox-war a, .equinox-war button { color: inherit; }
+.ew-kicker { font: 700 11px/1.4 var(--ew-display), serif; letter-spacing: .3em; }
+
+/* hero — 갈라진 하늘 */
+@property --tilt { syntax: "<number>"; inherits: true; initial-value: 50; }
+.ew-hero { --t: calc(var(--tilt) * 1%); position: relative; display: flex; min-height: 100svh; overflow: hidden; cursor: ew-resize; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+/* 손대기 전 — 경계가 좌우로 흔들려 움직일 수 있다는 걸 알려줍니다 */
+.ew-hero.idle { animation: ew-sway 2.6s ease-in-out infinite alternate; }
+@keyframes ew-sway { from { --tilt: 45; } to { --tilt: 55; } }
+.ew-hero.dragging .ew-side, .ew-hero.dragging .ew-center { transition: none; }
+.ew-drag-hint { margin-top: 8px; padding: 6px 12px; border-radius: 999px; background: #ffffffe6; color: var(--ew-night); font-size: 12px; font-weight: 700; white-space: nowrap; box-shadow: 0 4px 18px #0004; transition: opacity .4s; }
+.ew-hero:not(.idle) .ew-drag-hint { opacity: 0; }
+.ew-topline { position: absolute; top: 96px; left: 6vw; right: 6vw; z-index: 5; display: flex; justify-content: space-between; font-size: 11px; letter-spacing: .15em; mix-blend-mode: difference; color: #fff; }
+.ew-side { position: relative; display: flex; align-items: center; overflow: hidden; transition: flex-grow .5s cubic-bezier(.3,.7,.2,1); }
+.ew-side.day { flex: var(--tilt) 1 0; justify-content: flex-start; background: radial-gradient(circle at 18% 30%, #fff8e6 0, transparent 50%), linear-gradient(160deg, #fbf5e8, #eadcbd); color: var(--ew-day-ink); }
+.ew-side.night { flex: calc(100 - var(--tilt)) 1 0; justify-content: flex-end; background: radial-gradient(circle at 82% 30%, #3b2660 0, transparent 50%), linear-gradient(200deg, #1d1430, #0c0812); }
+.ew-rays { position: absolute; inset: 0; background: repeating-conic-gradient(from 0deg at 0% 0%, #c49a4524 0 2deg, transparent 2deg 7deg); }
+.ew-stars { position: absolute; inset: 0; background: radial-gradient(circle, #ece4ffaa 1px, transparent 1.5px) 0 0 / 90px 80px, radial-gradient(circle, #ece4ff66 1px, transparent 1.5px) 40px 50px / 130px 110px; }
+.ew-stars::after { content: ""; position: absolute; top: 18%; right: 12%; width: clamp(70px, 9vw, 130px); aspect-ratio: 1; border-radius: 50%; box-shadow: inset -18px 8px 0 0 #ece4ff; transform: rotate(-20deg); opacity: .9; }
+.ew-side-copy { position: relative; z-index: 2; width: min(420px, 22vw); padding: 0 5vw; box-sizing: content-box; }
+.night .ew-side-copy { text-align: right; }
+.ew-side-copy strong { display: block; margin-top: 16px; font-size: clamp(30px, 3.4vw, 52px); font-weight: 800; line-height: 1.2; word-break: keep-all; }
+.ew-side-copy p { margin-top: 16px; font-size: 15px; opacity: .75; word-break: keep-all; }
+.day .ew-kicker { color: var(--ew-gold); }
+.night .ew-kicker { color: var(--ew-violet); }
+
+/* 가운데 — 인간계, 두 세계의 경계 */
+.ew-center { position: absolute; z-index: 3; top: 50%; left: var(--t); translate: -50% -50%; display: grid; justify-items: center; gap: 6px; text-align: center; transition: left .5s cubic-bezier(.3,.7,.2,1); pointer-events: none; }
+.ew-center::before { content: ""; position: absolute; z-index: -1; left: 50%; top: -100vh; bottom: -100vh; width: 2px; translate: -50%; background: linear-gradient(var(--ew-gold), #fff 50%, var(--ew-violet)); box-shadow: 0 0 24px 4px #ffffff66; }
+.ew-center h1 img { width: clamp(150px, 20vw, 300px); height: auto; filter: drop-shadow(0 0 30px #00000055); }
+.ew-vs { font: 700 clamp(28px, 3vw, 44px)/1 var(--ew-display), serif; color: #fff; text-shadow: -3px 0 0 var(--ew-gold), 3px 0 0 var(--ew-violet); }
+.ew-tagline { font-size: 18px; font-weight: 800; }
+
+.ew-balance { position: absolute; z-index: 4; left: 50%; bottom: 40px; translate: -50%; width: min(420px, calc(100% - 32px)); display: grid; gap: 10px; text-align: center; font-size: 13px; padding: 14px 18px; border-radius: 14px; background: #150f1ecc; color: #fff; backdrop-filter: blur(4px); box-sizing: border-box; }
+.ew-balance input { width: 100%; accent-color: #fff; cursor: ew-resize; }
+.ew-score { display: flex; justify-content: space-between; font: 700 12px/1 var(--ew-display), serif; letter-spacing: .15em; }
+
+/* 신의 허락 */
+.ew-decree { padding: 120px 6vw; text-align: center; background: linear-gradient(90deg, #f5eedf 0 50%, #150f1e 50%); }
+.ew-decree > * { max-width: 680px; margin-left: auto; margin-right: auto; }
+.ew-decree .ew-kicker { display: inline-block; color: #fff; mix-blend-mode: difference; }
+.ew-decree h2, .ew-decree p { color: #fff; mix-blend-mode: difference; }
+.ew-decree h2 { margin-top: 20px; font-size: clamp(26px, 3vw, 40px); font-weight: 800; line-height: 1.4; word-break: keep-all; }
+.ew-decree p { margin-top: 24px; font-size: 16px; line-height: 2.1; word-break: keep-all; }
+
+/* 전장 — 거울 배치 */
+.ew-field { padding: 110px 4vw 120px; background: linear-gradient(90deg, #efe6d2 0 50%, #120d1a 50%); }
+.ew-field-head { text-align: center; margin-bottom: 40px; color: #fff; mix-blend-mode: difference; }
+.ew-field-head h2 { margin-top: 16px; font-size: clamp(26px, 3.2vw, 44px); font-weight: 800; word-break: keep-all; }
+.ew-banners { display: grid; grid-template-columns: 1fr 1fr; max-width: 1100px; margin: 0 auto 30px; font: 700 13px/1 var(--ew-display), serif; letter-spacing: .35em; }
+.ew-banners span:first-child { color: var(--ew-gold); }
+.ew-banners span:last-child { color: var(--ew-violet); text-align: right; }
+.ew-row { display: grid; grid-template-columns: 1fr 1fr; gap: 6vw; max-width: 1100px; margin: 0 auto 70px; }
+
+.ew-soul { display: grid; gap: 18px; }
+.ew-soul.day { color: var(--ew-day-ink); }
+.ew-soul.night { color: var(--ew-night-ink); text-align: right; }
+.ew-portrait { position: relative; display: block; aspect-ratio: 2 / 3; overflow: hidden; border-radius: 999px 999px 8px 8px; transition: transform .35s, box-shadow .35s; }
+.day .ew-portrait { box-shadow: 0 0 0 1px #c49a4566, 0 20px 50px -20px #c49a45; }
+.night .ew-portrait { box-shadow: 0 0 0 1px #a78bfa66, 0 20px 50px -20px #a78bfa; }
+.ew-portrait img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform .5s; }
+.ew-portrait img.flip { transform: scaleX(-1); }
+.ew-mark { position: absolute; bottom: 14px; width: 54px; aspect-ratio: 1; }
+.day .ew-mark { left: 14px; }
+.night .ew-mark { right: 14px; }
+.ew-mark img { width: 100%; height: 100%; object-fit: contain; }
+.day:hover .ew-portrait, .day:focus-visible .ew-portrait { transform: translateX(8px); }
+.night:hover .ew-portrait, .night:focus-visible .ew-portrait { transform: translateX(-8px); }
+.ew-soul:hover .ew-portrait img:not(.flip) { transform: scale(1.04); }
+.ew-soul:hover .ew-portrait img.flip { transform: scaleX(-1) scale(1.04); }
+.ew-soul-copy { display: grid; gap: 6px; }
+.ew-soul-copy small { font: 700 11px/1 var(--ew-display), serif; letter-spacing: .25em; color: var(--c); filter: brightness(.75); }
+.night .ew-soul-copy small { filter: none; }
+.ew-soul-copy b { font-size: clamp(20px, 2vw, 28px); font-weight: 800; }
+.ew-soul-copy em { font-style: normal; font-size: 14px; opacity: .8; word-break: keep-all; }
+.ew-soul-copy q { margin-top: 6px; font-size: 13px; opacity: .6; word-break: keep-all; }
+
+/* 맹세 */
+.ew-vow { padding: 120px 6vw; text-align: center; background: linear-gradient(90deg, var(--ew-day) 0 50%, var(--ew-night) 50%); }
+.ew-vow blockquote { color: #fff; mix-blend-mode: difference; font-size: clamp(28px, 4vw, 54px); font-weight: 800; line-height: 1.35; word-break: keep-all; }
+.ew-vow .ew-kicker { display: inline-block; margin-top: 26px; color: #fff; mix-blend-mode: difference; }
+
+.ew-bottom { display: flex; justify-content: space-between; gap: 16px; padding: 28px 6vw; border-top: 1px solid #ffffff22; font-size: 13px; }
+
+@media (max-width: 700px) {
+  /* 좁은 화면에서도 좌우 분할 유지 — 막대와 경계선이 같은 방향으로 움직입니다.
+     천계 글은 위쪽, 마계 글은 아래쪽으로 엇갈려 가운데 로고를 피합니다. */
+  .ew-side { align-items: flex-start; padding-top: 128px; }
+  .ew-side.night { align-items: flex-end; padding: 0 0 140px; }
+  .ew-side-copy { width: auto; padding: 0 14px; }
+  .ew-side-copy strong { font-size: 24px; }
+  .ew-side-copy p { font-size: 12px; }
+  .ew-center h1 img { width: 96px; }
+  .ew-balance { bottom: 24px; gap: 6px; padding: 10px 14px; }
+  .ew-balance label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .ew-tagline { font-size: 15px; }
+  .ew-topline { left: 16px; right: 16px; }
+  .ew-decree, .ew-vow { padding: 90px 16px; }
+  .ew-field { padding: 90px 16px; }
+  .ew-row { grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 48px; }
+  .ew-mark { width: 38px; bottom: 8px; }
+  .ew-soul-copy em, .ew-soul-copy q { font-size: 12px; }
+  .ew-bottom { flex-direction: column; align-items: center; padding: 24px 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ew-side, .ew-center, .ew-portrait, .ew-portrait img { transition: none; }
+  .ew-hero.idle { animation: none; }
+}
