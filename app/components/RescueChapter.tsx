@@ -11,7 +11,7 @@ import Footer from "./Footer";
 import "../rescue.css";
 
 const members = cast.filter((member) => member.group === 4);
-const callsigns: Record<string, string> = { helldiver: "HELLDIVER", anchor: "ANCHOR", painkiller: "PAINKILLER" };
+export const callsigns: Record<string, string> = { helldiver: "HELLDIVER", anchor: "ANCHOR", painkiller: "PAINKILLER" };
 
 /* 표지판 픽토그램 (80×80 좌표, 굵은 선) */
 const fall = <><circle cx="40" cy="60" r="7" className="f" /><path d="M40 52V30M40 44 26 54M40 44l14 10M40 30 28 16M40 30l12-14" /><path d="M14 32V18M66 32V18" className="thin" /></>;

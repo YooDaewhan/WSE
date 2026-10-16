@@ -109,3 +109,75 @@
   .ew-side, .ew-center, .ew-portrait, .ew-portrait img { transition: none; }
   .ew-hero.idle { animation: none; }
 }
+
+/* ── 개인화면 — 천계(.eq-day)는 그림 왼쪽·밝은 낮, 마계(.eq-night)는 그림 오른쪽·깊은 밤.
+   반대 진영 쪽 가장자리에 상대 세계가 살짝 비칩니다. ── */
+.eq-flip { transform: scaleX(-1); }
+
+/* 마계 — 기본 배치(글 왼쪽 · 그림 오른쪽), 왼쪽 끝에 낮이 스민다 */
+.equinox-profile.eq-night { background: #150f1e; }
+.eq-night .profile-stage { background: radial-gradient(ellipse at 72% 40%, #3b2660, transparent 62%), linear-gradient(90deg, #efe4c8 0, #3a2b4f 7%, #150f1e 26%); }
+.eq-night .profile-stage::before { border-color: #a78bfa38; background-image: radial-gradient(#ece4ff55 .8px, transparent 1px); }
+.eq-night .eq-type-row-1 { -webkit-text-stroke-color: #a78bfa55; }
+.eq-night .eq-type-row-2 { color: #a78bfa38; }
+.eq-night .eq-type-row-3 { color: #a78bfa1a; }
+
+/* 천계 — 거울 배치(그림 왼쪽 · 글 오른쪽), 오른쪽 끝에 밤이 스민다 */
+.equinox-profile.eq-day { background: #f5eedf; color: #2b2417; }
+.eq-day .profile-stage { grid-template-columns: 56% 44%; background: radial-gradient(ellipse at 28% 40%, #fff9ea, transparent 62%), linear-gradient(270deg, #241a33 0, #b9a684 7%, #f3ead6 26%); }
+.eq-day .profile-stage::before { border-color: #a0782c40; background-image: radial-gradient(#a0782c55 .8px, transparent 1px); }
+.eq-day .profile-topline { order: -2; color: #6b5f49; }
+.eq-day .profile-visual { order: -1; }
+.eq-day .world-effects { transform: scaleX(-1); }
+.eq-day .profile-copy { padding: 12px 0 12px 20px; text-shadow: none; }
+.eq-day .profile-copy > .eyebrow, .eq-day .portrait-index, .eq-day .eq-profile-identity, .eq-day .eq-personal-crest span { color: #a0782c; }
+.eq-day .eq-name-lockup { color: #7a5a22; }
+.eq-day .eq-name-ja { border-color: #a0782c70; }
+.eq-day .profile-copy h1 small, .eq-day .interaction-count { color: #8a7a5c; }
+.eq-day .profile-dialogue p { color: #4a4132; }
+.eq-day.profile .pill-button { background: #2b2417; color: #f5eedf; }
+.eq-day .profile-scroll { border-top-color: #2b241722; }
+.eq-day .portrait-frame { transform: rotate(6deg); border-color: #a0782c70; box-shadow: 0 0 0 16px #a0782c08, 0 0 0 17px #a0782c25; }
+.eq-day .eq-personal-crest { right: auto; left: -3%; transform: rotate(-8deg); }
+.eq-day .eq-personal-crest img { box-shadow: 0 0 0 6px #f3ead6, 0 0 0 7px #a0782c70; }
+.eq-day .portrait-index { right: auto; left: 0; }
+.eq-day .profile-portrait { filter: drop-shadow(0 20px 30px #6b542933); }
+.eq-day .eq-type-row-1 { -webkit-text-stroke-color: #a0782c55; }
+.eq-day .eq-type-row-2 { color: #a0782c40; }
+.eq-day .eq-type-row-3 { color: #a0782c1c; }
+.eq-day .eq-type-cycle i { color: #a0782c65; }
+.eq-day .world-notes { background: #e9dfc8; color: #2b2417; }
+.eq-day .notes-grid article { border-color: #a0782c40; background: linear-gradient(135deg, #a0782c0c, transparent); }
+.eq-day .notes-grid p { color: #5a5040; }
+.eq-day .notes-grid article > span { color: #a0782c; }
+.eq-day .next-character { background: #f5eedf; color: #2b2417; }
+.eq-day .next-character > a:first-of-type { color: #7a6b52; }
+.eq-day .next-character strong { color: #2b2417; }
+
+/* 다른 마음 — 천계 둘 | 가운데 | 마계 둘, 좌우 거울 */
+.eq-personal-nav { grid-template-columns: 1fr 1fr 1.1fr 1fr 1fr; background: linear-gradient(90deg, #efe4c8 50%, #150f1e 50%); }
+.eq-personal-nav > span { order: 3; text-align: center; color: #fff; mix-blend-mode: difference; }
+.eq-personal-nav > span strong { color: #fff; }
+.eq-personal-nav a.eq-day { order: 1; color: #2b2417; }
+.eq-personal-nav a.eq-day + a.eq-day { order: 2; }
+.eq-personal-nav a.eq-night { order: 4; flex-direction: row-reverse; text-align: right; }
+.eq-personal-nav a.eq-night + a.eq-night { order: 5; }
+.eq-personal-nav a.eq-night > span:last-child { margin-left: 0; margin-right: auto; transform: scaleX(-1); }
+.eq-personal-nav a.eq-day small { color: #8a7a5c; }
+.eq-personal-nav a.eq-day[aria-current=page], .eq-personal-nav a.eq-day:hover { background: #a0782c14; border-color: #a0782c50; }
+
+@media (max-width: 1100px) {
+  .eq-personal-nav { grid-template-columns: repeat(4, 1fr); }
+  .eq-personal-nav > span { order: 0; grid-column: 1 / -1; }
+}
+@media (max-width: 700px) {
+  .eq-day .profile-stage { grid-template-columns: 1fr; }
+  .eq-day .profile-copy { padding: 0; }
+  .eq-day .profile-visual { order: 0; }
+  .eq-day .eq-personal-crest { left: 0; }
+  .eq-personal-nav { grid-template-columns: repeat(2, 1fr); }
+  .eq-personal-nav a.eq-day { order: 1; } .eq-personal-nav a.eq-night { order: 2; }
+  .eq-personal-nav a.eq-day + a.eq-day { order: 3; } .eq-personal-nav a.eq-night + a.eq-night { order: 4; }
+  .eq-night .profile-stage { background: radial-gradient(ellipse at 60% 60%, #3b2660, transparent 62%), linear-gradient(90deg, #efe4c8 0, #3a2b4f 4%, #150f1e 18%); }
+  .eq-day .profile-stage { background: radial-gradient(ellipse at 40% 60%, #fff9ea, transparent 62%), linear-gradient(270deg, #241a33 0, #b9a684 4%, #f3ead6 18%); }
+}

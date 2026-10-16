@@ -15,9 +15,19 @@ import Footer from "./Footer";
 import CharacterSignature from "./CharacterSignature";
 import { useExperience } from "./Experience";
 import "../equinox.css";
+import "../equinox-war.css";
 import { EquinoxName, EquinoxTypeField } from "./EquinoxName";
+import { equinoxFlip, equinoxSide } from "./EquinoxChapter";
 import { TypeField, no, starColors, types } from "./StarterChapter";
+import { dawnFonts } from "./DawnChapter";
+import { firstEpisode, heroesFonts } from "./HeroesChapter";
+import { callsigns } from "./RescueChapter";
+import "../profiles.css";
 const starters = cast.filter((m) => m.group === 2);
+/* 그 밖의 기수 개인화면 — 챕터 페이지 컨셉을 이어받습니다 (스타일은 profiles.css) */
+const teamKey: Record<number, string> = { 1: "dawn", 3: "heroes", 4: "rescue", 6: "stimpack", 7: "security" };
+const teamNav: Record<string, string> = { dawn: "四幅 · 네 폭의 족자", heroes: "등장인물 소개", rescue: "RESCUE CREW · 구조대", stimpack: "NOW SHOWING · 상영작", security: "BODYGUARD TEAM · 경호팀" };
+const teamFonts: Record<string, () => string> = { dawn: dawnFonts, heroes: heroesFonts };
 export default function CharacterProfile({ slug }: { slug: string }) {
   const c = cast.find((c) => c.slug === slug)!;
   /* 개인 문장 — 4기 이퀴녹스, 1기 스타터팩, 3기 레스큐팩, 5기 스팀팩 */
@@ -34,10 +44,18 @@ export default function CharacterProfile({ slug }: { slug: string }) {
   const clean = (s: string) => !/추후|내용을 채워|\(추가\)/.test(s);
   /* 1기 스타터팩 — 포켓 도감 컨셉 */
   const starter = c.group === 2;
+  /* 4기 이퀴녹스 — 천계(day)는 그림이 왼쪽, 마계(night)는 오른쪽. 서로의 거울입니다. */
+  const side = c.group === 5 ? equinoxSide[slug] : null;
+  const eqMembers = cast.filter((m) => m.group === 5).sort((a, b) => (equinoxSide[a.slug] === "day" ? 0 : 1) - (equinoxSide[b.slug] === "day" ? 0 : 1));
   const dexNo = no(starters.indexOf(c));
+  const team = teamKey[c.group];
+  const crew = cast.filter((m) => m.group === c.group);
+  const reel = String(crew.indexOf(c) + 1).padStart(2, "0");
+  const badge = team && ({ dawn: `零 · 第${reel}幅 — 새벽조`, heroes: `제1화 · ${firstEpisode[slug]?.job}`, rescue: `CALLSIGN · ${callsigns[slug]}`, stimpack: `REEL ${reel} · SILENT FILM`, security: `♥ ${c.role.toUpperCase()} · VALENTINE GUARD` } as Record<string, string>)[team];
+  const stamp = team && ({ dawn: d.motif, heroes: "역전!", security: "♥" } as Record<string, string>)[team];
   return (
     <div
-      className={`wse-site profile theme-${d.effect} character-${slug}${c.group === 5 ? " equinox-profile" : ""}${starter ? " starter-site starter-profile" : ""}`}
+      className={`wse-site profile theme-${d.effect} character-${slug}${side ? ` equinox-profile eq-${side}` : ""}${starter ? " starter-site starter-profile" : ""}${team ? ` team-profile tp-${team} ${teamFonts[team]?.() ?? ""}` : ""}`}
       style={{ "--accent": d.color, "--tone": d.secondary, "--sp-accent": d.color, "--sp-star": starColors[slug] } as CSSProperties}
     >
       <Header />
@@ -72,8 +90,9 @@ export default function CharacterProfile({ slug }: { slug: string }) {
             <span className="world-motif">{d.motif}</span>
           </div>
           <div className="profile-copy">
-            {c.group === 5 && <Link className="eq-profile-identity" href="/services/generation5" aria-label="이퀴녹스 이야기로"><span className="eq-profile-seal"><Image src={`/images/equinox/${slug}-mark.png`} alt={`${c.name}의 문장`} width={76} height={76} /></span><span>EQUINOX<br />BETWEEN DAY & NIGHT</span></Link>}
+            {c.group === 5 && <Link className="eq-profile-identity" href="/services/generation5" aria-label="이퀴녹스 이야기로"><span className="eq-profile-seal"><Image src={`/images/equinox/${slug}-mark.png`} alt={`${c.name}의 문장`} width={76} height={76} /></span><span>{side === "day" ? <>EQUINOX · 天 천계<br />낮을 선물한 천사</> : <>EQUINOX · 魔 마계<br />밤을 선물한 악마</>}</span></Link>}
             {starter && <span className="sp-profile-dex"><span className="sp-kicker">WSE POCKET DEX · {dexNo}</span><span className="sp-type">{types[slug]} 타입</span></span>}
+            {team && <span className="tp-badge">{badge}</span>}
             <span className="eyebrow">{d.chapter}</span>
             {c.group === 5 && <EquinoxName slug={slug} />}
             <h1>
@@ -120,6 +139,7 @@ export default function CharacterProfile({ slug }: { slug: string }) {
             style={{ x: paused ? 0 : rx, y: paused ? 0 : ry }}
           >
             <div className="portrait-frame" />
+            {stamp && <span className="tp-stamp" aria-hidden="true">{stamp}</span>}
             {starter && <div className="sp-profile-bar" aria-hidden="true"><span>{dexNo}</span><span>{c.role.toUpperCase()}</span></div>}
             {mark && <div className="eq-personal-crest" aria-hidden="true"><Image src={mark} width={180} height={180} alt="" /><span>{c.birthplace} / {c.role.toUpperCase()}</span></div>}
             <AnimatePresence mode="wait">
@@ -141,7 +161,7 @@ export default function CharacterProfile({ slug }: { slug: string }) {
                     width={1080}
                     height={1620}
                     sizes="(max-width: 700px) 90vw, 51vw"
-                    className="profile-portrait"
+                    className={`profile-portrait${equinoxFlip.includes(slug) && !(pose % 2 && c.alternate) ? " eq-flip" : ""}`}
                     src={(pose % 2 ? c.alternate : c.image) || c.image}
                     alt={c.name}
                     fetchPriority="high"
@@ -169,8 +189,9 @@ export default function CharacterProfile({ slug }: { slug: string }) {
             SCROLL TO DISCOVER <span>↓</span>
           </a>
         </section>
-        {c.group === 5 && <nav className="eq-personal-nav" aria-label="이퀴녹스 캐릭터"><span>FOUR SOULS<br /><strong>다른 마음을 만나보세요.</strong></span>{cast.filter(member => member.group === 5).map(member => <Link href={member.href} key={member.slug} aria-current={member.slug === slug ? "page" : undefined}><span className="eq-seal"><Image src={`/images/equinox/${member.slug}-mark.png`} width={64} height={64} alt="" /></span><span>{member.name}<small>{member.role.toUpperCase()}</small></span><span aria-hidden="true">↗</span></Link>)}</nav>}
+        {c.group === 5 && <nav className="eq-personal-nav" aria-label="이퀴녹스 캐릭터"><span>天 · VS · 魔<br /><strong>다른 마음을 만나보세요.</strong></span>{eqMembers.map(member => <Link href={member.href} key={member.slug} className={`eq-${equinoxSide[member.slug]}`} aria-current={member.slug === slug ? "page" : undefined}><span className="eq-seal"><Image src={`/images/equinox/${member.slug}-mark.png`} width={64} height={64} alt="" /></span><span>{member.name}<small>{member.role.toUpperCase()}</small></span><span aria-hidden="true">↗</span></Link>)}</nav>}
         {starter && <nav className="sp-profile-nav" aria-label="스타터팩 캐릭터"><span>CHOOSE YOUR STARTER<br /><strong>다른 스타터도 만나보세요.</strong></span>{starters.map((m, i) => <Link href={m.href} key={m.slug} className="sp-cart" aria-current={m.slug === slug ? "page" : undefined} style={{ "--sp-accent": directions[m.slug].color } as CSSProperties}><span className="sp-cart-label"><Image src={m.image!} alt="" width={200} height={300} sizes="120px" /><small>{no(i)}</small></span><span className="sp-cart-name"><b>{m.name}</b><small>{m.role.toUpperCase()} VER.</small></span></Link>)}</nav>}
+        {team && <nav className="tp-nav" aria-label={`${c.teamName} 캐릭터`}><span>{teamNav[team]}<br /><strong>다른 멤버도 만나보세요.</strong></span>{crew.map((m) => <Link href={m.href} key={m.slug} aria-current={m.slug === slug ? "page" : undefined} style={{ "--accent": directions[m.slug].color } as CSSProperties}><span className="tp-nav-art">{m.image ? <Image src={m.image} alt="" width={200} height={300} sizes="96px" /> : <span aria-hidden="true">{m.emoji}</span>}</span><span><b>{m.name.replace("(미정)", "")}</b><small>{m.role.toUpperCase()}</small></span></Link>)}</nav>}
         <section id="story" className="profile-story section-shell">
           <div>
             {mark && <div className="eq-story-crest"><Image src={mark} width={160} height={160} alt={`${c.name}의 문장`} /><span>PERSONAL ARCHIVE<br />{({ 2: "STARTER PACK", 4: "RESCUE PACK", 5: "EQUINOX", 6: "STIMPACK" } as Record<number, string>)[c.group]} / {c.role.toUpperCase()}</span></div>}
