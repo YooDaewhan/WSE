@@ -1,0 +1,92 @@
+/* 2기 히어로즈 — 삼류 청춘만화 · 언더독 */
+.heroes-site { --hr-paper: #f4f1e6; --hr-ink: #151612; --hr-lime: #dbe59b; --hr-moss: #343826; --hr-red: #e2412f; background: var(--hr-paper); color: var(--hr-ink); font-family: var(--hr-gothic), sans-serif; }
+.heroes-site a, .heroes-site button { color: inherit; }
+.heroes-site main { background: radial-gradient(circle, #15161214 1px, transparent 1.4px) 0 0 / 7px 7px, var(--hr-paper); }
+.hr-kicker { display: inline-block; padding: 4px 10px; background: var(--hr-ink); color: var(--hr-lime); font: 700 11px/1 var(--hr-gothic), sans-serif; letter-spacing: .25em; }
+
+/* hero — 만화책 표지 */
+.hr-hero { position: relative; display: grid; place-items: center; min-height: 100svh; padding: 130px 6vw 80px; overflow: hidden; cursor: pointer; background: var(--hr-moss); color: var(--hr-paper); }
+.hr-topline { position: absolute; top: 96px; left: 6vw; right: 6vw; z-index: 3; display: flex; justify-content: space-between; font-size: 11px; letter-spacing: .15em; opacity: .7; }
+.hr-speed { position: absolute; inset: 0; background: repeating-conic-gradient(from 0deg at 50% 50%, #dbe59b22 0 1.2deg, transparent 1.2deg 5deg); -webkit-mask: radial-gradient(circle, transparent 18%, #000 46%); mask: radial-gradient(circle, transparent 18%, #000 46%); pointer-events: none; }
+.hr-cover { position: relative; z-index: 2; text-align: center; }
+.hr-vol { font-size: 12px; letter-spacing: .35em; color: var(--hr-lime); }
+.hr-cover h1 { margin-top: 18px; font: 400 clamp(84px, 15vw, 220px)/.9 var(--hr-punch), sans-serif; color: var(--hr-lime); -webkit-text-stroke: 3px var(--hr-ink); paint-order: stroke fill; text-shadow: 8px 8px 0 var(--hr-ink); transform: skewX(-8deg); animation: hr-slam .55s cubic-bezier(.2,1.6,.4,1) both; }
+.hr-cover h1 small { display: block; margin-bottom: 8px; font-size: .32em; color: var(--hr-paper); letter-spacing: .1em; }
+@keyframes hr-slam { from { opacity: 0; transform: skewX(-8deg) scale(2.2); } }
+.hr-tagline { margin: 34px auto 0; max-width: 520px; font-size: clamp(17px, 1.6vw, 22px); font-weight: 700; line-height: 1.7; word-break: keep-all; animation: hr-fade .8s .5s both; }
+@keyframes hr-fade { from { opacity: 0; transform: translateY(12px); } }
+.hr-stamp { position: absolute; right: -4%; top: -14%; display: grid; padding: 10px 14px; border: 3px solid var(--hr-red); color: var(--hr-red); font-size: 11px; font-weight: 700; letter-spacing: .1em; transform: rotate(12deg); animation: hr-stamp .4s 1.1s cubic-bezier(.3,1.6,.5,1) both; }
+.hr-stamp b { font: 400 22px/1.1 var(--hr-punch), sans-serif; letter-spacing: 0; }
+@keyframes hr-stamp { from { opacity: 0; transform: rotate(12deg) scale(1.8); } }
+.hr-hint { position: absolute; bottom: 34px; z-index: 2; font-size: 12px; letter-spacing: .08em; opacity: .65; }
+.hr-pop { position: absolute; z-index: 4; translate: -50% -50%; font: 400 clamp(40px, 5vw, 72px)/1 var(--hr-punch), sans-serif; color: var(--hr-lime); -webkit-text-stroke: 3px var(--hr-ink); paint-order: stroke fill; text-shadow: 5px 5px 0 var(--hr-ink); pointer-events: none; animation: hr-pop 1.2s cubic-bezier(.2,1.5,.4,1) forwards; }
+@keyframes hr-pop { from { transform: rotate(var(--r)) scale(.2); } 25% { transform: rotate(var(--r)) scale(1.15); } 70% { opacity: 1; } to { transform: rotate(var(--r)) scale(1) translateY(-30px); opacity: 0; } }
+
+/* 섹션 머리 */
+.hr-head { max-width: 640px; margin: 0 auto 48px; text-align: center; }
+.hr-head h2 { margin-top: 18px; font: 400 clamp(36px, 4.6vw, 64px)/1.1 var(--hr-punch), sans-serif; word-break: keep-all; }
+.hr-head p { margin-top: 16px; font-size: 15px; line-height: 1.9; color: #4a4b42; word-break: keep-all; }
+
+/* 등장인물 — 만화 컷 */
+.hr-cast { padding: 120px 6vw; }
+.hr-panels { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; max-width: 1240px; margin: 0 auto; }
+.hr-panel { display: block; animation: hr-fade .7s var(--d) both; }
+.hr-panel:nth-child(even) { margin-top: 40px; }
+.hr-frame { position: relative; display: block; aspect-ratio: 2 / 3; overflow: hidden; border: 4px solid var(--hr-ink); background: #e6e2d3; box-shadow: 6px 6px 0 var(--hr-ink); transform: rotate(-1deg); transition: transform .25s, box-shadow .25s; }
+.hr-panel:nth-child(even) .hr-frame { transform: rotate(1deg); }
+.hr-burst { position: absolute; inset: -40%; background: repeating-conic-gradient(from 0deg, var(--c) 0 6deg, transparent 6deg 12deg); opacity: 0; transition: opacity .3s; }
+.hr-art { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; filter: grayscale(1) contrast(1.2); transition: filter .35s, transform .35s; }
+.hr-silhouette { display: grid; place-items: center; font-size: 72px; background: radial-gradient(circle, #15161233 1.2px, transparent 1.6px) 0 0 / 6px 6px; }
+.hr-bubble { position: absolute; left: 10px; right: 22px; top: 12px; padding: 9px 12px; border: 2px solid var(--hr-ink); border-radius: 18px; background: #fff; font-size: 13px; font-weight: 700; word-break: keep-all; transition: opacity .25s; }
+.hr-bubble::after { content: ""; position: absolute; left: 26px; bottom: -10px; border: 9px solid transparent; border-top-color: var(--hr-ink); border-bottom: 0; }
+.hr-final { position: absolute; inset: auto 0 0; padding: 40px 14px 14px; background: linear-gradient(transparent, var(--hr-ink) 55%); color: var(--c); font: 400 22px/1.2 var(--hr-punch), sans-serif; word-break: keep-all; opacity: 0; transform: translateY(20px); transition: opacity .3s, transform .3s; }
+.hr-panel:hover .hr-frame, .hr-panel:focus-visible .hr-frame { transform: rotate(0) translate(-3px, -3px); box-shadow: 10px 10px 0 var(--hr-ink); }
+.hr-panel:hover .hr-burst, .hr-panel:focus-visible .hr-burst { opacity: .55; }
+.hr-panel:hover .hr-art, .hr-panel:focus-visible .hr-art { filter: none; transform: scale(1.04); }
+.hr-panel:hover .hr-bubble, .hr-panel:focus-visible .hr-bubble { opacity: 0; }
+.hr-panel:hover .hr-final, .hr-panel:focus-visible .hr-final { opacity: 1; transform: none; }
+.hr-caption { display: grid; gap: 4px; margin-top: 18px; }
+.hr-caption small { font-size: 11px; letter-spacing: .1em; color: #6a6b5e; }
+.hr-caption b { font: 400 24px/1.1 var(--hr-punch), sans-serif; }
+.hr-caption .real-name { font-size: 12px; color: #6a6b5e; }
+
+/* 줄거리 — 3막 */
+.hr-plot { padding: 110px 6vw; background: var(--hr-ink); color: var(--hr-paper); }
+.hr-plot .hr-kicker { background: var(--hr-lime); color: var(--hr-ink); }
+.hr-plot .hr-head p { color: #b9baa9; }
+.hr-acts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; max-width: 1080px; margin: 0 auto; list-style: none; padding: 0; }
+.hr-acts li { padding: 34px 28px; border: 3px solid var(--hr-paper); margin-left: -3px; }
+.hr-acts li:last-child { background: var(--hr-lime); color: var(--hr-ink); transform: scale(1.06) rotate(1.5deg); box-shadow: 8px 8px 0 var(--hr-red); }
+.hr-acts small { font-size: 12px; letter-spacing: .2em; opacity: .7; }
+.hr-acts b { display: block; margin-top: 10px; font: 400 clamp(44px, 5vw, 72px)/1 var(--hr-punch), sans-serif; }
+.hr-acts p { margin-top: 14px; font-size: 15px; line-height: 1.8; word-break: keep-all; }
+
+/* 최종화 */
+.hr-last { padding: 130px 6vw; }
+.hr-last-inner { max-width: 720px; margin: 0 auto; padding: 56px 44px; border: 4px solid var(--hr-ink); background: #fff; box-shadow: 10px 10px 0 var(--hr-ink); text-align: center; }
+.hr-last p { margin-top: 26px; font-size: 16px; line-height: 2; word-break: keep-all; }
+.hr-last blockquote { margin-top: 30px; font: 400 clamp(30px, 3.6vw, 48px)/1.2 var(--hr-punch), sans-serif; word-break: keep-all; }
+.hr-end { display: block; margin-top: 30px; font-size: 13px; letter-spacing: .4em; color: #6a6b5e; }
+
+.hr-bottom { display: flex; justify-content: space-between; gap: 16px; padding: 28px 6vw; border-top: 3px solid var(--hr-ink); font-size: 13px; font-weight: 700; }
+
+@media (max-width: 900px) {
+  .hr-panels { grid-template-columns: repeat(2, 1fr); }
+  .hr-acts { grid-template-columns: 1fr; gap: 0; }
+  .hr-acts li { margin: -3px 0 0; }
+  .hr-acts li:last-child { transform: rotate(1deg); }
+  .hr-stamp { right: 0; top: -30%; }
+}
+@media (max-width: 560px) {
+  .hr-hero, .hr-cast, .hr-plot, .hr-last { padding-left: 16px; padding-right: 16px; }
+  .hr-topline { left: 16px; right: 16px; }
+  .hr-panels { gap: 14px; }
+  .hr-panel:nth-child(even) { margin-top: 24px; }
+  .hr-bubble { font-size: 11px; }
+  .hr-final { font-size: 17px; }
+  .hr-last-inner { padding: 40px 20px; }
+  .hr-bottom { flex-direction: column; align-items: center; padding: 24px 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hr-cover h1, .hr-stamp, .hr-tagline, .hr-panel, .hr-pop { animation: none; }
+}
