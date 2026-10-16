@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRef, useState, type CSSProperties } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { cast, generations } from "../data/cast";
+import { cast, generations, credit } from "../data/cast";
 import { chapters } from "../data/chapters";
 import { directions } from "../data/art-direction";
 import Header from "./Header";
@@ -61,7 +61,7 @@ function Ensemble({
             alt={c.name}
             priority={priority && i === 0}
           />
-          <span>{c.name.replace("(미정)", "")}</span>
+          <span>{c.name.replace("(미정)", "")}<span className="real-name">{credit(c)}</span></span>
         </Link>
       ))}
     </div>
@@ -180,7 +180,7 @@ export default function CastDirectory({ group = 0 }: { group?: number }) {
                   <span className="chapter-overline">
                     {generation.teamName} — {String(i + 1).padStart(2, "0")}
                   </span>
-                  <h3>{c.name.replace("(미정)", "")}</h3>
+                  <h3>{c.name.replace("(미정)", "")}<span className="real-name">{credit(c)}</span></h3>
                   <blockquote>“{c.content.quote}”</blockquote>
                   <p>
                     {directions[c.slug].title}

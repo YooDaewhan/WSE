@@ -8,7 +8,7 @@ import {
   useMotionValue,
   useSpring,
 } from "framer-motion";
-import { cast } from "../data/cast";
+import { cast, credit } from "../data/cast";
 import { directions } from "../data/art-direction";
 import Header from "./Header";
 import Footer from "./Footer";
@@ -20,8 +20,8 @@ import { TypeField, no, starColors, types } from "./StarterChapter";
 const starters = cast.filter((m) => m.group === 2);
 export default function CharacterProfile({ slug }: { slug: string }) {
   const c = cast.find((c) => c.slug === slug)!;
-  /* 개인 문장 — 4기 이퀴녹스, 1기 스타터팩 */
-  const mark = c.group === 5 ? `/images/equinox/${slug}-mark.png` : c.group === 2 ? `/images/starterpack/${slug}-mark.webp` : null;
+  /* 개인 문장 — 4기 이퀴녹스, 1기 스타터팩, 3기 레스큐팩, 5기 스팀팩 */
+  const mark = c.group === 5 ? `/images/equinox/${slug}-mark.png` : c.group === 2 ? `/images/starterpack/${slug}-mark.webp` : c.group === 4 ? `/images/rescuepack/${slug}-mark.png` : c.group === 6 ? `/images/stimpack/${slug}-mark.png` : null;
   const d = directions[slug];
   const { paused } = useExperience();
   const [pose, setPose] = useState(0);
@@ -77,7 +77,7 @@ export default function CharacterProfile({ slug }: { slug: string }) {
             <span className="eyebrow">{d.chapter}</span>
             {c.group === 5 && <EquinoxName slug={slug} />}
             <h1>
-              {c.name.replace("(미정)", "")}
+              {c.name.replace("(미정)", "")}<span className="real-name">{credit(c)}</span>
               <small>
                 {c.name.includes("(미정)")
                   ? "NAME IN DEVELOPMENT"
@@ -173,7 +173,7 @@ export default function CharacterProfile({ slug }: { slug: string }) {
         {starter && <nav className="sp-profile-nav" aria-label="스타터팩 캐릭터"><span>CHOOSE YOUR STARTER<br /><strong>다른 스타터도 만나보세요.</strong></span>{starters.map((m, i) => <Link href={m.href} key={m.slug} className="sp-cart" aria-current={m.slug === slug ? "page" : undefined} style={{ "--sp-accent": directions[m.slug].color } as CSSProperties}><span className="sp-cart-label"><Image src={m.image!} alt="" width={200} height={300} sizes="120px" /><small>{no(i)}</small></span><span className="sp-cart-name"><b>{m.name}</b><small>{m.role.toUpperCase()} VER.</small></span></Link>)}</nav>}
         <section id="story" className="profile-story section-shell">
           <div>
-            {mark && <div className="eq-story-crest"><Image src={mark} width={160} height={160} alt={`${c.name}의 문장`} /><span>PERSONAL ARCHIVE<br />{c.group === 5 ? "EQUINOX" : "STARTER PACK"} / {c.role.toUpperCase()}</span></div>}
+            {mark && <div className="eq-story-crest"><Image src={mark} width={160} height={160} alt={`${c.name}의 문장`} /><span>PERSONAL ARCHIVE<br />{({ 2: "STARTER PACK", 4: "RESCUE PACK", 5: "EQUINOX", 6: "STIMPACK" } as Record<number, string>)[c.group]} / {c.role.toUpperCase()}</span></div>}
             <span className="eyebrow">01 / BEHIND THE NAME</span>
             <h2>
               {d.title}

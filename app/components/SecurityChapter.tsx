@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { cast } from "../data/cast";
+import { cast, credit } from "../data/cast";
 import { directions } from "../data/art-direction";
 import { content } from "../services/generation7/content";
 import Header from "./Header";
@@ -67,7 +67,7 @@ export default function SecurityChapter() {
                 <div className="sx-tag-photo"><Image src={member.image!} alt={member.name} width={600} height={900} sizes="200px" /></div>
                 <div>
                   <span className="sx-tag-code">CODE {directions[member.slug].motif} · 담당 경호원</span>
-                  <h3>{member.name}</h3>
+                  <h3>{member.name}<span className="real-name">{credit(member)}</span></h3>
                   <p>“{member.content.quote}”</p>
                   <Link href={member.href}>경호원 프로필 ↗</Link>
                 </div>
@@ -86,7 +86,7 @@ export default function SecurityChapter() {
                   <div className="sx-card-photo"><Image src={m.image!} alt={m.name} width={600} height={900} sizes="(max-width: 900px) 90vw, 24vw" /><span className="sx-card-code">CODE {d.motif}</span></div>
                   <div className="sx-card-body">
                     <span className="sx-card-ch">{d.chapter}</span>
-                    <h3>{m.name}</h3>
+                    <h3>{m.name}<span className="real-name">{credit(m)}</span></h3>
                     <p>{d.title} {d.subtitle}</p>
                     <span className="sx-card-cta">경호 의뢰하기 <span>♥</span></span>
                   </div>

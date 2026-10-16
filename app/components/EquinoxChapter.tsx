@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { Cinzel, Nanum_Myeongjo } from "next/font/google";
-import { cast } from "../data/cast";
+import { cast, credit } from "../data/cast";
 import { directions } from "../data/art-direction";
 import { content } from "../services/generation5/content";
 import Header from "./Header";
@@ -36,7 +36,7 @@ function Soul({ slug, flip, side }: { slug: string; flip: boolean; side: "day" |
       </span>
       <span className="ew-soul-copy">
         <small>{side === "day" ? "天" : "魔"} · {m.role.toUpperCase()}</small>
-        <b>{m.name}</b>
+        <b>{m.name}<span className="real-name">{credit(m)}</span></b>
         <em>{d.title} {d.subtitle}</em>
         <q>{m.content.quote}</q>
       </span>

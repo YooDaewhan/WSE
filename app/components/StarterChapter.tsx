@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { cast } from "../data/cast";
+import { cast, credit } from "../data/cast";
 import { directions } from "../data/art-direction";
 import { content } from "../services/generation2/content";
 import Header from "./Header";
@@ -113,7 +113,7 @@ export default function StarterChapter() {
                   <div className="sp-screen-art" key={member.slug}>
                     <Image src={member.image!} alt={member.name} width={600} height={900} sizes="320px" priority />
                   </div>
-                  <div className="sp-screen-foot"><strong>{member.name}</strong><span className="sp-type">{types[member.slug]}</span></div>
+                  <div className="sp-screen-foot"><strong>{member.name}<span className="real-name">{credit(member)}</span></strong><span className="sp-type">{types[member.slug]}</span></div>
                 </div>
               </div>
               <p className="sp-brand"><span>WSE</span> <i>Pocket Dex</i></p>
@@ -164,7 +164,7 @@ export default function StarterChapter() {
                     <Image src={m.image!} alt={m.name} width={600} height={900} sizes="(max-width: 900px) 90vw, 30vw" />
                   </div>
                   <div className="sp-card-body">
-                    <div className="sp-card-head"><h3>{m.name}</h3><span className="sp-type">{types[m.slug]}</span></div>
+                    <div className="sp-card-head"><h3>{m.name}<span className="real-name">{credit(m)}</span></h3><span className="sp-type">{types[m.slug]}</span></div>
                     <span className="sp-card-class">분류 · {d.chapter}</span>
                     <dl>
                       <div><dt>서식지</dt><dd>{m.birthplace}</dd></div>

@@ -84,3 +84,6 @@ body {
     animation: bubble-out 0.01s 3s forwards;
   }
 }
+
+/* 이름 옆 실명 — 제목의 40% */
+.real-name { font-size: 0.4em; font-weight: inherit; letter-spacing: 0; margin-left: 0.3em; opacity: 0.75; white-space: nowrap; vertical-align: baseline; }
