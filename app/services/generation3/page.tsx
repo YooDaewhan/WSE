@@ -1,2 +1,2 @@
-import CastDirectory from '../../components/CastDirectory';
-export default function Page() { return <CastDirectory group={3} />; }
+import HeroesChapter from '../../components/HeroesChapter';
+export default function Page() { return <HeroesChapter />; }
