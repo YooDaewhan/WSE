@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { cast } from "../data/cast";
+import { cast, credit } from "../data/cast";
 import { directions } from "../data/art-direction";
 import { content } from "../services/generation4/content";
 import Header from "./Header";
@@ -173,7 +173,7 @@ export default function RescueChapter() {
                   <div className="rs-badge-photo"><Image src={m.image!} alt={m.name} width={600} height={900} sizes="(max-width: 900px) 90vw, 30vw" /></div>
                   <div className="rs-badge-body">
                     <span className="rs-callsign">CALLSIGN · {callsigns[m.slug]}</span>
-                    <h3>{m.name}</h3>
+                    <h3>{m.name}<span className="real-name">{credit(m)}</span></h3>
                     <dl>
                       <div><dt>임무</dt><dd>{d.chapter}</dd></div>
                       <div><dt>출동지</dt><dd>{m.birthplace}</dd></div>

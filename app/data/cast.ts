@@ -110,7 +110,8 @@ export const generations = [
 export const cast = [
   {
     ...{
-      name: "홍길동",
+      name: "도적",
+      realName: "길동",
       emoji: "⚔️",
       role: "Pioneer",
       generation: "0기",
@@ -128,7 +129,8 @@ export const cast = [
   },
   {
     ...{
-      name: "내시(미정)",
+      name: "내시",
+      realName: "김서담",
       emoji: "📜",
       role: "Strategist",
       generation: "0기",
@@ -146,7 +148,8 @@ export const cast = [
   },
   {
     ...{
-      name: "도깨비(미정)",
+      name: "도깨비",
+      realName: "득춘",
       emoji: "👹",
       role: "Wildcard",
       generation: "0기",
@@ -158,13 +161,14 @@ export const cast = [
       href: "/services/generation1/dokkaebi",
       group: 1,
       image: "/images/members/dokkaebi.png",
-      alternate: "/images/members/dokkaebi.png",
+      alternate: "/images/members/dokkaebi-2.png",
     },
     content: dokkaebi,
   },
   {
     ...{
-      name: "호테이 센지",
+      name: "고등관",
+      realName: "호테이 센지",
       emoji: "🔥",
       role: "Breaker",
       generation: "0기",
@@ -183,6 +187,7 @@ export const cast = [
   {
     ...{
       name: "이그나이터",
+      realName: "박금지",
       emoji: "🔥",
       role: "Igniter",
       generation: "1기",
@@ -205,6 +210,7 @@ export const cast = [
   {
     ...{
       name: "네비게이터",
+      realName: "박수현",
       emoji: "🧭",
       role: "Navigator",
       generation: "1기",
@@ -223,6 +229,7 @@ export const cast = [
   {
     ...{
       name: "셀러브레이터",
+      realName: "이하은",
       emoji: "🎉",
       role: "Celebrator",
       generation: "1기",
@@ -241,6 +248,7 @@ export const cast = [
   {
     ...{
       name: "알바(미정)",
+      realName: "정민수",
       emoji: "💼",
       role: "Hustler",
       generation: "2기",
@@ -259,6 +267,7 @@ export const cast = [
   {
     ...{
       name: "편돌이(미정)",
+      realName: "한도윤",
       emoji: "🏪",
       role: "Keeper",
       generation: "2기",
@@ -277,6 +286,7 @@ export const cast = [
   {
     ...{
       name: "딸배(미정)",
+      realName: "윤재희",
       emoji: "🚬",
       role: "Rebel",
       generation: "2기",
@@ -295,6 +305,7 @@ export const cast = [
   {
     ...{
       name: "폐급이병(미정)",
+      realName: "오태식",
       emoji: "🎖️",
       role: "Survivor",
       generation: "2기",
@@ -313,6 +324,7 @@ export const cast = [
   {
     ...{
       name: "헬다이버",
+      realName: "강하준",
       emoji: "🪂",
       role: "Vanguard",
       generation: "3기",
@@ -324,13 +336,14 @@ export const cast = [
       href: "/services/generation4/helldiver",
       group: 4,
       image: "/images/members/helldiver.png",
-      alternate: "/images/members/helldiver.png",
+      alternate: "/images/members/helldiver-2.png",
     },
     content: helldiver,
   },
   {
     ...{
       name: "앵커",
+      realName: "서지안",
       emoji: "⚓",
       role: "Anchor",
       generation: "3기",
@@ -342,13 +355,14 @@ export const cast = [
       href: "/services/generation4/anchor",
       group: 4,
       image: "/images/members/anchor.png",
-      alternate: "/images/members/anchor.png",
+      alternate: "/images/members/anchor-2.png",
     },
     content: anchor,
   },
   {
     ...{
       name: "페인킬러",
+      realName: "임소율",
       emoji: "💊",
       role: "Healer",
       generation: "3기",
@@ -367,6 +381,7 @@ export const cast = [
   {
     ...{
       name: "포스포라 미카",
+      realName: "백미카",
       emoji: "☀️",
       role: "Light",
       generation: "4기",
@@ -385,6 +400,7 @@ export const cast = [
   {
     ...{
       name: "코코",
+      realName: "신코코",
       emoji: "🌗",
       role: "Dusk",
       generation: "4기",
@@ -403,6 +419,7 @@ export const cast = [
   {
     ...{
       name: "포스포라 루시",
+      realName: "류시아",
       emoji: "🌓",
       role: "Storm",
       generation: "4기",
@@ -421,6 +438,7 @@ export const cast = [
   {
     ...{
       name: "티티",
+      realName: "남티나",
       emoji: "🌑",
       role: "Shadow",
       generation: "4기",
@@ -439,6 +457,7 @@ export const cast = [
   {
     ...{
       name: "슈거",
+      realName: "문슬기",
       emoji: "🧂",
       role: "Sugar",
       generation: "5기",
@@ -457,6 +476,7 @@ export const cast = [
   {
     ...{
       name: "홀더",
+      realName: "조한결",
       emoji: "🔗",
       role: "Holder",
       generation: "5기",
@@ -475,6 +495,7 @@ export const cast = [
   {
     ...{
       name: "클로버",
+      realName: "송다온",
       emoji: "🍀",
       role: "Lucky",
       generation: "5기",
@@ -493,6 +514,7 @@ export const cast = [
   {
     ...{
       name: "인턴",
+      realName: "배인우",
       emoji: "📋",
       role: "Rookie",
       generation: "6기",
@@ -511,6 +533,7 @@ export const cast = [
   {
     ...{
       name: "사원",
+      realName: "권사랑",
       emoji: "💻",
       role: "Worker",
       generation: "6기",
@@ -529,6 +552,7 @@ export const cast = [
   {
     ...{
       name: "대리",
+      realName: "황대현",
       emoji: "📊",
       role: "Manager",
       generation: "6기",
@@ -547,6 +571,7 @@ export const cast = [
   {
     ...{
       name: "부장",
+      realName: "장부영",
       emoji: "🏛️",
       role: "Director",
       generation: "6기",
@@ -564,3 +589,7 @@ export const cast = [
   },
 ];
 export type CastMember = (typeof cast)[number];
+
+/* 이름 옆 크레딧 — 스타터팩·레스큐팩·스팀팩은 "역 이름", 새벽조는 이름만, 나머지는 "·이름" */
+export const credit = (m: { group: number; realName: string }) =>
+  [2, 4, 6].includes(m.group) ? `역 ${m.realName}` : m.group === 1 ? m.realName : `·${m.realName}`;

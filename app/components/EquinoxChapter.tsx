@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { cast } from "../data/cast";
+import { cast, credit } from "../data/cast";
 import { directions } from "../data/art-direction";
 import { content } from "../services/generation5/content";
 import Header from "./Header";
@@ -45,7 +45,7 @@ export default function EquinoxChapter() {
             <div className="eq-feature-emblem" aria-hidden="true"><Image src={`/images/equinox/${member.slug}-mark.png`} width={140} height={140} alt="" /><span>0{selected + 1} / EQUINOX</span></div>
             <span className="eq-large-number" aria-hidden="true">0{selected + 1}</span>
             <Image className="eq-character" src={member.image!} alt={member.name} width={900} height={1350} sizes="(max-width: 700px) 90vw, 50vw" priority />
-            <div className="eq-feature-caption" key={member.slug}><span>{member.role.toUpperCase()} / {member.birthplace}</span><EquinoxName slug={member.slug} /><h3>{member.name}</h3><Link href={member.href}>이 사람의 이야기 ↗</Link></div>
+            <div className="eq-feature-caption" key={member.slug}><span>{member.role.toUpperCase()} / {member.birthplace}</span><EquinoxName slug={member.slug} /><h3>{member.name}<span className="real-name">{credit(member)}</span></h3><Link href={member.href}>이 사람의 이야기 ↗</Link></div>
           </div>
           <div className="eq-vow"><span>DAY ◇ NIGHT</span><p key={member.slug}>“{member.content.quote}”</p><span>당신을 향한 네 개의 마음</span></div>
           <div className="eq-selector" aria-label="캐릭터 선택">
@@ -58,7 +58,7 @@ export default function EquinoxChapter() {
         </section>
         <section className="eq-cast" aria-labelledby="eq-cast-title">
           <div className="eq-section-heading"><span className="eq-kicker">FOUR SOULS, ONE EQUINOX</span><h2 id="eq-cast-title">당신에게 기울어진 세계.</h2><p>문장 너머, 네 사람의 이야기를 만나보세요.</p></div>
-          <div className="eq-cast-grid">{members.map((c, i) => <Link className="eq-card" key={c.slug} href={c.href}><div className="eq-card-art"><span className="eq-card-index">0{i + 1}</span><Image className="eq-card-portrait" src={c.image!} alt={c.name} width={600} height={900} sizes="(max-width: 700px) 85vw, 24vw" /><span className="eq-card-seal"><Image src={`/images/equinox/${c.slug}-mark.png`} alt={`${c.name}의 문장`} width={100} height={100} /></span></div><div className="eq-card-copy"><EquinoxName slug={c.slug} /><span className="eq-kicker">{c.role} / {c.birthplace}</span><h3>{c.name}<span>↗</span></h3><p>{directions[c.slug].title}<br />{directions[c.slug].subtitle}</p></div></Link>)}</div>
+          <div className="eq-cast-grid">{members.map((c, i) => <Link className="eq-card" key={c.slug} href={c.href}><div className="eq-card-art"><span className="eq-card-index">0{i + 1}</span><Image className="eq-card-portrait" src={c.image!} alt={c.name} width={600} height={900} sizes="(max-width: 700px) 85vw, 24vw" /><span className="eq-card-seal"><Image src={`/images/equinox/${c.slug}-mark.png`} alt={`${c.name}의 문장`} width={100} height={100} /></span></div><div className="eq-card-copy"><EquinoxName slug={c.slug} /><span className="eq-kicker">{c.role} / {c.birthplace}</span><h3>{c.name}<span className="real-name">{credit(c)}</span><span>↗</span></h3><p>{directions[c.slug].title}<br />{directions[c.slug].subtitle}</p></div></Link>)}</div>
         </section>
         <nav className="eq-bottom" aria-label="기수 이동"><Link href="/services">← 모든 이야기</Link><Link href="/services/generation6">다음 이야기 · 스팀팩 ↗</Link></nav>
       </main>

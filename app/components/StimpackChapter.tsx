@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { cast } from "../data/cast";
+import { cast, credit } from "../data/cast";
 import { directions } from "../data/art-direction";
 import { content } from "../services/generation6/content";
 import Header from "./Header";
@@ -105,7 +105,7 @@ export default function StimpackChapter() {
                 <Link href={m.href} className="sn-person" key={m.slug} style={{ "--c": d.color } as React.CSSProperties}>
                   <div className="sn-person-photo"><Image src={m.image!} alt={m.name} width={600} height={900} sizes="(max-width: 900px) 90vw, 30vw" /></div>
                   <span className="sn-person-role">{d.chapter}</span>
-                  <h3>{m.name}</h3>
+                  <h3>{m.name}<span className="real-name">{credit(m)}</span></h3>
                   <p>“{m.content.quote}”</p>
                   <span className="sn-person-cta">이번 생의 이야기 ↗</span>
                 </Link>

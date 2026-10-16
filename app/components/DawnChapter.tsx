@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { Nanum_Brush_Script, Nanum_Myeongjo } from "next/font/google";
-import { cast } from "../data/cast";
+import { cast, credit } from "../data/cast";
 import { directions } from "../data/art-direction";
 import { content } from "../services/generation1/content";
 import Header from "./Header";
@@ -95,7 +95,7 @@ export default function DawnChapter() {
                     <span className="dw-paper">
                       <span className="dw-motif" aria-hidden="true">{d.motif}</span>
                       <Image src={m.image!} alt={plain(m.name)} width={600} height={900} sizes="(max-width: 900px) 45vw, 22vw" />
-                      <span className="dw-name">{plain(m.name)}</span>
+                      <span className="dw-name">{plain(m.name)}<span className="real-name">{credit(m)}</span></span>
                       <span className="dw-mini-seal" aria-hidden="true">{d.motif}</span>
                     </span>
                   </span>

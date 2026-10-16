@@ -11,7 +11,7 @@ import {
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { useExperience } from "./components/Experience";
-import { cast, generations } from "./data/cast";
+import { cast, generations, credit } from "./data/cast";
 import { directions } from "./data/art-direction";
 import NewsBoard from "./components/NewsBoard";
 import ShopPreview from "./components/ShopPreview";
@@ -191,7 +191,7 @@ export default function Home() {
                       loading="lazy"
                     />
                     <div>
-                      <h3>{m.name}</h3>
+                      <h3>{m.name}<span className="real-name">{credit(m)}</span></h3>
                       <p>
                         {a.title} {a.subtitle}
                       </p>

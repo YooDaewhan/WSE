@@ -5,6 +5,7 @@ import { useState } from "react";
 const collections = [
   { key: "equinox", label: "이퀴녹스", english: "EQUINOX", blurb: "이퀴녹스의 네 가지 빛, 네 가지 이야기." },
   { key: "starterpack", label: "스타터팩", english: "STARTER PACK", blurb: "모험의 시작을 함께할 세 마리의 파트너." },
+  { key: "rescuepack", label: "레스큐팩", english: "RESCUE PACK", blurb: "가장 어두운 순간에 손을 내미는 세 개의 구원." },
   { key: "stimpack", label: "스팀팩", english: "STIMPACK", blurb: "끝까지 곁에 남는 세 개의 상징." },
 ] as const;
 type Collection = (typeof collections)[number]["key"];
@@ -16,6 +17,9 @@ const products: { collection: Collection; name: string; english: string; image: 
   { collection: "starterpack", name: "이그나이터", english: "IGNITER", image: "igniter", color: "#e5482b", motif: "처음 붙은 불꽃", description: "붉은 날개 사이로 피어오르는 작은 스파크. 시작을 알리는 이그나이터의 불씨를 배지에 담았습니다." },
   { collection: "starterpack", name: "네비게이터", english: "NAVIGATOR", image: "navigator", color: "#2b86c9", motif: "바람이 가리키는 길", description: "푸른 바람을 타고 날아오르는 흰 새와 길잡이 별. 길을 잃어도 다시 찾게 해 줄 네비게이터의 상징입니다." },
   { collection: "starterpack", name: "셀러브레이터", english: "CELEBRATOR", image: "celebrator", color: "#e8ad12", motif: "축하의 순간", description: "구름처럼 포근한 강아지와 작은 햇살. 당신의 첫 페이지를 축하하는 셀러브레이터의 빛입니다." },
+  { collection: "rescuepack", name: "헬다이버", english: "HELLDIVER", image: "helldiver", color: "#d9542b", motif: "가장 먼저 뛰어드는 자", description: "불길 속으로 가장 먼저 뛰어드는 헬다이버. 망설임 없는 첫걸음을 금속 배지에 새겼습니다." },
+  { collection: "rescuepack", name: "앵커", english: "ANCHOR", image: "anchor", color: "#3d6f8f", motif: "흔들리지 않는 닻", description: "거센 파도에도 자리를 지키는 앵커. 끝까지 버텨 주는 단단한 마음을 담았습니다." },
+  { collection: "rescuepack", name: "페인킬러", english: "PAINKILLER", image: "painkiller", color: "#e48fa8", motif: "아픔을 덜어 주는 손", description: "다친 곳을 가장 먼저 알아채는 페인킬러. 조용히 건네는 위로를 작은 반짝임으로 표현했습니다." },
   { collection: "stimpack", name: "슈거", english: "SUGAR", image: "sugar", color: "#9fd4b8", motif: "마지막 약속", description: "꿰맨 자국이 남은 민트빛 개와 품에 안은 복숭아. 몇 번이고 돌아오는 슈거의 마음을 담았습니다." },
   { collection: "stimpack", name: "홀더", english: "HOLDER", image: "holder", color: "#d8c3a0", motif: "놓치지 않는 끈", description: "흰 불꽃 속 검은 여우와 붉은 끈. 끝까지 붙잡고 있는 홀더의 이야기를 골드 라인으로 새겼습니다." },
   { collection: "stimpack", name: "클로버", english: "CLOVER", image: "clover", color: "#5f9b6b", motif: "행운이 머무는 자리", description: "네잎클로버를 품은 검은 토끼와 초록 고리. 곁에 두면 작은 행운이 찾아올 클로버의 배지입니다." },
