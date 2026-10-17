@@ -1,0 +1,11 @@
+Tool: built-in image_gen
+References: original Navigator marks.png (primary shape), Igniter marks.png and Celebrator marks.png (color mass references only).
+
+VARIANT 1
+undefined
+
+VARIANT 2
+undefined
+
+VARIANT 3
+undefined
