@@ -22,7 +22,7 @@ export type ProfileContent = {
 export const content: ProfileContent = {
   quote: "매국노 민족반역자",
   /* 히어로 대사·포즈 — 카드를 누를 때마다 다음 대사로 넘어갑니다.
-     n번째 대사 = n번째 포즈 이미지 (/images/members/pagyeseung.png, pagyeseung-2.png, pagyeseung-3.png, pagyeseung-4.png)
+     n번째 대사 = n번째 포즈 이미지 (/images/members/hoteisenji.png, hoteisenji-2.png, hoteisenji-3.png, hoteisenji-4.png)
      포즈 이미지가 없으면 기본 이미지가 나옵니다. */
   lines: [
     "매국노 민족반역자",

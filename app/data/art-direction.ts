@@ -39,7 +39,7 @@ export const directions: Record<string, ArtDirection> = {
     action: "도깨비와 장난치기",
     effect: "wisp",
   },
-  pagyeseung: {
+  hoteisenji: {
     color: "#e5a17c",
     secondary: "#513328",
     motif: "破",

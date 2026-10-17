@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 const collections = [
+  { key: "saebyeokjo", label: "새벽조", english: "SAEBYEOKJO", blurb: "가장 먼저 어둠을 건넌 넷의 문장." },
   { key: "equinox", label: "이퀴녹스", english: "EQUINOX", blurb: "이퀴녹스의 네 가지 빛, 네 가지 이야기." },
   { key: "starterpack", label: "스타터팩", english: "STARTER PACK", blurb: "모험의 시작을 함께할 세 마리의 파트너." },
   { key: "rescuepack", label: "레스큐팩", english: "RESCUE PACK", blurb: "가장 어두운 순간에 손을 내미는 세 개의 구원." },
@@ -10,6 +11,10 @@ const collections = [
 ] as const;
 type Collection = (typeof collections)[number]["key"];
 const products: { collection: Collection; name: string; english: string; image: string; color: string; motif: string; description: string }[] = [
+  { collection: "saebyeokjo", name: "도적", english: "HONG GIL-DONG", image: "honggildong", color: "#ff775b", motif: "갓 아래의 의리", description: "넓은 갓과 동그란 안경, 교차한 두 자루의 총. 구름 문양 사이로 숨은 도적의 의리를 담았습니다." },
+  { collection: "saebyeokjo", name: "내시", english: "NAESI", image: "naesi", color: "#d3be85", motif: "한 수 앞의 밀서", description: "깊이 눌러쓴 갓 아래 날카로운 눈매와 작은 붓. 궁궐 창살 문양에 조용한 책사의 수를 새겼습니다." },
+  { collection: "saebyeokjo", name: "도깨비", english: "DOKKAEBI", image: "dokkaebi", color: "#97dfbb", motif: "푸른 도깨비불", description: "황금빛 뿔과 흉터 난 눈, 일렁이는 푸른 불꽃. 예측할 수 없는 도깨비의 장난기를 배지에 담았습니다." },
+  { collection: "saebyeokjo", name: "고등관", english: "HOTEI SENJI", image: "hoteisenji", color: "#e5a17c", motif: "아침을 기다리는 꽃", description: "날개를 단 매화와 갈라지는 두 갈래 길. 긴 밤을 지나 아침을 기다리는 고등관의 문장입니다." },
   { collection: "equinox", name: "포스포라 미카", english: "PHOSPHORA MIKA", image: "mika", color: "#e6dbc4", motif: "빛을 닮은 날개", description: "아이보리빛 날개와 섬세한 골드 라인. 미카의 상징을 작은 금속 배지에 담았습니다." },
   { collection: "equinox", name: "포스포라 루시", english: "PHOSPHORA LUCY", image: "lucy", color: "#bbc8dc", motif: "별을 품은 마음", description: "깊은 밤을 닮은 컬러, 날개 사이에 자리한 작은 별. 루시의 세계를 곁에 두세요." },
   { collection: "equinox", name: "티티", english: "TIAMAT V. TITI DE ABYSSO", image: "titi", color: "#c7b4df", motif: "나만의 작은 왕관", description: "보랏빛 하트와 왕관, 대담하게 펼쳐진 날개. 티티만의 존재감을 담은 디자인입니다." },
@@ -48,7 +53,7 @@ export default function EquinoxShop() {
         <div className="eqs-hero-foot"><span>01 — METAL BADGE</span><span>{products.length} CHARACTERS. YOUR PICK.</span></div>
       </div>
       <div className="eqs-hero-visual">
-        <Image src={photo(products[0])} alt="이퀴녹스 포스포라 미카 금속 배지" fill priority sizes="(max-width: 760px) 100vw, 56vw" />
+        <Image src={photo(products.find((p) => p.image === "mika")!)} alt="이퀴녹스 포스포라 미카 금속 배지" fill priority sizes="(max-width: 760px) 100vw, 56vw" />
         <div className="eqs-image-top"><span>WSE<br />METAL BADGE COLLECTION</span><span className="eqs-round-tag">COMING<br />SOON ↗</span></div>
         <div className="eqs-image-bottom"><span>A LITTLE PIECE<br />OF YOUR UNIVERSE.</span><b>✳</b></div>
       </div>

@@ -1,7 +1,7 @@
 import { content as honggildong } from "../services/generation1/honggildong/content";
 import { content as naesi } from "../services/generation1/naesi/content";
 import { content as dokkaebi } from "../services/generation1/dokkaebi/content";
-import { content as pagyeseung } from "../services/generation1/pagyeseung/content";
+import { content as hoteisenji } from "../services/generation1/hoteisenji/content";
 import { content as igniter } from "../services/generation2/igniter/content";
 import { content as navigator } from "../services/generation2/navigator/content";
 import { content as celebrator } from "../services/generation2/celebrator/content";
@@ -176,13 +176,13 @@ export const cast = [
       gradient: "from-indigo-600 via-violet-600 to-purple-700",
       birthplace: "총독부(주장)",
       partner: { name: "조무래기", animal: "인간", emoji: "🐯" },
-      slug: "pagyeseung",
-      href: "/services/generation1/pagyeseung",
+      slug: "hoteisenji",
+      href: "/services/generation1/hoteisenji",
       group: 1,
-      image: "/images/members/pagyeseung.png",
-      alternate: "/images/members/pagyeseung.png",
+      image: "/images/members/hoteisenji.png",
+      alternate: "/images/members/hoteisenji.png",
     },
-    content: pagyeseung,
+    content: hoteisenji,
   },
   {
     ...{

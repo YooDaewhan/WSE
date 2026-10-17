@@ -46,7 +46,7 @@ export default function CharacterSignature({
     honggildong: "동에 번쩍, 서에 번쩍",
     naesi: "한 수 앞에서",
     dokkaebi: "다음은 아무도 몰라",
-    pagyeseung: "아직, 아침을 기다리며",
+    hoteisenji: "아직, 아침을 기다리며",
     alba: "오늘도 생존",
     pyeondori: "24 HOURS / OPEN",
     ddalbae: "정해진 경로 없음",

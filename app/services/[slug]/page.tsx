@@ -8,7 +8,7 @@ const MOVED: Record<string, string> = {
   "honggildong": "/services/generation1/honggildong",
   "naesi": "/services/generation1/naesi",
   "dokkaebi": "/services/generation1/dokkaebi",
-  "pagyeseung": "/services/generation1/pagyeseung",
+  "hoteisenji": "/services/generation1/hoteisenji",
   "igniter": "/services/generation2/igniter",
   "navigator": "/services/generation2/navigator",
   "celebrator": "/services/generation2/celebrator",

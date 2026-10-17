@@ -20,8 +20,8 @@ import {
    다른 페이지에는 아무 영향이 없습니다.
 ────────────────────────────────────────── */
 
-const slug = "pagyeseung";
-const profileHref = "/services/generation1/pagyeseung";
+const slug = "hoteisenji";
+const profileHref = "/services/generation1/hoteisenji";
 
 const creator: SecretMeta = {
   name: "호테이 센지",

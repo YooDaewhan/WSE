@@ -31,7 +31,7 @@ const teamFonts: Record<string, () => string> = { dawn: dawnFonts, heroes: heroe
 export default function CharacterProfile({ slug }: { slug: string }) {
   const c = cast.find((c) => c.slug === slug)!;
   /* 개인 문장 — 4기 이퀴녹스, 1기 스타터팩, 3기 레스큐팩, 5기 스팀팩 */
-  const mark = c.group === 5 ? `/images/equinox/${slug}-mark.png` : c.group === 2 ? `/images/starterpack/${slug}-mark.webp` : c.group === 4 ? `/images/rescuepack/${slug}-mark.png` : c.group === 6 ? `/images/stimpack/${slug}-mark.png` : null;
+  const mark = c.group === 1 ? `/images/saebyeokjo/${slug}-mark.png` : c.group === 5 ? `/images/equinox/${slug}-mark.png` : c.group === 2 ? `/images/starterpack/${slug}-mark.webp` : c.group === 4 ? `/images/rescuepack/${slug}-mark.png` : c.group === 6 ? `/images/stimpack/${slug}-mark.png` : null;
   const d = directions[slug];
   const { paused } = useExperience();
   const [pose, setPose] = useState(0);
@@ -194,7 +194,7 @@ export default function CharacterProfile({ slug }: { slug: string }) {
         {team && <nav className="tp-nav" aria-label={`${c.teamName} 캐릭터`}><span>{teamNav[team]}<br /><strong>다른 멤버도 만나보세요.</strong></span>{crew.map((m) => <Link href={m.href} key={m.slug} aria-current={m.slug === slug ? "page" : undefined} style={{ "--accent": directions[m.slug].color } as CSSProperties}><span className="tp-nav-art">{m.image ? <Image src={m.image} alt="" width={200} height={300} sizes="96px" /> : <span aria-hidden="true">{m.emoji}</span>}</span><span><b>{m.name.replace("(미정)", "")}</b><small>{m.role.toUpperCase()}</small></span></Link>)}</nav>}
         <section id="story" className="profile-story section-shell">
           <div>
-            {mark && <div className="eq-story-crest"><Image src={mark} width={160} height={160} alt={`${c.name}의 문장`} /><span>PERSONAL ARCHIVE<br />{({ 2: "STARTER PACK", 4: "RESCUE PACK", 5: "EQUINOX", 6: "STIMPACK" } as Record<number, string>)[c.group]} / {c.role.toUpperCase()}</span></div>}
+            {mark && <div className="eq-story-crest"><Image src={mark} width={160} height={160} alt={`${c.name}의 문장`} /><span>PERSONAL ARCHIVE<br />{({ 1: "SAEBYEOKJO", 2: "STARTER PACK", 4: "RESCUE PACK", 5: "EQUINOX", 6: "STIMPACK" } as Record<number, string>)[c.group]} / {c.role.toUpperCase()}</span></div>}
             <span className="eyebrow">01 / BEHIND THE NAME</span>
             <h2>
               {d.title}
