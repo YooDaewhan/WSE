@@ -140,12 +140,6 @@ export const content: SecretContent = {
           image: "" /* 예: "/images/page-1.png" */,
           body: "나중엔 대장군 갑옷을 입은 일러스트가 추가될예정입니다",
         },
-        {
-          title: "2쪽",
-          emoji: "🔒",
-          image: "" /* 예: "/images/page-2.png" */,
-          body: "내용을 채워주세요.",
-        },
       ],
     },
   ],

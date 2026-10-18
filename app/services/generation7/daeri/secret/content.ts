@@ -43,10 +43,9 @@ export const content: SecretContent = {
           body: "대리가 매일 차 안에서 보내는 5분 동안 무슨 생각을 하는지 시즌 2에서 공개됩니다.",
         },
         {
-          title: "2쪽",
+          title: "2. 퇴근 후",
           emoji: "🔒",
-          image: "", /* 예: "/images/page-2.png" */
-          body: "내용을 채워주세요.",
+          body: "퇴근 시간, 대리는 곧장 시동을 걸지 않습니다. 운전석에 앉아 5분 동안 멍하니 앞만 바라봅니다.\n\n위에서 내려온 말을 아래의 언어로 바꾸고, 아래에서 올라온 말을 위의 언어로 바꾸는 하루가 끝났습니다. 다리는 늘 밟히고, 무게를 견디고, 자신이 지탱하는 사람들에게 기댈 수 없습니다.\n\n위쪽도 아래쪽도 아닌 그 5분. 하루 중 대리가 가장 대리 자신인 시간입니다.",
         },
       ],
     },
@@ -61,12 +60,6 @@ export const content: SecretContent = {
           image: "", /* 예: "/images/page-1.png" */
           body: "대리가 진짜 속하고 싶은 곳이 어디인지 시즌 2에서 밝혀집니다.",
         },
-        {
-          title: "2쪽",
-          emoji: "🔒",
-          image: "", /* 예: "/images/page-2.png" */
-          body: "내용을 채워주세요.",
-        },
       ],
     },
     {
@@ -79,12 +72,6 @@ export const content: SecretContent = {
           emoji: "🔒",
           image: "", /* 예: "/images/page-1.png" */
           body: "대리가 처음으로 아무것도 연결하지 않는 날이 시즌 피날레에 등장합니다.",
-        },
-        {
-          title: "2쪽",
-          emoji: "🔒",
-          image: "", /* 예: "/images/page-2.png" */
-          body: "내용을 채워주세요.",
         },
       ],
     },

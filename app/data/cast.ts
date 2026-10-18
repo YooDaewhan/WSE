@@ -217,7 +217,7 @@ export const cast = [
       teamName: "스타터팩",
       gradient: "from-rose-500 via-pink-600 to-fuchsia-700",
       birthplace: "마우스피스",
-      partner: { name: "알버트", animal: "비둘기", emoji: "🕊️" },
+      partner: { name: "알버트", animal: "바위비둘기", emoji: "🕊️" },
       slug: "navigator",
       href: "/services/generation2/navigator",
       group: 2,
@@ -592,4 +592,8 @@ export type CastMember = (typeof cast)[number];
 
 /* 이름 옆 크레딧 — 스타터팩·레스큐팩·스팀팩은 "역 이름", 새벽조는 이름만, 나머지는 "·이름" */
 export const credit = (m: { group: number; realName: string }) =>
-  [2, 4, 6].includes(m.group) ? `역 ${m.realName}` : m.group === 1 ? m.realName : `·${m.realName}`;
+  [2, 4, 6].includes(m.group)
+    ? `역 ${m.realName}`
+    : m.group === 1
+      ? m.realName
+      : `·${m.realName}`;

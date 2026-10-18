@@ -274,3 +274,25 @@ html[data-motion=paused] .sp-type-track { animation-play-state: paused; }
   .starter-profile .notes-grid { grid-template-columns: 1fr; }
   .starter-profile .next-character { margin-inline: 16px; padding: 26px 22px; }
 }
+
+/* 스타터팩 로고 — 색 버전을 겹쳐 두고 2초마다 하나만 보여 줍니다 */
+.sp-logo { display: grid; }
+.sp-logo img { grid-area: 1 / 1; width: 100%; height: auto; opacity: 0; }
+.sp-logo img.on { opacity: 1; }
+/* 도감 부팅 화면 */
+.sp-screen-boot { display: grid; align-content: center; justify-items: center; gap: 10px; margin: 0 9px; padding: 0 6px; border-radius: 2px; background: radial-gradient(#1f3a2a22 1px, transparent 1.3px) 0 0 / 6px 6px, var(--sp-lcd); animation: sp-boot .45s ease-out; }
+.sp-screen-boot .sp-logo { width: 100%; }
+/* 다른 화면 그림처럼 모노 — B(컬러)를 누르면 원래 색 */
+.sp-screen-boot .sp-logo img { filter: grayscale(1) contrast(1.2); mix-blend-mode: multiply; transition: filter .4s; }
+.sp-screen.is-color .sp-screen-boot .sp-logo img { filter: none; mix-blend-mode: normal; }
+.sp-press { font: 700 10px ui-monospace, Menlo, monospace; letter-spacing: .2em; animation: sp-blink 1s steps(1) infinite; }
+@keyframes sp-blink { 50% { opacity: 0; } }
+/* 본체 스티커 */
+.sp-brand-logo { display: block; width: 132px; margin: 8px 0 -4px -6px; transform: rotate(-5deg); filter: drop-shadow(2px 3px 0 #1d2a2433); }
+/* 도감 섹션 */
+.sp-section-heading > .sp-logo { width: min(440px, 82vw); margin: 0 auto 6px; }
+/* 개인화면 — 초상화 프레임 스티커 */
+.sp-frame-logo { position: absolute; z-index: 4; left: -54px; top: -84px; width: 210px; transform: rotate(-7deg); filter: drop-shadow(3px 4px 0 #1d2a2433); }
+@media (max-width: 700px) { .sp-frame-logo { width: 150px; left: -10px; top: -70px; } }
+@media (prefers-reduced-motion: reduce) { .sp-press { animation: none; } }
+.sp-screen { cursor: pointer; }

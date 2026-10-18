@@ -41,6 +41,22 @@ export function TypeField({ slug, korean }: { slug: string; korean: string }) {
     </div>
   );
 }
+/* 스타터팩 로고 — 챕터에선 2초마다 색이 바뀌고, 개인화면에선 그 캐릭터 버전 고정 */
+const logoColors = ["", "-red", "-blue", "-green", "-yellow", "-grey"];
+export function StarterLogo({ slug }: { slug?: string }) {
+  const [i, setI] = useState(0);
+  useEffect(() => {
+    if (slug) return;
+    const t = setInterval(() => setI((v) => (v + 1) % logoColors.length), 2000);
+    return () => clearInterval(t);
+  }, [slug]);
+  const srcs = slug ? [`-${slug}`] : logoColors;
+  return (
+    <span className="sp-logo">
+      {srcs.map((s, k) => <Image key={s} src={`/images/starterpack/starterpacklogo${s}.webp`} alt={k ? "" : "STARTER PACK 스타터팩"} aria-hidden={k ? true : undefined} width={1200} height={670} sizes="(max-width: 900px) 80vw, 440px" className={k === i ? "on" : undefined} />)}
+    </span>
+  );
+}
 export const no = (i: number) => `No.${String(i + 1).padStart(3, "0")}`;
 
 function useTypewriter(text: string) {
@@ -63,7 +79,8 @@ export default function StarterChapter() {
   const speaker = selected === null ? "WSE 박사" : member.name;
   const line = selected === null ? content.description : member.content.quote;
   const typed = useTypewriter(line);
-  const move = (step: number) => setSelected((index + step + members.length) % members.length);
+  /* 부팅 화면에서 넘기면 첫 스타터(▶) 또는 마지막 스타터(◀)부터 */
+  const move = (step: number) => setSelected(selected === null ? (step > 0 ? 0 : members.length - 1) : (index + step + members.length) % members.length);
 
   const onKey = (e: React.KeyboardEvent) => {
     if (e.key === "ArrowLeft" || e.key === "ArrowUp") move(-1);
@@ -95,7 +112,7 @@ export default function StarterChapter() {
             </dl>
             <div className="sp-carts" aria-label="카트리지 선택">
               {members.map((m, i) => (
-                <button key={m.slug} className="sp-cart" onClick={() => setSelected(i)} aria-pressed={index === i} style={{ "--sp-accent": directions[m.slug].color } as React.CSSProperties}>
+                <button key={m.slug} className="sp-cart" onClick={() => setSelected(i)} aria-pressed={selected === i} style={{ "--sp-accent": directions[m.slug].color } as React.CSSProperties}>
                   <span className="sp-cart-label"><Image src={m.image!} alt="" width={200} height={300} sizes="120px" /><small>{no(i)}</small></span>
                   <span className="sp-cart-name"><b>{m.name}</b><small>{m.role.toUpperCase()} VER.</small></span>
                 </button>
@@ -108,15 +125,21 @@ export default function StarterChapter() {
               <div className="sp-power"><span>◀ OFF · ON ▶</span></div>
               <div className="sp-bezel">
                 <div className="sp-bezel-top"><span className="sp-led" aria-hidden="true" /><span>WSE MATRIX WITH STEREO STORIES</span></div>
-                <div className={`sp-screen${color ? " is-color" : ""}`}>
-                  <div className="sp-screen-bar"><span>{no(index)}</span><span>{member.role.toUpperCase()}</span></div>
-                  <div className="sp-screen-art" key={member.slug}>
-                    <Image src={member.image!} alt={member.name} width={600} height={900} sizes="320px" priority />
-                  </div>
-                  <div className="sp-screen-foot"><strong>{member.name}<span className="real-name">{credit(member)}</span></strong><span className="sp-type">{types[member.slug]}</span></div>
+                <div className={`sp-screen${color ? " is-color" : ""}`} onClick={() => setColor((c) => !c)}>
+                  {selected === null ? <>
+                    <div className="sp-screen-bar"><span>WSE POCKET DEX</span><span>VOL.01</span></div>
+                    <div className="sp-screen-boot"><StarterLogo /><span className="sp-press">PRESS START</span></div>
+                    <div className="sp-screen-foot"><span>© WSE</span><span>{members.length} STARTERS</span></div>
+                  </> : <>
+                    <div className="sp-screen-bar"><span>{no(index)}</span><span>{member.role.toUpperCase()}</span></div>
+                    <div className="sp-screen-art" key={member.slug}>
+                      <Image src={member.image!} alt={member.name} width={600} height={900} sizes="320px" priority />
+                    </div>
+                    <div className="sp-screen-foot"><strong>{member.name}<span className="real-name">{credit(member)}</span></strong><span className="sp-type">{types[member.slug]}</span></div>
+                  </>}
                 </div>
               </div>
-              <p className="sp-brand"><span>WSE</span> <i>Pocket Dex</i></p>
+              <span className="sp-brand-logo"><StarterLogo /></span>
               <div className="sp-controls">
                 <div className="sp-dpad" role="group" aria-label="방향키">
                   <button aria-label="이전" className="up" onClick={() => move(-1)} />
@@ -152,7 +175,7 @@ export default function StarterChapter() {
         </section>
 
         <section className="sp-dex" id="sp-dex" aria-labelledby="sp-dex-title">
-          <div className="sp-section-heading"><span className="sp-kicker">CHOOSE YOUR STARTER</span><h2 id="sp-dex-title">누구를 데려갈래?</h2><p>신중하게 골라. 물론, 나중에 전부 데려가도 돼.</p></div>
+          <div className="sp-section-heading"><StarterLogo /><span className="sp-kicker">CHOOSE YOUR STARTER</span><h2 id="sp-dex-title">누구를 데려갈래?</h2><p>신중하게 골라. 물론, 나중에 전부 데려가도 돼.</p></div>
           <div className="sp-dex-grid">
             {members.map((m, i) => {
               const d = directions[m.slug];

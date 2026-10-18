@@ -18,7 +18,7 @@ import "../equinox.css";
 import "../equinox-war.css";
 import { EquinoxName, EquinoxTypeField } from "./EquinoxName";
 import { equinoxFlip, equinoxSide } from "./EquinoxChapter";
-import { TypeField, no, starColors, types } from "./StarterChapter";
+import { StarterLogo, TypeField, no, starColors, types } from "./StarterChapter";
 import { dawnFonts } from "./DawnChapter";
 import { firstEpisode, heroesFonts } from "./HeroesChapter";
 import { callsigns } from "./RescueChapter";
@@ -140,6 +140,7 @@ export default function CharacterProfile({ slug }: { slug: string }) {
           >
             <div className="portrait-frame" />
             {stamp && <span className="tp-stamp" aria-hidden="true">{stamp}</span>}
+            {starter && <Link className="sp-frame-logo" href="/services/generation2" aria-label="스타터팩 이야기로"><StarterLogo slug={slug} /></Link>}
             {starter && <div className="sp-profile-bar" aria-hidden="true"><span>{dexNo}</span><span>{c.role.toUpperCase()}</span></div>}
             {mark && <div className="eq-personal-crest" aria-hidden="true"><Image src={mark} width={180} height={180} alt="" /><span>{c.birthplace} / {c.role.toUpperCase()}</span></div>}
             <AnimatePresence mode="wait">
