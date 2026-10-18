@@ -5,7 +5,8 @@
    여기 있는 글만 고치면 이 페이지의 문구만 바뀝니다.
 ────────────────────────────────────────── */
 
-export type LoreItem = { emoji: string; title: string; body: string };
+/* image: 그림 경로(public 기준) — 비워 두면 이모지가 대신 들어갑니다 */
+export type LoreItem = { emoji: string; title: string; body: string; image?: string };
 
 export type ProfileContent = {
   quote: string;
@@ -41,16 +42,16 @@ export const content: ProfileContent = {
 
   /* 파트너 설정 — 그림/이름 클릭 시 뜨는 팝업. 자유롭게 고치고 늘리세요 */
   partnerLore: [
-    { emoji: "✨", title: "설정 1", body: "내용을 채워주세요." },
-    { emoji: "✨", title: "설정 2", body: "내용을 채워주세요." },
-    { emoji: "✨", title: "설정 3", body: "내용을 채워주세요." },
+    { image: "/images/starterpack/lore/navigator-partner-1.webp", emoji: "✨", title: "설정 1", body: "내용을 채워주세요." },
+    { image: "/images/starterpack/lore/navigator-partner-2.webp", emoji: "✨", title: "설정 2", body: "내용을 채워주세요." },
+    { image: "/images/starterpack/lore/navigator-partner-3.webp", emoji: "✨", title: "설정 3", body: "내용을 채워주세요." },
   ],
 
   /* 출생지 설정 — 그림/이름 클릭 시 뜨는 팝업. 자유롭게 고치고 늘리세요 */
   birthplaceLore: [
-    { emoji: "📍", title: "설정 1", body: "내용을 채워주세요." },
-    { emoji: "📍", title: "설정 2", body: "내용을 채워주세요." },
-    { emoji: "📍", title: "설정 3", body: "내용을 채워주세요." },
+    { image: "/images/starterpack/lore/navigator-origin-1.webp", emoji: "📍", title: "설정 1", body: "내용을 채워주세요." },
+    { image: "/images/starterpack/lore/navigator-origin-2.webp", emoji: "📍", title: "설정 2", body: "내용을 채워주세요." },
+    { image: "/images/starterpack/lore/navigator-origin-3.webp", emoji: "📍", title: "설정 3", body: "내용을 채워주세요." },
   ],
   fullBio:
     "네비게이터는 사실 길 찾기에는 재능이 없습니다. 지도도 볼 줄 모르고요. 원래라면 이그나이터가 되었을 아이입니다. 어째서인지 네비게이터로 선택되었지만, 운명이 이렇게 만든 데에는 분명 이유가 있을테지요. 하지만 걱정하지 마세요. 네비게이터의 굳은 마음은 길을 잃지 않습니다. 늘 새로운 길로 나아갑니다. 물론 그 길이 평탄할지는 가 봐야 알 수 있을 것 같습니다.",

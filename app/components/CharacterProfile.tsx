@@ -13,6 +13,7 @@ import { directions } from "../data/art-direction";
 import Header from "./Header";
 import Footer from "./Footer";
 import CharacterSignature from "./CharacterSignature";
+import LoreCards from "./LoreCards";
 import { useExperience } from "./Experience";
 import "../equinox.css";
 import "../equinox-war.css";
@@ -42,6 +43,11 @@ export default function CharacterProfile({ slug }: { slug: string }) {
   const lines = [...new Set(c.content.lines)];
   const next = cast[(cast.indexOf(c) + 1) % cast.length];
   const clean = (s: string) => !/추후|내용을 채워|\(추가\)/.test(s);
+  /* 설정 목록 — 그림이 하나라도 있으면 카드(LoreCards), 아니면 접는 목록 */
+  const lore = (items: { emoji: string; title: string; body: string; image?: string }[], label: string) =>
+    items.some((l) => l.image)
+      ? <LoreCards items={items.filter((l) => l.image || clean(l.body))} label={label} />
+      : items.filter((l) => clean(l.body)).map((l) => <details key={l.title}><summary>{l.title}</summary><p>{l.body}</p></details>);
   /* 1기 스타터팩 — 포켓 도감 컨셉 */
   const starter = c.group === 2;
   /* 4기 이퀴녹스 — 천계(day)는 그림이 왼쪽, 마계(night)는 오른쪽. 서로의 거울입니다. */
@@ -221,14 +227,7 @@ export default function CharacterProfile({ slug }: { slug: string }) {
               <span>ORIGIN ↗</span>
               <h2>{c.birthplace}</h2>
               <p>{c.content.birthplaceDesc}</p>
-              {c.content.birthplaceLore
-                .filter((l) => clean(l.body))
-                .map((l) => (
-                  <details key={l.title}>
-                    <summary>{l.title}</summary>
-                    <p>{l.body}</p>
-                  </details>
-                ))}
+              {lore(c.content.birthplaceLore, "ORIGIN")}
             </article>
             <article>
               <span>COMPANION ↗</span>
@@ -240,14 +239,7 @@ export default function CharacterProfile({ slug }: { slug: string }) {
                   ? c.content.partnerDesc
                   : "아직 밝혀지지 않은 이야기입니다."}
               </p>
-              {c.content.partnerLore
-                .filter((l) => clean(l.body))
-                .map((l) => (
-                  <details key={l.title}>
-                    <summary>{l.title}</summary>
-                    <p>{l.body}</p>
-                  </details>
-                ))}
+              {lore(c.content.partnerLore, "COMPANION")}
             </article>
           </div>
         </section>

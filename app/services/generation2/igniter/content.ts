@@ -5,7 +5,8 @@
    여기 있는 글만 고치면 이 페이지의 문구만 바뀝니다.
 ────────────────────────────────────────── */
 
-export type LoreItem = { emoji: string; title: string; body: string };
+/* image: 그림 경로(public 기준) — 비워 두면 이모지가 대신 들어갑니다 */
+export type LoreItem = { emoji: string; title: string; body: string; image?: string };
 
 export type ProfileContent = {
   quote: string;
@@ -40,16 +41,16 @@ export const content: ProfileContent = {
 
   /* 파트너 설정 — 그림/이름 클릭 시 뜨는 팝업. 자유롭게 고치고 늘리세요 */
   partnerLore: [
-    { emoji: "✨", title: "설정 1", body: "내용을 채워주세요." },
-    { emoji: "✨", title: "설정 2", body: "내용을 채워주세요." },
-    { emoji: "✨", title: "설정 3", body: "내용을 채워주세요." },
+    { image: "/images/starterpack/lore/igniter-partner-1.webp", emoji: "✨", title: "설정 1", body: "내용을 채워주세요." },
+    { image: "/images/starterpack/lore/igniter-partner-2.webp", emoji: "✨", title: "설정 2", body: "내용을 채워주세요." },
+    { image: "/images/starterpack/lore/igniter-partner-3.webp", emoji: "✨", title: "설정 3", body: "내용을 채워주세요." },
   ],
 
   /* 출생지 설정 — 그림/이름 클릭 시 뜨는 팝업. 자유롭게 고치고 늘리세요 */
   birthplaceLore: [
-    { emoji: "📍", title: "설정 1", body: "내용을 채워주세요." },
-    { emoji: "📍", title: "설정 2", body: "내용을 채워주세요." },
-    { emoji: "📍", title: "설정 3", body: "내용을 채워주세요." },
+    { image: "/images/starterpack/lore/igniter-origin-1.webp", emoji: "📍", title: "설정 1", body: "내용을 채워주세요." },
+    { image: "/images/starterpack/lore/igniter-origin-2.webp", emoji: "📍", title: "설정 2", body: "내용을 채워주세요." },
+    { image: "/images/starterpack/lore/igniter-origin-3.webp", emoji: "📍", title: "설정 3", body: "내용을 채워주세요." },
   ],
   fullBio:
     "시끄럽고 과격하지만 여러분들의 시작을 알리는 역할을 맡았습니다. 할 수 있는 거라곤 작은 스파크를 터트리는것이 전부지만, 그 정도로도 당신의 이야기를 시작하기에 충분합니다. 불이 약해지더라도 다시 한 번 터트리면 됩니다. 이그나이터와 함께 시작할 당신의 이야기를 기대하고 있습니다.",

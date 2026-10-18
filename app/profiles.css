@@ -221,3 +221,40 @@
 }
 @media (prefers-reduced-motion: reduce) { .tp-stimpack .profile-stage { animation: none; } }
 html[data-motion=paused] .tp-stimpack .profile-stage { animation: none; }
+
+/* ── 설정 카드 (LoreCards) — 기본 ── */
+.lore-cards { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(168px, 44%); gap: 16px; margin: 26px -6px 0; padding: 10px 6px 18px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: thin; }
+.lore-card { position: relative; display: flex; flex-direction: column; text-align: left; scroll-snap-align: start; padding: 0; background: none; border: 0; color: inherit; cursor: pointer; }
+.lore-card-art { position: relative; display: grid; place-items: center; aspect-ratio: 4 / 5; overflow: hidden; border-radius: 10px; background: color-mix(in srgb, var(--accent) 25%, #f4f1e6); }
+.lore-card-art img { object-fit: cover; transition: transform .6s cubic-bezier(.2,.8,.2,1); }
+.lore-card:hover .lore-card-art img, .lore-card:focus-visible .lore-card-art img { transform: scale(1.06); }
+.lore-card-emoji { font-size: 56px; }
+.lore-card-no { position: absolute; top: 8px; left: 8px; padding: 2px 7px; border-radius: 4px; font: 700 10px ui-monospace, Menlo, monospace; letter-spacing: .08em; background: #000a; color: #fff; }
+.lore-card-title { margin-top: 12px; font-weight: 800; font-size: 15px; letter-spacing: -.02em; }
+.lore-card-body { margin-top: 4px; font-size: 12.5px; line-height: 1.55; opacity: .7; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; word-break: keep-all; }
+.lore-dialog { width: min(920px, 92vw); max-height: 86vh; padding: 0; border: 0; border-radius: 20px; background: #fbfaf5; color: #1d2a24; overflow: hidden; }
+.lore-dialog::backdrop { background: #10161399; backdrop-filter: blur(4px); }
+.lore-dialog[open] { animation: lore-in .35s cubic-bezier(.2,.8,.2,1); }
+@keyframes lore-in { from { opacity: 0; transform: translateY(18px) scale(.98); } }
+.lore-dialog-inner { position: relative; display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); max-height: 86vh; }
+.lore-dialog-art { position: relative; min-height: 420px; display: grid; place-items: center; background: color-mix(in srgb, var(--accent) 30%, #f4f1e6); animation: lore-in .35s ease-out; }
+.lore-dialog-art img { object-fit: cover; }
+.lore-dialog-art .lore-card-emoji { font-size: 120px; }
+.lore-dialog-copy { display: flex; flex-direction: column; padding: 48px 44px 36px; overflow-y: auto; }
+.lore-dialog-kicker { font: 700 11px ui-monospace, Menlo, monospace; letter-spacing: .16em; opacity: .55; }
+.lore-dialog-copy h3 { margin-top: 14px; font-size: clamp(28px, 3.4vw, 42px); line-height: 1.1; letter-spacing: -.05em; }
+.lore-dialog-copy p { margin-top: 18px; font-size: 16px; line-height: 1.85; white-space: pre-line; word-break: keep-all; opacity: .85; }
+.lore-dialog-nav { display: flex; align-items: center; gap: 14px; margin-top: auto; padding-top: 28px; }
+.lore-dialog-nav button { width: 40px; height: 40px; border-radius: 50%; border: 2px solid currentColor; background: none; color: inherit; font-size: 12px; cursor: pointer; }
+.lore-dialog-nav button:hover { background: #1d2a24; color: #fbfaf5; }
+.lore-dialog-nav span { display: flex; gap: 6px; }
+.lore-dialog-nav i { width: 7px; height: 7px; border-radius: 99px; background: currentColor; opacity: .25; transition: width .3s, opacity .3s; }
+.lore-dialog-nav i.on { width: 22px; opacity: 1; }
+.lore-dialog-close { position: absolute; z-index: 2; top: 14px; right: 14px; width: 38px; height: 38px; border-radius: 50%; border: 2px solid #1d2a24; background: #fbfaf5; color: inherit; font-size: 15px; cursor: pointer; }
+@media (max-width: 700px) {
+  .lore-cards { grid-auto-columns: 62%; }
+  .lore-dialog-inner { grid-template-columns: 1fr; overflow-y: auto; }
+  .lore-dialog-art { min-height: 0; aspect-ratio: 4 / 4; }
+  .lore-dialog-copy { padding: 26px 22px 24px; overflow: visible; }
+}
+@media (prefers-reduced-motion: reduce) { .lore-dialog[open], .lore-dialog-art { animation: none; } .lore-card-art img { transition: none; } }

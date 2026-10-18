@@ -296,3 +296,19 @@ html[data-motion=paused] .sp-type-track { animation-play-state: paused; }
 @media (max-width: 700px) { .sp-frame-logo { width: 150px; left: -10px; top: -70px; } }
 @media (prefers-reduced-motion: reduce) { .sp-press { animation: none; } }
 .sp-screen { cursor: pointer; }
+
+/* 개인화면 설정 카드 — 도감 카드 */
+.starter-profile .lore-card { padding: 8px 8px 14px; background: #fbfaf5; border: 2px solid var(--sp-ink); border-radius: 12px 12px 28px 12px; box-shadow: 4px 5px 0 #1d2a241f; transform: rotate(var(--tilt, -1.2deg)); transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s; }
+.starter-profile .lore-card:nth-child(even) { --tilt: 1deg; }
+.starter-profile .lore-card:hover, .starter-profile .lore-card:focus-visible { transform: translateY(-6px) rotate(0); box-shadow: 6px 10px 0 var(--sp-accent); outline: none; }
+.starter-profile .lore-card-art { border: 2px solid var(--sp-ink); border-radius: 6px 6px 18px 6px; background: var(--sp-lcd); }
+/* 반짝이는 홀로 — 마우스를 올리면 한 번 지나갑니다 */
+.starter-profile .lore-card-art::after { content: ""; position: absolute; inset: 0; background: linear-gradient(115deg, transparent 35%, #ffffff8c 48%, transparent 60%); transform: translateX(-110%); pointer-events: none; }
+.starter-profile .lore-card:hover .lore-card-art::after { transform: translateX(110%); transition: transform .8s ease; }
+.starter-profile .lore-card-no { background: var(--sp-ink); color: #f4f1e6; }
+.starter-profile .lore-card-title { padding: 0 4px; }
+.starter-profile .lore-card-body { padding: 0 4px; color: #4a5a52; opacity: 1; }
+.starter-profile .lore-dialog { border: 2px solid var(--sp-ink); border-radius: 18px 18px 64px 18px; box-shadow: 12px 14px 0 var(--sp-accent); }
+.starter-profile .lore-dialog-art { border-right: 2px solid var(--sp-ink); background: var(--sp-lcd); }
+.starter-profile .lore-dialog-kicker { display: inline-block; align-self: flex-start; padding: 3px 10px; border-radius: 4px; background: var(--sp-ink); color: #f4f1e6; opacity: 1; }
+@media (max-width: 700px) { .starter-profile .lore-dialog-art { border-right: 0; border-bottom: 2px solid var(--sp-ink); } }

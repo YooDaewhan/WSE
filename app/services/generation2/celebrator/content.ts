@@ -5,7 +5,8 @@
    여기 있는 글만 고치면 이 페이지의 문구만 바뀝니다.
 ────────────────────────────────────────── */
 
-export type LoreItem = { emoji: string; title: string; body: string };
+/* image: 그림 경로(public 기준) — 비워 두면 이모지가 대신 들어갑니다 */
+export type LoreItem = { emoji: string; title: string; body: string; image?: string };
 
 export type ProfileContent = {
   quote: string;
@@ -43,19 +44,20 @@ export const content: ProfileContent = {
   /* 파트너 설정 — 그림/이름 클릭 시 뜨는 팝업. 자유롭게 고치고 늘리세요 */
   partnerLore: [
     {
+      image: "/images/starterpack/lore/celebrator-partner-1.webp",
       emoji: "✨",
       title: "양이라고 우기는 친구",
       body: "셀러브레이터 곁에는 늘 복슬복슬한 양털 후리스를 입은 작은 친구가 있습니다. 누가 봐도 염소지만, 셀러브레이터는 진지한 얼굴로 소개합니다. '이 아이는 양이에요. 음… 조금 특별한 양이요!' 염소는 '메에…' 하고 어색하게 양 울음소리를 흉내 냅니다. 둘은 에덴농장에서부터 함께였고, 셀러브레이터가 가는 곳이라면 어디든 따라갑니다.",
     },
-    { emoji: "✨", title: "설정 2", body: "내용을 채워주세요." },
-    { emoji: "✨", title: "설정 3", body: "내용을 채워주세요." },
+    { image: "/images/starterpack/lore/celebrator-partner-2.webp", emoji: "✨", title: "설정 2", body: "내용을 채워주세요." },
+    { image: "/images/starterpack/lore/celebrator-partner-3.webp", emoji: "✨", title: "설정 3", body: "내용을 채워주세요." },
   ],
 
   /* 출생지 설정 — 그림/이름 클릭 시 뜨는 팝업. 자유롭게 고치고 늘리세요 */
   birthplaceLore: [
-    { emoji: "📍", title: "설정 1", body: "내용을 채워주세요." },
-    { emoji: "📍", title: "설정 2", body: "내용을 채워주세요." },
-    { emoji: "📍", title: "설정 3", body: "내용을 채워주세요." },
+    { image: "/images/starterpack/lore/celebrator-origin-1.webp", emoji: "📍", title: "설정 1", body: "내용을 채워주세요." },
+    { image: "/images/starterpack/lore/celebrator-origin-2.webp", emoji: "📍", title: "설정 2", body: "내용을 채워주세요." },
+    { image: "/images/starterpack/lore/celebrator-origin-3.webp", emoji: "📍", title: "설정 3", body: "내용을 채워주세요." },
   ],
   fullBio:
     "셀러브레이터는 여러분의 모든 순간을 함께 축하합니다. 첫걸음을 내딛는 날부터, 여러분의 이야기는 이미 축하할 일로 가득하니까요. 작은 추억 하나도 그냥 지나치지 않을게요. 셀러브레이터와 함께, 당신만의 이야기를 축하해 보세요.",
