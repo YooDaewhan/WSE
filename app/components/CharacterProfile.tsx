@@ -44,7 +44,7 @@ export default function CharacterProfile({ slug }: { slug: string }) {
   const next = cast[(cast.indexOf(c) + 1) % cast.length];
   const clean = (s: string) => !/추후|내용을 채워|\(추가\)/.test(s);
   /* 설정 목록 — 그림이 하나라도 있으면 카드(LoreCards), 아니면 접는 목록 */
-  const lore = (items: { emoji: string; title: string; body: string; image?: string }[], label: string) =>
+  const lore = (items: { emoji: string; title: string; body: string; image?: string | string[]; logo?: string }[], label: string) =>
     items.some((l) => l.image)
       ? <LoreCards items={items.filter((l) => l.image || clean(l.body))} label={label} />
       : items.filter((l) => clean(l.body)).map((l) => <details key={l.title}><summary>{l.title}</summary><p>{l.body}</p></details>);

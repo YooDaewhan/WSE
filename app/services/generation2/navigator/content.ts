@@ -6,7 +6,7 @@
 ────────────────────────────────────────── */
 
 /* image: 그림 경로(public 기준) — 비워 두면 이모지가 대신 들어갑니다 */
-export type LoreItem = { emoji: string; title: string; body: string; image?: string };
+export type LoreItem = { emoji: string; title: string; body: string; image?: string | string[]; logo?: string };
 
 export type ProfileContent = {
   quote: string;

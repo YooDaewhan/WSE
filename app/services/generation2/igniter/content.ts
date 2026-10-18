@@ -6,7 +6,7 @@
 ────────────────────────────────────────── */
 
 /* image: 그림 경로(public 기준) — 비워 두면 이모지가 대신 들어갑니다 */
-export type LoreItem = { emoji: string; title: string; body: string; image?: string };
+export type LoreItem = { emoji: string; title: string; body: string; image?: string | string[]; logo?: string };
 
 export type ProfileContent = {
   quote: string;
@@ -37,7 +37,7 @@ export const content: ProfileContent = {
     "가끔은 한 번에 불이 붙지 않을 때도 있습니다. 그럴 땐 열 번이고, 백 번이고 터뜨려서 결국 불을 붙여버립니다. 당신을요..",
   partnerDesc: "이그나이터의 첫 불씨가 꺼지지 않게 지켜주는 작은 파트너.",
   birthplaceDesc:
-    "제 6도시의 D와 H구역에 영향을 끼치고 있는 탄탄한 사기업 부동의 2위 기업 인시피오. 처음에는 정처없는 길거리 예술인들이 모이던 장소였지만, 하나 둘 모이면서 세력이 커져 회사처럼 되었습니다. 인시피오의 직원들은 검은 정장과 페도라를 쓰고 다니기 때문에 마피아같아 보이지만 사실은 예술인. 사실은 직원도 아닌 듯, 각자의 예술 활동을 하고있는 예술인들. 험악해 보이지만 의리 있고 친절합니다. 다른 도시보다 결집력이 높고 회사에대한 충성심이 높아보입니다.",
+    "제 6도시의 D와 H구역에 영향을 끼치고 있는 탄탄한 사기업 순위 5위 기업 인시피오. 처음에는 정처없는 길거리 예술인들이 모이던 장소였지만, 하나 둘 모이면서 세력이 커져 회사처럼 되었습니다. 인시피오의 직원들은 검은 정장과 페도라를 쓰고 다니기 때문에 마피아같아 보이지만 사실은 예술인. 사실은 직원도 아닌 듯, 각자의 예술 활동을 하고있는 예술인들. 험악해 보이지만 의리 있고 친절합니다. 다른 도시보다 결집력이 높고 회사에대한 충성심이 높아보입니다.",
 
   /* 파트너 설정 — 그림/이름 클릭 시 뜨는 팝업. 자유롭게 고치고 늘리세요 */
   partnerLore: [
@@ -48,8 +48,8 @@ export const content: ProfileContent = {
 
   /* 출생지 설정 — 그림/이름 클릭 시 뜨는 팝업. 자유롭게 고치고 늘리세요 */
   birthplaceLore: [
-    { image: "/images/starterpack/lore/igniter-origin-1.webp", emoji: "📍", title: "설정 1", body: "내용을 채워주세요." },
-    { image: "/images/starterpack/lore/igniter-origin-2.webp", emoji: "📍", title: "설정 2", body: "내용을 채워주세요." },
+    { logo: "/images/starterpack/lore/incipio-logo.svg", image: ["/images/starterpack/lore/incipio-building.webp", "/images/starterpack/lore/incipio-rank-overall.svg", "/images/starterpack/lore/incipio-rank-private.svg", "/images/starterpack/lore/incipio-real-estate.svg"], emoji: "📍", title: "사기업 순위 5위 · 전체 순위 16위", body: "이 기업의 무서운 점은 무지막지한 현금 동원력입니다. 건물 수수료, 장비 대여료, 부채 등 기업이라면 당연히 있어야 할 것들이 없습니다. 가보면 붓과 종이, 물감, 심지어는 스프레이나 페인트, 고철.. 순수 사원들의 예술 작품으로 만들어지는, 원가 없는 순수 현금력이 대단합니다. 가끔은 이해할 수 없는 작품이지만 예술성을 인정받아 엄청난 돈을 벌어들입니다. 또한 예전부터 가지고 있던 부동산들의 가격이 엄청나게 뛰어올라 알짜배기 부동산도 다수 보유. 유사시 동원 가능한 현금력이 대기업 못지않습니다." },
+    { image: ["/images/starterpack/lore/incipio-logo.png", "/images/starterpack/lore/incipio-staff.webp", "/images/starterpack/lore/incipio-staff-bright.webp"], emoji: "📍", title: "설정 2", body: "내용을 채워주세요." },
     { image: "/images/starterpack/lore/igniter-origin-3.webp", emoji: "📍", title: "설정 3", body: "내용을 채워주세요." },
   ],
   fullBio:

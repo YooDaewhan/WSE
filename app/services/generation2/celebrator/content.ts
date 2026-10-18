@@ -6,7 +6,7 @@
 ────────────────────────────────────────── */
 
 /* image: 그림 경로(public 기준) — 비워 두면 이모지가 대신 들어갑니다 */
-export type LoreItem = { emoji: string; title: string; body: string; image?: string };
+export type LoreItem = { emoji: string; title: string; body: string; image?: string | string[]; logo?: string };
 
 export type ProfileContent = {
   quote: string;
@@ -55,8 +55,8 @@ export const content: ProfileContent = {
 
   /* 출생지 설정 — 그림/이름 클릭 시 뜨는 팝업. 자유롭게 고치고 늘리세요 */
   birthplaceLore: [
-    { image: "/images/starterpack/lore/celebrator-origin-1.webp", emoji: "📍", title: "설정 1", body: "내용을 채워주세요." },
-    { image: "/images/starterpack/lore/celebrator-origin-2.webp", emoji: "📍", title: "설정 2", body: "내용을 채워주세요." },
+    { logo: "/images/starterpack/lore/indexlab-logo.svg", image: ["/images/starterpack/lore/indexlab-building.webp", "/images/starterpack/lore/indexlab-rank-overall.svg", "/images/starterpack/lore/indexlab-rank-private.svg", "/images/starterpack/lore/indexlab-products.svg"], emoji: "📍", title: "사기업 순위 1위 · 전체 순위 3위", body: "알프레드 사의 핵심 연구원들이 독립해 세운 기업입니다. 설립 초기부터 알프레드 사와 정부로부터 끊임없는 견제를 받아왔지만, 끝내 버텨내고 당당히 사기업 1위 자리에 올랐습니다. 겉으로는 제약회사로 알려져 있으며, 우울증 치료제를 비롯해 신경 안정제, 수면 유도제 같은 정신 계통 의약품으로 큰 성공을 거두었습니다. 매출의 상당 부분을 다시 연구에 쏟아붓는 덕에 연구원들의 처우는 업계 최고 수준. 다만 공개된 제품 라인업에 비해 연구 예산이 어디에 쓰이는지는 아무도 모릅니다. 장부 한구석의 '비공개 프로젝트'가 무엇인지 묻는 사람은 많지만, 대답을 들은 사람은 없습니다. 정말 약만 만드는 걸까요?" },
+    { image: ["/images/starterpack/lore/indexlab-logo.png", "/images/starterpack/lore/indexlab-staff.webp", "/images/starterpack/lore/indexlab-staff-bright.webp"], emoji: "📍", title: "설정 2", body: "내용을 채워주세요." },
     { image: "/images/starterpack/lore/celebrator-origin-3.webp", emoji: "📍", title: "설정 3", body: "내용을 채워주세요." },
   ],
   fullBio:

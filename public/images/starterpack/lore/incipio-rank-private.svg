@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" font-family="Pretendard, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif" fill="#1d2a24">
+  <defs><pattern id="hatch" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="12" height="12" fill="#4e79a7"/><rect width="5" height="12" fill="#3b5f86"/></pattern></defs>
+  <rect width="800" height="1000" fill="#fbfaf5"/>
+  <text x="40" y="70" font-family="ui-monospace, Menlo, monospace" font-size="18" font-weight="700" letter-spacing="3" opacity=".55">PRIVATE RANKING</text>
+  <text x="40" y="122" font-size="50" font-weight="800" letter-spacing="-2">사기업 순위</text>
+  <text x="40" y="160" font-size="20" opacity=".6">전 도시 사기업 · 기업 가치</text>
+  <svg x="510" y="34" width="250" height="87" viewBox="0 0 860 300">
+  <!-- 인시피오 — 페도라 + 흘러내리는 물감. 정장 입은 예술가들 -->
+  <g fill="#141414">
+    <circle cx="150" cy="150" r="134" fill="none" stroke="#141414" stroke-width="6"/>
+    <circle cx="150" cy="150" r="120" fill="none" stroke="#141414" stroke-width="2" stroke-dasharray="3 9"/>
+    <path d="M92 150 L101 94 Q106 74 130 76 Q150 88 170 76 Q194 74 199 94 L208 150 Z"/>
+    <path d="M94 134 L206 134 L208 150 L92 150 Z" fill="#f28e2b"/>
+    <path d="M44 160 Q150 130 256 160 Q258 174 238 172 Q150 154 62 172 Q42 174 44 160 Z"/>
+    <g fill="#f28e2b">
+      <path d="M112 162 L112 196 a7 7 0 0 0 14 0 L126 158 Z"/>
+      <path d="M150 158 L150 222 a8 8 0 0 0 16 0 L166 158 Z"/>
+      <path d="M190 160 L190 186 a6 6 0 0 0 12 0 L202 162 Z"/>
+    </g>
+  </g>
+  <text x="320" y="166" font-family="Didot, 'Bodoni 72', Georgia, serif" font-size="104" font-weight="700" letter-spacing="10" fill="#141414">INCIPIO</text>
+  <rect x="324" y="190" width="56" height="5" fill="#f28e2b"/>
+  <text x="396" y="198" font-family="ui-monospace, Menlo, monospace" font-size="20" font-weight="700" letter-spacing="7" fill="#141414">ARS · INITIUM</text>
+</svg>
+  <rect x="40" y="182" width="20" height="20" rx="4" fill="#4e79a7" fill-opacity="0.3"/><text x="68" y="199" font-size="19" font-weight="600" opacity="0.4">공기업</text>
+  <rect x="170" y="182" width="20" height="20" rx="4" fill="#f28e2b" fill-opacity="1"/><text x="198" y="199" font-size="19" font-weight="600" opacity="1">사기업</text>
+  <line x1="130" y1="226" x2="130" y2="752" stroke="#1d2a24" stroke-opacity=".08" stroke-width="2"/><text x="130" y="780" font-family="ui-monospace, Menlo, monospace" font-size="16" text-anchor="middle" opacity=".45">0</text>
+  <line x1="270" y1="226" x2="270" y2="752" stroke="#1d2a24" stroke-opacity=".08" stroke-width="2"/><text x="270" y="780" font-family="ui-monospace, Menlo, monospace" font-size="16" text-anchor="middle" opacity=".45">100</text>
+  <line x1="410" y1="226" x2="410" y2="752" stroke="#1d2a24" stroke-opacity=".08" stroke-width="2"/><text x="410" y="780" font-family="ui-monospace, Menlo, monospace" font-size="16" text-anchor="middle" opacity=".45">200</text>
+  <line x1="550" y1="226" x2="550" y2="752" stroke="#1d2a24" stroke-opacity=".08" stroke-width="2"/><text x="550" y="780" font-family="ui-monospace, Menlo, monospace" font-size="16" text-anchor="middle" opacity=".45">300</text>
+  <line x1="690" y1="226" x2="690" y2="752" stroke="#1d2a24" stroke-opacity=".08" stroke-width="2"/><text x="690" y="780" font-family="ui-monospace, Menlo, monospace" font-size="16" text-anchor="middle" opacity=".45">400</text>
+  <text x="40" y="302" font-family="ui-monospace, Menlo, monospace" font-size="30" font-weight="800">1</text>
+  <text x="130" y="268" font-size="21" font-weight="700">인덱스랩 <tspan font-size="16" font-weight="500" opacity=".6">C-Index Lab</tspan></text>
+  <rect x="130" y="280" width="491.68" height="24" rx="4" fill="#f28e2b"/>
+  <text x="631.6800000000001" y="299" font-family="ui-monospace, Menlo, monospace" font-size="19" font-weight="800">351.2</text>
+  <text x="40" y="388" font-family="ui-monospace, Menlo, monospace" font-size="30" font-weight="800">2</text>
+  <text x="130" y="354" font-size="21" font-weight="700">프리오 <tspan font-size="16" font-weight="500" opacity=".6"></tspan></text>
+  <rect x="130" y="366" width="199.5" height="24" rx="4" fill="#f28e2b"/>
+  <text x="339.5" y="385" font-family="ui-monospace, Menlo, monospace" font-size="19" font-weight="800">142.5</text>
+  <text x="40" y="474" font-family="ui-monospace, Menlo, monospace" font-size="30" font-weight="800">3</text>
+  <text x="130" y="440" font-size="21" font-weight="700">베르텍스 물산 <tspan font-size="16" font-weight="500" opacity=".6">Vertex Trading</tspan></text>
+  <rect x="130" y="452" width="135.51999999999998" height="24" rx="4" fill="#f28e2b"/>
+  <text x="275.52" y="471" font-family="ui-monospace, Menlo, monospace" font-size="19" font-weight="800">96.8</text>
+  <text x="40" y="560" font-family="ui-monospace, Menlo, monospace" font-size="30" font-weight="800">4</text>
+  <text x="130" y="526" font-size="21" font-weight="700">루멘 바이오 <tspan font-size="16" font-weight="500" opacity=".6">Lumen Bio</tspan></text>
+  <rect x="130" y="538" width="85.82" height="24" rx="4" fill="#f28e2b"/>
+  <text x="225.82" y="557" font-family="ui-monospace, Menlo, monospace" font-size="19" font-weight="800">61.3</text>
+  <rect x="24" y="580" width="752" height="80" rx="12" fill="#f28e2b" fill-opacity=".12"/>
+  <text x="40" y="646" font-family="ui-monospace, Menlo, monospace" font-size="30" font-weight="800">5</text>
+  <text x="130" y="612" font-size="24" font-weight="800">인시피오 <tspan font-size="16" font-weight="500" opacity=".6">Incipio</tspan></text>
+  <rect x="130" y="624" width="54.18" height="24" rx="4" fill="#f28e2b" stroke="#1d2a24" stroke-width="3"/>
+  <text x="194.18" y="643" font-family="ui-monospace, Menlo, monospace" font-size="19" font-weight="800">38.7<tspan dx="12" font-family="Pretendard, sans-serif" font-size="17">◀ HERE</tspan></text>
+  <text x="40" y="732" font-family="ui-monospace, Menlo, monospace" font-size="30" font-weight="800">6</text>
+  <text x="130" y="698" font-size="21" font-weight="700">오르카 해운 <tspan font-size="16" font-weight="500" opacity=".6">Orca Shipping</tspan></text>
+  <rect x="130" y="710" width="41.3" height="24" rx="4" fill="#f28e2b"/>
+  <text x="181.3" y="729" font-family="ui-monospace, Menlo, monospace" font-size="19" font-weight="800">29.5</text>
+  <text x="40" y="968" font-size="16" opacity=".5">기업 가치 기준 · 경제연감</text>
+</svg>

@@ -239,6 +239,11 @@ html[data-motion=paused] .tp-stimpack .profile-stage { animation: none; }
 .lore-dialog-inner { position: relative; display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); max-height: 86vh; }
 .lore-dialog-art { position: relative; min-height: 420px; display: grid; place-items: center; background: color-mix(in srgb, var(--accent) 30%, #f4f1e6); animation: lore-in .35s ease-out; }
 .lore-dialog-art img { object-fit: cover; }
+.lore-dialog-art img[src$=".svg"] { object-fit: contain; } /* 도표(svg)는 잘리지 않게 */
+/* 로고 그림(-logo.png)이 통째로 그림 자리에 올 땐 잘리지 않게, 흰 바탕 위에 */
+.lore-card-art img[src*="-logo."], .lore-dialog-art img[src*="-logo."] { object-fit: contain; padding: 12%; background: #fbfaf5; }
+/* 첫 그림 위 회사 로고 — 아래쪽 흰 띠 */
+.lore-card-art img.lore-logo, .lore-dialog-art img.lore-logo { position: absolute; z-index: 1; left: 8%; bottom: 6%; width: 84%; height: auto; padding: 3% 5%; border-radius: 10px; background: #fbfaf5eb; box-shadow: 0 6px 18px #0003; transform: none; }
 .lore-dialog-art .lore-card-emoji { font-size: 120px; }
 .lore-dialog-copy { display: flex; flex-direction: column; padding: 48px 44px 36px; overflow-y: auto; }
 .lore-dialog-kicker { font: 700 11px ui-monospace, Menlo, monospace; letter-spacing: .16em; opacity: .55; }
@@ -253,7 +258,7 @@ html[data-motion=paused] .tp-stimpack .profile-stage { animation: none; }
 .lore-dialog-close { position: absolute; z-index: 2; top: 14px; right: 14px; width: 38px; height: 38px; border-radius: 50%; border: 2px solid #1d2a24; background: #fbfaf5; color: inherit; font-size: 15px; cursor: pointer; }
 @media (max-width: 700px) {
   .lore-cards { grid-auto-columns: 62%; }
-  .lore-dialog-inner { grid-template-columns: 1fr; overflow-y: auto; }
+  .lore-dialog-inner { grid-template-columns: 1fr; grid-auto-rows: max-content; overflow-y: auto; }
   .lore-dialog-art { min-height: 0; aspect-ratio: 4 / 4; }
   .lore-dialog-copy { padding: 26px 22px 24px; overflow: visible; }
 }
