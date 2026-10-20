@@ -213,3 +213,46 @@
 .rs-tape-7 div { animation-duration: 46s; }
 .rs-tape-8 { top: 82%; transform: rotate(-9deg); left: 30%; right: -25%; }
 .rs-tape-8 div { animation-duration: 52s; animation-direction: reverse; }
+/* 레스큐팩 로고 */
+.rs-logo { display: block; width: min(520px, 84vw); height: auto; margin: 0 auto 4px; filter: drop-shadow(0 0 18px #2bd46a33); }
+/* 구조대 섹션 — 어두운 관제실, 로고 네온이 살도록 */
+.rs-crew { background: radial-gradient(ellipse 60% 340px at 50% 120px, #2bd46a1f, transparent 70%), linear-gradient(#2bd46a0a 1px, transparent 1px) 0 0 / 100% 32px, #0b1220; color: #eef2f7; }
+.rs-crew .rs-section-head p { color: #9aa6b8; }
+/* 대원증 — 어두운 장비 카드, 대원마다 다른 장비 */
+.rs-crew .rs-badge { position: relative; background: linear-gradient(180deg, color-mix(in srgb, var(--rs-deep) 70%, #0b1220), #0e1626 55%); border: 1px solid #ffffff1c; color: #eef2f7; box-shadow: 0 24px 50px -28px #000; }
+.rs-crew .rs-badge:hover { box-shadow: 0 0 0 1px var(--rs-accent), 0 22px 60px -20px color-mix(in srgb, var(--rs-accent) 55%, transparent); }
+.rs-crew .rs-badge-top { padding: 12px 16px; border-bottom: 1px solid #ffffff1c; font: 800 10px ui-monospace, Menlo, monospace; letter-spacing: .16em; }
+.rs-crew .rs-badge-top span { padding: 3px 8px; border-radius: 3px; background: #0b1220d9; color: #eef2f7; }
+.rs-crew .rs-badge-photo { position: relative; border-bottom: 1px solid #ffffff1c; }
+.rs-crew .rs-badge dl, .rs-crew .rs-badge dl div { border-color: #ffffff22; }
+.rs-crew .rs-badge dt { color: #8b97aa; }
+.rs-crew .rs-badge-body > p { color: #c9d1dc; }
+.rs-crew .rs-callsign { color: var(--rs-accent); }
+.rs-crew .rs-badge-cta { background: #ffffff12; border: 1px solid #ffffff26; }
+.rs-crew .rs-badge:hover .rs-badge-cta { background: var(--rs-accent); color: #0b1220; border-color: transparent; }
+.rs-gauge { position: absolute; z-index: 3; left: 14px; bottom: 14px; display: grid; padding: 7px 11px; border: 1px solid color-mix(in srgb, var(--rs-accent) 60%, transparent); border-radius: 6px; background: #0b1220bf; backdrop-filter: blur(4px); font-family: ui-monospace, Menlo, monospace; }
+.rs-gauge small { font-size: 9px; letter-spacing: .2em; color: #8b97aa; }
+.rs-gauge b { font-size: 17px; color: var(--rs-accent); text-shadow: 0 0 12px var(--rs-accent); font-variant-numeric: tabular-nums; }
+.rs-badge-photo::before, .rs-badge-photo::after { content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+
+/* 헬다이버 — 방화복 반사띠 + 아래에서 올라오는 불길 */
+.is-helldiver .rs-badge-top { background: linear-gradient(#17120f 0 26%, #f1d53c 26% 36%, #d8dcdf 36% 64%, #f1d53c 64% 74%, #17120f 74%); }
+.is-helldiver .rs-badge-photo::before { background: linear-gradient(transparent 45%, #ff4d1a59 85%, #ff7a1ab3), radial-gradient(ellipse 80% 40% at 50% 110%, #ffb02e99, transparent 70%); mix-blend-mode: screen; animation: rs-flame 2.4s ease-in-out infinite alternate; }
+.is-helldiver .rs-badge-photo::after { background: radial-gradient(2px 2px at 20% 80%, #ffd27a, transparent), radial-gradient(1.5px 1.5px at 62% 90%, #ffb04a, transparent), radial-gradient(2px 2px at 80% 75%, #ffe0a0, transparent), radial-gradient(1.5px 1.5px at 40% 95%, #ff9a3a, transparent); background-size: 100% 100%; animation: rs-embers 3.2s linear infinite; }
+@keyframes rs-flame { to { opacity: .65; transform: scaleY(1.06); transform-origin: bottom; } }
+@keyframes rs-embers { from { transform: translateY(0); opacity: 1; } to { transform: translateY(-60%); opacity: 0; } }
+
+/* 앵커 — 노틸러스 황동 현창 + 기포 */
+.is-anchor .rs-badge-top { background: linear-gradient(90deg, #6e5428, #c9a25a 30%, #8a6a33 60%, #d9b56c); }
+.is-anchor .rs-badge-photo::before { inset: 50% auto auto 50%; width: 82%; aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; border: 12px solid #b38d4c; outline: 3px dotted #f0d590; outline-offset: -9px; box-shadow: 0 0 0 999px #071a2be6, inset 0 0 40px #04121fcc, 0 0 0 2px #5a4220; background: radial-gradient(circle at 30% 25%, #ffffff26, transparent 40%); }
+.is-anchor .rs-badge-photo::after { background: radial-gradient(4px 4px at 30% 100%, #bfe8ff99 50%, transparent 55%), radial-gradient(3px 3px at 64% 100%, #bfe8ff88 50%, transparent 55%), radial-gradient(5px 5px at 72% 100%, #bfe8ff66 50%, transparent 55%); animation: rs-bubbles 4s ease-in infinite; }
+@keyframes rs-bubbles { from { transform: translateY(0); opacity: 1; } to { transform: translateY(-95%); opacity: 0; } }
+
+/* 페인킬러 — 구급대 십자 + 흐르는 심전도 */
+.is-painkiller .rs-badge-top { background: linear-gradient(90deg, #f4f7f5 0 calc(100% - 52px), #1fae7a 0); }
+.is-painkiller .rs-badge-top span:last-child { background: #1fae7a; }
+.is-painkiller .rs-badge-photo::before { background: linear-gradient(#0b122000 55%, #0b1220b3); }
+.is-painkiller .rs-badge-photo::after { top: auto; height: 46px; bottom: 54px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='46'%3E%3Cpath d='M0 23h70l8-14 9 30 8-34 8 18h97' fill='none' stroke='%237ff0c0' stroke-width='2.5'/%3E%3C/svg%3E") 0 0 / 200px 46px repeat-x; filter: drop-shadow(0 0 6px #4be3a6); animation: rs-ecg 2.2s linear infinite; }
+@keyframes rs-ecg { to { background-position: -200px 0; } }
+
+@media (prefers-reduced-motion: reduce) { .rs-badge-photo::before, .rs-badge-photo::after { animation: none; } }

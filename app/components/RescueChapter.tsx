@@ -11,6 +11,13 @@ import Footer from "./Footer";
 import "../rescue.css";
 
 const members = cast.filter((member) => member.group === 4);
+export const RescueLogo = () => <Image className="rs-logo" src="/images/rescuepack/rescue-pack-logo-1.webp" alt="RESCUE PACK 레스큐팩" width={1200} height={480} sizes="(max-width: 900px) 84vw, 520px" />;
+/* 대원증 장비 — 헬다이버 소방관, 앵커 심해 잠수사, 페인킬러 구급대원 */
+const gear: Record<string, { unit: string; code: string; label: string; value: string }> = {
+  helldiver: { unit: "FIRE RESCUE · ENGINE 03", code: "HD-01", label: "HEAT", value: "1,100°C" },
+  anchor: { unit: "DEEP SEA DIVE UNIT", code: "NAUTILUS", label: "DEPTH", value: "−1,000 m" },
+  painkiller: { unit: "EMERGENCY MEDICAL", code: "EMS-03", label: "PULSE", value: "72 BPM" },
+};
 export const callsigns: Record<string, string> = { helldiver: "HELLDIVER", anchor: "ANCHOR", painkiller: "PAINKILLER" };
 
 /* 표지판 픽토그램 (80×80 좌표, 굵은 선) */
@@ -163,14 +170,17 @@ export default function RescueChapter() {
         </section>
 
         <section className="rs-crew" aria-labelledby="rs-crew-title">
-          <div className="rs-section-head"><span className="rs-kicker">RESCUE CREW</span><h2 id="rs-crew-title">오늘의 당번.</h2><p>셋 다 24시간 대기 중입니다. 사실 잠은 잡니다.</p></div>
+          <div className="rs-section-head"><RescueLogo /><span className="rs-kicker">RESCUE CREW</span><h2 id="rs-crew-title">오늘의 당번.</h2><p>셋 다 24시간 대기 중입니다. 사실 잠은 잡니다.</p></div>
           <div className="rs-crew-grid">
             {members.map((m) => {
               const d = directions[m.slug];
               return (
-                <Link href={m.href} className="rs-badge" key={m.slug} style={{ "--rs-accent": d.color, "--rs-deep": d.secondary } as React.CSSProperties}>
-                  <div className="rs-badge-top"><span>RESCUE CREW</span><span>{d.motif}</span></div>
-                  <div className="rs-badge-photo"><Image src={m.image!} alt={m.name} width={600} height={900} sizes="(max-width: 900px) 90vw, 30vw" /></div>
+                <Link href={m.href} className={`rs-badge is-${m.slug}`} key={m.slug} style={{ "--rs-accent": d.color, "--rs-deep": d.secondary } as React.CSSProperties}>
+                  <div className="rs-badge-top"><span>{gear[m.slug].unit}</span><span>{gear[m.slug].code}</span></div>
+                  <div className="rs-badge-photo">
+                    <Image src={m.image!} alt={m.name} width={600} height={900} sizes="(max-width: 900px) 90vw, 30vw" />
+                    <span className="rs-gauge" aria-hidden="true"><small>{gear[m.slug].label}</small><b>{gear[m.slug].value}</b></span>
+                  </div>
                   <div className="rs-badge-body">
                     <span className="rs-callsign">CALLSIGN · {callsigns[m.slug]}</span>
                     <h3>{m.name}<span className="real-name">{credit(m)}</span></h3>
