@@ -54,9 +54,14 @@ export default function About() {
             </article>
           ))}
         </div>
-        <Link className="pill-button" href="/services">
-          우리의 CAST 만나기<span>↗</span>
-        </Link>
+        <div className="about-links">
+          <Link className="pill-button" href="/services">
+            우리의 CAST 만나기<span>↗</span>
+          </Link>
+          <Link className="pill-button" href="/about/org">
+            조직도 보기<span>↗</span>
+          </Link>
+        </div>
       </main>
       <Footer />
     </div>

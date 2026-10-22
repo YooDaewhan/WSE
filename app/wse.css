@@ -1292,6 +1292,7 @@ summary:focus-visible {
   line-height: 1.9;
   color: #727b65;
 }
+.about-links { display:flex; flex-wrap:wrap; gap:12px; }
 @keyframes turn {
   to {
     rotate: 360deg;

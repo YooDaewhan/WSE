@@ -1,0 +1,50 @@
+.req-open { display:flex; flex-shrink:0; align-items:center; gap:12px; padding:14px 22px; border:3px solid #2b2238; border-radius:14px; background:#ffe14d; color:#2b2238; font-weight:900; font-size:16px; box-shadow:5px 5px 0 #2b2238; transform:rotate(-1deg); transition:transform .15s, box-shadow .15s; cursor:pointer; }
+.req-open:hover { transform:rotate(1deg) translate(-2px,-2px); box-shadow:7px 7px 0 #2b2238; }
+.req-open span { font-size:11px; padding:4px 8px; border:2px solid #ff3d5a; color:#ff3d5a; border-radius:4px; transform:rotate(6deg); background:#fff; }
+
+.req-dialog { padding:0; border:0; background:transparent; max-width:min(680px, calc(100vw - 32px)); width:100%; max-height:calc(100vh - 32px); overflow:auto; }
+.req-dialog::backdrop { background:#2b2238b3; backdrop-filter:blur(3px); }
+.req-dialog[open] .req-paper { animation:req-drop .35s cubic-bezier(.2,1.4,.4,1); }
+@keyframes req-drop { from { transform:translateY(-40px) rotate(-3deg); opacity:0; } }
+
+.req-paper { position:relative; margin:20px 10px; padding:34px 34px 26px; background:#fffdf3 repeating-linear-gradient(transparent 0 31px, #d9e6f5 31px 32px); color:#2b2238; border:2px solid #2b2238; box-shadow:8px 8px 0 #ff8fb1; transform:rotate(-.4deg); }
+.req-paper:before { content:""; position:absolute; top:-14px; left:50%; width:120px; height:28px; margin-left:-60px; background:#7fd8becc; transform:rotate(-3deg); }
+.req-close { position:absolute; top:10px; right:12px; width:32px; height:32px; border-radius:50%; border:2px solid #2b2238; background:#fff; font-weight:900; cursor:pointer; }
+
+.req-head { display:flex; justify-content:space-between; align-items:flex-start; gap:16px; padding-bottom:16px; margin-bottom:18px; border-bottom:3px double #2b2238; }
+.req-head small { font-size:11px; font-weight:700; color:#8a7f96; }
+.req-head h2 { margin:4px 0 0; font-size:34px; font-weight:900; letter-spacing:-1px; }
+.req-head p { margin:2px 0 0; font-size:12px; color:#8a7f96; }
+.req-sign { border-collapse:collapse; margin-right:30px; background:#fff; }
+.req-sign th, .req-sign td { width:56px; border:2px solid #2b2238; text-align:center; font-size:11px; }
+.req-sign th { padding:3px; background:#ffe14d; }
+.req-sign td { height:50px; }
+.req-sign i { display:inline-block; padding:2px 4px; border:2px solid #ff3d5a; border-radius:50%; color:#ff3d5a; font-style:normal; font-weight:900; font-size:10px; transform:rotate(-12deg); }
+.req-sign i.wait { border-style:dashed; color:#8a7f96; border-color:#8a7f96; }
+
+.req-paper fieldset { border:0; padding:0; margin:0; display:grid; gap:14px; }
+.req-row { display:grid; grid-template-columns:2fr 1fr; gap:14px; }
+.req-paper label { display:grid; gap:6px; font-size:12px; font-weight:800; }
+.req-paper input:not([type="checkbox"]), .req-paper textarea { width:100%; padding:10px 12px; border:2px solid #2b2238; border-radius:8px; background:#ffffffd9; font:inherit; font-size:14px; font-weight:500; color:#2b2238; resize:vertical; }
+.req-paper input:focus, .req-paper textarea:focus { outline:3px solid #ffe14d; outline-offset:1px; }
+.req-money { display:flex; align-items:center; gap:6px; }
+.req-check { display:flex !important; align-items:center; gap:8px; font-weight:600 !important; }
+.req-check input { accent-color:#ff3d5a; width:16px; height:16px; }
+
+.req-foot { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top:22px; font-size:12px; font-family:Georgia, serif; font-style:italic; }
+.req-foot button { padding:12px 22px; border:3px solid #2b2238; border-radius:30px; background:#ff5d73; color:#fff; font-weight:900; font-style:normal; box-shadow:4px 4px 0 #2b2238; cursor:pointer; }
+.req-foot button:active { transform:translate(3px,3px); box-shadow:1px 1px 0 #2b2238; }
+
+.req-stamp { position:absolute; left:50%; top:46%; display:grid; justify-items:center; padding:12px 26px; border:5px double #ff3d5a; border-radius:10px; color:#ff3d5a; background:#fffdf3cc; font-size:40px; font-weight:900; letter-spacing:4px; transform:translate(-50%,-50%) rotate(-14deg); animation:req-stamp .3s ease-out; pointer-events:none; }
+.req-stamp small { font-size:12px; letter-spacing:0; font-weight:700; }
+@keyframes req-stamp { from { transform:translate(-50%,-50%) rotate(-14deg) scale(2.4); opacity:0; } }
+
+@media (max-width: 560px) {
+  .req-open { padding:10px 14px; font-size:14px; }
+  .req-open span { display:none; }
+  .req-paper { padding:28px 18px 20px; }
+  .req-head { flex-direction:column; }
+  .req-sign { margin-right:0; }
+  .req-row { grid-template-columns:1fr; }
+  .req-foot { flex-direction:column; align-items:stretch; text-align:center; }
+}
