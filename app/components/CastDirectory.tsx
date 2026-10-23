@@ -1,8 +1,8 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useRef, useState, type CSSProperties } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { useState, type CSSProperties } from "react";
+import { motion } from "framer-motion";
 import { cast, generations, credit } from "../data/cast";
 import { chapters } from "../data/chapters";
 import { directions } from "../data/art-direction";
@@ -10,6 +10,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import { useExperience } from "./Experience";
 import "../chapters.css";
+import "../magazine.css";
 
 type Chapter = (typeof chapters)[number];
 const styleFor = (chapter: Chapter) =>
@@ -68,8 +69,7 @@ function Ensemble({
   );
 }
 export default function CastDirectory({ group = 0 }: { group?: number }) {
-  const [selected, setSelected] = useState(0);
-  const lastWheel = useRef(0);
+  const [open, setOpen] = useState(0);
   const { paused } = useExperience();
   if (group) {
     const chapter = chapters[group - 1];
@@ -206,102 +206,59 @@ export default function CastDirectory({ group = 0 }: { group?: number }) {
       </div>
     );
   }
-  const chapter = chapters[selected];
-  const generation = generations[selected];
   return (
-    <div className="wse-site chapter-site">
+    <div className="wse-site">
       <Header />
-      <main id="main">
-        <section
-          className="chapter-reader"
-          style={styleFor(chapter)}
-          aria-label="기수별 이야기 선택"
-          onWheel={(e) => {
-            // ponytail: desktop wheel only; mobile layout scrolls normally
-            if (window.innerWidth <= 700 || Math.abs(e.deltaY) < 20) return;
-            const now = Date.now();
-            if (now - lastWheel.current < 900) return;
-            lastWheel.current = now;
-            setSelected((i) => (i + (e.deltaY > 0 ? 1 : 6)) % 7);
-          }}
-        >
-          <div className="reader-heading">
-            <span>CAST / SEVEN ORIGINAL STORIES</span>
-            <p>
-              사람을 만나기 전에,
-              <br />
-              그들이 살아가는 세계부터.
-            </p>
-          </div>
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={chapter.id}
-              className={`chapter-scene chapter-${chapter.atmosphere}`}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: paused ? 0 : 0.35 }}
-            >
-              <Atmosphere chapter={chapter} />
-              <div className="chapter-cover-copy">
-                <span className="chapter-overline">
-                  {generation.label} — {chapter.english}
+      <main id="main" className="rack">
+        <div className="rack-head">
+          <h1>
+            The Cast<em>등장인물</em>
+          </h1>
+          <p>
+            사람을 만나기 전에, 그들이 살아가는 세계부터.
+            <small>{generations.length} ISSUES · {cast.length} PEOPLE</small>
+          </p>
+        </div>
+        <div className="rack-shelf">
+          {generations.map((g, i) => {
+            const chapter = chapters[i];
+            const [lead, ...rest] = cast.filter((c) => c.group === g.id && c.image);
+            return (
+              <Link
+                key={g.id}
+                href={g.href}
+                className={`rack-issue${open === i ? " is-open" : ""}`}
+                style={{ "--accent": chapter.color, "--tone": chapter.shade } as CSSProperties}
+                onMouseEnter={() => setOpen(i)}
+                onFocus={() => setOpen(i)}
+              >
+                {lead && (
+                  <Image className="rack-art" src={lead.image!} width={720} height={1080} sizes="(max-width: 800px) 50vw, 30vw" alt="" priority />
+                )}
+                <span className="rack-top">
+                  <span className="rack-logo">WSE</span>
+                  <small>No.{String(g.id).padStart(2, "0")}</small>
                 </span>
-                <motion.h1
-                  initial={{ y: paused ? 0 : 25 }}
-                  animate={{ y: 0 }}
-                  transition={{ duration: 0.7 }}
-                >
-                  {generation.teamName}
-                </motion.h1>
-                <h2>{chapter.story.tagline}</h2>
-                <p>{chapter.story.description}</p>
-                <Link className="chapter-enter" href={generation.href}>
-                  {generation.teamName}의 이야기로<span>↗</span>
-                </Link>
-              </div>
-              <Ensemble id={chapter.id} priority />
-              <div className="chapter-side-note">
-                <span>{String(chapter.id).padStart(2, "0")}</span>
-                <small>{chapter.invitation}</small>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-          <div className="reader-bottom">
-            <div className="reader-pagination">
-              <span>
-                {String(chapter.id).padStart(2, "0")} <small>/ 07</small>
-              </span>
-              <div>
-                <button
-                  onClick={() => setSelected((i) => (i + 6) % 7)}
-                  aria-label="이전 기수"
-                >
-                  ←
-                </button>
-                <button
-                  onClick={() => setSelected((i) => (i + 1) % 7)}
-                  aria-label="다음 기수"
-                >
-                  →
-                </button>
-              </div>
-            </div>
-            <nav className="chapter-spine" aria-label="기수 선택">
-              {generations.map((g, i) => (
-                <button
-                  key={g.id}
-                  aria-pressed={selected === i}
-                  onClick={() => setSelected(i)}
-                >
-                  <small>{g.label}</small>
-                  <span>{g.teamName}</span>
-                  <i />
-                </button>
-              ))}
-            </nav>
-          </div>
-        </section>
+                <span className="rack-copy">
+                  <small>{g.label} · {chapter.english}</small>
+                  <strong>{g.teamName}</strong>
+                  <em>{chapter.story.tagline}</em>
+                  <span className="rack-more">
+                    <span className="rack-desc">{chapter.story.description}</span>
+                    {rest.length > 0 && (
+                      <span className="rack-faces" aria-hidden="true">
+                        {rest.slice(0, 4).map((c) => (
+                          <Image key={c.slug} src={c.image!} width={96} height={144} sizes="48px" alt="" />
+                        ))}
+                      </span>
+                    )}
+                    <span className="rack-go">이 호 펼치기 ↗</span>
+                  </span>
+                </span>
+              </Link>
+            );
+          })}
+        </div>
       </main>
     </div>
   );
