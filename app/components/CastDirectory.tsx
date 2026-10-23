@@ -1,8 +1,8 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useState, type CSSProperties } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
+import { motion, useAnimationFrame, useMotionValue, useTransform, useVelocity } from "framer-motion";
 import { cast, generations, credit } from "../data/cast";
 import { chapters } from "../data/chapters";
 import { directions } from "../data/art-direction";
@@ -69,7 +69,6 @@ function Ensemble({
   );
 }
 export default function CastDirectory({ group = 0 }: { group?: number }) {
-  const [open, setOpen] = useState(0);
   const { paused } = useExperience();
   if (group) {
     const chapter = chapters[group - 1];
@@ -209,57 +208,157 @@ export default function CastDirectory({ group = 0 }: { group?: number }) {
   return (
     <div className="wse-site">
       <Header />
-      <main id="main" className="rack">
-        <div className="rack-head">
-          <h1>
-            The Cast<em>등장인물</em>
-          </h1>
-          <p>
-            사람을 만나기 전에, 그들이 살아가는 세계부터.
-            <small>{generations.length} ISSUES · {cast.length} PEOPLE</small>
-          </p>
-        </div>
-        <div className="rack-shelf">
-          {generations.map((g, i) => {
-            const chapter = chapters[i];
-            const [lead, ...rest] = cast.filter((c) => c.group === g.id && c.image);
-            return (
-              <Link
-                key={g.id}
-                href={g.href}
-                className={`rack-issue${open === i ? " is-open" : ""}`}
-                style={{ "--accent": chapter.color, "--tone": chapter.shade } as CSSProperties}
-                onMouseEnter={() => setOpen(i)}
-                onFocus={() => setOpen(i)}
-              >
-                {lead && (
-                  <Image className="rack-art" src={lead.image!} width={720} height={1080} sizes="(max-width: 800px) 50vw, 30vw" alt="" priority />
-                )}
-                <span className="rack-top">
-                  <span className="rack-logo">WSE</span>
-                  <small>No.{String(g.id).padStart(2, "0")}</small>
-                </span>
-                <span className="rack-copy">
-                  <small>{g.label} · {chapter.english}</small>
-                  <strong>{g.teamName}</strong>
-                  <em>{chapter.story.tagline}</em>
-                  <span className="rack-more">
-                    <span className="rack-desc">{chapter.story.description}</span>
-                    {rest.length > 0 && (
-                      <span className="rack-faces" aria-hidden="true">
-                        {rest.slice(0, 4).map((c) => (
-                          <Image key={c.slug} src={c.image!} width={96} height={144} sizes="48px" alt="" />
-                        ))}
-                      </span>
-                    )}
-                    <span className="rack-go">이 호 펼치기 ↗</span>
-                  </span>
-                </span>
-              </Link>
-            );
-          })}
-        </div>
+      <main id="main">
+        <CastCanvas />
       </main>
     </div>
+  );
+}
+
+/* CAST — 끝없이 이어지는 캔버스. 아무 데나 잡고 던지면 관성으로 흐르고, 속도만큼 기울어진다. */
+const COLS = 6;
+const ROWS = Math.ceil((cast.length + 1) / COLS);
+const GAP = 14;
+const slots = Array.from({ length: COLS * ROWS }, (_, i) => cast[i] ?? null);
+function CastCanvas() {
+  const { paused } = useExperience();
+  const [tw, setTw] = useState(200);
+  const [hover, setHover] = useState<(typeof cast)[number] | null>(null);
+  const [focus, setFocus] = useState<number | null>(null);
+  const [dragging, setDragging] = useState(false);
+  useEffect(() => {
+    const fit = () => setTw(Math.round(Math.min(240, Math.max(140, innerWidth * 0.15))));
+    fit();
+    addEventListener("resize", fit);
+    return () => removeEventListener("resize", fit);
+  }, []);
+  const th = Math.round(tw * 1.4);
+  const W = COLS * (tw + GAP);
+  const H = ROWS * (th + GAP);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const tx = useTransform(x, (v) => (((v % W) + W) % W) - W);
+  const ty = useTransform(y, (v) => (((v % H) + H) % H) - H);
+  const skewX = useTransform(useVelocity(x), [-3000, 3000], [7, -7], { clamp: true });
+  const skewY = useTransform(useVelocity(y), [-3000, 3000], [-5, 5], { clamp: true });
+  const vel = useRef({ x: 0, y: 0 });
+  const drag = useRef<{ x: number; y: number } | null>(null);
+  const moved = useRef(0);
+  const still = useRef(false);
+  still.current = paused || hover !== null;
+  useAnimationFrame(() => {
+    if (drag.current) return;
+    const v = vel.current;
+    const drift = still.current ? 0 : 1;
+    x.set(x.get() + v.x - 0.35 * drift);
+    y.set(y.get() + v.y - 0.18 * drift);
+    v.x *= 0.93;
+    v.y *= 0.93;
+  });
+  const end = () => {
+    drag.current = null;
+    setDragging(false);
+  };
+  return (
+    <section
+      className={`cv${dragging ? " is-dragging" : ""}${focus !== null ? " has-focus" : ""}`}
+      onPointerDown={(e) => {
+        drag.current = { x: e.clientX, y: e.clientY };
+        moved.current = 0;
+        vel.current = { x: 0, y: 0 };
+        setDragging(true);
+      }}
+      onPointerMove={(e) => {
+        if (!drag.current) return;
+        const dx = e.clientX - drag.current.x;
+        const dy = e.clientY - drag.current.y;
+        drag.current = { x: e.clientX, y: e.clientY };
+        moved.current += Math.abs(dx) + Math.abs(dy);
+        x.set(x.get() + dx);
+        y.set(y.get() + dy);
+        vel.current = { x: dx, y: dy };
+      }}
+      onPointerUp={end}
+      onPointerLeave={end}
+      onWheel={(e) => {
+        vel.current.x -= e.deltaX * 0.12;
+        vel.current.y -= e.deltaY * 0.12;
+      }}
+    >
+      <motion.div className="cv-plane" style={{ x: tx, y: ty, skewX, skewY }}>
+        {Array.from({ length: 9 }, (_, copy) => (
+          <div
+            key={copy}
+            className="cv-copy"
+            style={{ left: (copy % 3) * W, top: Math.floor(copy / 3) * H, width: W, height: H }}
+            aria-hidden={copy > 0}
+          >
+            {slots.map((c, s) => {
+              const col = s % COLS;
+              const style = {
+                left: col * (tw + GAP),
+                top: Math.floor(s / COLS) * (th + GAP) + (col % 2 ? th / 2 : 0),
+                width: tw,
+                height: th,
+                "--hue": c ? chapters[c.group - 1].color : "#d4ef83",
+                "--shade": c ? chapters[c.group - 1].shade : "#252722",
+              } as CSSProperties;
+              if (!c)
+                return (
+                  <div key={s} className="cv-tile cv-logo" style={style}>
+                    <span>wse</span>
+                    <small>WE START EVENING</small>
+                  </div>
+                );
+              return (
+                <Link
+                  key={s}
+                  href={c.href}
+                  className={`cv-tile${focus !== null && c.group !== focus ? " is-dim" : ""}`}
+                  style={style}
+                  tabIndex={copy > 0 ? -1 : undefined}
+                  draggable={false}
+                  onClick={(e) => moved.current > 8 && e.preventDefault()}
+                  onPointerEnter={() => setHover(c)}
+                  onPointerLeave={() => setHover(null)}
+                >
+                  {c.image ? (
+                    <Image src={c.image} width={360} height={504} sizes="240px" alt={copy ? "" : c.name} draggable={false} loading="eager" />
+                  ) : (
+                    <span className="cv-pending">{chapters[c.group - 1].symbol}</span>
+                  )}
+                  <span className="cv-tag">
+                    <small>{c.generation} {c.teamName}</small>
+                    {c.name.replace("(미정)", "")}
+                  </span>
+                </Link>
+              );
+            })}
+          </div>
+        ))}
+      </motion.div>
+      <div className="cv-hud" aria-hidden="true">
+        <motion.div key={hover?.slug ?? "cast"} initial={{ opacity: 0, scale: 1.08 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.35 }}>
+          <small>{hover ? `${hover.generation} ${hover.teamName} · ${hover.role.toUpperCase()}` : `${cast.length} PEOPLE · ${generations.length} STORIES`}</small>
+          <strong>{hover ? hover.name.replace("(미정)", "") : "THE CAST"}</strong>
+        </motion.div>
+      </div>
+      <div className="cv-bar">
+        <span className="cv-hint">DRAG · THROW · SCROLL</span>
+        <nav aria-label="팀별로 보기">
+          <button aria-pressed={focus === null} onClick={() => setFocus(null)}>ALL</button>
+          {generations.map((g) => (
+            <button
+              key={g.id}
+              aria-pressed={focus === g.id}
+              style={{ "--hue": chapters[g.id - 1].color } as CSSProperties}
+              onClick={() => setFocus(focus === g.id ? null : g.id)}
+            >
+              {g.teamName}
+            </button>
+          ))}
+        </nav>
+      </div>
+    </section>
   );
 }
