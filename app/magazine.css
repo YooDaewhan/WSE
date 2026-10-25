@@ -1013,14 +1013,12 @@
 }
 .cv-bar {
   position: absolute;
-  left: 4.5%;
-  right: 4.5%;
-  bottom: 22px;
+  left: 3%;
+  right: 3%;
+  top: 100px;
   z-index: 4;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
+  display: grid;
+  gap: 10px;
   pointer-events: none;
 }
 .cv-hint {
@@ -1028,35 +1026,100 @@
   font-weight: 800;
   letter-spacing: 3px;
   mix-blend-mode: difference;
+  order: 1;
+  justify-self: end;
+}
+/* 상단 목차 — 잡지 차례면처럼. 번호 · 부제 · 팀명, 올리면 팀 색 선이 차오르고 얼굴이 내려온다 */
+.cv::after {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 280px;
+  z-index: 3;
+  background: linear-gradient(#0d0d0bf2 55%, transparent);
+  pointer-events: none;
 }
 .cv-bar nav {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  gap: 6px;
-  padding: 6px;
-  border-radius: 99px;
-  background: #121210cc;
-  backdrop-filter: blur(14px);
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  border-bottom: 1px solid #f3f0e92e;
   pointer-events: auto;
 }
-.cv-bar button {
-  padding: 7px 12px;
-  border: 0;
-  border-radius: 99px;
-  background: none;
-  color: #f3f0e9aa;
-  font-size: 12px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background 0.3s, color 0.3s;
+.cv-bar nav a {
+  position: relative;
+  display: grid;
+  gap: 4px;
+  padding: 4px 14px 14px 0;
+  color: #f3f0e9;
+  text-decoration: none;
 }
-.cv-bar button:hover {
-  color: #fff;
+.cv-bar nav a::before {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 14px;
+  height: 2px;
+  background: var(--hue);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
-.cv-bar button[aria-pressed="true"] {
-  background: var(--hue, #f3f0e9);
-  color: #121210;
+.cv-bar nav em {
+  margin-bottom: 4px;
+  font-family: Georgia, serif;
+  font-size: clamp(26px, 2.4vw, 38px);
+  font-style: italic;
+  line-height: 0.9;
+  color: #f3f0e94d;
+  transition: color 0.4s;
+}
+.cv-bar nav small {
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 1.6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  opacity: 0.45;
+}
+.cv-bar nav strong {
+  font-size: clamp(13px, 1.1vw, 17px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+}
+.cv-faces {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 0;
+  display: flex;
+  width: max-content;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 0.35s, transform 0.35s;
+  pointer-events: none;
+}
+.cv-faces img {
+  width: 34px;
+  height: 34px;
+  margin-right: -8px;
+  border: 2px solid #0d0d0b;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top;
+}
+.cv-bar nav a.is-on::before,
+.cv-bar nav a:focus-visible::before {
+  transform: scaleX(1);
+}
+.cv-bar nav a.is-on em,
+.cv-bar nav a:focus-visible em {
+  color: var(--hue);
+}
+.cv-bar nav a.is-on .cv-faces {
+  opacity: 1;
+  transform: none;
 }
 @media (max-width: 800px) {
   .cv-hint {
@@ -1065,15 +1128,17 @@
   .cv-bar {
     left: 10px;
     right: 10px;
-    bottom: 12px;
   }
   .cv-bar nav {
-    flex-wrap: nowrap;
-    justify-content: flex-start;
+    display: flex;
     overflow-x: auto;
-    border-radius: 14px;
+    scrollbar-width: none;
   }
-  .cv-bar button {
+  .cv-bar nav a {
     flex: none;
+    min-width: 132px;
+  }
+  .cv-faces {
+    display: none;
   }
 }

@@ -245,7 +245,7 @@ function CastCanvas() {
   const drag = useRef<{ x: number; y: number } | null>(null);
   const moved = useRef(0);
   const still = useRef(false);
-  still.current = paused || hover !== null;
+  still.current = paused;
   useAnimationFrame(() => {
     if (drag.current) return;
     const v = vel.current;
@@ -338,24 +338,33 @@ function CastCanvas() {
         ))}
       </motion.div>
       <div className="cv-hud" aria-hidden="true">
-        <motion.div key={hover?.slug ?? "cast"} initial={{ opacity: 0, scale: 1.08 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.35 }}>
-          <small>{hover ? `${hover.generation} ${hover.teamName} · ${hover.role.toUpperCase()}` : `${cast.length} PEOPLE · ${generations.length} STORIES`}</small>
-          <strong>{hover ? hover.name.replace("(미정)", "") : "THE CAST"}</strong>
+        <motion.div key={hover?.slug ?? focus ?? "cast"} initial={{ opacity: 0, scale: 1.08 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.35 }}>
+          <small>{hover ? `${hover.generation} ${hover.teamName} · ${hover.role.toUpperCase()}` : focus ? `${generations[focus - 1].label} · ${cast.filter((c) => c.group === focus).length} PEOPLE` : `${cast.length} PEOPLE · ${generations.length} STORIES`}</small>
+          <strong>{hover ? hover.name.replace("(미정)", "") : focus ? generations[focus - 1].teamName : "THE CAST"}</strong>
         </motion.div>
       </div>
       <div className="cv-bar">
         <span className="cv-hint">DRAG · THROW · SCROLL</span>
-        <nav aria-label="팀별로 보기">
-          <button aria-pressed={focus === null} onClick={() => setFocus(null)}>ALL</button>
+        {/* 칩에 올리면 벽에서 그 팀만 밝아지고, 누르면 기수 페이지로 */}
+        <nav aria-label="기수별 이야기" onPointerDown={(e) => e.stopPropagation()} onPointerLeave={() => setFocus(null)}>
           {generations.map((g) => (
-            <button
+            <Link
               key={g.id}
-              aria-pressed={focus === g.id}
+              href={g.href}
+              className={focus === g.id ? "is-on" : undefined}
               style={{ "--hue": chapters[g.id - 1].color } as CSSProperties}
-              onClick={() => setFocus(focus === g.id ? null : g.id)}
+              onPointerEnter={() => setFocus(g.id)}
+              onFocus={() => setFocus(g.id)}
             >
-              {g.teamName}
-            </button>
+              <em>{String(g.id).padStart(2, "0")}</em>
+              <small>{chapters[g.id - 1].english}</small>
+              <strong>{g.teamName}</strong>
+              <span className="cv-faces" aria-hidden="true">
+                {cast.filter((c) => c.group === g.id && c.image).map((c) => (
+                  <Image key={c.slug} src={c.image!} width={64} height={64} sizes="32px" alt="" />
+                ))}
+              </span>
+            </Link>
           ))}
         </nav>
       </div>
