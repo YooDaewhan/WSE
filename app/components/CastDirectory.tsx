@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
-import { motion, useAnimationFrame, useMotionValue, useTransform, useVelocity } from "framer-motion";
+import { motion, useAnimationFrame, useMotionValue, useSpring, useTransform, useVelocity } from "framer-motion";
 import { cast, generations, credit } from "../data/cast";
 import { chapters } from "../data/chapters";
 import { directions } from "../data/art-direction";
@@ -239,17 +239,20 @@ function CastCanvas() {
   const y = useMotionValue(0);
   const tx = useTransform(x, (v) => (((v % W) + W) % W) - W);
   const ty = useTransform(y, (v) => (((v % H) + H) % H) - H);
-  const skewX = useTransform(useVelocity(x), [-3000, 3000], [7, -7], { clamp: true });
-  const skewY = useTransform(useVelocity(y), [-3000, 3000], [-5, 5], { clamp: true });
+  // 속도 샘플이 프레임마다 튀어서 기울기가 떨리던 것 — 스프링으로 걸러 부드럽게
+  const smooth = { stiffness: 120, damping: 30 };
+  const skewX = useSpring(useTransform(useVelocity(x), [-3000, 3000], [7, -7], { clamp: true }), smooth);
+  const skewY = useSpring(useTransform(useVelocity(y), [-3000, 3000], [-5, 5], { clamp: true }), smooth);
   const vel = useRef({ x: 0, y: 0 });
   const drag = useRef<{ x: number; y: number } | null>(null);
   const moved = useRef(0);
   const still = useRef(false);
   still.current = paused;
-  useAnimationFrame(() => {
+  useAnimationFrame((_, delta) => {
     if (drag.current) return;
     const v = vel.current;
-    const drift = still.current ? 0 : 1;
+    // 프레임 간격만큼만 흐르게 — 프레임이 밀려도 속도가 일정
+    const drift = still.current ? 0 : Math.min(delta, 50) / 16.7;
     x.set(x.get() + v.x - 0.35 * drift);
     y.set(y.get() + v.y - 0.18 * drift);
     v.x *= 0.93;
