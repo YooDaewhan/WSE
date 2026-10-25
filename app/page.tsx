@@ -10,6 +10,7 @@ import { cast, generations } from "./data/cast";
 import { directions } from "./data/art-direction";
 import { news } from "./data/news";
 import ShopPreview from "./components/ShopPreview";
+import OfficeTower from "./components/OfficeTower";
 import "./magazine.css";
 const MotionImage = motion.create(Image);
 const featured = [
@@ -41,7 +42,6 @@ export default function Home() {
   const [issue, setIssue] = useState({ vol: 0, date: "" });
   const c = cast.find((c) => c.slug === featured[index])!;
   const d = directions[c.slug];
-  const others = featured.filter((s) => s !== c.slug).map((s) => cast.find((m) => m.slug === s)!);
   const next = cast.find((m) => m.slug === featured[(index + 1) % featured.length])!;
   const { paused } = useExperience();
   const still = useReducedMotion() || paused;
@@ -255,19 +255,7 @@ export default function Home() {
               </Link>
             </article>
           </div>
-          <div className="mag-also">
-            <span className="mag-kicker">ALSO IN THIS ISSUE — 이번 호의 다른 얼굴들</span>
-            <div>
-              {others.map((m) => (
-                <Link key={m.slug} href={m.href} style={{ "--accent": directions[m.slug].color } as CSSProperties}>
-                  <Image src={m.image!} alt="" width={240} height={360} sizes="160px" />
-                  <strong>{plain(m.name)}</strong>
-                  <small>{directions[m.slug].chapter}</small>
-                </Link>
-              ))}
-            </div>
-            <Link className="text-link" href="/services">ALL CAST ↗</Link>
-          </div>
+          <OfficeTower />
         </section>
         <section id="special" className="mag-special">
           <Folio page="12" kind="SPECIAL" vol={issue.vol} />
