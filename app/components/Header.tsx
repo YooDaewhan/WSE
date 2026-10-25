@@ -7,6 +7,16 @@ export default function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const { paused, toggle } = useExperience();
+  const [dark, setDark] = useState(false);
+  useEffect(() => setDark(document.documentElement.dataset.theme === "dark"), []);
+  const flipTheme = () => {
+    const next = !dark;
+    setDark(next);
+    document.documentElement.dataset.theme = next ? "dark" : "light";
+    try {
+      localStorage.setItem("wse-theme", next ? "dark" : "light");
+    } catch {}
+  };
   useEffect(() => setOpen(false), [pathname]);
   useEffect(() => {
     const close = (e: KeyboardEvent) => {
@@ -64,6 +74,15 @@ export default function Header() {
         >
           {paused ? "▷" : "Ⅱ"}
           <span>MOTION</span>
+        </button>
+        <button
+          className="motion-toggle"
+          onClick={flipTheme}
+          aria-pressed={dark}
+          aria-label={dark ? "밝은 화면으로" : "어두운 화면으로"}
+        >
+          {dark ? "☀" : "☾"}
+          <span>{dark ? "DAY" : "NIGHT"}</span>
         </button>
         <button
           className="menu-toggle"

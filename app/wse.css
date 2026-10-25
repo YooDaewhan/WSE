@@ -1479,6 +1479,9 @@ summary:focus-visible {
   .motion-toggle span {
     display: none;
   }
+  .motion-toggle + .motion-toggle {
+    margin-left: -14px;
+  }
   .home-hero {
     height: auto;
     min-height: 970px;
