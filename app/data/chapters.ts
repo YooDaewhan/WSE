@@ -5,6 +5,7 @@ import { content as rescue } from "../services/generation4/content";
 import { content as equinox } from "../services/generation5/content";
 import { content as stimulus } from "../services/generation6/content";
 import { content as security } from "../services/generation7/content";
+import { content as villains } from "../services/generation8/content";
 
 // Public team stories remain authored in each generation's content.ts.
 export const chapters = [
@@ -84,5 +85,16 @@ export const chapters = [
     atmosphere: "security",
     invitation: "물들기 쉬운 마음을 지키는 이야기",
     words: ["경호", "하트", "보호"],
+  },
+  {
+    id: 8,
+    story: villains,
+    english: "VILLAINS FOR HEROES",
+    symbol: "惡",
+    color: "#e0827a",
+    shade: "#2e1517",
+    atmosphere: "villain",
+    invitation: "히어로를 키우기 위해 악역을 자처한 이야기",
+    words: ["시련", "악역", "성장"],
   },
 ];

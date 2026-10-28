@@ -14,6 +14,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import CharacterSignature from "./CharacterSignature";
 import LoreCards from "./LoreCards";
+import StickyNotes, { type ProfileInfo } from "./StickyNotes";
 import { useExperience } from "./Experience";
 import "../equinox.css";
 import "../equinox-war.css";
@@ -22,12 +23,12 @@ import { equinoxFlip, equinoxSide } from "./EquinoxChapter";
 import { StarterLogo, TypeField, no, starColors, types } from "./StarterChapter";
 import { dawnFonts } from "./DawnChapter";
 import { firstEpisode, heroesFonts } from "./HeroesChapter";
-import { callsigns } from "./RescueChapter";
+import { callsigns, gear } from "./RescueChapter";
 import "../profiles.css";
 const starters = cast.filter((m) => m.group === 2);
 /* 그 밖의 기수 개인화면 — 챕터 페이지 컨셉을 이어받습니다 (스타일은 profiles.css) */
 const teamKey: Record<number, string> = { 1: "dawn", 3: "heroes", 4: "rescue", 6: "stimpack", 7: "security" };
-const teamNav: Record<string, string> = { dawn: "四幅 · 네 폭의 족자", heroes: "등장인물 소개", rescue: "RESCUE CREW · 구조대", stimpack: "NOW SHOWING · 상영작", security: "BODYGUARD TEAM · 경호팀" };
+const teamNav: Record<string, string> = { dawn: "四幅 · 네 폭의 족자", heroes: "등장인물 소개", rescue: "LOCKER ROOM · 대원 사물함", stimpack: "NOW SHOWING · 상영작", security: "BODYGUARD TEAM · 경호팀" };
 const teamFonts: Record<string, () => string> = { dawn: dawnFonts, heroes: heroesFonts };
 export default function CharacterProfile({ slug }: { slug: string }) {
   const c = cast.find((c) => c.slug === slug)!;
@@ -45,8 +46,8 @@ export default function CharacterProfile({ slug }: { slug: string }) {
   const clean = (s: string) => !/추후|내용을 채워|\(추가\)/.test(s);
   /* 설정 목록 — 그림이 하나라도 있으면 카드(LoreCards), 아니면 접는 목록 */
   const lore = (items: { emoji: string; title: string; body: string; image?: string | string[]; logo?: string }[], label: string) =>
-    items.some((l) => l.image)
-      ? <LoreCards items={items.filter((l) => l.image || clean(l.body))} label={label} />
+    items.some((l) => l.image || l.logo)
+      ? <LoreCards items={items.filter((l) => l.image || l.logo || clean(l.body))} label={label} stack={starter || c.group === 1} />
       : items.filter((l) => clean(l.body)).map((l) => <details key={l.title}><summary>{l.title}</summary><p>{l.body}</p></details>);
   /* 1기 스타터팩 — 포켓 도감 컨셉 */
   const starter = c.group === 2;
@@ -55,6 +56,7 @@ export default function CharacterProfile({ slug }: { slug: string }) {
   const eqMembers = cast.filter((m) => m.group === 5).sort((a, b) => (equinoxSide[a.slug] === "day" ? 0 : 1) - (equinoxSide[b.slug] === "day" ? 0 : 1));
   const dexNo = no(starters.indexOf(c));
   const team = teamKey[c.group];
+  const rescue = team === "rescue";
   const crew = cast.filter((m) => m.group === c.group);
   const reel = String(crew.indexOf(c) + 1).padStart(2, "0");
   const badge = team && ({ dawn: `零 · 第${reel}幅 — 새벽조`, heroes: `제1화 · ${firstEpisode[slug]?.job}`, rescue: `CALLSIGN · ${callsigns[slug]}`, stimpack: `REEL ${reel} · SILENT FILM`, security: `♥ ${c.role.toUpperCase()} · VALENTINE GUARD` } as Record<string, string>)[team];
@@ -65,6 +67,7 @@ export default function CharacterProfile({ slug }: { slug: string }) {
       style={{ "--accent": d.color, "--tone": d.secondary, "--sp-accent": d.color, "--sp-star": starColors[slug] } as CSSProperties}
     >
       <Header />
+      {"info" in c.content && <StickyNotes info={c.content.info as ProfileInfo} name={c.name} />}
       <main id="main">
         <section
           className="profile-stage"
@@ -191,6 +194,7 @@ export default function CharacterProfile({ slug }: { slug: string }) {
               <br />
               {c.teamName}
             </span>
+            {team === "rescue" && <><span className="tp-fx" aria-hidden="true" /><span className="tp-gauge" aria-hidden="true"><small>{gear[slug].label}</small><b>{gear[slug].value}</b></span></>}
           </motion.div>
           <a className="profile-scroll" href="#story">
             SCROLL TO DISCOVER <span>↓</span>
@@ -200,14 +204,16 @@ export default function CharacterProfile({ slug }: { slug: string }) {
         {starter && <nav className="sp-profile-nav" aria-label="스타터팩 캐릭터"><span>CHOOSE YOUR STARTER<br /><strong>다른 스타터도 만나보세요.</strong></span>{starters.map((m, i) => <Link href={m.href} key={m.slug} className="sp-cart" aria-current={m.slug === slug ? "page" : undefined} style={{ "--sp-accent": directions[m.slug].color } as CSSProperties}><span className="sp-cart-label"><Image src={m.image!} alt="" width={200} height={300} sizes="120px" /><small>{no(i)}</small></span><span className="sp-cart-name"><b>{m.name}</b><small>{m.role.toUpperCase()} VER.</small></span></Link>)}</nav>}
         {team && <nav className="tp-nav" aria-label={`${c.teamName} 캐릭터`}><span>{teamNav[team]}<br /><strong>다른 멤버도 만나보세요.</strong></span>{crew.map((m) => <Link href={m.href} key={m.slug} aria-current={m.slug === slug ? "page" : undefined} style={{ "--accent": directions[m.slug].color } as CSSProperties}><span className="tp-nav-art">{m.image ? <Image src={m.image} alt="" width={200} height={300} sizes="96px" /> : <span aria-hidden="true">{m.emoji}</span>}</span><span><b>{m.name.replace("(미정)", "")}</b><small>{m.role.toUpperCase()}</small></span></Link>)}</nav>}
         <section id="story" className="profile-story section-shell">
+          {rescue && <div className="tp-locker-top" aria-hidden="true"><span className="tp-vents" /><b>LOCKER 3{reel}</b><span>{callsigns[slug]}</span></div>}
           <div>
             {mark && <div className="eq-story-crest"><Image src={mark} width={160} height={160} alt={`${c.name}의 문장`} /><span>PERSONAL ARCHIVE<br />{({ 1: "SAEBYEOKJO", 2: "STARTER PACK", 4: "RESCUE PACK", 5: "EQUINOX", 6: "STIMPACK" } as Record<number, string>)[c.group]} / {c.role.toUpperCase()}</span></div>}
-            <span className="eyebrow">01 / BEHIND THE NAME</span>
+            <span className="eyebrow">{rescue ? `01 / LOCKER 3${reel} · 개인 사물함` : "01 / BEHIND THE NAME"}</span>
             <h2>
               {d.title}
               <br />
               <em>{d.subtitle}</em>
             </h2>
+            {rescue && <div className="tp-dogtag" aria-hidden="true"><i /><div><b>{callsigns[slug]}</b><span>{c.name} · {c.role.toUpperCase()}</span><span>{gear[slug].unit}</span><span>ORIGIN {c.birthplace}</span><span>WSE-03-{reel}</span></div></div>}
           </div>
           <motion.div
             initial={{ opacity: 0, y: 35 }}
@@ -221,7 +227,7 @@ export default function CharacterProfile({ slug }: { slug: string }) {
           </motion.div>
         </section>
         <section className="world-notes section-shell">
-          <span className="eyebrow">02 / PIECES OF THEIR WORLD</span>
+          <span className="eyebrow">{rescue ? "02 / GEAR LIST · 장비 목록" : "02 / PIECES OF THEIR WORLD"}</span>
           <div className="notes-grid">
             <article>
               <span>ORIGIN ↗</span>
@@ -244,10 +250,10 @@ export default function CharacterProfile({ slug }: { slug: string }) {
           </div>
         </section>
         <section className="next-character">
-          <span className="eyebrow">ANOTHER WORLD AWAITS</span>
+          <span className="eyebrow">{rescue ? "NEXT LOCKER · 옆 사물함" : "ANOTHER WORLD AWAITS"}</span>
           <Link href={next.href}>
             <span>
-              다음 만남,
+              {rescue ? "다음 사물함," : "다음 만남,"}
               <br />
               <strong>{next.name.replace("(미정)", "")}</strong>
             </span>

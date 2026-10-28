@@ -3,40 +3,21 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import "./org.css";
 
-type Stat = [string, number];
-
-const protocol: { n: string; badge: string; role: string; group: string; motto: string; stats: Stat[]; perks: string[]; color: string; dark?: boolean }[] = [
-  {
-    n: "01", badge: "👑", role: "대표", group: "#사장", color: "#ffd84d",
-    motto: "\"편하게 해~\" (편하게 하면 안 됨)",
-    stats: [["권력", 99], ["에어컨 리모컨 장악력", 100], ["단톡방 읽씹률", 72]],
-    perks: ["#결재권_독점", "#법인카드_소유", "#회의실_상석", "#금요일5시_회의소집권"],
-  },
-  {
-    n: "02", badge: "💎", role: "전속 크리에이터", group: "#전속계약", color: "#ff8fb1",
-    motto: "\"저 오늘 방송 3시간만 할게요\" (6시간 함)",
-    stats: [["방송 시간", 96], ["매니저 호출 횟수", 110], ["수면 시간", 12]],
-    perks: ["#굿즈_50%할인", "#외부행사_의전차량", "#매니저_대행(김일)", "#생일카페_회사부담"],
-  },
-  {
-    n: "03", badge: "🤝", role: "파트너 크리에이터", group: "#파트너계약", color: "#7fd8be",
-    motto: "\"저 사실 반쯤 프리랜서예요\"",
-    stats: [["자유도", 88], ["합방 출석률", 64], ["소속감", 50]],
-    perks: ["#굿즈_30%할인", "#행사_우선초청", "#합방_우선배정", "#탕비실_출입가능"],
-  },
-  {
-    n: "04", badge: "🐜", role: "직원", group: "#직원", color: "#8fb8ff",
-    motto: "\"넵\" \"넵!\" \"넵넵\" \"넵 ㅎㅎ\"",
-    stats: [["실제 업무량", 100], ["탕비실 간식 점유율", 97], ["의전서열", 4]],
-    perks: ["#굿즈_우선구입", "#할인은_없음", "#행사_스태프로_참석", "#야근_무제한"],
-  },
-  {
-    n: "05", badge: "🚫", role: "블랙리스트", group: "#안티팬 #사이버렉카", color: "#2b2238", dark: true,
-    motto: "\"이번 건 제가 단독으로 터뜨립니다\" … 그 단독, 사실 저희가 드린 겁니다.",
-    stats: [["가십 생산량", 100], ["조회수 욕심", 99], ["전향 가능성", 63]],
-    perks: ["#행사_참여금지", "#굿즈_구매배제", "#사건_터지면_정보_선공개", "#단독_기사거리_제공", "#안팔린_굿즈재고_무상지급", "#명절선물_보냄", "#사실상_우리편"],
-  },
+// 서열은 직함이 아니라 예우의 순서. who[0] = 보통 그 서열에 계신 분
+const rows: { n: number; color: string; who: string[]; perks: string[] }[] = [
+  { n: 1, color: "#ffd84d", who: ["대표", "공동창업자", "VIP 게스트"], perks: ["#결재권_독점", "#법인카드_소유", "#에어컨_리모컨"] },
+  { n: 2, color: "#ff8fb1", who: ["전속 크리에이터", "주요 협력사", "대표 지인"], perks: ["#굿즈_50%할인", "#의전차량", "#생일카페_회사부담"] },
+  { n: 3, color: "#7fd8be", who: ["파트너 크리에이터", "게스트 출연자", "외부 스태프"], perks: ["#굿즈_30%할인", "#행사_우선초청", "#합방_우선배정"] },
+  { n: 4, color: "#8fb8ff", who: ["직원", "매니저", "운영 지원팀", "인턴"], perks: ["#굿즈_우선구입", "#할인은_없음", "#야근_무제한"] },
 ];
+
+// 단상 좌석: 청중이 보는 방향 왼쪽→오른쪽. 1 중앙, 2는 단상 기준 오른쪽(청중 기준 왼쪽), 3은 그 반대 순으로 교대
+const dais = [6, 4, 2, 1, 3, 5, 7];
+
+const outside = {
+  who: ["안티팬", "사이버렉카", "악플러"],
+  perks: ["#행사_참여금지", "#굿즈_구매배제", "#단독_기사거리_제공", "#안팔린_굿즈재고_무상지급", "#명절선물_보냄", "#사실상_우리편"],
+};
 
 const teams = [
   { en: "CONTENT", name: "콘텐츠 기획팀", color: "#ffb86b", quote: "그거 재밌는데? 그걸로 가자.", jobs: ["방송 · 이벤트 기획", "세계관 설정 관리"], secret: "회의 중 아무 말이 다음 달 공식 콘텐츠가 됨. 발언 조심." },
@@ -88,30 +69,50 @@ export default function Org() {
         </section>
 
         <section className="section-shell org-block">
-          <h2 className="org-section-title"><b>PART 1</b> 의전서열 <small>※ 단톡방 답장 속도와는 무관함</small></h2>
-          <div className="org-cards">
-            {protocol.map((p) => (
-              <article key={p.n} className={p.dark ? "org-black" : undefined} style={{ "--c": p.color } as React.CSSProperties}>
-                <header>
-                  <span className="org-rank">No.{p.n}</span>
-                  <span className="org-badge">{p.badge}</span>
-                </header>
-                <h3>{p.role}</h3>
-                <span className="org-group">{p.group}</span>
-                <q>{p.motto}</q>
-                <dl>
-                  {p.stats.map(([k, v]) => (
-                    <div key={k}>
-                      <dt>{k}</dt>
-                      <dd><i style={{ width: `${Math.min(v, 100)}%` }} /><b>{v}</b></dd>
-                    </div>
-                  ))}
-                </dl>
-                <ul className="org-perks">
-                  {p.perks.map((t) => <li key={t}>{t}</li>)}
-                </ul>
-              </article>
-            ))}
+          <h2 className="org-section-title"><b>PART 1</b> 의전서열 <small>※ 정부의전편람 형식을 참고했습니다. 서열은 직함이 아니라 예우의 순서입니다.</small></h2>
+          <div className="org-doc">
+            <div className="org-doc-head">
+              <span>WSE 의전편람</span>
+              <span>제1장 의전서열</span>
+              <span>2026. 10. 시행</span>
+            </div>
+            <h3 className="org-doc-title">의전서열</h3>
+            <p className="org-doc-lead">서열은 직함이 아닌 예우의 순서이며, 같은 서열에도 행사에 따라 다른 분이 계실 수 있다.</p>
+
+            <table className="org-table">
+              <thead>
+                <tr><th>서열</th><th>주로 해당</th><th>그 밖의 해당</th><th>예우</th></tr>
+              </thead>
+              <tbody>
+                {rows.map((r) => (
+                  <tr key={r.n} style={{ "--c": r.color } as React.CSSProperties}>
+                    <td className="org-n">{r.n}</td>
+                    <td><strong>{r.who[0]}</strong></td>
+                    <td>{r.who.slice(1).join(" · ")}</td>
+                    <td className="org-perk">{r.perks.map((p) => <span key={p}>{p}</span>)}</td>
+                  </tr>
+                ))}
+                <tr className="org-out">
+                  <td className="org-n">외</td>
+                  <td><strong>출입 제한</strong></td>
+                  <td>{outside.who.join(" · ")}</td>
+                  <td className="org-perk">{outside.perks.map((p) => <span key={p}>{p}</span>)}</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <figure className="org-dais">
+              <figcaption>단상 좌석 배치</figcaption>
+              <div className="org-dais-seats">
+                {dais.map((n) => (
+                  <span key={n} style={{ "--c": rows[Math.ceil((n - 1) / 2)].color } as React.CSSProperties}>{n}</span>
+                ))}
+              </div>
+              <i>청 중 석</i>
+              <p>최상위 서열이 중앙에 앉고, 다음 서열부터 단상에서 청중을 바라보아 오른쪽 · 왼쪽 순으로 번갈아 앉는다.</p>
+            </figure>
+
+            <div className="org-doc-sign">WSE 운영 지원팀 <b>인</b></div>
           </div>
         </section>
 

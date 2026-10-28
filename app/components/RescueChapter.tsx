@@ -13,7 +13,7 @@ import "../rescue.css";
 const members = cast.filter((member) => member.group === 4);
 export const RescueLogo = () => <Image className="rs-logo" src="/images/rescuepack/rescue-pack-logo-1.webp" alt="RESCUE PACK 레스큐팩" width={1200} height={480} sizes="(max-width: 900px) 84vw, 520px" />;
 /* 대원증 장비 — 헬다이버 소방관, 앵커 심해 잠수사, 페인킬러 구급대원 */
-const gear: Record<string, { unit: string; code: string; label: string; value: string }> = {
+export const gear: Record<string, { unit: string; code: string; label: string; value: string }> = {
   helldiver: { unit: "FIRE RESCUE · ENGINE 03", code: "HD-01", label: "HEAT", value: "1,100°C" },
   anchor: { unit: "DEEP SEA DIVE UNIT", code: "NAUTILUS", label: "DEPTH", value: "−1,000 m" },
   painkiller: { unit: "EMERGENCY MEDICAL", code: "EMS-03", label: "PULSE", value: "72 BPM" },

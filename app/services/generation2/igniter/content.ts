@@ -8,7 +8,10 @@
 /* image: 그림 경로(public 기준) — 비워 두면 이모지가 대신 들어갑니다 */
 export type LoreItem = { emoji: string; title: string; body: string; image?: string | string[]; logo?: string };
 
+import type { ProfileInfo } from "../../../components/StickyNotes";
+
 export type ProfileContent = {
+  info: ProfileInfo;
   quote: string;
   lines: string[];
   shortBio: string;
@@ -21,6 +24,15 @@ export type ProfileContent = {
 };
 
 export const content: ProfileContent = {
+  /* 왼쪽 포스트잇 — 링크(비우면 "준비 중"), 노랑 INFO 팝업 내용. 정산 비율은 공통이라 여기 없음 */
+  info: {
+    links: { chzzk: "", x: "", youtube: "" },
+    debut: "미정",
+    profile: [["생일", "미정"], ["키", "미정"], ["좋아하는 것", "미정"]],
+    contract: { fee: "미정", status: "협의 중" },
+    schedule: [["월", "휴방"], ["화", "미정"], ["수", "미정"], ["목", "미정"], ["금", "미정"], ["토", "미정"], ["일", "미정"]],
+    notices: ["방송 일정은 추후 공지됩니다."],
+  },
   quote: "불꽃이 작다고 안뜨거운건 아니잖아.",
   /* 히어로 대사·포즈 — 카드를 누를 때마다 다음 대사로 넘어갑니다.
      n번째 대사 = n번째 포즈 이미지 (/images/members/igniter.png, igniter-2.png, igniter-3.png, igniter-4.png)
@@ -43,14 +55,13 @@ export const content: ProfileContent = {
   partnerLore: [
     { image: "/images/starterpack/lore/igniter-partner-1.webp", emoji: "✨", title: "설정 1", body: "내용을 채워주세요." },
     { image: "/images/starterpack/lore/igniter-partner-2.webp", emoji: "✨", title: "설정 2", body: "내용을 채워주세요." },
-    { image: "/images/starterpack/lore/igniter-partner-3.webp", emoji: "✨", title: "설정 3", body: "내용을 채워주세요." },
   ],
 
   /* 출생지 설정 — 그림/이름 클릭 시 뜨는 팝업. 자유롭게 고치고 늘리세요 */
   birthplaceLore: [
-    { logo: "/images/starterpack/lore/incipio-logo.svg", image: ["/images/starterpack/lore/incipio-building.webp", "/images/starterpack/lore/incipio-rank-overall.svg", "/images/starterpack/lore/incipio-rank-private.svg", "/images/starterpack/lore/incipio-real-estate.svg"], emoji: "📍", title: "사기업 순위 5위 · 전체 순위 16위", body: "이 기업의 무서운 점은 무지막지한 현금 동원력입니다. 건물 수수료, 장비 대여료, 부채 등 기업이라면 당연히 있어야 할 것들이 없습니다. 가보면 붓과 종이, 물감, 심지어는 스프레이나 페인트, 고철.. 순수 사원들의 예술 작품으로 만들어지는, 원가 없는 순수 현금력이 대단합니다. 가끔은 이해할 수 없는 작품이지만 예술성을 인정받아 엄청난 돈을 벌어들입니다. 또한 예전부터 가지고 있던 부동산들의 가격이 엄청나게 뛰어올라 알짜배기 부동산도 다수 보유. 유사시 동원 가능한 현금력이 대기업 못지않습니다." },
-    { image: ["/images/starterpack/lore/incipio-logo.png", "/images/starterpack/lore/incipio-staff.webp", "/images/starterpack/lore/incipio-staff-bright.webp"], emoji: "📍", title: "설정 2", body: "내용을 채워주세요." },
-    { image: "/images/starterpack/lore/igniter-origin-3.webp", emoji: "📍", title: "설정 3", body: "내용을 채워주세요." },
+    { logo: "/images/starterpack/lore/incipio-logo.svg", image: ["/images/starterpack/lore/incipio-company.webp", "/images/starterpack/lore/incipio-rank-overall.svg", "/images/starterpack/lore/incipio-rank-private.svg", "/images/starterpack/lore/incipio-real-estate.svg"], emoji: "📍", title: "사기업 순위 5위 · 전체 순위 16위", body: "이 기업의 무서운 점은 무지막지한 현금 동원력입니다. 건물 수수료, 장비 대여료, 부채 등 기업이라면 당연히 있어야 할 것들이 없습니다. 가보면 붓과 종이, 물감, 심지어는 스프레이나 페인트, 고철.. 순수 사원들의 예술 작품으로 만들어지는, 원가 없는 순수 현금력이 대단합니다. 가끔은 이해할 수 없는 작품이지만 예술성을 인정받아 엄청난 돈을 벌어들입니다. 또한 예전부터 가지고 있던 부동산들의 가격이 엄청나게 뛰어올라 알짜배기 부동산도 다수 보유. 유사시 동원 가능한 현금력이 대기업 못지않습니다." },
+    { image: "/images/starterpack/lore/incipio-logo.png", emoji: "📍", title: "인시피오의 수장", body: "인시피오의 수장은 바로 이그나이터의 어머니입니다. 이그나이터와 같은 은발에 수려한 외모, 그녀를 보면 이그나이터의 얼굴이 어디서 왔는지 단번에 짐작할 수 있습니다. 다만 말괄량이 딸과는 달리, 어머니는 단아하고 기품 있는 사람입니다.\n\n처음부터 회사를 세우려던 것은 아니었습니다. 그녀 역시 한 명의 예술인으로 활동하며 가난한 예술가와 도움이 필요한 사람들을 하나둘 거두었을 뿐인데, 그 수가 점점 늘어나다 보니 어쩌다 회사가 되어버린 것이죠." },
+    { image: ["/images/starterpack/lore/incipio-staff.webp", "/images/starterpack/lore/incipio-staff-bright.webp"], emoji: "📍", title: "아가씨와 삼촌들", body: "인시피오의 직원들은 이그나이터를 친조카처럼 아낍니다. 위험한 짓을 하지 못하도록 경호원처럼 따라다니며 \"아가씨\"라고 부르고, 이그나이터는 그들을 \"삼촌\"이라고 부릅니다. 답답함을 못 이긴 이그나이터는 매번 도망쳐 어디선가 사고를 치지만, 그때마다 믿음직한 삼촌들이 달려와 구해줍니다. 생긴 건 험악해도, 다들 착한 사람들이랍니다." },
   ],
   fullBio:
     "시끄럽고 과격하지만 여러분들의 시작을 알리는 역할을 맡았습니다. 할 수 있는 거라곤 작은 스파크를 터트리는것이 전부지만, 그 정도로도 당신의 이야기를 시작하기에 충분합니다. 불이 약해지더라도 다시 한 번 터트리면 됩니다. 이그나이터와 함께 시작할 당신의 이야기를 기대하고 있습니다.",

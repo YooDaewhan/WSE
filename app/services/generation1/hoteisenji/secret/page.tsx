@@ -25,11 +25,11 @@ const profileHref = "/services/generation1/hoteisenji";
 
 const creator: SecretMeta = {
   name: "호테이 센지",
-  emoji: "🔥",
-  role: "Breaker",
+  emoji: "🚂",
+  role: "Double Agent",
   generation: "0기",
   teamName: "새벽조",
-  gradient: "from-indigo-600 via-violet-600 to-purple-700",
+  gradient: "from-amber-500 via-orange-500 to-orange-700",
 
   managerName: "김선우",
   letterDate: "2024년 3월 1일",

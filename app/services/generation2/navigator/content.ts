@@ -8,7 +8,10 @@
 /* image: 그림 경로(public 기준) — 비워 두면 이모지가 대신 들어갑니다 */
 export type LoreItem = { emoji: string; title: string; body: string; image?: string | string[]; logo?: string };
 
+import type { ProfileInfo } from "../../../components/StickyNotes";
+
 export type ProfileContent = {
+  info: ProfileInfo;
   quote: string;
   lines: string[];
   shortBio: string;
@@ -21,6 +24,15 @@ export type ProfileContent = {
 };
 
 export const content: ProfileContent = {
+  /* 왼쪽 포스트잇 — 링크(비우면 "준비 중"), 노랑 INFO 팝업 내용. 정산 비율은 공통이라 여기 없음 */
+  info: {
+    links: { chzzk: "", x: "", youtube: "" },
+    debut: "미정",
+    profile: [["생일", "미정"], ["키", "미정"], ["좋아하는 것", "미정"]],
+    contract: { fee: "미정", status: "협의 중" },
+    schedule: [["월", "휴방"], ["화", "미정"], ["수", "미정"], ["목", "미정"], ["금", "미정"], ["토", "미정"], ["일", "미정"]],
+    notices: ["방송 일정은 추후 공지됩니다."],
+  },
   quote: "남들이 만들어 둔 지도에 네가 가고 싶은 곳이 나와 있어?",
   /* 히어로 대사·포즈 — 카드를 누를 때마다 다음 대사로 넘어갑니다.
      n번째 대사 = n번째 포즈 이미지 (/images/members/navigator.png, navigator-2.png, navigator-3.png, navigator-4.png)
@@ -42,16 +54,14 @@ export const content: ProfileContent = {
 
   /* 파트너 설정 — 그림/이름 클릭 시 뜨는 팝업. 자유롭게 고치고 늘리세요 */
   partnerLore: [
-    { image: "/images/starterpack/lore/navigator-partner-1.webp", emoji: "✨", title: "설정 1", body: "내용을 채워주세요." },
-    { image: "/images/starterpack/lore/navigator-partner-2.webp", emoji: "✨", title: "설정 2", body: "내용을 채워주세요." },
-    { image: "/images/starterpack/lore/navigator-partner-3.webp", emoji: "✨", title: "설정 3", body: "내용을 채워주세요." },
+    { image: "/images/starterpack/lore/navigator-partner-albert.webp", emoji: "✨", title: "바보새 알버트", body: "내용을 채워주세요." },
+    { image: "/images/starterpack/lore/navigator-partner-albert-2.webp", emoji: "✨", title: "내려다보는 알버트", body: "내용을 채워주세요." },
   ],
 
   /* 출생지 설정 — 그림/이름 클릭 시 뜨는 팝업. 자유롭게 고치고 늘리세요 */
   birthplaceLore: [
-    { image: "/images/starterpack/lore/navigator-origin-1.webp", emoji: "📍", title: "설정 1", body: "내용을 채워주세요." },
-    { image: "/images/starterpack/lore/navigator-origin-2.webp", emoji: "📍", title: "설정 2", body: "내용을 채워주세요." },
-    { image: "/images/starterpack/lore/navigator-origin-3.webp", emoji: "📍", title: "설정 3", body: "내용을 채워주세요." },
+    { logo: "/images/starterpack/lore/mousepeace-logo.svg", image: ["/images/starterpack/lore/mousepeace-company.webp"], emoji: "📍", title: "해가 들지 않는 곳", body: "도시라고 부르기도 민망한 곳. 마우스피스는 그저 도시의 폐수가 흘러나가는 하수도입니다. 이끼 낀 회색 시멘트 벽, 천장을 뒤덮은 녹슨 파이프, 이음새마다 새어 나오는 물과 증기. 집이라 해봐야 관과 관 사이에 덧댄 철판과 나무 상자가 전부입니다.\n\n이곳엔 햇빛이 닿지 않습니다. 빛이라곤 군데군데 걸린 희미한 등불과, 저 위 하수구 창살 틈으로 새어 드는 한 줄기 빛뿐. 여기서 나고 자란 아이들은 아직 한 번도 진짜 태양을 본 적이 없습니다." },
+    { image: ["/images/starterpack/lore/mousepeace-logo.png", "/images/starterpack/lore/mousepeace-staff.webp", "/images/starterpack/lore/mousepeace-staff-bright.webp"], emoji: "📍", title: "묻지 않는 사람들", body: "이곳에 온 사람들에겐 저마다 사연이 있습니다. 하지만 마우스피스에선 아무도 그것을 묻지 않습니다. 하루하루가 생존인 곳에서 과거는 중요하지 않으니까요.\n\n대신 국 한 그릇을 나눠 먹고, 새는 관을 함께 막고, 길 잃은 아이는 먼저 본 사람이 집까지 데려다줍니다. 가진 건 없어도 정만큼은 어느 도시보다 끈끈한 사람들. 어디에도 속하지 못한 그들에게, 이곳은 유일하게 평화로운 곳입니다." },
   ],
   fullBio:
     "네비게이터는 사실 길 찾기에는 재능이 없습니다. 지도도 볼 줄 모르고요. 원래라면 이그나이터가 되었을 아이입니다. 어째서인지 네비게이터로 선택되었지만, 운명이 이렇게 만든 데에는 분명 이유가 있을테지요. 하지만 걱정하지 마세요. 네비게이터의 굳은 마음은 길을 잃지 않습니다. 늘 새로운 길로 나아갑니다. 물론 그 길이 평탄할지는 가 봐야 알 수 있을 것 같습니다.",

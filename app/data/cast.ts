@@ -23,6 +23,10 @@ import { content as intern } from "../services/generation7/intern/content";
 import { content as sawon } from "../services/generation7/sawon/content";
 import { content as daeri } from "../services/generation7/daeri/content";
 import { content as bujang } from "../services/generation7/bujang/content";
+import { content as mawang } from "../services/generation8/mawang/content";
+import { content as villain2 } from "../services/generation8/villain2/content";
+import { content as villain3 } from "../services/generation8/villain3/content";
+import { content as villain4 } from "../services/generation8/villain4/content";
 
 export const generations = [
   {
@@ -106,18 +110,30 @@ export const generations = [
       "순수한 분홍색 하트는 물들기 쉬워서, 우리가 당신을 지켜줄게요.",
     href: "/services/generation7",
   },
+  {
+    id: 8,
+    label: "7기",
+    teamName: "빌런즈",
+    emoji: "😈",
+    gradient: "from-red-700 via-rose-900 to-zinc-950",
+    theme: "시련 · Trial",
+    tagline: "히어로즈: 빌런",
+    description:
+      "히어로는 빌런과 싸우며 성장합니다. 만일 그 빌런들이, 사실 히어로의 성장을 위해 존재하는 거라면?",
+    href: "/services/generation8",
+  },
 ];
 export const cast = [
   {
     ...{
-      name: "도적",
-      realName: "길동",
+      name: "길동",
+      realName: "도적",
       emoji: "⚔️",
       role: "Pioneer",
       generation: "0기",
       teamName: "새벽조",
       gradient: "from-indigo-600 via-violet-600 to-purple-700",
-      birthplace: "활빈당",
+      birthplace: "HBD",
       partner: { name: "Bro", animal: "여우", emoji: "🦊" },
       slug: "honggildong",
       href: "/services/generation1/honggildong",
@@ -129,8 +145,8 @@ export const cast = [
   },
   {
     ...{
-      name: "내시",
-      realName: "김서담",
+      name: "김서담",
+      realName: "내시",
       emoji: "📜",
       role: "Strategist",
       generation: "0기",
@@ -148,8 +164,8 @@ export const cast = [
   },
   {
     ...{
-      name: "도깨비",
-      realName: "득춘",
+      name: "남회춘",
+      realName: "도깨비",
       emoji: "👹",
       role: "Wildcard",
       generation: "0기",
@@ -167,8 +183,8 @@ export const cast = [
   },
   {
     ...{
-      name: "고등관",
-      realName: "호테이 센지",
+      name: "호테이센지",
+      realName: "고등관",
       emoji: "🔥",
       role: "Breaker",
       generation: "0기",
@@ -196,7 +212,7 @@ export const cast = [
       birthplace: "인시피오 (Incipio)",
       partner: {
         name: "애벌래(미정)",
-        animal: "월광금박각시나방 애벌래",
+        animal: "금월광박각시나방 애벌래",
         emoji: "🦎",
       },
       slug: "igniter",
@@ -216,7 +232,7 @@ export const cast = [
       generation: "1기",
       teamName: "스타터팩",
       gradient: "from-rose-500 via-pink-600 to-fuchsia-700",
-      birthplace: "마우스피스",
+      birthplace: "마우스피스(Mouse Peace)",
       partner: { name: "알버트", animal: "바위비둘기", emoji: "🕊️" },
       slug: "navigator",
       href: "/services/generation2/navigator",
@@ -526,7 +542,7 @@ export const cast = [
       href: "/services/generation7/intern",
       group: 7,
       image: "/images/members/intern.png",
-      alternate: "/images/members/intern.png",
+      alternate: "/images/members/intern-2.png",
     },
     content: intern,
   },
@@ -587,6 +603,50 @@ export const cast = [
     },
     content: bujang,
   },
+  {
+    ...{
+      name: "마왕",
+      realName: "미정",
+      emoji: "👑",
+      role: "Overlord",
+      generation: "7기",
+      teamName: "빌런즈",
+      gradient: "from-red-700 via-rose-900 to-zinc-950",
+      birthplace: "시작의 마을",
+      partner: { name: "네버", animal: "까마귀", emoji: "🐦‍⬛" },
+      slug: "mawang",
+      href: "/services/generation8/mawang",
+      group: 8,
+      image: "",
+      alternate: "",
+    },
+    content: mawang,
+  },
+  ...(
+    [
+      ["villain2", "빌런 2(미정)", "🧪", villain2],
+      ["villain3", "빌런 3(미정)", "🕷️", villain3],
+      ["villain4", "빌런 4(미정)", "🎭", villain4],
+    ] as const
+  ).map(([slug, name, emoji, content]) => ({
+    ...{
+      name,
+      realName: "미정",
+      emoji,
+      role: "Villain",
+      generation: "7기",
+      teamName: "빌런즈",
+      gradient: "from-red-700 via-rose-900 to-zinc-950",
+      birthplace: "미정",
+      partner: { name: "미정", animal: "미정", emoji: "❔" },
+      slug,
+      href: `/services/generation8/${slug}`,
+      group: 8,
+      image: "",
+      alternate: "",
+    },
+    content,
+  })),
 ];
 export type CastMember = (typeof cast)[number];
 
@@ -595,5 +655,5 @@ export const credit = (m: { group: number; realName: string }) =>
   [2, 4, 6].includes(m.group)
     ? `역 ${m.realName}`
     : m.group === 1
-      ? m.realName
+      ? `${m.realName} 역`
       : `·${m.realName}`;

@@ -8,7 +8,10 @@
 /* image: 그림 경로(public 기준) — 비워 두면 이모지가 대신 들어갑니다 */
 export type LoreItem = { emoji: string; title: string; body: string; image?: string | string[]; logo?: string };
 
+import type { ProfileInfo } from "../../../components/StickyNotes";
+
 export type ProfileContent = {
+  info: ProfileInfo;
   quote: string;
   lines: string[];
   shortBio: string;
@@ -21,6 +24,15 @@ export type ProfileContent = {
 };
 
 export const content: ProfileContent = {
+  /* 왼쪽 포스트잇 — 링크(비우면 "준비 중"), 노랑 INFO 팝업 내용. 정산 비율은 공통이라 여기 없음 */
+  info: {
+    links: { chzzk: "", x: "", youtube: "" },
+    debut: "미정",
+    profile: [["생일", "미정"], ["키", "미정"], ["좋아하는 것", "미정"]],
+    contract: { fee: "미정", status: "협의 중" },
+    schedule: [["월", "휴방"], ["화", "미정"], ["수", "미정"], ["목", "미정"], ["금", "미정"], ["토", "미정"], ["일", "미정"]],
+    notices: ["방송 일정은 추후 공지됩니다."],
+  },
   quote:
     "대단해요, 대단해! 이건 꼭 노래로 남겨야 해요. 잠깐만요, 리라 꺼낼게요!",
   /* 히어로 대사·포즈 — 카드를 누를 때마다 다음 대사로 넘어갑니다.
@@ -44,20 +56,18 @@ export const content: ProfileContent = {
   /* 파트너 설정 — 그림/이름 클릭 시 뜨는 팝업. 자유롭게 고치고 늘리세요 */
   partnerLore: [
     {
-      image: "/images/starterpack/lore/celebrator-partner-1.webp",
+      image: "/images/starterpack/lore/celebrator-partner-yang.webp",
       emoji: "✨",
       title: "양이라고 우기는 친구",
       body: "셀러브레이터 곁에는 늘 복슬복슬한 양털 후리스를 입은 작은 친구가 있습니다. 누가 봐도 염소지만, 셀러브레이터는 진지한 얼굴로 소개합니다. '이 아이는 양이에요. 음… 조금 특별한 양이요!' 염소는 '메에…' 하고 어색하게 양 울음소리를 흉내 냅니다. 둘은 에덴농장에서부터 함께였고, 셀러브레이터가 가는 곳이라면 어디든 따라갑니다.",
     },
     { image: "/images/starterpack/lore/celebrator-partner-2.webp", emoji: "✨", title: "설정 2", body: "내용을 채워주세요." },
-    { image: "/images/starterpack/lore/celebrator-partner-3.webp", emoji: "✨", title: "설정 3", body: "내용을 채워주세요." },
   ],
 
   /* 출생지 설정 — 그림/이름 클릭 시 뜨는 팝업. 자유롭게 고치고 늘리세요 */
   birthplaceLore: [
-    { logo: "/images/starterpack/lore/indexlab-logo.svg", image: ["/images/starterpack/lore/indexlab-building.webp", "/images/starterpack/lore/indexlab-rank-overall.svg", "/images/starterpack/lore/indexlab-rank-private.svg", "/images/starterpack/lore/indexlab-products.svg"], emoji: "📍", title: "사기업 순위 1위 · 전체 순위 3위", body: "알프레드 사의 핵심 연구원들이 독립해 세운 기업입니다. 설립 초기부터 알프레드 사와 정부로부터 끊임없는 견제를 받아왔지만, 끝내 버텨내고 당당히 사기업 1위 자리에 올랐습니다. 겉으로는 제약회사로 알려져 있으며, 우울증 치료제를 비롯해 신경 안정제, 수면 유도제 같은 정신 계통 의약품으로 큰 성공을 거두었습니다. 매출의 상당 부분을 다시 연구에 쏟아붓는 덕에 연구원들의 처우는 업계 최고 수준. 다만 공개된 제품 라인업에 비해 연구 예산이 어디에 쓰이는지는 아무도 모릅니다. 장부 한구석의 '비공개 프로젝트'가 무엇인지 묻는 사람은 많지만, 대답을 들은 사람은 없습니다. 정말 약만 만드는 걸까요?" },
-    { image: ["/images/starterpack/lore/indexlab-logo.png", "/images/starterpack/lore/indexlab-staff.webp", "/images/starterpack/lore/indexlab-staff-bright.webp"], emoji: "📍", title: "설정 2", body: "내용을 채워주세요." },
-    { image: "/images/starterpack/lore/celebrator-origin-3.webp", emoji: "📍", title: "설정 3", body: "내용을 채워주세요." },
+    { logo: "/images/starterpack/lore/indexlab-logo.svg", image: ["/images/starterpack/lore/indexlab-company.webp", "/images/starterpack/lore/indexlab-rank-overall.svg", "/images/starterpack/lore/indexlab-rank-private.svg", "/images/starterpack/lore/indexlab-products.svg"], emoji: "📍", title: "사기업 순위 1위 · 전체 순위 3위", body: "알프레드 사의 핵심 연구원들이 독립해 세운 기업입니다. 설립 초기부터 알프레드 사와 정부로부터 끊임없는 견제를 받아왔지만, 끝내 버텨내고 당당히 사기업 1위 자리에 올랐습니다. 겉으로는 제약회사로 알려져 있으며, 우울증 치료제를 비롯해 신경 안정제, 수면 유도제 같은 정신 계통 의약품으로 큰 성공을 거두었습니다. 매출의 상당 부분을 다시 연구에 쏟아붓는 덕에 연구원들의 처우는 업계 최고 수준. 다만 공개된 제품 라인업에 비해 연구 예산이 어디에 쓰이는지는 아무도 모릅니다. 장부 한구석의 '비공개 프로젝트'가 무엇인지 묻는 사람은 많지만, 대답을 들은 사람은 없습니다. 정말 약만 만드는 걸까요?" },
+    { image: ["/images/starterpack/lore/indexlab-logo.png", "/images/starterpack/lore/indexlab-staff.webp", "/images/starterpack/lore/indexlab-staff-bright.webp"], emoji: "📍", title: "마스크 뒤의 얼굴", body: "인덱스랩의 연구원들은 차갑고 비밀스럽기로 유명합니다. 늘 마스크와 장갑으로 얼굴을 가리고, 무엇을 연구하는지 묻는 말엔 대답하지 않죠. 하지만 마스크를 내린 그들은 누구보다 따뜻한 사람들입니다.\n\n그들 대부분은 셀러브레이터의 부모님을 따라 알프레드 사를 박차고 나온 사람들입니다. 높은 보수도, 안전한 자리도 버리고 따라온 이유는 단 하나. 두 사람이 옳은 일을 하고 있다고 믿기 때문입니다. 사람들의 마음을 지키는 약, 그리고 아직 말할 수 없는 그 너머의 무언가까지. 그들은 오늘도 같은 꿈을 꾸며 연구실의 불을 밝힙니다." },
   ],
   fullBio:
     "셀러브레이터는 여러분의 모든 순간을 함께 축하합니다. 첫걸음을 내딛는 날부터, 여러분의 이야기는 이미 축하할 일로 가득하니까요. 작은 추억 하나도 그냥 지나치지 않을게요. 셀러브레이터와 함께, 당신만의 이야기를 축하해 보세요.",

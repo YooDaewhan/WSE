@@ -116,7 +116,7 @@ export default function SecurityChapter() {
         <nav className="sx-bottom" aria-label="기수 이동">
           <Link href="/services/generation6">← 이전 이야기 · 스팀팩</Link>
           <span>SECURITY X · WITH LOVE</span>
-          <Link href="/services/generation1">처음으로 · 새벽조 →</Link>
+          <Link href="/services/generation8">다음 이야기 · 빌런즈 →</Link>
         </nav>
       </main>
       <Footer />

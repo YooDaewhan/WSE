@@ -254,6 +254,7 @@ html[data-motion=paused] .sp-type-track { animation-play-state: paused; }
 .starter-profile .eq-story-crest { display: flex; align-items: center; gap: 22px; margin-bottom: 28px; }
 .starter-profile .world-notes { background: var(--sp-paper); }
 .starter-profile .notes-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+.starter-profile .lore-cards.is-stack .lore-card { --stack-bg: #fbfaf5; --stack-line: var(--sp-ink); }
 .starter-profile .notes-grid article { padding: 26px 28px; background: #fbfaf5; border: 2px solid var(--sp-ink); border-radius: 16px 16px 48px 16px; box-shadow: 6px 6px 0 #1d2a2418; }
 .starter-profile .notes-grid article > span { display: inline-block; padding: 3px 10px; border-radius: 4px; background: var(--sp-ink); color: #f4f1e6; }
 .starter-profile .notes-grid details, .starter-profile .notes-grid summary { border-color: #1d2a2440; }

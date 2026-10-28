@@ -117,7 +117,7 @@ export default function DawnChapter() {
         </section>
 
         <nav className="dw-bottom" aria-label="기수 이동">
-          <Link href="/services/generation7">← 이전 이야기 · 시큐리티엑스</Link>
+          <Link href="/services/generation8">← 이전 이야기 · 빌런즈</Link>
           <span>曉 · 새벽조</span>
           <Link href="/services/generation2">다음 이야기 · 스타터팩 →</Link>
         </nav>

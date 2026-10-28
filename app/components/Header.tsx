@@ -48,6 +48,8 @@ export default function Header() {
             ["/", "HOME"],
             ["/about", "ABOUT"],
             ["/services", "CAST"],
+            ["/live", "LIVE"],
+            ["/arena", "ARENA"],
             ["/news", "NEWS"],
             ["/shop", "SHOP"],
             ["/contact", "CONNECT"],

@@ -34,8 +34,10 @@ const teamBlurbs = [
   "당신의 마음을 두고 펼쳐지는 천사와 악마의 이야기.",
   "지친 하루에 다시 움직일 작은 자극을 건네는 이들.",
   "쉽게 물드는 마음을 지키기 위해 모인 이들.",
+  "히어로를 키우기 위해 기꺼이 악당이 된 이들.",
 ];
-const lead = news[0];
+const feed = news.filter((n) => n.category !== "FAQ");
+const lead = feed[0];
 const plain = (name: string) => name.replace("(미정)", "");
 export default function Home() {
   const [index, setIndex] = useState(0);
@@ -359,7 +361,7 @@ export default function Home() {
               <div>
                 <span className="mag-kicker">{news.length > 1 ? "단신" : "아카이브"}</span>
                 <ul>
-                  {news.slice(1, 4).map((n) => (
+                  {feed.slice(1, 4).map((n) => (
                     <li key={n.slug}>
                       <Link href={`/news/${n.slug}`}>{n.title}</Link>
                     </li>
