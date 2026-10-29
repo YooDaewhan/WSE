@@ -8,6 +8,7 @@ import { cast, credit } from "../data/cast";
 import { directions } from "../data/art-direction";
 import { content } from "../services/generation1/content";
 import Header from "./Header";
+import useTouchSpotlight from "./useTouchSpotlight";
 import Footer from "./Footer";
 import "../dawn.css";
 
@@ -22,6 +23,7 @@ type Drop = { id: number; x: number; y: number; s: number };
 
 export default function DawnChapter() {
   const [drops, setDrops] = useState<Drop[]>([]);
+  useTouchSpotlight(".dw-scroll");
   /* 종이를 누르면 먹물이 번진다 */
   const ink = (e: React.MouseEvent<HTMLElement>) => {
     if ((e.target as HTMLElement).closest("a, button")) return;

@@ -27,6 +27,9 @@ import { content as mawang } from "../services/generation8/mawang/content";
 import { content as villain2 } from "../services/generation8/villain2/content";
 import { content as villain3 } from "../services/generation8/villain3/content";
 import { content as villain4 } from "../services/generation8/villain4/content";
+import { content as partnerOpen } from "../services/partner/open/content";
+import { content as kimil } from "../services/manager/kimil/content";
+import { content as parkil } from "../services/manager/parkil/content";
 
 export const generations = [
   {
@@ -122,7 +125,34 @@ export const generations = [
       "히어로는 빌런과 싸우며 성장합니다. 만일 그 빌런들이, 사실 히어로의 성장을 위해 존재하는 거라면?",
     href: "/services/generation8",
   },
+  /* 기수 밖 — side: CAST 왼쪽 세로줄, 홈 기수 목록에선 빠짐 */
+  {
+    id: 9,
+    label: "WSE",
+    teamName: "파트너 스트리머",
+    emoji: "🤝",
+    gradient: "from-emerald-500 via-teal-600 to-cyan-700",
+    theme: "동행 · Partnership",
+    tagline: "따로, 또 같이",
+    description: "기수에 묶이지 않고 자기 이름으로 방송하는 스트리머들.",
+    href: "/services/partner",
+    side: true,
+  },
+  {
+    id: 10,
+    label: "WSE",
+    teamName: "매니저",
+    emoji: "📋",
+    gradient: "from-sky-500 via-blue-600 to-indigo-700",
+    theme: "케어 · Care",
+    tagline: "물 마셨어요? 밥 먹었어요? 잤어요?",
+    description: "화면 밖에서 크리에이터를 챙기는 사람들.",
+    href: "/services/manager",
+    side: true,
+  },
 ];
+export const stories = generations.filter((g) => !g.side);
+export const sides = generations.filter((g) => g.side);
 export const cast = [
   {
     ...{
@@ -647,12 +677,71 @@ export const cast = [
     },
     content,
   })),
+  {
+    ...{
+      name: "파트너 모집 중",
+      realName: "",
+      emoji: "🤝",
+      role: "Partner",
+      generation: "WSE",
+      teamName: "파트너 스트리머",
+      gradient: "from-emerald-500 via-teal-600 to-cyan-700",
+      birthplace: "미정",
+      partner: { name: "미정", animal: "미정", emoji: "❔" },
+      slug: "partner-open",
+      href: "/services/partner/open",
+      group: 9,
+      image: "",
+      alternate: "",
+    },
+    content: partnerOpen,
+  },
+  {
+    ...{
+      name: "김일",
+      realName: "",
+      emoji: "📒",
+      role: "Manager",
+      generation: "WSE",
+      teamName: "매니저",
+      gradient: "from-sky-500 via-blue-600 to-indigo-700",
+      birthplace: "운영 지원팀 옆자리",
+      partner: { name: "케어 수첩", animal: "수첩", emoji: "📒" },
+      slug: "kimil",
+      href: "/services/manager/kimil",
+      group: 10,
+      image: "",
+      alternate: "",
+    },
+    content: kimil,
+  },
+  {
+    ...{
+      name: "박일",
+      realName: "",
+      emoji: "⏱️",
+      role: "Manager",
+      generation: "WSE",
+      teamName: "매니저",
+      gradient: "from-sky-500 via-blue-600 to-indigo-700",
+      birthplace: "평가표 맨 위 칸",
+      partner: { name: "스톱워치", animal: "초시계", emoji: "⏱️" },
+      slug: "parkil",
+      href: "/services/manager/parkil",
+      group: 10,
+      image: "",
+      alternate: "",
+    },
+    content: parkil,
+  },
 ];
 export type CastMember = (typeof cast)[number];
 
 /* 이름 옆 크레딧 — 스타터팩·레스큐팩·스팀팩은 "역 이름", 새벽조는 이름만, 나머지는 "·이름" */
 export const credit = (m: { group: number; realName: string }) =>
-  [2, 4, 6].includes(m.group)
+  !m.realName
+    ? ""
+    : [2, 4, 6].includes(m.group)
     ? `역 ${m.realName}`
     : m.group === 1
       ? `${m.realName} 역`

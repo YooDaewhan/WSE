@@ -1,0 +1,17 @@
+Built-in image_gen; logo concept v3 (sunset horizon + upside-down reflection, CONTINUE screen)
+
+Use case: logo-brand. Reference image: public/images/starterpack/starterpacklogo.png (sibling logo; Starter Pack = an old game's TITLE screen, Rescue Pack = the same old game's CONTINUE screen).
+
+Create a retro video game title logo for a Korean fictional character collective named RESCUE PACK, Korean 레스큐팩. Wide horizontal canvas, generous margins, plain very dark navy-violet background #14102A so the sunset reads.
+Mood: warm on the surface, quietly sad underneath. The feeling of a sunset at the end of the day, and of an old arcade game right after GAME OVER, when someone is about to give you one more continue. Rescuers who came back from a future that ends if we give up, and who never say why they save us. Hopeful, not grim; melancholic, not horror.
+
+Composition, top to bottom, centered and symmetrical:
+1. A large retro sunset half-circle sitting exactly on a horizon line, cut by evenly spaced horizontal stripe gaps that get thicker toward the bottom (classic 80s retro-future sun). Sun gradient from warm amber #F5B83D at top through coral #FF7A59 to dusky pink #E0507A at the horizon.
+2. In front of the sun, the wordmark "RESCUE PACK" on one line, heavy slightly extended retro game letters with chunky bevel and thick dark outline, same bold arcade attitude as the reference but clean sharp edges instead of pixel edges. Letter fill: warm cream #FFF1D6 to amber gradient, outline #14102A, thin pink rim light along the bottom edges as if lit by the sunset.
+3. A thin bright horizon line across the full width.
+4. Below the horizon, the whole sun and wordmark are mirrored UPSIDE DOWN as a reflection on calm water: the reflection is cut into wavy horizontal slices, slightly shifted sideways, cooler colors (violet #6B4BA8 to deep blue #2A2F6B), fading toward the bottom. The upside-down letters must still be clearly legible as the mirrored "RESCUE PACK".
+5. Under the reflection, small centered Korean "레스큐팩" in a clean bold retro hangul, cream color, and beneath it a very small pixel-font line "CONTINUE? 9" in dusky pink, like a game-over countdown easter egg.
+
+Palette strictly: night navy-violet #14102A, amber #F5B83D, coral #FF7A59, dusky pink #E0507A, violet #6B4BA8, deep blue #2A2F6B, cream #FFF1D6. Flat shapes plus simple gradients, crisp vector feel, no photo texture.
+
+Exact text only: "RESCUE PACK", its upside-down reflection, "레스큐팩", and "CONTINUE? 9". No other words or numbers. No shields, stars, ribbons, comets, meteors, drop pods, palm trees, grid floor, characters, mockup, or watermark. One logo only.

@@ -1,0 +1,19 @@
+Built-in image_gen; logo concept v6 (reversed emergency exit sign)
+
+Use case: logo-brand. Context: the Rescue Pack page already uses safety signage (caution triangles, ban circles, and an exit sign reading "나가도 됩니다"). This logo is the hero sign of that set.
+
+Create a logo for a Korean fictional 3-member rescue team named RESCUE PACK, Korean 레스큐팩, designed as an illuminated green emergency exit sign, like the Korean/ISO emergency exit lightbox (green panel, white running pictogram, white door). Wide horizontal canvas, the sign centered with generous margins on a near-black background #050A06, as if it is the only light still on in a dark empty building at night.
+The twist: on a real exit sign the figure runs OUT through the door. Here the figure runs IN — it has just come through the open door and is sprinting away from it, back into the dark building, toward whoever is still inside. Everyone else leaves; the rescuer goes in. Also a figure who came back against the flow of time.
+Mood: lonely, quiet, steady. A light that never turns off. Hopeful, not horror.
+
+Sign layout, one wide rounded-corner rectangle panel:
+1. Panel: solid safety green #00A35A with a thin white inner border, flat and clean like real signage, with a soft green glow spilling onto the black background around it.
+2. Right side of the panel: a white door frame, slightly open, with a little brighter light coming from behind the door.
+3. Center-right: a bold white ISO-style running pictogram (round head, thick limbs, mid-stride) that has just exited the door and is running to the LEFT, away from the door, leaning forward with urgency.
+4. A bold white arrow pointing LEFT, the same direction the figure runs, opposite of a normal exit sign.
+5. Left side of the panel: the wordmark "RESCUE PACK" in a heavy, clean, condensed signage sans serif (like official wayfinding type), white, all caps, tight and confident. Directly under it, smaller, Korean "레스큐팩" in a bold clean gothic hangul, white.
+6. A thin separate strip under the main panel, same green, with small white Korean text "들어갈게요" centered.
+
+Details: crisp flat vector signage look, consistent stroke weights, pictogram and arrow drawn with the same thick geometry. Very subtle realism only in the glow: the light slightly uneven, a faint flicker band across one edge. Colors strictly safety green #00A35A, darker green #006B3A for shading on the strip, white, and near-black background.
+
+Exact text only: "RESCUE PACK", "레스큐팩", "들어갈게요". No other words, no "EXIT", "비상구" or numbers, no fire or smoke, no characters beyond the single pictogram, no hearts, crosses, shields, stars, mounting brackets, wall, mockup, or watermark. One logo only.

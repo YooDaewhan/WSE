@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { motion, useAnimationFrame, useMotionValue, useSpring, useTransform, useVelocity } from "framer-motion";
-import { cast, generations, credit } from "../data/cast";
+import { cast, generations, stories, sides, credit } from "../data/cast";
 import { chapters } from "../data/chapters";
 import { directions } from "../data/art-direction";
 import Header from "./Header";
@@ -74,7 +74,9 @@ export default function CastDirectory({ group = 0 }: { group?: number }) {
     const chapter = chapters[group - 1];
     const generation = generations[group - 1];
     const members = cast.filter((c) => c.group === group);
-    const next = generations[group % generations.length];
+    // 다음 장은 같은 줄 안에서 돈다 — 기수는 기수끼리, 파트너 · 매니저는 그 둘끼리
+    const line = generation.side ? sides : stories;
+    const next = line[(line.indexOf(generation) + 1) % line.length];
     return (
       <div
         className={`wse-site chapter-site chapter-detail chapter-${chapter.atmosphere}`}
@@ -86,11 +88,11 @@ export default function CastDirectory({ group = 0 }: { group?: number }) {
             <Atmosphere chapter={chapter} />
             <div className="chapter-breadcrumb">
               <Link href="/services">← 기수의 이야기로</Link>
-              <span>{generation.label} / WSE ORIGINAL STORY</span>
+              <span>{generation.side ? "" : `${generation.label} / `}WSE ORIGINAL STORY</span>
             </div>
             <div className="team-cover-copy">
               <span className="chapter-overline">
-                CHAPTER {String(group).padStart(2, "0")} — {chapter.english}
+                {generation.side ? "WSE" : `CHAPTER ${String(group).padStart(2, "0")}`} — {chapter.english}
               </span>
               <h1>{generation.teamName}</h1>
               <p>{chapter.story.tagline}</p>
@@ -215,7 +217,8 @@ export default function CastDirectory({ group = 0 }: { group?: number }) {
   );
 }
 
-/* CAST — 끝없이 이어지는 캔버스. 아무 데나 잡고 던지면 관성으로 흐르고, 속도만큼 기울어진다. */
+/* CAST — 끝없이 이어지는 캔버스. 아무 데나 잡고 던지면 관성으로 흐르고, 속도만큼 기울어진다.
+   위 가로줄 = 기수(전속), 왼쪽 세로줄 = 기수 밖 사람들(파트너 · 매니저). 벽에는 둘 다 섞여 흐른다 */
 const COLS = 6;
 const ROWS = Math.ceil((cast.length + 1) / COLS);
 const GAP = 14;
@@ -342,34 +345,36 @@ function CastCanvas() {
       </motion.div>
       <div className="cv-hud" aria-hidden="true">
         <motion.div key={hover?.slug ?? focus ?? "cast"} initial={{ opacity: 0, scale: 1.08 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.35 }}>
-          <small>{hover ? `${hover.generation} ${hover.teamName} · ${hover.role.toUpperCase()}` : focus ? `${generations[focus - 1].label} · ${cast.filter((c) => c.group === focus).length} PEOPLE` : `${cast.length} PEOPLE · ${generations.length} STORIES`}</small>
+          <small>{hover ? `${hover.generation} ${hover.teamName} · ${hover.role.toUpperCase()}` : focus ? `${generations[focus - 1].label} · ${cast.filter((c) => c.group === focus).length} PEOPLE` : `${cast.length} PEOPLE · ${stories.length} STORIES`}</small>
           <strong>{hover ? hover.name.replace("(미정)", "") : focus ? generations[focus - 1].teamName : "THE CAST"}</strong>
         </motion.div>
       </div>
       <div className="cv-bar">
         <span className="cv-hint">DRAG · THROW · SCROLL</span>
         {/* 칩에 올리면 벽에서 그 팀만 밝아지고, 누르면 기수 페이지로 */}
-        <nav aria-label="기수별 이야기" onPointerDown={(e) => e.stopPropagation()} onPointerLeave={() => setFocus(null)}>
-          {generations.map((g) => (
-            <Link
-              key={g.id}
-              href={g.href}
-              className={focus === g.id ? "is-on" : undefined}
-              style={{ "--hue": chapters[g.id - 1].color } as CSSProperties}
-              onPointerEnter={() => setFocus(g.id)}
-              onFocus={() => setFocus(g.id)}
-            >
-              <em>{String(g.id).padStart(2, "0")}</em>
-              <small>{chapters[g.id - 1].english}</small>
-              <strong>{g.teamName}</strong>
-              <span className="cv-faces" aria-hidden="true">
-                {cast.filter((c) => c.group === g.id && c.image).map((c) => (
-                  <Image key={c.slug} src={c.image!} width={64} height={64} sizes="32px" alt="" />
-                ))}
-              </span>
-            </Link>
-          ))}
-        </nav>
+        {([["기수별 이야기", stories, undefined], ["기수 밖 사람들", sides, "cv-side"]] as const).map(([label, list, cls]) => (
+          <nav key={label} className={cls} aria-label={label} onPointerDown={(e) => e.stopPropagation()} onPointerLeave={() => setFocus(null)}>
+            {list.map((g) => (
+              <Link
+                key={g.id}
+                href={g.href}
+                className={focus === g.id ? "is-on" : undefined}
+                style={{ "--hue": chapters[g.id - 1].color } as CSSProperties}
+                onPointerEnter={() => setFocus(g.id)}
+                onFocus={() => setFocus(g.id)}
+              >
+                <em>{g.side ? chapters[g.id - 1].symbol : String(g.id).padStart(2, "0")}</em>
+                <small>{chapters[g.id - 1].english}</small>
+                <strong>{g.teamName}</strong>
+                <span className="cv-faces" aria-hidden="true">
+                  {cast.filter((c) => c.group === g.id && c.image).map((c) => (
+                    <Image key={c.slug} src={c.image!} width={64} height={64} sizes="32px" alt="" />
+                  ))}
+                </span>
+              </Link>
+            ))}
+          </nav>
+        ))}
       </div>
     </section>
   );

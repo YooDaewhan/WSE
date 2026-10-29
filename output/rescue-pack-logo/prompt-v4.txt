@@ -1,0 +1,18 @@
+Built-in image_gen; logo concept v4 (CRT heartbeat monitor, mirrored wordmark)
+
+Use case: logo-brand. Reference image: public/images/starterpack/starterpacklogo.png (sibling logo; Starter Pack = an old game switched on, Rescue Pack = the same old screen in the dark, still receiving one lonely signal).
+
+Create a retro game title logo for a Korean fictional character collective named RESCUE PACK, Korean 레스큐팩, designed as the display of an old green monochrome CRT heart monitor / oscilloscope. Wide horizontal canvas, the whole image is the dark screen itself, generous margins.
+Mood: lonely, quiet, late at night. A signal sent alone from somewhere far away (the future), over and over, hoping someone answers. Rescue as CPR: a flatline that starts beating again. Hopeful, not horror.
+
+Composition, centered and vertically symmetrical around one horizontal center line:
+1. Background: near-black CRT glass #050A06 with a soft curved vignette at the corners, fine horizontal scanlines, faint phosphor noise, and a very dim green measurement grid like an oscilloscope.
+2. Center line: a single glowing phosphor-green signal line #39FF6A runs across the full width. On the left it is a flat line; in the middle it jumps into one sharp heartbeat spike (an ECG QRS shape, tall up and deep down); then continues to the right as smaller pulses, the newest point at the right end is a bright dot with a short fading afterglow trail.
+3. Above the line: "RESCUE PACK" in a chunky blocky pixel/terminal font in glowing phosphor green, followed by a solid block cursor "_" as if it was just typed.
+4. Below the line: the same "RESCUE PACK" mirrored UPSIDE DOWN (flipped vertically across the center line), like the negative half of the waveform. Slightly dimmer, a touch of horizontal tearing / signal dropout in one or two letters, but still clearly legible as the flipped wordmark.
+5. The heartbeat spike passes between and slightly into both wordmarks, so the top text rides the up-swing and the bottom text hangs from the down-swing.
+6. Bottom right corner, small: Korean "레스큐팩" in a small pixel hangul, same green.
+
+Glow: subtle phosphor bloom on the green elements only, slight RGB-free green chromatic softness, as if photographed off a real old monitor but still clean and readable as a logo. Strictly monochrome: black and shades of phosphor green (#39FF6A bright, #1E8F3C mid, #0B3A18 dim). No other colors.
+
+Exact text only: "RESCUE PACK" (top), its upside-down mirror (bottom), and "레스큐팩". No numbers, no BPM readouts, no other words, no hearts, crosses, shields, stars, sunsets, characters, monitor bezel, hospital props, mockup, or watermark. One logo only.

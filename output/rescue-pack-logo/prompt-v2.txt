@@ -1,0 +1,14 @@
+Built-in image_gen; logo concept v2 (hologram star + loop ribbon)
+
+Use case: logo-brand. Reference image: public/images/starterpack/starterpacklogo.png (sibling logo, match its layout and comic energy).
+
+Create a game-style title logo for a Korean fictional character collective named RESCUE PACK, Korean 레스큐팩. It is the futuristic sibling of an existing "STARTER PACK" logo: same composition family (big stacked two-line wordmark "RESCUE / PACK", small Korean "레스큐팩" centered below, a large star emblem behind the letters, a sweeping ribbon around it, sparkles at the corners), same thick black comic outlines and bold arcade attitude, but rendered as if it came from the future. Wide horizontal canvas, white background, generous margins.
+Brand story: rescuers who return from the future to save the very person who will someday save them; a closed loop of rescue and reciprocity, warmth and determination.
+
+Emblem: behind the letters, a large five-pointed star drawn as a HOLOGRAM — not filled solid, built from glowing cyan outline strokes, an inner offset outline, and a light perspective wireframe grid inside, with a few thin horizontal scanline gaps slicing through it. It must read instantly as the same star as Starter Pack, re-imagined as future tech.
+Loop ribbon: instead of a simple orbit swoosh, one bold continuous ribbon wraps around the star and the wordmark as an infinity / Möbius loop (∞), passing behind the letters on one side and in front on the other, with a single half-twist. Ribbon is solid deep navy with a warm amber inner edge, thick black outline, one small forward-pointing chevron tip where the loop closes, suggesting travel through time and back.
+
+Wordmark: "RESCUE" on top, "PACK" below, heavy extended sans letters with sharp angular cut corners (clean blade-like cuts instead of Starter Pack's rough pixel edges), slightly italic forward lean. Fill is a vertical gradient from bright cyan #4FE3FF at top to deep blue #1E5BFF at bottom, white inner stroke, thick black outer outline, same stacked layering as the reference. Below, exact Korean "레스큐팩" in a compact angular digital-style hangul, amber #F5B83D with black outline.
+Background accents: replace halftone dots with fine horizontal scanline bands and a few tiny HUD tick marks; corner sparkles become thin four-point crosshair sparkles. Palette limited to navy #10243A, cyan #4FE3FF, blue #1E5BFF, amber #F5B83D, black, white.
+
+Exact text only: "RESCUE PACK" and "레스큐팩". No other words, no numbers, no characters, no drop pods, no meteors, no shields, no clocks, no mockup, no watermark. One logo only.

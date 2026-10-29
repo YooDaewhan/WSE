@@ -1,0 +1,17 @@
+Built-in image_gen; logo concept v7 (AED sign variant, pairs with v6 reversed exit sign)
+
+Use case: logo-brand. Context: the Rescue Pack page already uses safety signage (caution triangles, ban circles, an exit sign reading "나가도 됩니다"). v6 is the reversed exit sign; this is its sibling in the same sign system.
+
+Create a logo for a Korean fictional 3-member rescue team named RESCUE PACK, Korean 레스큐팩, designed as an illuminated green AED (automated external defibrillator) location sign, in the ILCOR / Korean public AED sign style (green square panel, white heart symbol). Wide horizontal canvas, the sign centered with generous margins on a near-black background #050A06, as if it is the only light still on in a dark, empty hallway at night.
+The twist: a real AED sign shows a heart with a lightning bolt. Here the lightning bolt is replaced by an ECG heartbeat line: it enters the heart from the left as a dead flat line, then inside the heart jumps into one sharp heartbeat spike, and exits on the right beating again. A flatline coming back to life. Rescue as CPR.
+Mood: lonely, quiet, steady. Something waiting on the wall for the moment someone needs it. Hopeful, not horror.
+
+Sign layout, one wide rounded-corner rectangle panel:
+1. Panel: solid safety green #00A35A with a thin white inner border, flat and clean like real signage, with a soft green glow spilling onto the black background.
+2. Left side: a large bold white heart with a small white cross at its upper right shoulder, exactly in the spirit of the AED symbol but with the heartbeat line instead of the lightning bolt. The heartbeat line is drawn in the panel green, cut cleanly through the white heart, and continues outside the heart in white on both sides as a thin line.
+3. Right side: the wordmark "RESCUE PACK" in a heavy, clean, condensed signage sans serif, white, all caps. Directly under it, smaller, Korean "레스큐팩" in a bold clean gothic hangul, white.
+4. A thin separate strip under the main panel, same green, with small white Korean text "다시 뛰게 할게요" centered.
+
+Details: crisp flat vector signage look, consistent thick geometry, same type and proportions as a matching exit sign so the two read as one set. Very subtle realism only in the glow: slightly uneven light, a faint flicker band across one edge. Colors strictly safety green #00A35A, darker green #006B3A on the strip, white, and the near-black background.
+
+Exact text only: "RESCUE PACK", "레스큐팩", "다시 뛰게 할게요". No "AED", no "자동심장충격기", no lightning bolt, no numbers or BPM, no other words, no hospital props, no characters, shields, stars, mounting box, wall, mockup, or watermark. One logo only.

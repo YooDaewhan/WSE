@@ -6,6 +6,8 @@ import { content as equinox } from "../services/generation5/content";
 import { content as stimulus } from "../services/generation6/content";
 import { content as security } from "../services/generation7/content";
 import { content as villains } from "../services/generation8/content";
+import { content as partner } from "../services/partner/content";
+import { content as manager } from "../services/manager/content";
 
 // Public team stories remain authored in each generation's content.ts.
 export const chapters = [
@@ -96,5 +98,27 @@ export const chapters = [
     atmosphere: "villain",
     invitation: "히어로를 키우기 위해 악역을 자처한 이야기",
     words: ["시련", "악역", "성장"],
+  },
+  {
+    id: 9,
+    story: partner,
+    english: "PARTNER STREAMER",
+    symbol: "伴",
+    color: "#7fd8be",
+    shade: "#1b2a26",
+    atmosphere: "partner",
+    invitation: "자기 이름으로, WSE와 나란히 걷는 이야기",
+    words: ["동행", "독립", "응원"],
+  },
+  {
+    id: 10,
+    story: manager,
+    english: "MANAGER",
+    symbol: "務",
+    color: "#8fb8ff",
+    shade: "#1b2230",
+    atmosphere: "manager",
+    invitation: "무대 뒤에서 무대를 지키는 이야기",
+    words: ["케어", "일정", "결재"],
   },
 ];

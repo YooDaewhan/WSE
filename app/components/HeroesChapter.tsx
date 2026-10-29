@@ -8,6 +8,7 @@ import { directions } from "../data/art-direction";
 import { content } from "../services/generation3/content";
 import ImgOr from "./ImgOr";
 import Header from "./Header";
+import useTouchSpotlight from "./useTouchSpotlight";
 import Footer from "./Footer";
 import "../heroes.css";
 
@@ -38,6 +39,7 @@ type Pop = { id: number; x: number; y: number; t: string; r: number };
 
 export default function HeroesChapter() {
   const [pops, setPops] = useState<Pop[]>([]);
+  useTouchSpotlight(".hr-panel");
   /* 컷을 누르면 효과음이 터진다 */
   const hit = (e: React.MouseEvent<HTMLElement>) => {
     if ((e.target as HTMLElement).closest("a, button")) return;

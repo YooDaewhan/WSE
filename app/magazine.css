@@ -1302,6 +1302,25 @@
   opacity: 1;
   transform: none;
 }
+/* 왼쪽 세로줄 — 기수 밖 사람들(파트너 · 매니저). 위 목차와 같은 칩, 세로로 */
+.cv::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 280px;
+  z-index: 3;
+  background: linear-gradient(90deg, #0d0d0be6 45%, transparent);
+  pointer-events: none;
+}
+.cv-bar nav.cv-side {
+  position: absolute;
+  top: calc(100% + 48px);
+  left: 0;
+  grid-template-columns: none;
+  gap: 22px;
+  width: 170px;
+  border-bottom: 0;
+}
 @media (max-width: 800px) {
   .cv-hint {
     display: none;
@@ -1321,5 +1340,17 @@
   }
   .cv-faces {
     display: none;
+  }
+  /* 폰에선 세로줄 대신 목차 아래 한 줄 더 */
+  .cv::before {
+    display: none;
+  }
+  .cv::after {
+    height: 400px;
+  }
+  .cv-bar nav.cv-side {
+    position: static;
+    display: flex;
+    width: auto;
   }
 }

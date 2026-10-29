@@ -3,19 +3,21 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import "./org.css";
 
-// 서열은 직함이 아니라 예우의 순서. who[0] = 보통 그 서열에 계신 분
-const rows: { n: number; color: string; who: string[]; perks: string[] }[] = [
-  { n: 1, color: "#ffd84d", who: ["대표", "공동창업자", "VIP 게스트"], perks: ["#결재권_독점", "#법인카드_소유", "#에어컨_리모컨"] },
-  { n: 2, color: "#ff8fb1", who: ["전속 크리에이터", "주요 협력사", "대표 지인"], perks: ["#굿즈_50%할인", "#의전차량", "#생일카페_회사부담"] },
-  { n: 3, color: "#7fd8be", who: ["파트너 크리에이터", "게스트 출연자", "외부 스태프"], perks: ["#굿즈_30%할인", "#행사_우선초청", "#합방_우선배정"] },
-  { n: 4, color: "#8fb8ff", who: ["직원", "매니저", "운영 지원팀", "인턴"], perks: ["#굿즈_우선구입", "#할인은_없음", "#야근_무제한"] },
+// 서열은 직함이 아니라 예우의 순서
+const rows: { n: number; color: string; who: string; perks: string[] }[] = [
+  { n: 1, color: "#ffd84d", who: "대표", perks: ["#결재권_독점", "#법인카드_소유", "#에어컨_리모컨"] },
+  { n: 2, color: "#ff8fb1", who: "전속 크리에이터", perks: ["#정산_회사6:스트리머4", "#WSE_전속편집자", "#WSE_전속썸네일러", "#굿즈_50%할인", "#의전차량", "#생일카페_회사부담"] },
+  { n: 3, color: "#7fd8be", who: "파트너 스트리머", perks: ["#정산_회사1:스트리머9", "#편집·썸네일_사내할인가", "#굿즈_30%할인", "#행사_우선초청", "#합방_우선배정"] },
+  { n: 4, color: "#8fb8ff", who: "전속 스태프", perks: ["#WSE굿즈_15%할인", "#굿즈_우선구입", "#야근_무제한"] },
+  { n: 5, color: "#ffb86b", who: "특수회원", perks: ["#스트리머_일정공유", "#아침회의_참여가능"] },
+  { n: 6, color: "#b49cff", who: "파트너 스태프", perks: ["#스태프_출입증", "#현장_도시락"] },
+  { n: 7, color: "#c9b8e8", who: "일반 회원", perks: ["#굿즈_정가구매", "#방송_시청권"] },
 ];
 
 // 단상 좌석: 청중이 보는 방향 왼쪽→오른쪽. 1 중앙, 2는 단상 기준 오른쪽(청중 기준 왼쪽), 3은 그 반대 순으로 교대
 const dais = [6, 4, 2, 1, 3, 5, 7];
 
 const outside = {
-  who: ["안티팬", "사이버렉카", "악플러"],
   perks: ["#행사_참여금지", "#굿즈_구매배제", "#단독_기사거리_제공", "#안팔린_굿즈재고_무상지급", "#명절선물_보냄", "#사실상_우리편"],
 };
 
@@ -81,21 +83,19 @@ export default function Org() {
 
             <table className="org-table">
               <thead>
-                <tr><th>서열</th><th>주로 해당</th><th>그 밖의 해당</th><th>예우</th></tr>
+                <tr><th>서열</th><th></th><th>예우</th></tr>
               </thead>
               <tbody>
                 {rows.map((r) => (
                   <tr key={r.n} style={{ "--c": r.color } as React.CSSProperties}>
                     <td className="org-n">{r.n}</td>
-                    <td><strong>{r.who[0]}</strong></td>
-                    <td>{r.who.slice(1).join(" · ")}</td>
+                    <td><strong>{r.who}</strong></td>
                     <td className="org-perk">{r.perks.map((p) => <span key={p}>{p}</span>)}</td>
                   </tr>
                 ))}
                 <tr className="org-out">
                   <td className="org-n">외</td>
                   <td><strong>출입 제한</strong></td>
-                  <td>{outside.who.join(" · ")}</td>
                   <td className="org-perk">{outside.perks.map((p) => <span key={p}>{p}</span>)}</td>
                 </tr>
               </tbody>

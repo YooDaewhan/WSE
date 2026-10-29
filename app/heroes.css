@@ -40,11 +40,11 @@
 .hr-bubble { position: absolute; left: 10px; right: 22px; top: 12px; padding: 9px 12px; border: 2px solid var(--hr-ink); border-radius: 18px; background: #fff; font-size: 13px; font-weight: 700; word-break: keep-all; transition: opacity .25s; }
 .hr-bubble::after { content: ""; position: absolute; left: 26px; bottom: -10px; border: 9px solid transparent; border-top-color: var(--hr-ink); border-bottom: 0; }
 .hr-final { position: absolute; inset: auto 0 0; padding: 40px 14px 14px; background: linear-gradient(transparent, var(--hr-ink) 55%); color: var(--c); font: 400 22px/1.2 var(--hr-punch), sans-serif; word-break: keep-all; opacity: 0; transform: translateY(20px); transition: opacity .3s, transform .3s; }
-.hr-panel:hover .hr-frame, .hr-panel:focus-visible .hr-frame { transform: rotate(0) translate(-3px, -3px); box-shadow: 10px 10px 0 var(--hr-ink); }
-.hr-panel:hover .hr-burst, .hr-panel:focus-visible .hr-burst { opacity: .55; }
-.hr-panel:hover .hr-art, .hr-panel:focus-visible .hr-art { filter: none; transform: scale(1.04); }
-.hr-panel:hover .hr-bubble, .hr-panel:focus-visible .hr-bubble { opacity: 0; }
-.hr-panel:hover .hr-final, .hr-panel:focus-visible .hr-final { opacity: 1; transform: none; }
+.hr-panel:hover .hr-frame, .hr-panel.is-in .hr-frame, .hr-panel:focus-visible .hr-frame { transform: rotate(0) translate(-3px, -3px); box-shadow: 10px 10px 0 var(--hr-ink); }
+.hr-panel:hover .hr-burst, .hr-panel.is-in .hr-burst, .hr-panel:focus-visible .hr-burst { opacity: .55; }
+.hr-panel:hover .hr-art, .hr-panel.is-in .hr-art, .hr-panel:focus-visible .hr-art { filter: none; transform: scale(1.04); }
+.hr-panel:hover .hr-bubble, .hr-panel.is-in .hr-bubble, .hr-panel:focus-visible .hr-bubble { opacity: 0; }
+.hr-panel:hover .hr-final, .hr-panel.is-in .hr-final, .hr-panel:focus-visible .hr-final { opacity: 1; transform: none; }
 .hr-caption { display: grid; gap: 4px; margin-top: 18px; }
 .hr-caption small { font-size: 11px; letter-spacing: .1em; color: #6a6b5e; }
 .hr-caption b { font: 400 24px/1.1 var(--hr-punch), sans-serif; }

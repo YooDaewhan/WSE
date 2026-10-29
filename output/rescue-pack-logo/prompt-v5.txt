@@ -1,0 +1,17 @@
+Built-in image_gen; logo concept v5 (v4 CRT heartbeat monitor x super sentai title logo)
+
+Use case: logo-brand. Reference image: public/images/starterpack/starterpacklogo.png (sibling logo, same bold game-title energy).
+
+Create a title logo for a Korean fictional 3-member rescue team named RESCUE PACK, Korean 레스큐팩, that fuses two things: an old green monochrome CRT heart monitor showing one lonely signal in the dark, and a 90s Japanese super sentai / tokusatsu rescue-hero series title logo. It should feel like the moment a dying signal on an old monitor suddenly transforms into a hero show's title card. Wide horizontal canvas, generous margins.
+Mood: lonely darkness first, then a surge of hope. Rescue as CPR: a flatline that starts beating again and calls three heroes in.
+
+Composition, vertically symmetrical around one horizontal center line:
+1. Background: near-black CRT glass #050A06, curved corner vignette, fine horizontal scanlines, faint phosphor noise, very dim green oscilloscope grid.
+2. Center line: a glowing phosphor-green line #39FF6A, flat on the far left, then THREE sharp ECG heartbeat spikes in a row in the middle, each spike tinted one member color: coral #FF9068, sky blue #85CBF1, mint #BBE6D6, then the line continues right and ends in a bright dot with a short afterglow trail. Behind the spikes, a sentai-style burst of straight speed lines radiating outward, in dim green.
+3. Above the line: "RESCUE PACK" as a sentai title wordmark: heavy forward-slanted italic block letters, sharp angular cuts, thick chunky 3D bevel/extrude, chrome-silver faces lit green from the screen, thick black outline, a bright green outer glow. Ends with a solid green block cursor "_".
+4. Below the line: the same "RESCUE PACK" mirrored UPSIDE DOWN across the center line, rendered flat in phosphor green pixel style (not chrome), dimmer, with slight horizontal signal tearing, like the negative half of the waveform. Still clearly legible as the flipped wordmark.
+5. Korean "레스큐팩": centered just below the top wordmark, small, bold angular sentai-style hangul, chrome with black outline, sitting on a thin slanted three-stripe band in coral, sky blue and mint (the three members).
+
+Palette: black, phosphor greens (#39FF6A, #1E8F3C, #0B3A18), chrome silver, and the three member accents coral #FF9068, sky blue #85CBF1, mint #BBE6D6 used only on the three spikes and the stripe band.
+
+Exact text only: "RESCUE PACK" (top), its upside-down mirror (bottom), and "레스큐팩". No numbers, no BPM readouts, no other words, no hearts, crosses, shields, stars, sunsets, helmets, characters, robots, monitor bezel, hospital props, mockup, or watermark. One logo only.

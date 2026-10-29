@@ -6,7 +6,7 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { useExperience } from "./components/Experience";
-import { cast, generations } from "./data/cast";
+import { cast, stories } from "./data/cast";
 import { directions } from "./data/art-direction";
 import { news } from "./data/news";
 import ShopPreview from "./components/ShopPreview";
@@ -274,7 +274,7 @@ export default function Home() {
             </p>
           </div>
           <ol className="mag-teams">
-            {generations.map((g, i) => {
+            {stories.map((g, i) => {
               const members = cast.filter((m) => m.group === g.id && m.image);
               const color = directions[members[0]?.slug]?.color ?? "var(--acid)";
               return (

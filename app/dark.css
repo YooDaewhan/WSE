@@ -360,6 +360,9 @@
 :root[data-theme="dark"] .cv-bar nav {
   border-bottom: 1px solid #2825342e;
 }
+:root[data-theme="dark"] .cv-bar nav.cv-side {
+  border-bottom: 0;
+}
 :root[data-theme="dark"] .cv-bar nav a {
   color: #ebded4;
 }

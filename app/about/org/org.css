@@ -46,7 +46,6 @@
 .org-table .org-out { background:#fdf6f6; }
 .org-table .org-out .org-n { font-size:18px; color:#c23a4f; box-shadow:inset 4px 0 0 #ff3d5a; }
 .org-table .org-out strong { color:#c23a4f; }
-.org-table .org-out td:nth-child(3) { color:#c23a4f; text-decoration:line-through; }
 
 .org-dais { margin:44px 0 0; text-align:center; }
 .org-dais figcaption { font-size:13px; font-weight:800; letter-spacing:2px; margin-bottom:16px; }
@@ -104,7 +103,7 @@
   .org-table thead { display:none; }
   .org-table tr { display:grid; grid-template-columns:56px 1fr; padding:14px 0; border-bottom:1px solid #2b22381f; }
   .org-table td { padding:2px 10px; border:0; }
-  .org-table .org-n { grid-row:span 3; width:auto; }
+  .org-table .org-n { grid-row:span 2; width:auto; }
   .org-dais-seats { gap:4px; padding:12px 6px; }
   .org-dais-seats span { width:34px; height:34px; font-size:14px; }
   .org-teams, .org-clubs { grid-template-columns:1fr; }

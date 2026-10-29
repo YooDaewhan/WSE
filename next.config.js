@@ -2,6 +2,8 @@
 const nextConfig = {
   // 서버(/srv/wse)에는 .next/standalone만 올려서 node server.js로 실행
   output: "standalone",
+  // 같은 와이파이의 폰으로 dev 서버(172.30.1.x)에 붙을 때 JS가 막히지 않게
+  allowedDevOrigins: ["172.30.1.*"],
   turbopack: {
     root: __dirname,
   },

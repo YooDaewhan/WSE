@@ -145,7 +145,8 @@ export default function CharacterProfile({ slug }: { slug: string }) {
           </div>
           <motion.div
             className="profile-visual"
-            style={{ x: paused ? 0 : rx, y: paused ? 0 : ry }}
+            style={{ x: paused ? 0 : rx, y: paused ? 0 : ry, cursor: "pointer" }}
+            onClick={(e) => !(e.target as Element).closest("a") && setPose((v) => v + 1)}
           >
             <div className="portrait-frame" />
             {stamp && <span className="tp-stamp" aria-hidden="true">{stamp}</span>}
