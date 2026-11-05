@@ -10,7 +10,7 @@ type Lore = { emoji: string; title: string; body: string; image?: string | strin
 const pending = (s: string) => /추후|내용을 채워|\(추가\)/.test(s);
 const pics = (l: Lore) => (l.image ? [l.image].flat() : []);
 
-export default function LoreCards({ items, label, stack }: { items: Lore[]; label: string; stack?: boolean }) {
+export default function LoreCards({ items, label, stack, photo, desc, head }: { items: Lore[]; label: string; stack?: boolean; photo?: boolean; desc?: string; head?: string }) {
   const [page, setPage] = useState<number | null>(null);
   const dialog = useRef<HTMLDialogElement>(null);
   useEffect(() => {
@@ -25,6 +25,29 @@ export default function LoreCards({ items, label, stack }: { items: Lore[]; labe
   const step = (n: number) => pages.length > 1 && setPage((p) => ((p ?? 0) + n + pages.length) % pages.length);
   const no = (i: number) => String(i + 1).padStart(2, "0");
   const body = (l: Lore) => (pending(l.body) ? "아직 기록되지 않은 페이지예요." : l.body);
+
+  /* photo — 팝업 없이 마을 담벼락 벽보(방문·현상수배)로 */
+  if (photo) {
+    const sub = label === "COMPANION" ? "이 자들을 보거든 즉시 告할 것" : "이 고을 백성에게 告하노라";
+    return (
+      <div className={`lore-cards${stack ? " is-stack" : ""}`} role="list">
+        {items.filter((l) => l.image).map((l, i) => (
+          <div key={i} role="listitem" className="lore-card is-photo is-poster">
+            {head && <span className="poster-head">{head}</span>}
+            <span className="poster-sub">{sub}</span>
+            <span className="lore-card-art">
+              <Image src={pics(l)[0]} alt={l.title} fill sizes="(max-width: 700px) 90vw, 440px" />
+              {l.logo && <Image className="lore-logo" src={l.logo} alt="" width={860} height={300} />}
+            </span>
+            <span className="poster-title">{l.title}</span>
+            {desc && <span className="poster-desc">{desc}</span>}
+            <span className="poster-foot">捕盜廳 白</span>
+            <span className="poster-seal" aria-hidden="true">曉</span>
+          </div>
+        ))}
+      </div>
+    );
+  }
 
   return (
     <>

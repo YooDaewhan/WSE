@@ -175,7 +175,7 @@ export const cast = [
   },
   {
     ...{
-      name: "김서담",
+      name: "박서담",
       realName: "내시",
       emoji: "📜",
       role: "Strategist",

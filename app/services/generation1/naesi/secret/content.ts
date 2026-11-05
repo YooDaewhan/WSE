@@ -47,7 +47,7 @@ export const content: SecretContent = {
         {
           title: "조선제일검",
           emoji: "🔒",
-          image: "" /* 예: "/images/page-1.png" */,
+          image: "/images/naesi/classified-first-sword.png",
           body: "내시는 '조선 팔도검 중 제십팔검쯤 되겠구먼' 이라는 말을 들을 정도로 약하다고 평가됩니다. 하지만 그것은 힘을 숨긴 것. 사실 내시는 무과 장원을 한 제일검입니다. 왕의 가장 가까운 곳에서 왕을 호위하는 강력한 검사입니다.",
         },
         {
@@ -76,6 +76,7 @@ export const content: SecretContent = {
         {
           title: "첫째 장",
           emoji: "📜",
+          image: "/images/naesi/classified-war-diary.png",
           body: "어머니, 제가 이곳에 발령받은 지도 어언 석 달이 되었습니다.\n\n이곳까지 오는 데만 무려 두 달이 걸렸습니다. 산이 워낙 험하고, 산을 넘을 때마다 상상도 못 할 흉수들이 나타났습니다. 어떻게 되먹은 산인지, 산 하나하나가 산군만 한 괴물을 품고 있는 듯했습니다. 그런데 이곳 부하들 말이, 두 달이면 빨리 온 것이랍니다. 넉 달 걸린 사람도 있었다고요.\n\n이곳은 매우 춥습니다. 방안을 한 저를 이리 가혹한 곳에 보내시다니 처음엔 서운했으나, 저를 믿고 보내신 전하의 뜻이 있겠지요. 이곳에서 공을 세워 하루빨리 궁으로 돌아가겠습니다. 궁으로 발령받으면 어머니를 모시겠습니다.",
         },
         {
@@ -119,7 +120,7 @@ export const content: SecretContent = {
         {
           title: "고자아님",
           emoji: "🔒",
-          image: "" /* 예: "/images/page-1.png" */,
+          image: "/images/naesi/classified-kings-friend.png",
           body: "내시는 고자를 연기해야하지만 사실 아닙니다. 심지어 왕의 어릴적 친구입니다.",
         },
         {
@@ -137,7 +138,7 @@ export const content: SecretContent = {
         {
           title: "일러스트",
           emoji: "🔒",
-          image: "" /* 예: "/images/page-1.png" */,
+          image: "/images/naesi/classified-general.png",
           body: "나중엔 대장군 갑옷을 입은 일러스트가 추가될예정입니다",
         },
       ],

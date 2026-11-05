@@ -45,9 +45,9 @@ export default function CharacterProfile({ slug }: { slug: string }) {
   const next = cast[(cast.indexOf(c) + 1) % cast.length];
   const clean = (s: string) => !/추후|내용을 채워|\(추가\)/.test(s);
   /* 설정 목록 — 그림이 하나라도 있으면 카드(LoreCards), 아니면 접는 목록 */
-  const lore = (items: { emoji: string; title: string; body: string; image?: string | string[]; logo?: string }[], label: string) =>
+  const lore = (items: { emoji: string; title: string; body: string; image?: string | string[]; logo?: string }[], label: string, desc?: string, head?: string) =>
     items.some((l) => l.image || l.logo)
-      ? <LoreCards items={items.filter((l) => l.image || l.logo || clean(l.body))} label={label} stack={starter || c.group === 1} />
+      ? <LoreCards items={items.filter((l) => l.image || l.logo || clean(l.body))} label={label} stack={starter || c.group === 1} photo={c.group === 1} desc={desc} head={head} />
       : items.filter((l) => clean(l.body)).map((l) => <details key={l.title}><summary>{l.title}</summary><p>{l.body}</p></details>);
   /* 1기 스타터팩 — 포켓 도감 컨셉 */
   const starter = c.group === 2;
@@ -234,7 +234,7 @@ export default function CharacterProfile({ slug }: { slug: string }) {
               <span>ORIGIN ↗</span>
               <h2>{c.birthplace}</h2>
               <p>{c.content.birthplaceDesc}</p>
-              {lore(c.content.birthplaceLore, "ORIGIN")}
+              {lore(c.content.birthplaceLore, "ORIGIN", c.content.birthplaceDesc, c.birthplace)}
             </article>
             <article>
               <span>COMPANION ↗</span>
@@ -246,7 +246,7 @@ export default function CharacterProfile({ slug }: { slug: string }) {
                   ? c.content.partnerDesc
                   : "아직 밝혀지지 않은 이야기입니다."}
               </p>
-              {lore(c.content.partnerLore, "COMPANION")}
+              {lore(c.content.partnerLore, "COMPANION", clean(c.content.partnerDesc) ? c.content.partnerDesc : undefined, c.partner.name)}
             </article>
           </div>
         </section>

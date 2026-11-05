@@ -51,12 +51,32 @@
 .tp-dawn .world-notes { background: #1b1a17; color: #efe8d8; }
 .tp-dawn .notes-grid article { border: 1px solid #efe8d822; }
 /* 새벽조 설정 카드 — 스타터팩(이그나이터)과 같은 와이드 카드 */
+.tp-dawn .notes-grid { grid-template-columns: 1fr 1fr; }
+@media (max-width: 700px) { .tp-dawn .notes-grid { grid-template-columns: 1fr; } }
 .tp-dawn .lore-cards.is-stack .lore-card { padding: 8px 8px 14px; background: #fbfaf5; color: #1d2a24; border: 2px solid #1d2a24; border-radius: 12px 12px 28px 12px; transform: rotate(-1.2deg); transition: transform .35s cubic-bezier(.2,.8,.2,1); --stack-bg: #fbfaf5; --stack-line: #1d2a24; }
 .tp-dawn .lore-cards.is-stack .lore-card:hover, .tp-dawn .lore-cards.is-stack .lore-card:focus-visible { transform: translateY(-6px) rotate(0); outline: none; }
 .tp-dawn .lore-cards.is-stack .lore-card-art { border: 2px solid #1d2a24; border-radius: 6px 6px 18px 6px; }
 .tp-dawn .lore-cards.is-stack .lore-card-no { background: #1d2a24; color: #f4f1e6; }
 .tp-dawn .lore-cards.is-stack .lore-card-title, .tp-dawn .lore-cards.is-stack .lore-card-body { padding: 0 4px; }
 .tp-dawn .lore-cards.is-stack .lore-card-body { color: #4a5a52; opacity: 1; }
+/* 새벽조 설정 — 마을 담벼락 벽보 (ORIGIN 榜文 · COMPANION 懸賞手配) */
+.tp-dawn .lore-cards:has(.is-poster) { filter: drop-shadow(0 14px 18px #0009); }
+.tp-dawn .lore-cards .lore-card.is-poster { align-items: center; text-align: center; padding: 26px 20px 20px; color: #2a1d12; background: radial-gradient(circle at 85% 92%, #6b4a2233, #0000 45%), radial-gradient(circle at 10% 8%, #6b4a2226, #0000 35%), linear-gradient(#ecdcb8, #e0c99b); border: 0; border-radius: 0; box-shadow: inset 0 0 46px #7a5a2a4d; clip-path: polygon(0 1%, 6% 0, 18% 1.5%, 33% .3%, 51% 1.2%, 68% 0, 84% 1.4%, 100% .4%, 99.2% 22%, 100% 47%, 99% 73%, 100% 99%, 82% 100%, 61% 98.8%, 40% 100%, 22% 98.9%, 4% 100%, 0 99%, .8% 74%, 0 50%, .9% 24%); transform: rotate(var(--tilt, -1.6deg)); }
+.tp-dawn .notes-grid article:nth-child(2) .lore-card.is-poster { --tilt: 1.4deg; }
+.tp-dawn .lore-cards .lore-card.is-poster:hover { transform: translateY(-4px) rotate(0); }
+.tp-dawn .lore-card.is-poster::before { content: ""; position: absolute; top: 0; left: 50%; width: 28%; height: 16px; transform: translateX(-50%) rotate(-2deg); background: #f6eed8b3; box-shadow: 0 1px 2px #0002; }
+.tp-dawn .lore-cards .is-poster .lore-card-art { align-self: stretch; border: 2px solid #2a1d12; border-radius: 0; }
+.tp-dawn .is-poster .lore-card-art img:not(.lore-logo) { filter: sepia(.35) contrast(1.05); }
+.poster-head { font: 700 clamp(28px, 3.2vw, 44px)/1 var(--dw-serif), serif; letter-spacing: .3em; padding-left: .3em; color: #1b1410; }
+.poster-sub { margin: 10px 0 14px; padding: 4px 12px; border-block: 1px solid #2a1d1255; font: 400 12px var(--dw-serif), serif; letter-spacing: .12em; color: #5a4630; }
+.poster-title { margin-top: 14px; font: 400 clamp(26px, 2.6vw, 36px)/1.1 var(--dw-brush), serif; color: #1b1410; }
+.poster-desc { margin: 10px 4px 2px; max-width: 34ch; font: 400 13px/1.7 var(--dw-serif), serif; color: #3a2a1a; word-break: keep-all; }
+.tp-dawn .notes-grid article:has(.is-poster) > p { display: none; } /* 설명은 벽보 위에 */
+.tp-dawn .notes-grid article > .lore-cards:has(.is-poster) { flex: 1; margin-top: 0; } /* 설명 길이가 달라도 두 벽보 높이를 맞춤 */
+.tp-dawn .notes-grid article:has(.is-poster) { border: 0; padding: 0; }
+.tp-dawn .notes-grid article:has(.is-poster) > h2 { display: none; } /* 이름은 벽보 머리에 */
+.poster-foot { margin-top: auto; padding-top: 6px; font: 700 11px var(--dw-serif), serif; letter-spacing: .4em; color: #5a4630; }
+.poster-seal { position: absolute; right: 18px; bottom: 16px; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 4px; background: #b2301f; color: #f6e9dc; font: 700 24px/1 var(--dw-serif), serif; box-shadow: inset 0 0 0 2px #f6e9dc66; transform: rotate(8deg); opacity: .92; }
 .tp-dawn .next-character { background: #e4dac4; color: #1b1a17; }
 .tp-dawn .next-character strong { color: #1b1a17; font-family: var(--dw-brush), serif; font-weight: 400; font-size: 72px; }
 .tp-dawn .next-character > a:first-of-type { color: #6d6a62; }
@@ -301,6 +321,7 @@ html[data-motion=paused] .tp-stimpack .profile-stage { animation: none; }
 /* ── 설정 카드 (LoreCards) — 기본 ── */
 .lore-cards { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(168px, 44%); gap: 16px; margin: 26px -6px 0; padding: 10px 6px 18px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: thin; }
 .lore-card { position: relative; display: flex; flex-direction: column; text-align: left; scroll-snap-align: start; padding: 0; background: none; border: 0; color: inherit; cursor: pointer; }
+.lore-card.is-photo { cursor: default; }
 .lore-card-art { position: relative; display: grid; place-items: center; aspect-ratio: 4 / 5; overflow: hidden; border-radius: 10px; background: color-mix(in srgb, var(--accent) 25%, #f4f1e6); }
 .lore-card-art img { object-fit: cover; transition: transform .6s cubic-bezier(.2,.8,.2,1); }
 .lore-card:hover .lore-card-art img, .lore-card:focus-visible .lore-card-art img { transform: scale(1.06); }
